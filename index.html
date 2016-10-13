@@ -171,7 +171,7 @@
 
 	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special kind of vector space, the so-called Hilbert spaces.
 
-	Because we are dealing with finite-dimensional spaces, qubits, being vectors, can be represented in the usual way - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 after measuring it.
+	Because we are dealing with finite-dimensional spaces, qubits, being vectors, can be represented in the usual way - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above, represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 after measuring it.
 
 	In Qumin, vectors are written as plain lists, for example:
 
@@ -418,9 +418,50 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
 
 
 
-    <h2> TODO: Rules 3 and 4 </h2>
+    <h2>Rule 3: Measurement</h2>
+
+    A particular feature of quantum computers, one that has no clear analog in our everyday life, is that to obtain results from
+    our programs we have to observe them, but in doing so we cause a so-called <a href="https://en.wikipedia.org/wiki/Wave_function_collapse">collapse</a> of the wavefunction of our system. What this means is that by measuring/interacting with our system we, inadvertently, have altered our system's state and
+    evolution in time, in a way that violates the rules we mentioned before (that is, we have intervened in a non-unitary way).
+    Now observing/interacting with a macroscopic item in our everyday life does not observably alter its qualities or evolution.
+    <br>
+    Say we roll a ball in a dark room and after some time we want to check out where it is. All we have to do is shine our
+    flashlight on it and record its position in the room. This action of interacting with the ball to observe it has left it
+    seemingly unchanged - the ball is still rolling as we expected, just as it did when the room was still dark. For quantum
+    systems though, things are different. As we said above, observing a system leads to a "break" in its evolution. <br>
+    To describe measurement we use a specific class of operators, the <a href="https://en.wikipedia.org/wiki/Hermitian_matrix"
+    Hermitian</a/<a href="https://en.wikipedia.org/wiki/Self-adjoint_operator">self-adjoint</a> operators, which need not be
+    unitary. Again, this requirement for our operators to be self-adjoint/our matrices to be Hermitian might seem arbitrary, but
+    if we look a bit closer we can uncover the reason for such a rule. The eigenvalues of such an operator are real. The
+    formalism of quantum mechanics specifies that the result of a measurement is one of the eigenvalues of the corresponding
+    operator, and so it makes sense that we want the results of our measurements to be real numbers.<br>Here, we won't bother
+    ourselves with any fancy measurements like the ones physicists use. All we care about is whether our qubits are 0 or 1.
+    This is called a "measurement in the computational basis", and performing it collapses our qubits to either 0 or 1
+    depending on the amplitudes it had - as we mentioned in our discussion of the first rule.
+
+    Measurements in Qumin can be performed with the built-in function <font face="Lucida Console">measure(state)</font>:
+
+  <div class="codebox">
+    <pre><code>measure([1 0])<br>measure(apply(H,[1 0]))</code></pre>
+    </div>
+
+    The measurement function prints the probabilities of each expected outcome of our measurement and returns the state of the qubit after the collapse.
+      For the first line in the snippet above, we have the following output:
+
+    <div class="codebox">
+    <pre><code>Probability of state 0 is 1.0<br>Probability of state 1 is 0.0<br>System collapsed to state: 0</code></pre>
+    </div>   
+
+    while for the second line we have:
+    <div class="codebox">
+    <pre><code>Probability of state 0 is 0.5<br>Probability of state 1 is 0.5<br>System collapsed to state: 1</code></pre>
+    </div>  
+    
+    Of course, the second qubit could have just as easily collapsed to the 0 state.
 
     </body>
+
+    <h2>TODO: Rule 4 - composing systems and measuring them using subsystems</h2>
 
 </html>
 
