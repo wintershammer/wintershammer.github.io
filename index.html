@@ -6,7 +6,7 @@
         <title>Qumin Tutorial</title>
         <meta name="description" content="Qumin tutorial."/>
         <style>
-            body {margin: 5% auto; background: #f2f2f2; color: #444444; font-family: 'Courier New'; font-size: 14px; line-height: 1.6; text-shadow: 0 1px 0 #ffffff; max-width: 73%;}
+            body {margin: 5% auto; background: #f2f2f2; color: #444444; font-family: 'Courier New'; font-size: 16px; line-height: 1.6; text-shadow: 0 1px 0 #ffffff; max-width: 73%;}
             code {color: #c1c1c1; font-family: 'Lucida Console'; text-shadow: 0 0 0.03em #8F7;}
             a {border-bottom: 1px solid #444444; color: #444444; text-decoration: none;}
             a:hover {border-bottom: 0;}
@@ -46,9 +46,80 @@
         <div class="codebox">
         <pre><code>let myString = "Hello world!"<br>let six = (3 + 3)</code></pre>
         </div>
-        Once you bind an identifier to an expression, you cannot use the same identifier to bind a different expression.
+        Remember, once you bind an identifier to an expression, you cannot use the same identifier to bind a different expression!
 
         <h2>Functions</h2>
+
+        Qumin, being a functional language, is based around the concept of functions as the building block of your programs.
+        Unlike some imperative languages, Qumin's functions are first-class citizens in that they can:
+        <ul>
+        <li>Be bound to identifiers just as any other expression can</li>
+        <li>Be accepted as input and be operated on by other functions, which we call high-level functions</li>
+        <li>Be returned as the result of a computation</li>
+        </ul>
+
+        This means we handle functions just like we handle any other type of data in our language like integers or lists.
+
+  		Qumin, being based on variants of the lambda calculus, defines functions using the so-called lambda abstractions, or more commonly "anonymous functions", like Python's <font face="Lucida Console">lambda</font>. For example an anonymous function
+  		that takes an argument and adds 5 to it, is written in Qumin as such:
+
+        <div class="codebox">
+        <pre><code>lambda(x){
+   (x + 5)<br>}</code></pre>
+        </div>
+
+        Anonymous functions can be applied in-line by including arguments in parenthesis as such:
+
+        <div class="codebox">
+        <pre><code>lambda(x,y){
+    (x + y)<br>}(3,5)</code></pre>
+        </div>
+
+        Which would evaluate to 8.<br>
+
+		But it's difficult to do anything complicated with just anonymous functions. Thankfully, as we hinted at previously, we can
+		just bind a lambda expression to an identifier and so get a handle on our function:
+
+        <div class="codebox">
+        <pre><code>let adder = lambda(x,y){
+    (x + y)<br>}</code></pre>
+        </div>
+
+        And we can call our new function as <font face="Lucida Console">adder(5,3)</font>.
+
+        <br>
+        Another useful thing to remember when playing with functions, is that Qumin supports implicit partial application:
+
+
+        <div class="codebox">
+        <pre><code>let adder(x,y){
+    (x + y)<br>}<br>let partiallyApplied = adder(10)<br>partiallyApplied(30)</code></pre>
+        </div>
+
+        The last line would evaluate to 40.
+
+
+        What happened here is that, by only supplying one of the two expected arguments, we were given back a new function that looks something like this:
+
+        <div class="codebox">
+        <pre><code>lambda(y)
+    {(10 + y)<br>}</code></pre>
+        </div>
+
+        Which name <font face="Lucida Console">partiallyApplied</font> and call with 30 as an argument.
+
+        <br>
+
+ 		Finally, specifically in the case of binary functions, we can also call functions in infix notation, inside a pair of parenthesis.
+ 		For example
+
+        <div class="codebox">
+        <pre><code>let myOp = lambda(x,y){
+    (x + (3 * y))<br>}<br>(5 myOp 10)</code></pre>
+        </div>
+        That's the reason we have been parenthesizing arithmetic expressions like <font face="Lucida Console">(x + y)</font>. 
+        All primitive arithmetic functions like <font face="Lucida Console">+,-,*,/</font> are defined like any other of Qumin's functions and can be called in the infix style for convenience.
+
     </body>
 </html>
 
