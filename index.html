@@ -148,17 +148,18 @@
 
     <h1> II. Quantum Programming in Qumin </h1>
    	
-   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like no-cloning and no-deleting of qubits force us to adopt a resour-ce sensitive way of programming. Even things we take for granted in the classical context, like debugging, are difficult in a quantum computer, because even observing our program's state and data can inadverently alter it. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language, in some way, help us build programs that we can be sure follows the various rules of quantum computing. To this end, we introduce the quantum fragment of Qumin - equipped with a linear type system built to enforce correctness and help us structure our quantum programs.
+   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context, like debugging, are difficult in a quantum computer, because even observing our program's state and data can inadverently alter it. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language, in some way, help us build programs that we can be sure follows the various rules of quantum computing. To this end, we introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs.
+
 
    	<h2>Crash course on quantum programming</h2>
 
    	Quantum programming can very roughly and informally be summarised by the following four rules:
 
 	<ul>
-	<li>1. States are (normalised) vectors in a special vector space over the complex numbers.</li>
-	<li>2. Their evolution can be described via a specific class of operators (i.e functions on the aforementioned vector space).
-	<li>3. States can be measured in specific ways.</li>
-	<li>4. States can be composed by way of tensor products.</li>
+	<li>1. States are (normalised) vectors in a <a href="https://en.wikipedia.org/wiki/Hilbert_Space">special</a> vector space over the complex numbers.</li>
+	<li>2. Their evolution can be described via a <a href="https://en.wikipedia.org/wiki/Unitary_Operator">specific</a> class of <a href="https://en.wikipedia.org/wiki/Linear_map">operators</a> (i.e functions on the aforementioned vector space).
+	<li>3. States can be measured in <a href="https://en.wikipedia.org/wiki/Self-adjoint_operator">specific</a> ways to obtain results.</li>
+	<li>4. States can be composed in a <a href="https://en.wikipedia.org/wiki/Tensor_product#Tensor_product_of_vector_spaces">specific</a> way.</li>
 	</ul>
 
 	Even if you don't get the more math-y concepts above, don't fret! As you'll see later on, these seemingly abstract rules have very concrete and hands-on implications for programming. In the following subsections we will focus on each specific rule and explore what it means for programming in practice.
@@ -180,7 +181,7 @@
 
  	<h3>Rule 2: Evolution</h3> 
  	
- 	What use is having qubits, if we can't operate on them? This is exactly what the second rule describes - how to evolve the state of our quantum program to perform computations! Qubits are finicky and can only be manipulated in specific ways. Again, for the interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
+ 	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for the interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
  	requirement that our operators, the functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
  	Once again, just as we represent qubits by vectors/lists, we can represent operators in the much more familiar form of a square matrix, and so we will use the terms operator and matrix interchangeably (remember, we are dealing with finite vector spaces here).
  	What the above requirements practically mean, is that these matrices, when multiplied by their conjugate transpose, must equal the matrix with zeroes everywhere - except its diagonal, where it has ones. This is the so-called identity matrix:
@@ -202,7 +203,11 @@
 	  </mfenced>
 	</math>
 
-	But how do I apply these matrices to a qubit? The answer is given by multiplying qubit vector by the appropriate matrix.
+	This "unitarity" requirement might seem arbitrary before one notices that unitary matrices are exactly those that preserve the norms of our vectors i.e they enforce the rule that the sum of the moduli squared of the amplitudes must equal 1.
+
+	<br>
+	Right about now, you might be asking yourself "That's nice and all, but how do I actually apply these operators to a qubit?".
+	The answer is given by <a href="https://en.wikipedia.org/wiki/Matrix_multiplication#Square_matrix_and_column_vector">multiplying</a> qubit vector by the appropriate matrix.
  	For example, the operator that leaves a qubit unaltered is the aforementioned identity - it is easy to see that multiplying the identity operator by its conjugate transpose we get the identity matrix again, so this matrix is unitary.
  	It is also plain to see that multiplying this matrix, with say the vector [1 0] we get the same vector back:
 
@@ -253,8 +258,11 @@
 	  </mfenced>   
 	</math>
 
-	A more interesting example of operator - and one we are going to use frequently - is the Hadamard transform. It can be used 
-	to place qubits in the halfway superposition.
+	A more interesting example of operator - and one we are going to use frequently - is the 
+	<a href="https://en.wikipedia.org/wiki/Hadamard_transform">Hamdamard transform </a>. 
+	It can be used 
+	to place qubits in the halfway superposition:
+
 
 	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
 	  <mi>H</mi>
