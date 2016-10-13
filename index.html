@@ -145,7 +145,6 @@
         That's the reason we have been parenthesizing arithmetic expressions like <font face="Lucida Console">(x + y)</font>. 
         All primitive arithmetic functions like <font face="Lucida Console">+,-,*,/</font> are defined like any other of Qumin's functions and can be called in the infix style for convenience.
 
-    </body>
 
     <h1> II. Quantum Programming in Qumin </h1>
    	
@@ -254,8 +253,8 @@
 	  </mfenced>   
 	</math>
 
-	A more interesting example is the Hadamard transform operator. It's an operator we will use frequently - it places our qubits in the
-	halfway superposition:
+	A more interesting example of operator - and one we are going to use frequently - is the Hadamard transform. It can be used 
+	to place qubits in the halfway superposition.
 
 	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
 	  <mi>H</mi>
@@ -388,6 +387,19 @@
 	    </mtable>
 	  </mfenced>   
 	</math>
+
+
+	In Qumin, matrices are written as lists of lists, as such:
+
+	<div class="codebox">
+    <pre><code>let id = [[1 0]<br>	  [0 1]]<br>
+let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></code></pre>
+    </div>
+
+
+    <h2> TODO: Rules 3 and 4 </h2>
+
+    </body>
 </html>
 
 
