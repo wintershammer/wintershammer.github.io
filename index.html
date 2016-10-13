@@ -1,7 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0"/>
+        <title>Qumin Tutorial</title>
+        <meta name="description" content="Qumin tutorial."/>
+        <style>
+            body {margin: 5% auto; background: #f2f2f2; color: #444444; font-family: 'Courier New'; font-size: 14px; line-height: 1.6; text-shadow: 0 1px 0 #ffffff; max-width: 73%;}
+            code {color: #c1c1c1; font-family: 'Lucida Console'; text-shadow: 0 0 0.03em #8F7;}
+            a {border-bottom: 1px solid #444444; color: #444444; text-decoration: none;}
+            a:hover {border-bottom: 0;}
+            h1, h2 {line-height: 1.3;}
+            div.codebox {
+    			/* Below are styles for the codebox (not the code itself) */
+    			border:1px #303030;
+    			background-color:#303030;
+    			width:80%;
+   				overflow:auto;    
+    			padding:10px;
+			}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Getting started with Qumin</h1>
+            <aside>A quick and dirty tutorial.</aside>
+        </header>
+        <h1><strong>I. Classical programming in Qumin</strong></h1>
+        <h2>Primitive datatypes and variables</h2>
+        <ul>
+            <li>Integers: 5,-32</li>
+            <li>Floats: 0.2, -99.212 </li>
+            <li>Complex numbers: 1+5i, -3.2-8i </li>
+            <li>Strings: "Hello world!" </li>
+            <li>Lists: [1 2 3], [[1 0] [5 "hi"]]</li>
+        </ul>
+        Variables, used in the mathematical sense of the world (identifiers bound to immutable values), are defined as such:
+        <div class="codebox">
+        <pre><code>let identifier = expression</code></pre>
+        </div>
+
+        For example:
+        
+
+        <div class="codebox">
+        <pre><code>let myString = "Hello world!"<br>let six = (3 + 3)</code></pre>
+        </div>
+        Once you bind an identifier to an expression, you cannot use the same identifier to bind a different expression.
+
+        <h2>Functions</h2>
+    </body>
 </html>
+
+
