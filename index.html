@@ -19,14 +19,39 @@
    				overflow:auto;    
     			padding:10px;
 			}
+			.matrix {
+			    position: relative;
+			}
+			.matrix:before, .matrix:after {
+			    content: "";
+			    position: absolute;
+			    top: 0;
+			    border: 1px solid #000;
+			    width: 6px;
+			    height: 100%;
+			}
+			.matrix:before {
+			    left: -6px;
+			    border-right: 0;
+			}
+			.matrix:after {
+			    right: -6px;
+			    border-left: 0;
+			}
+			<script type="text/javascript"
+          		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  			</script>
         </style>
     </head>
     <body>
         <header>
             <h1>Getting started with Qumin</h1>
-            <aside>A quick and dirty tutorial.</aside>
         </header>
-        <h1><strong>I. Classical programming in Qumin</strong></h1>
+        Qumin is a minimalistic programming language that aims to provide a simple and open framework for everyone interested in quantum programming to experiment with - from students and researchers that want to implement quantum algorithms like Shor's or Grover's or modify and extend the language, to programmers that want to get a glimpse of what programming a quantum computer might look like. With an open source (still experimental) interpreter already set up, all you need is the latest version of Python 3 and the SciPy stack to get you ready to run your first quantum algorithms.
+
+        What follows below is a quick and dirty tutorial of programming in Qumin. We split the guide into to main parts, roughly corresponding to two fragments of the language, the first one dealing with the classical aspects of Qumin and the second one dealing with the features specific to the quantum programming aspect of the language.
+
+        <h1>I. Classical programming in Qumin</h1>
         <h2>Primitive datatypes and variables</h2>
         <ul>
             <li>Integers: 5,-32</li>
@@ -102,8 +127,8 @@
         What happened here is that, by only supplying one of the two expected arguments, we were given back a new function that looks something like this:
 
         <div class="codebox">
-        <pre><code>lambda(y)
-    {(10 + y)<br>}</code></pre>
+        <pre><code>lambda(y){
+    (10 + y)<br>}</code></pre>
         </div>
 
         Which name <font face="Lucida Console">partiallyApplied</font> and call with 30 as an argument.
@@ -121,6 +146,248 @@
         All primitive arithmetic functions like <font face="Lucida Console">+,-,*,/</font> are defined like any other of Qumin's functions and can be called in the infix style for convenience.
 
     </body>
+
+    <h1> II. Quantum Programming in Qumin </h1>
+   	
+   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like no-cloning and no-deleting of qubits force us to adopt a resour-ce sensitive way of programming. Even things we take for granted in the classical context, like debugging, are difficult in a quantum computer, because even observing our program's state and data can inadverently alter it. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language, in some way, help us build programs that we can be sure follows the various rules of quantum computing. To this end, we introduce the quantum fragment of Qumin - equipped with a linear type system built to enforce correctness and help us structure our quantum programs.
+
+   	<h2>Crash course on quantum programming</h2>
+
+   	Quantum programming can very roughly and informally be summarised by the following four rules:
+
+	<ul>
+	<li>1. States are (normalised) vectors in a special vector space over the complex numbers.</li>
+	<li>2. Their evolution can be described via a specific class of operators (i.e functions on the aforementioned vector space).
+	<li>3. States can be measured in specific ways.</li>
+	<li>4. States can be composed by way of tensor products.</li>
+	</ul>
+
+	Even if you don't get the more math-y concepts above, don't fret! As you'll see later on, these seemingly abstract rules have very concrete and hands-on implications for programming. In the following subsections we will focus on each specific rule and explore what it means for programming in practice.
+
+	<h3>Rule 1: Qubits</h3>
+	Let's start with the first rule. Just as a classical computer's state is encoded in bits, so too can a quantum computer's be encoded in qubits. 
+
+	These quantum analogs of bits have properties that classical bits do not possess! Qubits can be in the states 0 or 1 like a bit, but they also can be in any linear combination thereof - this a result of the famous superposition principle. 
+
+	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special kind of vector space, the so-called Hilbert spaces.
+
+	Because we are dealing with finite-dimensional spaces, qubits, being vectors, can be represented in the usual way - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 after measuring it.
+
+	In Qumin, vectors are written as plain lists, for example:
+
+	<div class="codebox">
+    <pre><code>let zero = [1 0]<br>let one = [0 1]<br>let halfway = [1/sqrt(2) 1/sqrt(2)]</code></pre>
+    </div>
+
+ 	<h3>Rule 2: Evolution</h3> 
+ 	
+ 	What use is having qubits, if we can't operate on them? This is exactly what the second rule describes - how to evolve the state of our quantum program to perform computations! Qubits are finicky and can only be manipulated in specific ways. Again, for the interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
+ 	requirement that our operators, the functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
+ 	Once again, just as we represent qubits by vectors/lists, we can represent operators in the much more familiar form of a square matrix, and so we will use the terms operator and matrix interchangeably (remember, we are dealing with finite vector spaces here).
+ 	What the above requirements practically mean, is that these matrices, when multiplied by their conjugate transpose, must equal the matrix with zeroes everywhere - except its diagonal, where it has ones. This is the so-called identity matrix:
+	
+	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
+	  <mi>I</mi>
+	  <mo>=</mo>
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1</mi></mtd>
+	        <mtd><mi>0</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0</mi></mtd>
+	        <mtd><mi>1</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>
+	</math>
+
+	But how do I apply these matrices to a qubit? The answer is given by multiplying qubit vector by the appropriate matrix.
+ 	For example, the operator that leaves a qubit unaltered is the aforementioned identity - it is easy to see that multiplying the identity operator by its conjugate transpose we get the identity matrix again, so this matrix is unitary.
+ 	It is also plain to see that multiplying this matrix, with say the vector [1 0] we get the same vector back:
+
+	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1</mi></mtd>
+	        <mtd><mi>0</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0</mi></mtd>
+	        <mtd><mi>1</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>	
+	  <mo>=</mo> 
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1 * 1 + 0 * 0</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0 * 1 + 0 * 0</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>	
+	  <mo>=</mo> 
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>   
+	</math>
+
+	A more interesting example is the Hadamard transform operator. It's an operator we will use frequently - it places our qubits in the
+	halfway superposition:
+
+	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
+	  <mi>H</mi>
+	  <mo>=</mo>
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd>  <mfrac>
+    			<mn>1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	        <mtd>  <mfrac>
+    			<mn>1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd>  <mfrac>
+    			<mn>1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	        <mtd>  <mfrac>
+    			<mn>-1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>
+	</math>	
+
+	For example, applying H to the zero qubit we get:
+
+		<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
+	  	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd>  <mfrac>
+    			<mn>1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	        <mtd>  <mfrac>
+    			<mn>1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd>  
+	        	<mfrac>
+    				<mn>1</mn>
+    			  <mrow>
+      			    <msqrt>
+    				  <mn>2</mn>
+  				    </msqrt>
+    			  </mrow>
+  				</mfrac>
+  			</mtd>
+	        <mtd>  <mfrac>
+    			<mn>-1</mn>
+    			<mrow>
+      			   <msqrt>
+    				<mn>2</mn>
+  				   </msqrt>
+    			</mrow>
+  			</mfrac></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>
+	  <mo></mo> 
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd><mi>1</mi></mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd><mi>0</mi></mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>  
+	  <mo>=</mo>
+	  <mfenced open='[' close=']' separators=''>
+	    <mtable>
+	      <mtr>
+	        <mtd>
+	        	<mfrac>
+    				<mn>1</mn>
+    			  <mrow>
+      			    <msqrt>
+    				  <mn>2</mn>
+  				    </msqrt>
+    			  </mrow>
+  				</mfrac>
+	        </mtd>
+	      </mtr>
+	      <mtr>
+	        <mtd>
+	        	<mfrac>
+    				<mn>1</mn>
+    			  <mrow>
+      			    <msqrt>
+    				  <mn>2</mn>
+  				    </msqrt>
+    			  </mrow>
+  				</mfrac>
+	        </mtd>
+	      </mtr>
+	    </mtable>
+	  </mfenced>   
+	</math>
 </html>
 
 
