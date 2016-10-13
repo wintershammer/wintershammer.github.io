@@ -396,10 +396,24 @@
 let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></code></pre>
     </div>
 
+    and can be applied to vectors using the built in function <font face="Lucida Console">apply(matrix,vector)</font>:
+
+	<div class="codebox">
+    <pre><code>apply(H,[1 0])</code></pre>
+    </div>
+
+    Which returns <font face="Lucida Console">[0.70710678118 0.70710678118]</font>, which is what we expected, if we consider the
+    finite precision of floating point arithmetic.
+
+
+
+
+
 
     <h2> TODO: Rules 3 and 4 </h2>
 
     </body>
+
 </html>
 
 
