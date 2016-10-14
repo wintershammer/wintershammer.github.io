@@ -148,8 +148,7 @@
 
     <h1> II. Quantum Programming in Qumin </h1>
    	
-   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context, like debugging, are difficult in a quantum computer, because even observing our program's state and data can inadverently alter it. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language, in some way, help us build programs that we can be sure follows the various rules of quantum computing. To this end, we introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs.
-
+   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context - like debugging - are difficult to do in a quantum computer. This is because observing our quantum program's state and data can inadverently alter it, as we'll discuss later on. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language help us, in some way, build programs that we can be sure follow the various rules of quantum computing. To this end, we will introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs. But first, lets present a quick and informal introduction to quantum computing.
 
    	<h2>Crash course on quantum programming</h2>
 
@@ -169,20 +168,20 @@
 
 	These quantum analogs of bits have properties that classical bits do not possess! Qubits can be in the states 0 or 1 like a bit, but they also can be in any linear combination thereof - this a result of the famous superposition principle. 
 
-	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special kind of vector space, the so-called Hilbert spaces.
+	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special class of vector spaces, the two-dimensional complex Hilbert space.
 
-	Because we are dealing with finite-dimensional spaces, qubits, being vectors, can be represented in the usual way - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above, represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 after measuring it.
+	Because we are dealing with finite-dimensional spaces, qubits can be represented in the usual way we represent any 2d vector - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above, represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 respectively, after measuring it.
 
 	In Qumin, vectors are written as plain lists, for example:
 
 	<div class="codebox">
-    <pre><code>let zero = [1 0]<br>let one = [0 1]<br>let halfway = [1/sqrt(2) 1/sqrt(2)]</code></pre>
+    <pre><code>let zero = [1 0]<br>let one = [0 1]<br>let halfway = [(1 / sqrt(2)) (1 / sqrt(2))]</code></pre>
     </div>
 
  	<h3>Rule 2: Evolution</h3> 
  	
- 	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for the interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
- 	requirement that our operators, the functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
+ 	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for those interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
+ 	requirement that our operators, the special functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
  	Once again, just as we represent qubits by vectors/lists, we can represent operators in the much more familiar form of a square matrix, and so we will use the terms operator and matrix interchangeably (remember, we are dealing with finite vector spaces here).
  	What the above requirements practically mean, is that these matrices, when multiplied by their conjugate transpose, must equal the matrix with zeroes everywhere - except its diagonal, where it has ones. This is the so-called identity matrix:
 	
@@ -207,7 +206,7 @@
 
 	<br>
 	Right about now, you might be asking yourself "That's nice and all, but how do I actually apply these operators to a qubit?".
-	The answer is given by <a href="https://en.wikipedia.org/wiki/Matrix_multiplication#Square_matrix_and_column_vector">multiplying</a> qubit vector by the appropriate matrix.
+	The answer is given by <a href="https://en.wikipedia.org/wiki/Matrix_multiplication#Square_matrix_and_column_vector">multiplying</a> a qubit vector by the matrix in question.
  	For example, the operator that leaves a qubit unaltered is the aforementioned identity - it is easy to see that multiplying the identity operator by its conjugate transpose we get the identity matrix again, so this matrix is unitary.
  	It is also plain to see that multiplying this matrix, with say the vector [1 0] we get the same vector back:
 
@@ -410,8 +409,8 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
     <pre><code>apply(H,[1 0])</code></pre>
     </div>
 
-    Which returns <font face="Lucida Console">[0.70710678118 0.70710678118]</font>, which is what we expected, if we consider the
-    finite precision of floating point arithmetic.
+    Which returns <font face="Lucida Console">[0.70710678118 0.70710678118]</font>, which is what we expected, if we consider
+    limitations of floats.
 
 
 
@@ -421,22 +420,25 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
     <h2>Rule 3: Measurement</h2>
 
     A particular feature of quantum computers, one that has no clear analog in our everyday life, is that to obtain results from
-    our programs we have to observe them, but in doing so we cause a so-called <a href="https://en.wikipedia.org/wiki/Wave_function_collapse">collapse</a> of the wavefunction of our system. What this means is that by measuring/interacting with our system we, inadvertently, have altered our system's state and
+    our programs we have to observe them, but in doing so we cause a so-called "<a href="https://en.wikipedia.org/wiki/Wave_function_collapse">collapse of the wavefunction</a>" of our system. What this means is that by measuring/interacting with our system we, inadvertently, have altered our system's state and
     evolution in time, in a way that violates the rules we mentioned before (that is, we have intervened in a non-unitary way).
-    Now observing/interacting with a macroscopic item in our everyday life does not observably alter its qualities or evolution.
+   
     <br>
+    Now, observing/interacting with a macroscopic item in our everyday life does not observably alter its qualities or evolution, does it?
     Say we roll a ball in a dark room and after some time we want to check out where it is. All we have to do is shine our
     flashlight on it and record its position in the room. This action of interacting with the ball to observe it has left it
-    seemingly unchanged - the ball is still rolling as we expected, just as it did when the room was still dark. For quantum
+    seemingly unchanged - the ball is still rolling as we expected, just as it did when the room was still dark. <br>
+    For quantum
     systems though, things are different. As we said above, observing a system leads to a "break" in its evolution. <br>
     To describe measurement we use a specific class of operators, the <a href="https://en.wikipedia.org/wiki/Hermitian_matrix"
     Hermitian</a/<a href="https://en.wikipedia.org/wiki/Self-adjoint_operator">self-adjoint</a> operators, which need not be
-    unitary. Again, this requirement for our operators to be self-adjoint/our matrices to be Hermitian might seem arbitrary, but
-    if we look a bit closer we can uncover the reason for such a rule. The eigenvalues of such an operator are real. The
+    unitary. Again, this requirement for our operators to be self-adjoint - or equivalently our matrices to be Hermitian - might seem arbitrary, but
+    if we look a bit closer we can uncover the reason for such a rule: the eigenvalues of such an operator are real. The
     formalism of quantum mechanics specifies that the result of a measurement is one of the eigenvalues of the corresponding
     operator, and so it makes sense that we want the results of our measurements to be real numbers.<br>Here, we won't bother
     ourselves with any fancy measurements like the ones physicists use. All we care about is whether our qubits are 0 or 1.
-    This is called a "measurement in the computational basis", and performing it collapses our qubits to either 0 or 1
+    This is called a "measurement in the computational basis" and uses projection matrices which are guaranteed to be hermitian.
+    Performing such a measurement collapses our qubits to either classical state, 0 or 1,
     depending on the amplitudes it had - as we mentioned in our discussion of the first rule.
 
     Measurements in Qumin can be performed with the built-in function <font face="Lucida Console">measure(state)</font>:
@@ -461,7 +463,95 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
 
     </body>
 
-    <h2>TODO: Rule 4 - composing systems and measuring them using subsystems</h2>
+    <h2>Rule 4 : Composing Qubits</h2>
+
+    In classical computing, we seldom bother ourselves with single bits and operations on them - actually there is only one non-
+    trivial operation we can perform on a bit, care to guess which one is it? Instead we usually deal with at least 2 bits
+    using various boolean functions like AND, OR, XOR etc. We, of course, would like to do the same with our qubits. We have
+    already seen how an individual qubit's state can be described by a vector in a special 2d vector space - now all we need is a
+    way to put these individual spaces together to get a bigger space that describes our collection of qubits. Once again
+    though, things in the quantum realm prove to be trickier than expected. The composition and interaction of quantum systems
+    has some very interesting non-classical properties, the most famous being <a href="https://en.wikipedia.org/wiki
+    Quantum_entanglement">entanglement</a>. To account for these properties we use the formalism of the<a href="https:/
+    enwikipedia.org/wiki/Tensor_product#Tensor_product_of_vector_spaces">tensor products</a>. Fortunately for us, tensor
+    products in the finite dimensional vector spaces we deal with are easily computed through the use of the <a href="https://en
+    wikipedia.org/wiki/Kronecker product">Kronecker product</a> of matrices and vectors:
+
+    <img src="kronecker.jpg" alt="Kronecker product notation" align="middle" style="width:60%;height:60%;" > 
+    <br>
+    The motivation behind the use of tensor products is, as we hinted before, that it allows us to describe things like
+    entanglement: states of a system that can't be factored to a product of the states of each of its individual components.
+
+    As an example of composing systems in Qumin, lets start with two qubits, one in the 0 state and one in the halfway
+    superposition:
+
+    <div class="codebox">
+    <pre><code>let firstQubit = [1 0]<br>let secondQubit  = [(1 / sqrt(2)) (1 / sqrt(2))]</code></div>    
+
+    We can take their tensor product to construct a bipartite system using the built-in function tensor(x,y):
+
+    <div class="codebox">
+    <pre><code>let system = tensor(firstQubit,secondQubit)</code></div>  
+
+    Lets print this system, using print(x), to see what its vector representation looks like:
+
+
+    <div class="codebox">
+    <pre><code>print(system)</code></div>  
+
+    We get the following output:
+
+    <div class="codebox">
+    <pre><code>[0.7071067811865475, 0.7071067811865475, 0.0, 0.0]</code></div> 
+
+    As we can see, a bipartite could collapse to any of 4 states that correspond to:
+
+    <ul>
+        <li>Both qubits being 0</li>
+        <li>First one being 0, second one 1</li>
+        <li>First one being 1, second one 0 </li>
+        <li>Both qubits being 1</li>
+    </ul>  
+
+    In particular, our system, after measuring it with measure(system), has:
+
+    <div class="codebox">
+    <pre><code>Probability of state 0 is 0.5<br>Probability of state 1 is 0.5<br>Probability of state 2 is 0.0<br>Probability of state 3 is 0.0<br>System collapsed to state: 0</code></div> 
+
+    Which translates to:
+    <ul>
+        <li>50% chance that both its qubits are 0</li>
+        <li>50% chance that the first one is 0 and the second one is 1</li>
+        <li>0% chance that the first one is 1 and the second one is 0</li>
+        <li>0% chance that both its qubits are 1</li>
+    </ul>  
+
+    With some careful observation, we can see that the first qubit will 100% be in the 0 state - its the second qubit, the one
+    that was in a superposition, that splits the system's collective chances 50/50. While its quite easy to see this here, things
+    get considerably more complicated in bigger systems. Fortunately for us, Qumin provides us with the subsystems(state,configuration) function, whose first argument is a system's state and the second one is a list that describes how to split our system into subsystems of n qubits. For our example, we can split our system to two constituents of one qubit each:
+
+    <div class="codebox">
+    <pre><code>subsystems(system,[1 1])</code></div>    
+
+    Which prints:
+
+    <div class="codebox">
+    <pre><code>Probability of Subsystem0 state 0 is:  1.0
+Probability of Subsystem0 state 1 is:  0.0
+Probability of Subsystem1 state 0 is:  0.5
+Probability of Subsystem1 state 1 is:  0.5</code></div>
+
+    This clearly is not an entangled state, since it was a product. Let's now inspect a famous entangled state, the <a href="https://en.wikipedia.org/wiki/Bell_state">EPR pair</a>:
+
+    <h1>INSERT EPR PAIR WITH CNOT AND HADAMARD HERE</h1>
+
+
+
+    <h1>Putting everything together: the quantum fragment of Qumin</h1>
+
+
+    Todo: describe quantum routines, how to use linear types etc.
+    insert naughty example of trying to clone qubit and show that it fails.
 
 </html>
 
