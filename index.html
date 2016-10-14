@@ -164,6 +164,10 @@
 	Even if you don't get the more math-y concepts above, don't fret! As you'll see later on, these seemingly abstract rules have very concrete and hands-on implications for programming. In the following subsections we will focus on each specific rule and explore what it means for programming in practice.
 
 	<h3>Rule 1: Qubits</h3>
+
+ <p align="right">"Got numbers beyond what you can dial, maybe it's because I'm so versatile."<br>Beastie Boys, Intergalactic</p>
+
+
 	Let's start with the first rule. Just as a classical computer's state is encoded in bits, so too can a quantum computer's be encoded in qubits. 
 
 	These quantum analogs of bits have properties that classical bits do not possess! Qubits can be in the states 0 or 1 like a bit, but they also can be in any linear combination thereof - this a result of the famous superposition principle. 
@@ -179,6 +183,10 @@
     </div>
 
  	<h3>Rule 2: Evolution</h3> 
+
+
+
+   <p align="right">"Unfortunately, no one can be told what the Matrix is. You have to see it for yourself."<br>Morpheus, The Matrix 1999</p> 
  	
  	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for those interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
  	requirement that our operators, the special functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
@@ -419,6 +427,9 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
 
     <h2>Rule 3: Measurement</h2>
 
+       <p align="right">"We continue to watch and observe, just to find out what purpose it serves."<br>Napalm Death - Volume of Neglect</p> 
+
+
     A particular feature of quantum computers, one that has no clear analog in our everyday life, is that to obtain results from
     our programs we have to observe them, but in doing so we cause a so-called "<a href="https://en.wikipedia.org/wiki/Wave_function_collapse">collapse of the wavefunction</a>" of our system. What this means is that by measuring/interacting with our system we, inadvertently, have altered our system's state and
     evolution in time, in a way that violates the rules we mentioned before (that is, we have intervened in a non-unitary way).
@@ -464,6 +475,8 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
     </body>
 
     <h2>Rule 4 : Composing Qubits</h2>
+
+    <p align="right">"Kronecker? I barely know her."</p> 
 
     In classical computing, we seldom bother ourselves with single bits and operations on them - actually there is only one non-
     trivial operation we can perform on a bit, care to guess which one is it? Instead we usually deal with at least 2 bits
