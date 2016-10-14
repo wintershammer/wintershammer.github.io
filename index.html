@@ -165,7 +165,7 @@
 
 	<h3>Rule 1: Qubits</h3>
 
- <p align="right">"Got numbers beyond what you can dial, maybe it's because I'm so versatile."<br>Beastie Boys, Intergalactic</p>
+ <p align="right">"Got numbers beyond what you can dial, maybe it's because I'm so versatile."<br>Beastie Boys - Intergalactic</p>
 
 
 	Let's start with the first rule. Just as a classical computer's state is encoded in bits, so too can a quantum computer's be encoded in qubits. 
@@ -266,7 +266,7 @@
 	</math>
 
 	A more interesting example of operator - and one we are going to use frequently - is the 
-	<a href="https://en.wikipedia.org/wiki/Hadamard_transform">Hamdamard transform </a>. 
+	<a href="https://en.wikipedia.org/wiki/Hadamard_transform">Hadamard transform </a>. 
 	It can be used 
 	to place qubits in the halfway superposition:
 
@@ -408,7 +408,7 @@
 
 	<div class="codebox">
     <pre><code>let id = [[1 0]<br>	  [0 1]]<br>
-let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></code></pre>
+let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]]<br></code></pre>
     </div>
 
     and can be applied to vectors using the built in function <font face="Lucida Console">apply(matrix,vector)</font>:
@@ -435,22 +435,22 @@ let hadamard = [[1/sqrt(2) 1/sqrt(2)]<br>	        [1/sqrt(2) -1/sqrt(2)]]<br></c
     evolution in time, in a way that violates the rules we mentioned before (that is, we have intervened in a non-unitary way).
    
     <br>
-    Now, observing/interacting with a macroscopic item in our everyday life does not observably alter its qualities or evolution, does it?
+    <p>Now, observing/interacting with a macroscopic item in our everyday life does not observably alter its qualities or evolution, does it?
     Say we roll a ball in a dark room and after some time we want to check out where it is. All we have to do is shine our
     flashlight on it and record its position in the room. This action of interacting with the ball to observe it has left it
-    seemingly unchanged - the ball is still rolling as we expected, just as it did when the room was still dark. <br>
-    For quantum
-    systems though, things are different. As we said above, observing a system leads to a "break" in its evolution. <br>
-    To describe measurement we use a specific class of operators, the <a href="https://en.wikipedia.org/wiki/Hermitian_matrix"
-    Hermitian</a/<a href="https://en.wikipedia.org/wiki/Self-adjoint_operator">self-adjoint</a> operators, which need not be
-    unitary. Again, this requirement for our operators to be self-adjoint - or equivalently our matrices to be Hermitian - might seem arbitrary, but
+    seemingly unchanged - the ball is still rolling as we expected, just as it did when the room was still dark. </p>
+    <p>For quantum systems though, things are different. As we said above, observing a system leads to a "break" in its 
+    evolution. <br> To describe measurement we use a specific class of operators, the <a href="https://en.wikipedia.org/wiki/
+    Hermitian_matrix" Hermitian</a/<a href="https://en.wikipedia.org/wiki/Self-adjoint_operator">self-adjoint</a> operators, 
+    which need not be unitary. Again, this requirement for our operators to be self-adjoint - or equivalently our matrices to 
+    be Hermitian - might seem arbitrary, but
     if we look a bit closer we can uncover the reason for such a rule: the eigenvalues of such an operator are real. The
     formalism of quantum mechanics specifies that the result of a measurement is one of the eigenvalues of the corresponding
     operator, and so it makes sense that we want the results of our measurements to be real numbers.<br>Here, we won't bother
     ourselves with any fancy measurements like the ones physicists use. All we care about is whether our qubits are 0 or 1.
     This is called a "measurement in the computational basis" and uses projection matrices which are guaranteed to be hermitian.
     Performing such a measurement collapses our qubits to either classical state, 0 or 1,
-    depending on the amplitudes it had - as we mentioned in our discussion of the first rule.
+    depending on the amplitudes it had - as we mentioned in our discussion of the first rule.</p>
 
     Measurements in Qumin can be performed with the built-in function <font face="Lucida Console">measure(state)</font>:
 
@@ -554,9 +554,206 @@ Probability of Subsystem0 state 1 is:  0.0
 Probability of Subsystem1 state 0 is:  0.5
 Probability of Subsystem1 state 1 is:  0.5</code></div>
 
-    This clearly is not an entangled state, since it was a product. Let's now inspect a famous entangled state, the <a href="https://en.wikipedia.org/wiki/Bell_state">EPR pair</a>:
+    This clearly is not an entangled state, since it was a product. 
 
-    <h1>INSERT EPR PAIR WITH CNOT AND HADAMARD HERE</h1>
+    <p>
+    Let's now inspect a famous entangled state, the <a href="https://en.wikipedia.org/wiki/Bell_state">EPR pair</a>.
+    First we must define all the operators we are going to use. One of these we have already introduced, its the Hadamard matrix.
+    The other one is the CNOT operator: it takes two inputs and if the first one is 1 it flips the second. You heard that right,
+    this is our first 2-qubit operator! Writing down in matrix form would require writing down a 4x4 matrix by hand = 8 whole
+    entries. Ain't nobody got time for that and here in Q.U.I.T know that, so we have given you the magic of matrix generators!
+    We can write CNOT as a Qumin function and have our matrix generator compute the matrix:</p>
+
+    <div class="codebox">
+    <pre><code>let cnot = lambda(x){
+  if((x = [0 0 1 0])){
+    [0 0 0 1]
+  }
+  else{
+    if((x = [0 0 0 1])){
+      [0 0 1 0]
+    }
+    else{
+      x
+    }
+  }
+}<br>pprint(generateMatrix(cnot,4))</code></div>  
+
+    Which prints:
+
+    <div class="codebox">
+    <pre><code>[1, 0, 0, 0]
+[0, 1, 0, 0]
+[0, 0, 0, 1]
+[0, 0, 1, 0]
+</code></div> 
+
+    Here, pprint is a  <font face="Lucida Console">pretty-print(matrix)</font> function that outputs matrices formatted for
+    maximum viewing pleasure and  <font face="Lucida Console">generateMatrix(f,dim)</font> is a function that generates the
+    matrix representation of dimension <font face="Lucida Console">dim</font> for <font face="Lucida Console">f</font>. In this
+    case, <font face="Lucida Console">dim</font> is always 4 because CNOT is only defined in 4-dimensions i.e 2 qubits. But for
+    operators that work on any dimension, like the quantum Fourier transform, changing dim gives us the appropriate matrix for
+    any dimension.
+    
+    <p>
+    Before we continue, we must deal with a problem here. We've already seen that applying an operator to a qubit amounts to
+    multiplying the state vector with the appropriate square matrix - but matrix multiplication is only defined if the
+    dimensions of the matrix match the dimension of the vector! This is not a problem for CNOT because its represented by a 4x4
+    matrix that operates on 2 qubits that are represented by vectors of length 4. But Hadamard, is a 2x2 matrix that operates
+    on a single qubit, a vector of length 2. To fix this mismatch of dimensions, we can take the Kronecker product of Hadamard
+    with the identity matrix (motivation soon to follow), giving us:</p>
+
+
+    <div class="codebox">
+    <pre><code>let HxI = tensor(hadamard,[[1 0] [0 1]])<br>pprint(HxI)</code></div> 
+
+    Which prints:
+
+    <div class="codebox">
+    <pre><code>
+[0.7071067811865475, 0.0, 0.7071067811865475, 0.0]
+[0.0, 0.7071067811865475, 0.0, 0.7071067811865475]
+[0.7071067811865475, 0.0, -0.7071067811865475, -0.0]
+[0.0, 0.7071067811865475, -0.0, -0.7071067811865475]</code></div> 
+
+    What a mess, not even <font face="Lucida Console">pprint</font> can fix this. Let's try writing this down by hand and see if
+    it gets any clearer:
+
+  <math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
+    <mi>H x I</mi>
+    <mo>=</mo>
+    <mfenced open='[' close=']' separators=''>
+      <mtable>
+        <mtr>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>-1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+          <mtd><mi>0</mi></mtd>
+          <mtd>  <mfrac>
+              <mn>-1</mn>
+          <mrow>
+              <msqrt>
+                <mn>2</mn>
+              </msqrt>
+          </mrow>
+          </mfrac></mtd>
+        </mtr>
+
+      </mtable>
+    </mfenced>
+  </math> 
+
+
+  Staring at this matrix long enough - we recommend at least 3 or 4 hours a day for a week - it becomes plain to see that
+  it acts like the Hadamard transform for the first qubit and as the identity for the second one. This an example of the
+  general use of tensor products of operators: the tensor product of two operators X and Y is a new operator that applies X to 
+  one part of the system and Y to the other. This was the motivation behind taking the tensor product of the Hadamard matrix
+  with the identity - we want to apply the Hadamard to our first qubit and leave the other qubit unchanged.
+
+  <p>
+  We can finally generate our first EPR pair! We start with a two-qubit system, both in state 0 and apply Hadamard and then CNOT
+  to it:</p>
+
+
+  <div class="codebox">
+  <pre><code>let state = tensor([1 0],[1 0])
+let HxI = tensor(hadamard,[[1 0] [0 1]])
+let cnotMatrix = generateMatrix(cnot,4)
+let epr = apply(cnotMatrix,apply(HxI,state))</code></div> 
+
+  Now let's use our handy <font face="Lucida Console">subsystems</font> function to analyse this new state of our system:
+
+  <div class="codebox">
+  <pre><code>subsystems(epr,[1 1])</code></div> 
+
+  This prints:
+
+  <div class="codebox">
+  <pre><code>Probability of Subsystem0 state 0 is:  0.5
+Probability of Subsystem0 state 1 is:  0.5
+Probability of Subsystem1 state 0 is:  0.5
+Probability of Subsystem1 state 1 is:  0.5</code></div> 
+
+  So each qubit has a 50/50 chance of being 0 or 1. Now, you might be saying "big deal, that's nothing new! where's
+  all this entanglement jazz you keep yapping about?". Well mr. Strawman, why don't you go ahead and measure this state?
+
+  <div class="codebox">
+  <pre><code>measure(epr)<br>Probability of state 0 is 0.5
+Probability of state 1 is 0.0
+Probability of state 2 is 0.0
+Probability of state 3 is 0.5
+System collapsed to state: 0</code></div> 
+
+See that? Each individual system is either 0 or 1, but as a whole the system can only be in states where both qubits are 0 or both are 1! Much entanglement, very wow!
 
 
 
