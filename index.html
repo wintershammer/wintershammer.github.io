@@ -51,6 +51,23 @@
 
         What follows below is a quick and dirty tutorial of programming in Qumin. We split the guide into to main parts, roughly corresponding to two fragments of the language, the first one dealing with the classical aspects of Qumin and the second one dealing with the features specific to the quantum programming aspect of the language.
 
+        <h1>Preface. Running a Qumin program</h1>
+
+        As we'll see below, Qumin is made of 2 "sublanguages": one that handles the classical stuff like definitions,
+        initialisation etc. and one that handles explicitely quantum operations:
+
+        <ul>
+            <li>Classical programs are dynamically typed and  have a ".qimp" extension</li>
+            <li>Quantum programs are linearly typed and have a ".lqimp" extension </li>
+        </ul>
+
+        The entry point for a program is always the classical part. Inside this classical part we can load files that contain
+        definitions of useful classical functions etc. using "--load filename". We can also load quantum programs with "--qload
+        filename".
+
+        To run a file, just call mini.py with the filename as an argument. 
+
+
         <h1>I. Classical programming in Qumin</h1>
         <h2>Primitive datatypes and variables</h2>
         <ul>
@@ -165,8 +182,6 @@
 
 	<h3>Rule 1: Qubits</h3>
 
- <p align="right">"Got numbers beyond what you can dial, maybe it's because I'm so versatile."<br>Beastie Boys - Intergalactic</p>
-
 
 	Let's start with the first rule. Just as a classical computer's state is encoded in bits, so too can a quantum computer's be encoded in qubits. 
 
@@ -184,9 +199,6 @@
 
  	<h3>Rule 2: Evolution</h3> 
 
-
-
-   <p align="right">"Unfortunately, no one can be told what the Matrix is. You have to see it for yourself."<br>Morpheus, The Matrix 1999</p> 
  	
  	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for those interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
  	requirement that our operators, the special functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
@@ -427,8 +439,6 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
 
     <h2>Rule 3: Measurement</h2>
 
-       <p align="right">"We continue to watch and observe, just to find out what purpose it serves."<br>Napalm Death - Volume of Neglect</p> 
-
 
     A particular feature of quantum computers, one that has no clear analog in our everyday life, is that to obtain results from
     our programs we have to observe them, but in doing so we cause a so-called "<a href="https://en.wikipedia.org/wiki/Wave_function_collapse">collapse of the wavefunction</a>" of our system. What this means is that by measuring/interacting with our system we, inadvertently, have altered our system's state and
@@ -475,8 +485,6 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
     </body>
 
     <h2>Rule 4 : Composing Qubits</h2>
-
-    <p align="right">"Kronecker? I barely know her."</p> 
 
     In classical computing, we seldom bother ourselves with single bits and operations on them - actually there is only one non-
     trivial operation we can perform on a bit, care to guess which one is it? Instead we usually deal with at least 2 bits
@@ -743,9 +751,8 @@ Probability of Subsystem0 state 1 is:  0.5
 Probability of Subsystem1 state 0 is:  0.5
 Probability of Subsystem1 state 1 is:  0.5</code></div> 
 
-  So each qubit has a 50/50 chance of being 0 or 1. Now, you might be saying "big deal, that's nothing new! where's
-  all this entanglement jazz you keep yapping about?". Well mr. Strawman, why don't you go ahead and measure this state?
-
+  So each qubit has a 50/50 chance of being 0 or 1. Now, this doesn't look any different from the previous states we have
+  discussed. The entanglement correlation becomes apparent only after we check the probabilities for the whole system:
   <div class="codebox">
   <pre><code>measure(epr)<br>Probability of state 0 is 0.5
 Probability of state 1 is 0.0
@@ -753,16 +760,16 @@ Probability of state 2 is 0.0
 Probability of state 3 is 0.5
 System collapsed to state: 0</code></div> 
 
-See that? Each individual system is either 0 or 1, but as a whole the system can only be in states where both qubits are 0 or both are 1! Much entanglement, very wow!
+See that? Each individual system is either 0 or 1, but as a whole the system can only be in states where both qubits are 0 or both are 1!
 
 
 
     <h1>Putting everything together: the quantum fragment of Qumin</h1>
 
+    Now that we know the basics of quantum programming, it is finally time for us to open a ".lqimp" file
+    and write an actual linearly-typed quantum program.
 
-    Todo: describe quantum routines, how to use linear types etc.
-    insert naughty example of trying to clone qubit and show that it fails.
-
+    The major difference between the programs we have seen so far and the quantum ones is the presence of types.
 </html>
 
 
