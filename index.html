@@ -764,12 +764,23 @@ See that? Each individual system is either 0 or 1, but as a whole the system can
 
 
 
-    <h1>Putting everything together: the quantum fragment of Qumin</h1>
+<h1>Putting everything together: the quantum fragment of Qumin</h1>
 
-    Now that we know the basics of quantum programming, it is finally time for us to open a ".lqimp" file
-    and write an actual linearly-typed quantum program.
+So far we have only dealt with the classical part of Qumin (i.e everything we wrote would go in a .qimp file). While we could
+create qubits, apply operators and measure results, we have only done so "in simulation" and with no guarantee of correctness.
 
-    The major difference between the programs we have seen so far and the quantum ones is the presence of types.
+-- Insert example of cloning a qubit in classical lambda --
+
+As we can see, the classical part of Qumin guarantees no correctness of our actual quantum programs.
+In a quantum computer though, we would like our programs to be guaranteed to run correctly. This is where the quantum
+fragment comes into play. Qumin's quantum fragment is responsible for checking if our quantum programs are correct in the sense
+of following the rules like no cloning and no deleting. Now that we know the basics of quantum programming, it is finally time
+for us to open a ".lqimp" file and write an actual linearly-typed quantum program.
+
+The major difference between the programs we have seen so far and the quantum ones is the presence of types. For example,
+writting the same program with linear types gives us:
+
+-- Insert same example with linear types and output error message --
 </html>
 
 
