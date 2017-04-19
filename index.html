@@ -45,7 +45,7 @@
     </head>
     <body>
         <header>
-            <h1>Getting started with Qumin</h1>
+            <h1>Getting started with Qumin (This tutorial is still WIP!)</h1>
         </header>
         Qumin is a minimalistic programming language that aims to provide a simple and open framework for everyone interested in quantum programming to experiment with - from students and researchers that want to implement quantum algorithms like Shor's or Grover's, or want to modify and extend the language, to programmers that want to get a glimpse of what programming a quantum computer might look like. With an open source (still experimental) interpreter already set up, all you need is the latest version of Python 3 and the SciPy stack to get you ready to run your first quantum algorithms.
 
@@ -492,13 +492,10 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
     way to put these individual spaces together to get a bigger space that describes our collection of qubits. Once again
     though, things in the quantum realm prove to be trickier than expected. The composition and interaction of quantum systems
     has some very interesting non-classical properties, the most famous being <a href="https://en.wikipedia.org/wiki
-    Quantum_entanglement">entanglement</a>. To account for these properties we use the formalism of the<a href="https:/
-    enwikipedia.org/wiki/Tensor_product#Tensor_product_of_vector_spaces">tensor products</a>. Fortunately for us, tensor
+    Quantum_entanglement">entanglement</a>. To account for these properties we use the formalism of the <a href="https:/
+    enwikipedia.org/wiki/Tensor_product#Tensor_product_of_vector_spaces">tensor product</a>. Fortunately for us, tensor
     products in the finite dimensional vector spaces we deal with are easily computed through the use of the <a href="https://en
-    wikipedia.org/wiki/Kronecker product">Kronecker product</a> of matrices and vectors:
-
-    <img src="kronecker.jpg" alt="Kronecker product notation" align="middle" style="width:60%;height:60%;" > 
-    <br>
+    wikipedia.org/wiki/Kronecker product">Kronecker product</a> of matrices and vectors.
     The motivation behind the use of tensor products is, as we hinted before, that it allows us to describe things like
     entanglement: states of a system that can't be factored to a product of the states of each of its individual components.
 
@@ -760,7 +757,7 @@ See that? Each individual system is either 0 or 1, but as a whole the system can
 
 
 
-<h1>Putting everything together: Deutsch's algorithm and the quantum fragment of Qumin</h1>
+<h1>Enforcing correctness: the quantum sublanguage of Qumin</h1>
 
 So far we have only dealt with the classical part of Qumin (i.e everything we wrote would go in a .qimp file). While we could
 create qubits, apply operators and measure results, we have only done so "in simulation" and with no guarantee of correctness.
@@ -811,7 +808,74 @@ Apart from qubits, the type system also contains some other built-in types such 
 
 The last one, that is !{someType}, is handled in a special way by the typechecker, in that it is allowed, for example, to be duplicated, reused, and be deleted.
 
-To put everything together, we can now present an implementation of Deutsch's algorithm.
+<h1>Putting everything together: Deutsch's Algorithm</h1>
+
+Now that we've presented both the classical and the quantum fragment of Qumin, we can finally show a full implementation of one of the most famous quantum algorithms, that of Deutsch. 
+
+We start by presenting the problem which the algorithm solves:
+Suppose there is a (boolean) function f: {0, 1} -> {0, 1}. Our task is to find out whether f is constant (i.e returns 0 on all inputs, or 1 on all inputs), or balanced (i.e maps 0 to 1 and 1 to 0, or maps 1 to 1 and 0 to 0). The classical way to solve this problem would be evaluate f() twice and so find out where it maps 0 and 1.
+
+But by using Deutsch's algorithm, we can solve this problem by using just one evaluation!
+This is done as follows:
+<ol>
+    <li>Start by preparing two qubits, one in state 0 and one in state 1.
+    <li>Apply the Hadamard operator to both of them.
+    <li>Apply the operator U(|x,y>) = U(|x,y xor f(x)>)
+    <li>Apply the Hadamard operator to the qubit initialised to 0.
+    <li>Measure said qubit: if the result is 0 then f was constant, else it was balanced.
+</ol>
+
+The only peculiar thing about this algorithm is the operator U, which is usually called an "oracle". Since oracles are commonly used in quantum programming, Qumin provides a built-in <font face="Lucida Console">oracle()</font> function that when given a classical binary function, outputs the corresponding oracle.
+As such, we can easily translate the algorithm above into a Qumin program. We start by defining the classical fragment of the program, which we save on a file named "deutsch.qimp", and which contains definitions for f, the operators-to-be-used, the initial 2-qubit state, and the oracle:
+
+ <div class="codebox">
+  <pre><code>
+--load operators
+--load generator
+
+
+
+let H = generateMatrix(hadamard,2)
+let I = generateMatrix(identity,2)
+
+let fConstant = lambda(x){
+    [1 0]
+}
+
+let fBalanced = lambda(x){
+    x
+}
+
+let state = tensor([1 0],[0 1])
+</code></div> 
+
+The program starts by loading some helpful files such as <font face="Lucida Console">operators</font> which contains definitions for some standard quantum operators - including Hadamard and the identity operator, and <font face="Lucida Console">generator</font> which contains the definition of the matrix generator algorithm. We can also see that we have examples of a balanced and a constant binary function, as well as a definition of a 2-qubit state.
+
+Now that we're done with definitions and initialisation, we can open an ".lqimp" file and write down the implementation of Deutsch's algorithms, exaclty as presented in the steps above:
+
+ <div class="codebox">
+  <pre><code>
+let deutschRoutine = lambda(state : qubit * qubit, H : !{operator[1]}, I : !{operator[1]}, U : !{operator[2]}){
+    measure(
+          apply(tensorOp(H,I),
+          apply(U,
+          apply(tensorOp(H,H),
+          state))))
+}
+</code></div> 
+
+Let's save this as "deutschAlg.lqimp".
+Going back to the "deutsch.qimp" file, after loading the file "deutschAlg.lqimp" file using <font face="Lucida Console">"qload --deutschAlg"</font>, we can call <font face="Lucida Console">deutschRoutine</font> using either fConstant or fBalanced. As an example, by adding the two following lines at the end of our file:
+
+ <div class="codebox">
+  <pre><code>
+let Uf = oracle(generateMatrix(fConstant,2))
+
+deutschRoutine(state,H,I,Uf)
+</code></div> 
+
+We run the algorithm on fConstant.
+
 </html>
 
 
