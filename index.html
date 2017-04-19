@@ -49,7 +49,7 @@
         </header>
         Qumin is a minimalistic programming language that aims to provide a simple and open framework for everyone interested in quantum programming to experiment with - from students and researchers that want to implement quantum algorithms like Shor's or Grover's, or want to modify and extend the language, to programmers that want to get a glimpse of what programming a quantum computer might look like. With an open source (still experimental) interpreter already set up, all you need is the latest version of Python 3 and the SciPy stack to get you ready to run your first quantum algorithms.
 
-        What follows below is a quick and dirty tutorial of programming in Qumin, with a focus on practical aspects of programming in Qumin.
+        What follows below is a quick and dirty tutorial of programming in Qumin, with less focus on rigor and more on practical aspects of programming in Qumin.
         <h1>Preface: Running a Qumin program</h1>
 
         As we'll see below, Qumin is made of 2 "sublanguages": one that handles the classical stuff like definitions,
@@ -164,7 +164,7 @@
 
     <h1> II. Quantum Programming in Qumin </h1>
    	
-   	The previous section introduced the classical sublanguage of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context - like debugging - are difficult to do in a quantum computer. This is because observing our quantum program's state and data can inadverently alter it, as we'll discuss later on. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language help us, in some way, build programs that we can be sure follow the various rules of quantum computing. To this end, we will introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs. But first, lets present a quick and informal introduction to quantum computing.
+   	The previous section introduced the classical sublanguage of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context - like debugging - are difficult to do in a quantum computer. This is because observing our quantum program's state and data can inadverently alter it, as we'll discuss later on. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language help us, in some way, build programs that we can be sure follow the various rules of quantum computing. To this end, we will introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>, built to enforce correctness and help us structure our quantum programs. But first, lets present a quick and informal introduction to quantum computing.
 
    	<h2>Crash course on quantum programming</h2>
 
@@ -184,9 +184,9 @@
 
 	Let's start with the first rule. Just as a classical computer's state is encoded in bits, so too can a quantum computer's be encoded in qubits. 
 
-	These quantum analogs of bits have properties that classical bits do not possess! Qubits can be in the states 0 or 1 like a bit, but they also can be in any linear combination thereof - this a result of the famous superposition principle. 
+	These quantum analogs of bits have properties that classical bits do not possess! Qubits can be in the states 0 or 1 like a bit, but they also can be in linear combinations thereof - this a result of the famous superposition principle. 
 
-	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special class of vector spaces, the two-dimensional complex Hilbert space.
+	While we won't concern ourselves with the math in any significant detail, we will mention for those interested, that these qubit states are described in terms of vectors in a special type of vector spaces, the two-dimensional (complex) Hilbert space.
 
 	Because we are dealing with finite-dimensional spaces, qubits can be represented in the usual way we represent any 2d vector - as lists of two complex numbers, often called probability amplitudes, whose moduli squared must sum to 1. Each of these two complex numbers corresponds to "how much" a qubit is in the state 0 or 1 accordingly. For example, when either of these amplitudes is 1, the other is of course 0. Such configurations correspond to classical states, where a qubit is in the state 0 or 1 without any ambiguity. But as we said before, qubits can also be placed in superpositions. Any vector of two complex numbers following the modulus rule above, represents a particular superposition of the values 0 and 1. For example a qubit might be in a half-way position: [1/sqrt(2), 1/sqrt(2)]. After taking the modulus and squaring these values, we have [0.5, 0.5]. This roughly means that after observing a qubit in such a state, we have a 50/50 chance of finding it being either 0 or 1. Again, the modulus squared of the two amplitudes corresponds to the probability of finding a qubit in the states 0/1 respectively, after measuring it.
 
@@ -199,10 +199,10 @@
  	<h3>Rule 2: Evolution</h3> 
 
  	
- 	What use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for those interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
+ 	But what use is having qubits, if we can't operate on them?  After all, a quantum programmer's job is to guide the evolution of a physical system, using operators, in order to perform computations. Unfortunately qubits are finicky and can only be manipulated in specific ways. Again, for those interested in the more mathematical aspects of quantum computing, these specificities can be summed up to the
  	requirement that our operators, the special functions on the vector spaces we mentioned before, be unitary. The reason for this, is that these operators/functions must respect certain rules of symmetry and conserve specific kinds of information. 
  	Once again, just as we represent qubits by vectors/lists, we can represent operators in the much more familiar form of a square matrix, and so we will use the terms operator and matrix interchangeably (remember, we are dealing with finite vector spaces here).
- 	What the above requirements practically mean, is that these matrices, when multiplied by their conjugate transpose, must equal the matrix with zeroes everywhere - except its diagonal, where it has ones. This is the so-called identity matrix:
+ 	What the above requirements practically mean, is that these matrices, when multiplied by their conjugate transpose, must equal the matrix with zeroes everywhere except its diagonal, where it has ones. This is the so-called identity matrix:
 	
 	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
 	  <mi>I</mi>
@@ -226,7 +226,7 @@
 	<br>
 	Right about now, you might be asking yourself "That's nice and all, but how do I actually apply these operators to a qubit?".
 	The answer is given by <a href="https://en.wikipedia.org/wiki/Matrix_multiplication#Square_matrix_and_column_vector">multiplying</a> a qubit vector by the matrix in question.
- 	For example, the operator that leaves a qubit unaltered is the aforementioned identity - it is easy to see that multiplying the identity operator by its conjugate transpose we get the identity matrix again, so this matrix is unitary.
+ 	For example, the operator that leaves a qubit unaltered is the aforementioned identity matrx - it is easy to see that multiplying the identity operator by its conjugate transpose we get the identity matrix again, so this matrix is unitary.
  	It is also plain to see that multiplying this matrix, with say the vector [1 0] we get the same vector back:
 
 	<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
@@ -429,7 +429,7 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
     </div>
 
     Which returns <font face="Lucida Console">[0.70710678118 0.70710678118]</font>, which is what we expected, if we consider
-    limitations of floats.
+    limitations of representing 1/sqrt(2) as a float.
 
 
 
@@ -513,7 +513,7 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
     <div class="codebox">
     <pre><code>let system = tensor(firstQubit,secondQubit)</code></div>  
 
-    Lets print this system, using print(x), to see what its vector representation looks like:
+    Lets print this system, using <font face="Lucida Console">print(x)</font>, to see what its vector representation looks like:
 
 
     <div class="codebox">
@@ -548,7 +548,7 @@ let hadamard = [[(1/sqrt(2)) (1/sqrt(2))]<br>	        [(1/sqrt(2)) (-1/sqrt(2))]
 
     With some careful observation, we can see that the first qubit will 100% be in the 0 state - its the second qubit, the one
     that was in a superposition, that splits the system's collective chances 50/50. While its quite easy to see this here, things
-    get considerably more complicated in bigger systems. Fortunately for us, Qumin provides us with the subsystems(state,configuration) function, whose first argument is a system's state and the second one is a list that describes how to split our system into subsystems of n qubits. For our example, we can split our system to two constituents of one qubit each:
+    get considerably more complicated in bigger systems. Fortunately for us, Qumin provides us with the <font face="Lucida Console">subsystems(state,configuration)</font> function, whose first argument is a system's state and the second one is a list that describes how to split our system into subsystems of n qubits. For our example, we can split our system to two constituents of one qubit each:
 
     <div class="codebox">
     <pre><code>subsystems(system,[1 1])</code></div>    
@@ -565,11 +565,10 @@ Probability of Subsystem1 state 1 is:  0.5</code></div>
 
     <p>
     Let's now inspect a famous entangled state, the <a href="https://en.wikipedia.org/wiki/Bell_state">EPR pair</a>.
-    First we must define all the operators we are going to use. One of these we have already introduced, its the Hadamard matrix.
+    First we must define all the operators we are going to use to prepare it. One of these we have already introduced: it is the Hadamard matrix.
     The other one is the CNOT operator: it takes two inputs and if the first one is 1 it flips the second. You heard that right,
-    this is our first 2-qubit operator! Writing down in matrix form would require writing down a 4x4 matrix by hand = 8 whole
-    entries. Ain't nobody got time for that and here in Q.U.I.T know that, so we have given you the magic of matrix generators!
-    We can write CNOT as a Qumin function and have our matrix generator compute the matrix:</p>
+    this is our first 2-qubit operator! Writing it down in matrix form would require us to input a 4x4 matrix by hand. While this might be doable for the 8 entries required to define a two-qubit operator, things quickly get out of hand as the number of qubits increases. To remedy this, Qumin provides the <font face="Lucida Console">generateMatrix</font> function, which takes an operator written in the form of a function, and outputs its matrix representation.
+    As such can write CNOT as a Qumin function and have our matrix generator compute the matrix:</p>
 
     <div class="codebox">
     <pre><code>let cnot = lambda(x){
@@ -595,15 +594,14 @@ Probability of Subsystem1 state 1 is:  0.5</code></div>
 [0, 0, 1, 0]
 </code></div> 
 
-    Here, pprint is a  <font face="Lucida Console">pretty-print(matrix)</font> function that outputs matrices formatted for
-    maximum viewing pleasure and  <font face="Lucida Console">generateMatrix(f,dim)</font> is a function that generates the
+    Here, pprint is a  <font face="Lucida Console">pretty-print(matrix)</font> function that outputs matrices in a readable format, and <font face="Lucida Console">generateMatrix(f,dim)</font> is a function that generates the
     matrix representation of dimension <font face="Lucida Console">dim</font> for <font face="Lucida Console">f</font>. In this
     case, <font face="Lucida Console">dim</font> is always 4 because CNOT is only defined in 4-dimensions i.e 2 qubits. But for
-    operators that work on any dimension, like the quantum Fourier transform, changing dim gives us the appropriate matrix for
+    operators that work on any dimension, like the quantum Fourier transform (an implementation of which can be found in Qumin's repository), changing dim gives us the appropriate matrix for
     any dimension.
     
     <p>
-    Before we continue, we must deal with a problem here. We've already seen that applying an operator to a qubit amounts to
+    Before we continue, we must first deal with a problem here: to prepare our entangled state, we want to apply the Hadamard operator to one of the two qubits and then apply the CNOT operation on both of them. We've already seen that a two-qubit system is represented by a vector of length 4. We've also already seen that applying an operator to a qubit amounts to
     multiplying the state vector with the appropriate square matrix - but matrix multiplication is only defined if the
     dimensions of the matrix match the dimension of the vector! This is not a problem for CNOT because its represented by a 4x4
     matrix that operates on 2 qubits that are represented by vectors of length 4. But Hadamard, is a 2x2 matrix that operates
@@ -623,8 +621,7 @@ Probability of Subsystem1 state 1 is:  0.5</code></div>
 [0.7071067811865475, 0.0, -0.7071067811865475, -0.0]
 [0.0, 0.7071067811865475, -0.0, -0.7071067811865475]</code></div> 
 
-    What a mess, not even <font face="Lucida Console">pprint</font> can fix this. Let's try writing this down by hand and see if
-    it gets any clearer:
+    That is, the following matrix:
 
   <math xmlns='http://www.w3.org/1998/Math/MathML' display='block'>
     <mi>H x I</mi>
@@ -720,7 +717,7 @@ Probability of Subsystem1 state 1 is:  0.5</code></div>
   </math> 
 
 
-  Staring at this matrix long enough - we recommend at least 3 or 4 hours a day for a week - it becomes plain to see that
+  By inspecting this matrix, we can see that
   it acts like the Hadamard transform for the first qubit and as the identity for the second one. This an example of the
   general use of tensor products of operators: the tensor product of two operators X and Y is a new operator that applies X to 
   one part of the system and Y to the other. This was the motivation behind taking the tensor product of the Hadamard matrix
@@ -767,19 +764,39 @@ See that? Each individual system is either 0 or 1, but as a whole the system can
 
 So far we have only dealt with the classical part of Qumin (i.e everything we wrote would go in a .qimp file). While we could
 create qubits, apply operators and measure results, we have only done so "in simulation" and with no guarantee of correctness.
+In particular, this classical part - while very convenient for definitions, initialisation, control, and printing results - allows for operations that are not allowed in a quantum context. An important example of that is the following:
 
--- Insert example of cloning a qubit in classical lambda --
+ <div class="codebox">
+  <pre><code>let cloner(x) = lambda(qbt){
+    tensor(qbt,qbt)
+ }</code></div> 
+
+This function, when given a qubit, would construct a bipartite system of it with itself - effectively cloning it! While this is perfectly normal to clone classical bits, it is actually forbidden to do so for qubits.
 
 As we can see, the classical part of Qumin guarantees no correctness of our actual quantum programs.
 In a quantum computer though, we would like our programs to be guaranteed to run correctly. This is where the quantum
-fragment comes into play. Qumin's quantum fragment is responsible for checking if our quantum programs are correct in the sense
+sublanguage comes into play. Qumin's quantum sublanguage is responsible for checking if our quantum programs are correct in the sense
 of following the rules like no cloning and no deleting. Now that we know the basics of quantum programming, it is finally time
-for us to open a ".lqimp" file and write an actual linearly-typed quantum program.
+for us to open a ".lqimp" file and write an actual linearly-typed quantum program!
 
 The major difference between the programs we have seen so far and the quantum ones is the presence of types. For example,
 writting the same program with linear types gives us:
 
--- Insert same example with linear types and output error message --
+ <div class="codebox">
+  <pre><code>let cloner(x) = lambda(qbt : qubit){
+    tensor(qubit,qubit)
+ }</code></div> 
+
+By writing this definition inside a ".lqimp" file, say "cloningTest.lqimp", we can load it, and invoke it, in our classical fragment of the program as such:
+
+ <div class="codebox">
+  <pre><code>
+  -- qload cloningTest
+
+  let qubitToBeCloned = [1 0]
+  cloner(qubitToBeCloned)
+</code></div> 
+
 </html>
 
 
