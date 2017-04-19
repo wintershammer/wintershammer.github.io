@@ -760,7 +760,7 @@ See that? Each individual system is either 0 or 1, but as a whole the system can
 
 
 
-<h1>Putting everything together: the quantum fragment of Qumin</h1>
+<h1>Putting everything together: Deutsch's algorithm and the quantum fragment of Qumin</h1>
 
 So far we have only dealt with the classical part of Qumin (i.e everything we wrote would go in a .qimp file). While we could
 create qubits, apply operators and measure results, we have only done so "in simulation" and with no guarantee of correctness.
@@ -797,6 +797,21 @@ By writing this definition inside a ".lqimp" file, say "cloningTest.lqimp", we c
   cloner(qubitToBeCloned)
 </code></div> 
 
+Running this snippet results in an error, specifically "Exception: Undefined symbol qbt", which is the result of how the linear typechecker handles resources:
+once a (linear) resource, like a qubit, has been encountered in an expression, it is removed from the context of available resources - to avoid illegal actions such as cloning it. As such, the second time our typechecker encounters "qbt", it handles it as an undefined symbol and so exits with an error message.
+
+
+Apart from qubits, the type system also contains some other built-in types such as:
+
+<ul>
+    <li>operator[n], the type of operators on n qubits,
+    <li>someType * someOtherType, the type of the tensor product of any two types "someType" and "someOtherType",
+    <li>!{someType}, the type of "classical" or reusable elements of type "someType".
+</ul>
+
+The last one, that is !{someType}, is handled in a special way by the typechecker, in that it is allowed, for example, to be duplicated, reused, and be deleted.
+
+To put everything together, we can now present an implementation of Deutsch's algorithm.
 </html>
 
 
