@@ -47,25 +47,24 @@
         <header>
             <h1>Getting started with Qumin</h1>
         </header>
-        Qumin is a minimalistic programming language that aims to provide a simple and open framework for everyone interested in quantum programming to experiment with - from students and researchers that want to implement quantum algorithms like Shor's or Grover's or modify and extend the language, to programmers that want to get a glimpse of what programming a quantum computer might look like. With an open source (still experimental) interpreter already set up, all you need is the latest version of Python 3 and the SciPy stack to get you ready to run your first quantum algorithms.
+        Qumin is a minimalistic programming language that aims to provide a simple and open framework for everyone interested in quantum programming to experiment with - from students and researchers that want to implement quantum algorithms like Shor's or Grover's, or want to modify and extend the language, to programmers that want to get a glimpse of what programming a quantum computer might look like. With an open source (still experimental) interpreter already set up, all you need is the latest version of Python 3 and the SciPy stack to get you ready to run your first quantum algorithms.
 
-        What follows below is a quick and dirty tutorial of programming in Qumin. We split the guide into to main parts, roughly corresponding to two fragments of the language, the first one dealing with the classical aspects of Qumin and the second one dealing with the features specific to the quantum programming aspect of the language.
-
-        <h1>Preface. Running a Qumin program</h1>
+        What follows below is a quick and dirty tutorial of programming in Qumin, with a focus on practical aspects of programming in Qumin.
+        <h1>Preface: Running a Qumin program</h1>
 
         As we'll see below, Qumin is made of 2 "sublanguages": one that handles the classical stuff like definitions,
         initialisation etc. and one that handles explicitely quantum operations:
 
         <ul>
-            <li>Classical programs are dynamically typed and  have a ".qimp" extension</li>
+            <li>Classical programs are untyped and  have a ".qimp" extension</li>
             <li>Quantum programs are linearly typed and have a ".lqimp" extension </li>
         </ul>
 
-        The entry point for a program is always the classical part. Inside this classical part we can load files that contain
-        definitions of useful classical functions etc. using "--load filename". We can also load quantum programs with "--qload
+        The entry point for a program is usually the classical part. Inside this classical part we can load files that contain
+        definitions of useful classical functions, constants etc. using "--load filename", and as we'll see later we can also load quantum programs with "--qload
         filename".
 
-        To run a file, just call mini.py with the filename as an argument. 
+        To run a program, just call mini.py with the filename as an argument. 
 
 
         <h1>I. Classical programming in Qumin</h1>
@@ -102,7 +101,7 @@
 
         This means we handle functions just like we handle any other type of data in our language like integers or lists.
 
-  		Qumin, being based on variants of the lambda calculus, defines functions using the so-called lambda abstractions, or more commonly "anonymous functions", like Python's <font face="Lucida Console">lambda</font>. For example an anonymous function
+  		Qumin, being based on variants of the lambda calculus, defines functions using so-called lambda abstractions, more commonly known as "anonymous functions", like Python's <font face="Lucida Console">lambda</font>. For example, an anonymous function
   		that takes an argument and adds 5 to it, is written in Qumin as such:
 
         <div class="codebox">
@@ -120,17 +119,17 @@
         Which would evaluate to 8.<br>
 
 		But it's difficult to do anything complicated with just anonymous functions. Thankfully, as we hinted at previously, we can
-		just bind a lambda expression to an identifier and so get a handle on our function:
+		just bind a lambda expression to an identifier:
 
         <div class="codebox">
         <pre><code>let adder = lambda(x,y){
     (x + y)<br>}</code></pre>
         </div>
 
-        And we can call our new function as <font face="Lucida Console">adder(5,3)</font>.
+        Now we can call our new function as <font face="Lucida Console">adder(5,3)</font>.
 
         <br>
-        Another useful thing to remember when playing with functions, is that Qumin supports implicit partial application:
+        Another useful thing to remember when playing around with functions, is that Qumin supports implicit partial application:
 
 
         <div class="codebox">
@@ -148,12 +147,12 @@
     (10 + y)<br>}</code></pre>
         </div>
 
-        Which name <font face="Lucida Console">partiallyApplied</font> and call with 30 as an argument.
+        Which we name <font face="Lucida Console">partiallyApplied</font> and call with 30 as an argument.
 
         <br>
 
  		Finally, specifically in the case of binary functions, we can also call functions in infix notation, inside a pair of parenthesis.
- 		For example
+ 		For example:
 
         <div class="codebox">
         <pre><code>let myOp = lambda(x,y){
@@ -165,7 +164,7 @@
 
     <h1> II. Quantum Programming in Qumin </h1>
    	
-   	The previous section introduced the classical fragment of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context - like debugging - are difficult to do in a quantum computer. This is because observing our quantum program's state and data can inadverently alter it, as we'll discuss later on. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language help us, in some way, build programs that we can be sure follow the various rules of quantum computing. To this end, we will introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs. But first, lets present a quick and informal introduction to quantum computing.
+   	The previous section introduced the classical sublanguage of Qumin - a simple functional, dynamically typed language suited to general-use classical programming. Quantum programming is the quantum computing analog of classical programming. Quantum programming has various features and rules, often peculiar to our classical understanding, that make programming in its context much different to the one we are used to. Rules like <a href="https://en.wikipedia.org/wiki/No-cloning_theorem">no-cloning</a> and <a href="https://en.wikipedia.org/wiki/Quantum_no-deleting_theorem">no-deleting</a> of qubits force us to adopt a resource sensitive way of programming. Even things we take for granted in the classical context - like debugging - are difficult to do in a quantum computer. This is because observing our quantum program's state and data can inadverently alter it, as we'll discuss later on. Additionaly quantum computers are still experimental, noisy, and expensive to run - which only adds to the peculiarities above. It would be nice then to have our language help us, in some way, build programs that we can be sure follow the various rules of quantum computing. To this end, we will introduce the quantum fragment of Qumin - equipped with a <a href="https://en.wikipedia.org/wiki/Linear_logic">linear</a> <a href="https://en.wikipedia.org/wiki/Substructural_type_system#Linear_type_systems">type system</a>  built to enforce correctness and help us structure our quantum programs. But first, lets present a quick and informal introduction to quantum computing.
 
    	<h2>Crash course on quantum programming</h2>
 
