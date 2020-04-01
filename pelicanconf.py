@@ -27,7 +27,8 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (
-          ('github', 'https://github.com/wintershammer'),)
+          ('github', 'https://github.com/wintershammer'),
+          ('gitlab', 'https://github.com/alxsingh'),)
 
 DEFAULT_PAGINATION = False
 
@@ -39,9 +40,9 @@ THEME = '../themes/Flex'
 LINKS_IN_NEW_TAB = False
 
 PATH = 'content'
-STATIC_PATHS = ['images','pdfs']
+STATIC_PATHS = ['images','pdfs','bibs']
 SITELOGO = '/images/profile.jpg'
 
 
-
-MAIN_MENU = True
+PAGE_ORDER_BY = 'sortorder'
+MAIN_MENU = False
