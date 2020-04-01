@@ -33,3 +33,14 @@ DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+
+THEME = '../themes/Flex'
+LINKS_IN_NEW_TAB = False
+
+
+
+MAIN_MENU = True
+# Social widget
+SOCIAL = (
+          ('github', 'https://github.com/wintershammer'),)
