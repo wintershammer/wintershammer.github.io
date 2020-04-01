@@ -1,3 +1,3 @@
-Title: Curriculum Vitae
+Title: Academic Interests
 
 I like trees
