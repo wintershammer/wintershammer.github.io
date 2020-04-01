@@ -26,8 +26,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (
+          ('github', 'https://github.com/wintershammer'),)
 
 DEFAULT_PAGINATION = False
 
@@ -38,9 +38,10 @@ DEFAULT_PAGINATION = False
 THEME = '../themes/Flex'
 LINKS_IN_NEW_TAB = False
 
+PATH = 'content'
+STATIC_PATHS = ['images']
+SITELOGO = '/images/profile.jpg'
+
 
 
 MAIN_MENU = True
-# Social widget
-SOCIAL = (
-          ('github', 'https://github.com/wintershammer'),)
