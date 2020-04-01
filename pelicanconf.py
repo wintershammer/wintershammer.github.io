@@ -20,10 +20,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+#LINKS = (('Pelican', 'http://getpelican.com/'),
+#         ('Python.org', 'http://python.org/'),
+#         ('Jinja2', 'http://jinja.pocoo.org/'),
+#         ('You can modify those links in your config file', '#'),)
 
 # Social widget
 SOCIAL = (
@@ -39,7 +39,7 @@ THEME = '../themes/Flex'
 LINKS_IN_NEW_TAB = False
 
 PATH = 'content'
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images','pdfs']
 SITELOGO = '/images/profile.jpg'
 
 
