@@ -84,8 +84,77 @@
   </header>
   <div>
 <p>I am a first-year doctoral student in the <a href="https://lipn.univ-paris13.fr/accueil/equipe/calin/">CALIN</a> team, at <a href="lipn.univ-paris13.fr/">LIPN</a> in Université Sorbonne Paris Nord. </p>
-<p>My thesis project, supervised by Olivier Bodini and Noam Zeilberger, is the asymptotic study of certain <em>divergent combinatorial classes</em> whose specifications are <em>differentially algebraic</em>.  I am interested in developing tools for tackling the asymptotic analysis of <em>divergent series</em> arising in combinatorics. Furthermore, I am interested in applying these tools to the study of asymptotic properties of fragments of the <em>linear lambda calculus</em> and their connection with various kinds of <em>trivalent maps</em>. </p>
-<p>More generally, I am interested in the interplay of <em>logic</em>, <em>combinatorics</em>, and <em>graph theory</em>. </p>  </div>
+<p>My thesis project, supervised by <a href="https://lipn.univ-paris13.fr/~bodini/">Olivier Bodini</a> and <a href="http://noamz.org/">Noam Zeilberger</a>, is the asymptotic study of certain <strong>combinatorial classes</strong> which exhibit a behaviour of rapid growth: the sequence <span class="math">\((A_n)_{n\geq 0}\)</span> enumerating the number of objects in such a class <span class="math">\(A\)</span> grows factorially.</p>
+<p>Examples of such combinatorial classes arise from various fragments of the <strong>linear lambda calculus</strong> and various kinds of rooted, trivalent <strong>maps</strong>. These form the central objects of our study.</p>
+<p>To study the "typical behaviour" of large structures in such classes we make use of <a href="https://en.wikipedia.org/wiki/Generating_function">generating functions</a>. For classes like the ones mentioned above these generating functions are, when viewed as power series, <strong>divergent</strong>; a direct consequence of the rapid growth behaviour discussed above. This means that the typical tools of <strong>analytic combinatorics</strong> may not be directly applicable to the study of these classes. As such, we are interested in developing new tools to tackle the asymptotic analysis of such objects. 
+In particular, we focus on ways to analyse generating functions whose specifications are <strong>differentially algebraic</strong>, that is, such generating functions <span class="math">\(f(z)\)</span> satisfy equations of the form 
+</p>
+<div class="math">$$P(z, f(z), f'(z), \dots, f^{(k)}(z)) = 0$$</div>
+<p> 
+for some polynomial <span class="math">\(P\)</span> of degree <span class="math">\(k+2\)</span>.</p>
+<p>More generally, I am interested in the interplay of <em>logic</em>, <em>combinatorics</em>, and <em>graph theory</em>. </p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>  </div>
 </article>
 
     <footer>
