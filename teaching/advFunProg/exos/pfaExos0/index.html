@@ -436,8 +436,7 @@ Exemple de résultat attendu:
 </code></pre></div></p>
 <details class="hint">
 <summary>Hint</summary>
-<p>Indice :
-Le facteur <span class="arithmatex">\(\frac{2(2n-1)}{n+1}\)</span> est un nombre rationnel. 
+<p>Le facteur <span class="arithmatex">\(\frac{2(2n-1)}{n+1}\)</span> est un nombre rationnel. 
 Pourtant, nous sommes sûrs que le résultat final est un entier puisqu'il 
 s'agit du nombre de quelque chose - à savoir des arbres avec <span class="arithmatex">\(n\)</span> sommets internes.
 Par conséquent, vous
@@ -447,13 +446,27 @@ mais à la fin, vous devrez reconvertir le résultat final en <code>int</code> -
 vous pouvez trouver une fonction pour faire ça en utilisant la fonction de recherche de la
 <a href="https://v2.ocaml.org/api/index.html">documentation d'API</a>, comme indiqué dans la classe !</p>
 </details>
-<p>Pouvez-vous rendre la fonction récursive terminale ?</p>
+<ul>
+<li>Problème 3: Réécrivez la fonction pour qu'elle soit récursive terminale.</li>
+</ul>
 <h2 id="devoir-a-rendre-avant-le-06-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 06 octobre 2023, 23h59, heure de Paris:</h2>
-<p>Implémenter en OCaml une fonction <code>catalan : int -&gt; int</code> telle que 
-<code>catalan n</code> donne <span class="arithmatex">\(C_n\)</span> en utilisant la récurrence obtenue comme solution du Problème 1.
+<p>Implémenter en OCaml une fonction <code>catalan_2 : int -&gt; int</code> telle que 
+<code>catalan_2 n</code> donne <span class="arithmatex">\(C_n\)</span> en utilisant la récurrence obtenue comme solution du Problème 1.
 Exemple de résultat attendu:
-<div class="highlight"><pre><span></span><code># catalan 5;;
+<div class="highlight"><pre><span></span><code># catalan_2 5;;
 - : int = 42
+</code></pre></div>
+Implémenter également une fonction <code>print_catalans : (int -&gt; int) -&gt; int -&gt; string</code> dont le 
+premier argument est une fonction qui calcule le <span class="arithmatex">\(n\)</span>-ième nombre catalan et dont 
+le second argument est un nombre entier positif ou nul. 
+La fonction doit être telle que <code>print_catalans f n</code> 
+renvoie une chaîne de caractères obtenue en concaténant les résultats de 
+<code>f</code> appliqués à chacun des entiers compris entre 0 et <code>n</code> (y compris 0 et <code>n</code>).</p>
+<p>Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># print_catalans catalan 10;;
+- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
+# print_catalans catalan_2 10;;
+- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
 </code></pre></div></p>
 <details class="hint">
 <summary>Hint</summary>
