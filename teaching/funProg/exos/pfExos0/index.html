@@ -18,7 +18,7 @@
 
     
  
-<title>Exercices - Séance 0 - Alexandros Singh's Academic Homepage</title>
+<title>TD - Séance 0 - Alexandros Singh's Academic Homepage</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -334,14 +334,102 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercices-seance-0">Exercices - Séance 0</a></li>
+        <li><a href="#td-seance-0">TD - Séance 0</a></li>
+        <li><a href="#exercise-0-echauffement">Exercise 0 - Échauffement</a></li><li><a href="#exercice-1-iteration-et-points-fixes">Exercice 1 - Itération et points fixes</a></li><li><a href="#tp-seance-0">TP - Séance 0</a></li>
         <li><a href="#exercice-0-nombres-triangulaires-et-factoriels">Exercice 0 - Nombres triangulaires et factoriels</a></li><li><a href="#exercice-1-calculer-avec-des-listes">Exercice 1 - Calculer avec des listes</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="exercices-seance-0">Exercices - Séance 0</h1>
+    <h1 id="td-seance-0">TD - Séance 0</h1>
+<h2 id="exercise-0-echauffement">Exercise 0 - Échauffement</h2>
+<ul>
+<li>Problème 0:  </li>
+</ul>
+<p>Implémenter en Racket une fonction <code>poly-0</code> qui permet de calculer les valeurs du polynôme <span class="arithmatex">\(x^2-5\)</span> appliquées : nombres entiers, rationnels, flottants ou complexes, exacts ou inexacts.</p>
+<p>Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (poly-0 0)
+-5
+&gt; (poly-0 10)
+95
+&gt; (poly-0 0.03)
+-4.9991
+&gt; (poly-0 1/2+2i)
+-35/4+2i
+</code></pre></div></p>
+<ul>
+<li>Problème 1:<br />
+Faites de même pour <span class="arithmatex">\(x^2+x-2\)</span> (utilisez <code>poly-1</code>
+comme nom de la fonction que vous écrirez). 
+Exemples de résultats attendus :</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&gt; (poly-1 0)
+-2
+&gt; (poly-1 1/2)
+-5/4
+&gt; (poly-1 0.3+1/2i)
+-1.86+0.8i
+</code></pre></div>
+<h2 id="exercice-1-iteration-et-points-fixes">Exercice 1 - Itération et points fixes</h2>
+<p>Étant donné une fonction <span class="arithmatex">\(f(x) : \mathbb{R} \rightarrow \mathbb{R}\)</span>, 
+un point fixe <span class="arithmatex">\(p\)</span> de <span class="arithmatex">\(f\)</span> est défini comme une solution de l'équation <span class="arithmatex">\(f(p) = p\)</span>.<br />
+Sous diverses conditions qui ne nous concernent pas, 
+de tels points fixes peuvent être approchés par l'itération suivante :</p>
+<p><span class="arithmatex">\(x_{n+1} = f(x_n)\)</span> pour <span class="arithmatex">\(0 \leq n \leq N\)</span>, </p>
+<p>où <span class="arithmatex">\(x_0\)</span> est une supposition initiale et <span class="arithmatex">\(N\)</span> est le nombre 
+d'itérations que nous sommes prêts à calculer.</p>
+<p>Ces itérations sont fréquemment utilisées en informatique, 
+dans divers contextes allant de l'analyse numérique 
+à l'optimisation et l'apprentissage automatique. 
+Dans cet exercice, nous verrons 
+quelques applications élémentaires de cette technique.</p>
+<ul>
+<li>Problème 0: </li>
+</ul>
+<p>Implémenter une fonction <code>point fixe</code> telle que <code>point fixe f x iter</code> calcule le résultat de <code>iter</code> pas de l'itération du point fixe à partir d'une estimation initiale de <code>x</code>.
+Utilisez ensuite cette fonction pour estimer le point fixe de la fonction cosinus:
+<div class="highlight"><pre><span></span><code>&gt; (fixed-point cos 0.5 100)
+0.7390851332151607
+</code></pre></div></p>
+<ul>
+<li>Problème 1: </li>
+</ul>
+<p>Le mathématicien grec du premier siècle, Héron d'Alexandrie, a décrit dans son ouvrage Metrica (AD 60), une méthode itérative
+d'approximation de la racine carrée 
+<span class="arithmatex">\(\sqrt{s}\)</span> d'un nombre réel non négatif <span class="arithmatex">\(s\)</span>:</p>
+<p><span class="arithmatex">\(x_{n+1} = \frac{1}{2} \left(\frac{s}{x_n} + x_n\right)\)</span>.</p>
+<p>Implémenter une fonction <code>heron</code> telle que <code>heron s x iter</code>
+estime la racine carrée de <code>s</code> en calculant
+le résultat de <code>iter</code> itérations de 
+cette procédure avec l'estimation initiale <code>x</code>. 
+Exemple de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (heron 2 0.1 10)
+1.414213562373095
+&gt; (heron 3 2.0 10)
+1.7320508075688772
+</code></pre></div></p>
+<ul>
+<li>Problème 1: </li>
+</ul>
+<p>La méthode Newton-Raphson, nommée d'après Isaac Newton et Joseph Raphson, est un algorithme d'approximation des racines d'une fonction différentiable à valeur réelle. Elle est décrite par l'itération :</p>
+<p><span class="arithmatex">\(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\)</span>.</p>
+<p>Implémenter une fonction <code>newton</code> telle 
+que <code>newton f f-prime x iter</code> estime les résultats d'une fonction calculée par  <code>f</code>, dont la dérivée est calculée 
+par <code>f-prime</code>, en effectuant <code>iter</code> itérations de 
+l'algorithme de Newton-Raphson. Utilisez-le pour estimer les racines de <code>poly-0</code> et <code>poly-1</code> :</p>
+<p><div class="highlight"><pre><span></span><code>&gt; (newton poly-0 poly-0-prime -1.0 100)
+-2.23606797749979
+&gt; (newton poly-0 poly-0-prime 1.0 10)
+2.23606797749979
+&gt; (newton poly-1 poly-1-prime 0.5 10)
+1.0
+&gt; (newton poly-1 poly-1-prime -1.0 10)
+-2.0
+</code></pre></div>
+Où <code>poly-0-prime</code> et <code>poly-1-prime</code> sont des fonctions que vous implémentez 
+et qui évaluent les dérivées de <span class="arithmatex">\(x^2-5\)</span> et <span class="arithmatex">\(x^2+x-2\)</span> respectivement.</p>
+<h1 id="tp-seance-0">TP - Séance 0</h1>
 <h2 id="exercice-0-nombres-triangulaires-et-factoriels">Exercice 0 - Nombres triangulaires et factoriels</h2>
 <ul>
 <li>
