@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.5.2, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices - Séance 1 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-seance-1">Exercices - Séance 1</a></li>
+        <li><a href="#exercice-0-addition">Exercice 0 - Addition</a></li><li><a href="#exercise-1-constantes">Exercise 1 - Constantes</a></li><li><a href="#devoir-a-rendre-avant-le-13-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 13 octobre 2023, 23h59, heure de Paris:</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-seance-1">Exercices - Séance 1</h1>
+<p>Voici un analyseur syntaxique/interprète qui supporte un mini-langage dont les instructions sont :</p>
+<p>1) soit des entiers positifs, tels que "100", "52", </p>
+<p>2) soit une des trois variables "x", "y", et "z",</p>
+<p>3) soit des additions de deux instructions, en utilisant le symbole "+", par
+exemple "20 + 10" ou "x + y + 100",</p>
+<p>4) soit une instruction "set s=n" pour affecter à s la valeur n, où "s" est une
+des trois variables et "n" un entier positif, par exemple "set x=10",</p>
+<p>5) ou une séquence de telles instructions, séparées par des nouvelles lignes et
+terminées par "END".</p>
+<textarea name="calc" cols="40" rows="5">
+set x=100
+x+y+z
+END
+</textarea>
+
+<p>Expression analysée: <div style="background:rgba(220,220,220)" id="output"></div></p>
+<p>Expression évaluée (en supposant un contexte initial de {x:10,y:20,z:30}): <div id="output2"></div></p>
+<p><button onclick="myFunction()">Analyser &amp; évaluer</button></p>
+<script>
+    function myFunction() {
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output").textContent = CALC_PARSER.parse(document.getElementsByName("calc")[0].value);
+        }
+        catch (error){
+            document.getElementById("output").textContent = String(error);
+        }
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output2").textContent = CALC_EVALUATOR.parse(document.getElementsByName("calc")[0].value);
+
+        }
+        catch (error){
+            document.getElementById("output2").textContent = String(error);
+        }
+        }
+</script>
+
+<p>Le but de cette session d'exercices est d'implémenter un évaluateur pour ce
+mini-langage en OCaml, 
+qui prend les expressions analysées renvoyées par 
+l'analyseur ci-dessus et les évalue.</p>
+<h2 id="exercice-0-addition">Exercice 0 - Addition</h2>
+<p>Dans cet exercice, nous implémenterons les fonctionnalités de base de notre
+mini-langage: les littéraux et l'addition. Pour ce faire, commençons par définir
+le type d'expressions de notre mini-langage :</p>
+<div class="highlight"><pre><span></span><code>type expr =
+    | Literal of int
+    | Add expr * expr
+</code></pre></div>
+<p>En utilisant ce type, nous pouvons représenter des expressions telles que :</p>
+<p>a) <span class="arithmatex">\(1\)</span> : <code>Literal 1</code>,</p>
+<p>b) <span class="arithmatex">\(2+3\)</span> : <code>Add (2,3)</code>.</p>
+<ul>
+<li>Problème 0 : Ecrivez l'expression de type <code>expr</code> qui correspond à <span class="arithmatex">\((1+5)+2\)</span>.</li>
+</ul>
+<p>Pour évaluer les expressions, nous allons implémenter trois fonctions
+<code>eval_expr, eval_literal</code> et <code>eval_add</code>, qui sont mutuellement récursives.
+La fonction <code>eval_expr</code> sert de point d'entrée pour l'évaluation et utilise
+les fonctions auxiliaires <code>eval_literal</code> et <code>eval_add</code>, chacune d'entre
+elles gérant les les expressions construites avec les
+constructeurs <code>Literal</code> et <code>Add</code> respectivement:</p>
+<div class="highlight"><pre><span></span><code>let rec eval_expr (e : expr) : int = match e with
+    Literal x -&gt; eval_literal x
+    | Add (a,b) -&gt; eval_add a b
+and eval_literal x = ... 
+and eval_add e1 e2 = ...
+</code></pre></div>
+<ul>
+<li>Problème 1 : Implémentez la fonction <code>eval_add : expr -&gt; expr -&gt; int</code> qui,
+  etant donné deux valeurs <code>e1 : expr, e2 : expr</code> , renvoie la valeur obtenue
+  en évaluant l'expression arithmétique représentée par leur addition. Exemple
+  de résultat attendu :
+<div class="highlight"><pre><span></span><code># eval_add (Literal 5) (Literal 10);;
+- : int option = 15
+# eval_add (Literal 5) (Add (Literal 10, Literal 20));;
+- : int option = 35
+</code></pre></div></li>
+</ul>
+<h2 id="exercise-1-constantes">Exercise 1 - Constantes</h2>
+<p>Nous voulons maintenant enrichir notre calculatrice en lui donnant la
+possibilité d'utiliser un certain nombre de constantes prédéfinies. Supposons
+par exemple que nous disposons suffisamment d'espace dans notre mémoire 
+pour stocker trois constantes: <code>x, y</code> et <code>z</code>.</p>
+<p>Pour implémenter cela en OCaml, nous pouvons utiliser un type d'enregistrement
+avec trois entrées entières :
+<div class="highlight"><pre><span></span><code>type context = {x : int, y : int, z : int}
+</code></pre></div></p>
+<p>Nous devrons également enrichir notre type <code>expr</code> pour permettre des
+représentations de ces constantes :</p>
+<div class="highlight"><pre><span></span><code>type expr = 
+    | Literal of int
+    | Add of expr * expr
+    | Var of string
+</code></pre></div>
+<p>Nous pouvons maintenant représenter une expression telle que <span class="arithmatex">\(x + 20\)</span> en
+utilisant notre nouveau constructeur: <code>Add (Var "x", Literal 20)</code>.</p>
+<p>Après avoir introduit le constructeur <code>Var</code>, nous devons aussi implémenter une
+fonction pour l'évaluer : <code>eval_var</code> qui prend en entrée un contexte
+<code>cntxt : context</code> et une chaîne de caractères, et retourne la valeur
+correspondante du contexte. Donc, à première vue, nous dirons que <code>eval_var</code> est
+de type <code>context -&gt; string -&gt; int</code>.</p>
+<p>Mais que se passe-t-il si un utilisateur tape quelque chose comme <span class="arithmatex">\(w + 20\)</span> ?
+Cette expression est bien formée selon la grammaire de notre mini-langage et est
+représentée par représentée par <code>Var "w"</code>.  Cependant, il n'y a pas d'entrée
+pour "w" dans notre contexte.</p>
+<p>Pour gérer cette situation, nous allons utiliser le type <code>option</code>, défini
+comme suit :</p>
+<p><div class="highlight"><pre><span></span><code>type &#39;a option = 
+    | None
+    | Some of &#39;a
+</code></pre></div>
+Nous utiliserons ce type pour modéliser les deux comportements possibles de
+<code>lookup cntxt s</code> en fonction de la chaîne <code>s</code> : </p>
+<p>1) <code>s</code> est <code>x, y,</code> ou <code>z</code>.</p>
+<p>2) <code>s</code> est une autre chaîne de caractères</p>
+<ul>
+<li>Problème 1 : Implémenter une fonction <code>eval_var</code> de type
+<code>context -&gt; string -&gt; int option</code> telle que <code>eval_var c "s"</code>
+soit égale à <code>Some c.s</code> si <code>s</code> existe dans le contexte, sinon <code>None</code>.
+<div class="highlight"><pre><span></span><code># eval_var example_context &quot;x&quot;;;
+- : int option = Some 10
+# eval_var example_context &quot;y&quot;;;
+- : int option = Some 20
+# eval_var example_context &quot;z&quot;;;
+- : int option = Some 30
+# eval_var example_context &quot;w&quot;;;
+- : int option = None
+</code></pre></div></li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-13-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 13 octobre 2023, 23h59, heure de Paris:</h2>
+<ul>
+<li>Problème 0 : Implémentez la fonctionnalité requise pour les variables et
+l'affectation des variables. Pour ce faire, vous devrez adapter la
+fonctionnalité que nous avons implémentée jusqu'à présent pour les constantes
+afin qu'elles deviennent des variables. En particulier, vous devrez
+modifier le type <code>expr</code> pour permettre des valeurs telles que
+<code>Set ("x",10)</code> (qui représente l'instruction <code>set x=10</code> de notre
+calculatrice), et introduire une fonction <code>eval_set</code> pour les évaluer dans le
+schéma de récursion mutuelle. Exemples de résultats attendus : 
+<div class="highlight"><pre><span></span><code># example_context;;
+- : context = {x = 10; y = 20; z = 30}
+# eval_expr example_context (Set (&quot;x&quot;,500));;
+- : int option = Some 500
+# eval_expr example_context (Add (Var &quot;x&quot;, Literal 100));;
+- : int option = Some 600
+</code></pre></div></li>
+<li>Problème 1 : Implémentez la fonctionnalité requise pour évaluer des séquences
+d'instructions, représentées par des expressions telles que 
+<div class="highlight"><pre><span></span><code>Seq [(Add ((Literal 2) , (Literal 2))) ; (Add ((Literal 5) , (Var &quot;x&quot; ))]
+</code></pre></div>
+qui correspond à la séquence d'instructions suivante  séquence d'instructions:
+<div class="highlight"><pre><span></span><code>2+2
+5+x
+END
+</code></pre></div>
+La fonction <code>eval_expr</code> appliquée à une séquence doit donner  <code>None</code> si 
+l'un de ses composants est évalué à <code>None</code>, sinon elle renvoie la valeur de 
+la dernière expression.
+Exemple de résultats attendus :
+<div class="highlight"><pre><span></span><code># example_context;;
+- : context = {x = 10; y = 20; z = 30}
+# let seq_0 = Seq [(Add ((Literal 2),(Literal 2)));(Add ((Literal 5),(Var &quot;x&quot; )));];;
+val seq_0 : expr = Seq [Add (Literal 2, Literal 2); Add (Literal 5, Var &quot;x&quot;)]
+# eval_expr example_context seq_0;;
+- : int option = Some 15
+# let seq_1 = Seq [Set (&quot;x&quot;, 100); Add (Var &quot;x&quot;, Var &quot;y&quot;)];;
+val seq_1 : expr = Seq [Set (&quot;x&quot;, 100); Add (Var &quot;x&quot;, Var &quot;y&quot;)]
+# eval_expr example_context seq_1;;
+- : int option = Some 120
+# let seq_2 = Seq [Set (&quot;w&quot;,100);(Add ((Var &quot;x&quot;),(Var &quot;y&quot;)));];;
+val seq_2 : expr = Seq [Set (&quot;w&quot;, 100); Add (Var &quot;x&quot;, Var &quot;y&quot;)]
+# eval_expr example_context seq_2;;
+- : int option = None
+</code></pre></div></li>
+</ul>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
