@@ -394,7 +394,7 @@ mini-langage: les littéraux et l'addition. Pour ce faire, commençons par défi
 le type d'expressions de notre mini-langage :</p>
 <div class="highlight"><pre><span></span><code>type expr =
     | Literal of int
-    | Add expr * expr
+    | Add of expr * expr
 </code></pre></div>
 <p>En utilisant ce type, nous pouvons représenter des expressions telles que :</p>
 <p>a) <span class="arithmatex">\(1\)</span> : <code>Literal 1</code>,</p>
