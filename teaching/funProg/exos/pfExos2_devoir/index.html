@@ -18,7 +18,7 @@
 
     
  
-<title>pfaExos2 - Alexandros Singh's Academic Homepage</title>
+<title>pfExos2 devoir - Alexandros Singh's Academic Homepage</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -284,7 +284,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+    terminal-mkdocs-side-nav-item" href="../../funProg/">Programmation fonctionnelle</a>
         
     
     </li>
@@ -303,7 +303,7 @@
         
             <a class="
 
-    terminal-mkdocs-side-nav-item" href="../../advFunProg/">Programmation fonctionnelle avancée</a>
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
         
     
     </li>
@@ -338,88 +338,17 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</a></li>
-        <li><a href="#exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</a></li>
+        <li><a href="#devoir-a-soumettre-sur-moodle">Devoir à soumettre sur moodle</a></li>
         
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <p>Exercice 0 - Arbres binaires</p>
-<ul>
-<li>
-<p>Problème 0 : Implémentez les arbres binaires comme un type algébrique appelé <code>binary_tree</code>.</p>
-</li>
-<li>
-<p>Problème 1 : Décrivez les valeurs de <code>binary_tree</code> correspondant aux arbres suivants.
-<img alt="" src="../../../../assets/images/teaching/advFunProg/binary_trees.svg" /></p>
-</li>
-<li>
-<p>Problème 2 : Implémentez une fonction <code>count_nodes : binary_tree -&gt; int</code> qui compte le nombre de noeuds dans un arbre donné.</p>
-</li>
-<li>
-<p>Problème 3 : Pouvez-vous penser à une version plus efficace ?</p>
-</li>
-<li>
-<p>Problème 4 : Reformulez <code>binary_tree</code> en un nouveau type de données algébrique appelé <code>decorated_binary_tree</code>, 
-paramétré par une variable de type <code>'a</code>, 
-de telle sorte que chaque noeud et chaque feuille stocke une valeur de type <code>'a</code>.</p>
-</li>
-<li>
-<p>Problème 5 : Décrivez les valeurs de <code>decorated_binary_tree</code> correspondant aux arbres suivants:
-<img alt="" src="../../../../assets/images/teaching/advFunProg/decorated_trees.svg" /></p>
-</li>
-<li>
-<p>Problème 6 : Implémentez une fonction <code>tree_sum : int decorated_binary_tree -&gt; int</code> qui additionne 
-les valeurs stockées dans les noeuds et les feuilles d'un arbre en entrée.</p>
-</li>
-<li>
-<p>Problème 7 : Pouvez-vous penser à une version plus efficace ?</p>
-</li>
-<li>
-<p>Problème 8 : Implémentez une fonction <code>search_tree : 'a decorated_binary_tree -&gt; 'a -&gt; bool</code> 
-qui recherche dans l'arbre d'entrée un élément correspondant à son 
-second argument et renvoie true s'il en trouve un, sinon false.</p>
-</li>
-<li>
-<p>Problème 9 : Pouvez-vous imaginer une version plus efficace ?</p>
-</li>
-</ul>
-<p>Dans ce qui suit, le type <code>internally_decorated_tree</code> est donné par :</p>
-<div class="highlight"><pre><span></span><code>type &#39;a arbre_decore_interne = 
-    Feuille
-    | Nœud de &#39;a * &#39;a arbre_décoré_internellement * &#39;a
-    arbre_décoré_internellement
-</code></pre></div>
-<h2 id="exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</h2>
-<p>Utilisez la fonction map sur les arbres dans vos solutions à tous les problèmes
-suivants. </p>
-<ul>
-<li>Problème 0: Implémentez une fonction <code>succ : int internally_decorated_tree -&gt;
-internally_decorated_tree</code> telle que la valeur d'un noeud de </li>
-</ul>
-<p><code>succ t</code> soit le successeur de la valeur du noeud correspondant de <code>t</code>.</p>
-<h2 id="exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</h2>
-<p>Utilisez la fonction de pliage sur les arbres dans vos solutions à tous les
-problèmes suivants.</p>
-<ul>
-<li>
-<p>Problème 0: Implémentez une fonction <code>tree_sum : int
-internally_decorated_tree -&gt; int</code> telle que <code>tree_sum t</code> soit égale à la
-somme des valeurs de tous les noeuds de <code>t</code>.</p>
-</li>
-<li>
-<p>Problème 1: Implémentez une fonction <code>tree_prod : int
-internally_decorated_tree -&gt; int</code> telle que <code>tree_prod t</code> soit égal au
-produit des valeurs de tous les noeuds de <code>t</code>.</p>
-</li>
-<li>
-<p>Problème 2: Implémentez une fonction <code>search_in_tree : int
-internally_decorated_tree -&gt; int -&gt; bool</code> telle que <code>search_in_tree t e</code> est
-<code>vrai</code> si <code>e</code> apparaît comme la valeur de n'importe quel noeud de <code>l</code>.</p>
-</li>
-</ul>
+    <h2 id="devoir-a-soumettre-sur-moodle">Devoir à soumettre sur moodle</h2>
+<p>Implémentez une fonction <code>search</code> telle que <code>search e l</code>.
+est <code>#t</code> si <code>l</code> contient au moins un élément égal à <code>e</code>,
+sinon c'est <code>#f</code>.</p>
 </section>
 
             </main>
