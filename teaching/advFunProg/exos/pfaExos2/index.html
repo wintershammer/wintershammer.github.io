@@ -387,10 +387,10 @@ second argument et renvoie true s'il en trouve un, sinon false.</p>
 </li>
 </ul>
 <p>Dans ce qui suit, le type <code>internally_decorated_tree</code> est donné par :</p>
-<div class="highlight"><pre><span></span><code>type &#39;a arbre_decore_interne = 
-    Feuille
-    | Nœud de &#39;a * &#39;a arbre_décoré_internellement * &#39;a
-    arbre_décoré_internellement
+<div class="highlight"><pre><span></span><code>type &#39;a internally_decorated_tree = 
+    Leaf
+    | Node of &#39;a * &#39;a internally_decorated_tree * &#39;a
+    internally_decorated_tree
 </code></pre></div>
 <h2 id="exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</h2>
 <p>Utilisez la fonction map sur les arbres dans vos solutions à tous les problèmes
