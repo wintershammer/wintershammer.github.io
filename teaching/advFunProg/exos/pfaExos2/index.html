@@ -340,7 +340,7 @@
     <ul>
         <li><a href="#exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</a></li>
         <li><a href="#exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</a></li>
-        <li><a href="#devoir-a-rendre">Devoir a rendre</a></li>
+        <li><a href="#devoir-a-rendre-avant-le-20-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 20 octobre 2023, 23h59, heure de Paris:</a></li>
         
     </ul>
 </nav>
@@ -421,7 +421,7 @@ internally_decorated_tree -&gt; int -&gt; bool</code> telle que <code>search_in_
 <code>vrai</code> si <code>e</code> apparaît comme la valeur de n'importe quel noeud de <code>t</code>.</p>
 </li>
 </ul>
-<h2 id="devoir-a-rendre">Devoir a rendre</h2>
+<h2 id="devoir-a-rendre-avant-le-20-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 20 octobre 2023, 23h59, heure de Paris:</h2>
 <ul>
 <li>
 <p>Problème 0 : La sérialisation d'un arbre est une liste qui contient tous les éléments de
@@ -439,7 +439,7 @@ concaténant les <span class="arithmatex">\(s_v, s_l,s_r\)</span> dans l'un des 
 <li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_r\)</span>, puis <span class="arithmatex">\(s_v\)</span> (ordre postfixe).</li>
 <li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_v\)</span>, puis <span class="arithmatex">\(s_r\)</span> (ordre infixe). </ul>
 Implémenter trois fonctions <code>serialise_prefix</code>, <code>serialise_postfix</code> et
-<code>serialise_infix</code> en OCaml, toutes de type <code>'a internally_decorated_tree -&gt; 
+<code>serialise_infix</code> en OCaml (en utilisant la fonction fold pour les arbres que nous avons écrite en classe), toutes de type <code>'a internally_decorated_tree -&gt; 
 'a list</code> qui exécutent les trois variantes (préfixe, postfixe et infixe) de
 l'algorithme ci-dessus sur les valeurs du type 
 <code>'a internally_decorated_tree</code> 
@@ -500,7 +500,7 @@ val second_example : string internally_decorated_tree =
 <p>Problème 1: La hauteur d'un arbre binaire est la longueur des chemins les plus longs (mesurés en nombre de nœuds parcourus) entre la racine et n'importe laquelle des feuilles.
 Voici un exemple d'arbre binaire de hauteur 4 avec un chemin maximal surligné.</p>
 <p><img alt="" src="../../../../assets/images/teaching/advFunProg/internally_dec_tree_height_4.svg" />
-Ecrivez une fonction <code>tree_height : 'a internally_decorated_tree -&gt; int</code> qui calcule la hauteur d'un arbre donné en utilisant la fonction fold pour implémenter l'algorithme récursif suivant :</p>
+Ecrivez une fonction <code>tree_height : 'a internally_decorated_tree -&gt; int</code> qui calcule la hauteur d'un arbre donné en utilisant la fonction fold pour les arbres que nous avons écrite en classe pour implémenter l'algorithme récursif suivant :</p>
 <ol>
 <li>Calculez récursivement la hauteur <span class="arithmatex">\(h_l\)</span> du sous-arbre gauche et la hauteur <span class="arithmatex">\(h_r\)</span> du sous-arbre droit.</li>
 <li>La hauteur de l'arbre entier est alors <span class="arithmatex">\(1 + max(h_l, h_r)\)</span>. </ul></li>
