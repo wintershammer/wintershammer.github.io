@@ -340,6 +340,7 @@
     <ul>
         <li><a href="#exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</a></li>
         <li><a href="#exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</a></li>
+        <li><a href="#devoir-a-rendre">Devoir a rendre</a></li>
         
     </ul>
 </nav>
@@ -417,9 +418,101 @@ produit des valeurs de tous les noeuds de <code>t</code>.</p>
 <li>
 <p>Problème 2: Implémentez une fonction <code>search_in_tree : int
 internally_decorated_tree -&gt; int -&gt; bool</code> telle que <code>search_in_tree t e</code> est
-<code>vrai</code> si <code>e</code> apparaît comme la valeur de n'importe quel noeud de <code>l</code>.</p>
+<code>vrai</code> si <code>e</code> apparaît comme la valeur de n'importe quel noeud de <code>t</code>.</p>
 </li>
 </ul>
+<h2 id="devoir-a-rendre">Devoir a rendre</h2>
+<ul>
+<li>
+<p>Problème 0 : La sérialisation d'un arbre est une liste qui contient tous les éléments de
+l'arbre dans un ordre donné. Un algorithme récursif pour sérialiser un arbre
+binaire (non vide) est le suivant :</p>
+<ul>
+<li>Soit <span class="arithmatex">\(v\)</span> la valeur de la racine actuelle, <span class="arithmatex">\(l\)</span> le sous-arbre de gauche,
+et <span class="arithmatex">\(r\)</span> le sous-arbre de droite. Soit <span class="arithmatex">\(s_v = [v]\)</span> une liste dont le seul élément
+est la valeur <span class="arithmatex">\(v\)</span> de la racine courante, <span class="arithmatex">\(s_l\)</span> la sérialisation du sous-arbre
+gauche <span class="arithmatex">\(l\)</span>, et <span class="arithmatex">\(s_r\)</span> la sérialisation du sous-arbre droit <span class="arithmatex">\(r\)</span>. Les valeurs
+<span class="arithmatex">\(s_l\)</span> et <span class="arithmatex">\(s_r\)</span> sont calculées récursivement.</li>
+<li>L'algorithme renvoie ensuite la sérialisation de l'arbre entier en
+concaténant les <span class="arithmatex">\(s_v, s_l,s_r\)</span> dans l'un des trois ordres suivants :<ol>
+<li>D'abord <span class="arithmatex">\(s_v\)</span>, puis <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_r\)</span> (ordre préfixe).</li>
+<li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_r\)</span>, puis <span class="arithmatex">\(s_v\)</span> (ordre postfixe).</li>
+<li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_v\)</span>, puis <span class="arithmatex">\(s_r\)</span> (ordre infixe). </ul>
+Implémenter trois fonctions <code>serialise_prefix</code>, <code>serialise_postfix</code> et
+<code>serialise_infix</code> en OCaml, toutes de type <code>'a internally_decorated_tree -&gt; 
+'a list</code> qui exécutent les trois variantes (préfixe, postfixe et infixe) de
+l'algorithme ci-dessus sur les valeurs du type 
+<code>'a internally_decorated_tree</code> 
+défini plus haut. 
+Exemples de deux arbres (un
+<code>int internally_decorated_tree</code>
+et un <code>string internally_decoracted_tree</code>) et les résultats des trois fonctions
+mentionnées ci-dessus appliquées à chacun d'eux :</li>
+</ol>
+</li>
+</ul>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/internally_decorated_trees.svg" />
+<div class="highlight"><pre><span></span><code># (* définissant les exemples *);;
+# let first_example = Node (&quot;a&quot;,
+                        Node (&quot;b&quot;, Leaf,
+                            Node (&quot;c&quot;, Leaf, Leaf)),
+                        Node (&quot;d&quot;,
+                            Node (&quot;e&quot;, Leaf, Leaf), Leaf));;
+val first_example : string internally_decorated_tree =
+  Node (&quot;a&quot;,
+   Node (&quot;b&quot;, Leaf,
+    Node (&quot;c&quot;, Leaf, Leaf)),
+   Node (&quot;d&quot;,
+    Node (&quot;e&quot;, Leaf, Leaf),
+    Leaf))
+# let second_example = Node (&quot;0&quot;,
+                        Node (&quot;1&quot;,
+                            Node (&quot;2&quot;, Leaf, Leaf),
+                            Node (&quot;3&quot;, Leaf,
+                                Node (&quot;4&quot;, Leaf, Leaf))),
+                        Node (&quot;5&quot;,
+                            Node (&quot;6&quot;, Leaf, Leaf), Leaf));;
+val second_example : string internally_decorated_tree =
+  Node (&quot;0&quot;,
+   Node (&quot;1&quot;,
+    Node (&quot;2&quot;, Leaf, Leaf),
+    Node (&quot;3&quot;, Leaf,
+     Node (&quot;4&quot;, Leaf, Leaf))),
+   Node (&quot;5&quot;,
+    Node (&quot;6&quot;, Leaf, Leaf),
+    Leaf))
+# (* appliquant nos fonctions aux deux exemples *);;
+# serialise_prefix first_example;;
+- : string list = [&quot;a&quot;; &quot;b&quot;; &quot;c&quot;; &quot;d&quot;; &quot;e&quot;]
+# serialise_prefix second_example;;
+- : string list = [&quot;0&quot;; &quot;1&quot;; &quot;2&quot;; &quot;3&quot;; &quot;4&quot;; &quot;5&quot;; &quot;6&quot;] 
+# serialise_infix first_example;;
+- : string list = [&quot;b&quot;; &quot;c&quot;; &quot;a&quot;; &quot;e&quot;; &quot;d&quot;]
+# serialise_infix second_example;;
+- : string list = [&quot;2&quot;; &quot;1&quot;; &quot;3&quot;; &quot;4&quot;; &quot;0&quot;; &quot;6&quot;; &quot;5&quot;]
+# serialise_postfix first_example;;
+- : string list = [&quot;c&quot;; &quot;b&quot;; &quot;e&quot;; &quot;d&quot;; &quot;a&quot;]
+# serialise_postfix second_example;;
+- : string list = [&quot;2&quot;; &quot;4&quot;; &quot;3&quot;; &quot;1&quot;; &quot;6&quot;; &quot;5&quot;; &quot;0&quot;]
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 1: La hauteur d'un arbre binaire est la longueur des chemins les plus longs (mesurés en nombre de nœuds parcourus) entre la racine et n'importe laquelle des feuilles.
+Voici un exemple d'arbre binaire de hauteur 4 avec un chemin maximal surligné.</p>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/internally_dec_tree_height_4.svg" />
+Ecrivez une fonction <code>tree_height : 'a internally_decorated_tree -&gt; int</code> qui calcule la hauteur d'un arbre donné en utilisant la fonction fold pour implémenter l'algorithme récursif suivant :</p>
+<ol>
+<li>Calculez récursivement la hauteur <span class="arithmatex">\(h_l\)</span> du sous-arbre gauche et la hauteur <span class="arithmatex">\(h_r\)</span> du sous-arbre droit.</li>
+<li>La hauteur de l'arbre entier est alors <span class="arithmatex">\(1 + max(h_l, h_r)\)</span>. </ul></li>
+</ol>
+</li>
+</ul>
+<p>Exemples de résultats attendus (en réutilisant les exemples du problème précédent) :
+<div class="highlight"><pre><span></span><code># tree_height first_example;;
+- : int = 3
+# tree_height second_example;;
+- : int = 4
+</code></pre></div></p>
 </section>
 
             </main>
