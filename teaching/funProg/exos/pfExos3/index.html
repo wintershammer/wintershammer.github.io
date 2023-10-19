@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.5.2, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfExos3 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-0-tri-par-selection">Exercice 0 - Tri par sélection</a></li>
+        <li><a href="#exercice-1-tri-a-bulles">Exercice 1 - Tri à bulles</a></li>
+        <li><a href="#exercice-2-tri-pair-impair">Exercice 2 - Tri pair-impair</a></li>
+        <li><a href="#devoir-a-rendre-sur-moodle">Devoir à rendre sur moodle</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h2 id="exercice-0-tri-par-selection">Exercice 0 - Tri par sélection</h2>
+<ul>
+<li>Problème 0 : Ecrivez une fonction <code>find-min</code>
+qui trouve le minimum d'une liste en utilisant la fonction <code>foldr</code> de Racket.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (find-min &#39;(10 33 2 7 123))
+2
+&gt; (find-min &#39;(32.2 0.03 45))
+0.03
+</code></pre></div></li>
+<li>
+<p>Problème 1 : En utilisant la fonction <code>find-min</code>,
+implémentez le tri par sélection sous la forme d'une fonction
+<code>sélection-sort</code> qui prend en entrée une liste de nombres et
+renvoie une liste contenant les mêmes éléments dans l'ordre
+croissant.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (selection-sort &#39;(5 3 2 1 24 5))
+&#39;(1 2 3 5 5 24)
+&gt; (selection-sort &#39;(15.3 25.2 7.62 0.23))
+&#39;(0.23 7.62 15.3 25.2)
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 2 : Implémentez une version récursive terminale de la fonction <code>sélection-sort</code>, appelée <code>sélection-sort-tr</code>, qui prend une liste unique en entrée et renvoie une liste triée en utilisant l'algorithme de tri par sélection.</p>
+</li>
+</ul>
+<h2 id="exercice-1-tri-a-bulles">Exercice 1 - Tri à bulles</h2>
+<ul>
+<li>Problème 0 : Implémentez une fonction <code>compare-and-swap</code> qui, étant donné deux nombres, renvoie une paire contenant ces nombres dans l'ordre croissant.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (compare-and-swap 7 2)
+&#39;(2 . 7)
+&gt; (compare-and-swap 0 2)
+&#39;(0 . 2)
+</code></pre></div></li>
+<li>
+<p>Problème 1 : En utilisant la fonction <code>compare-and-swap</code>
+précédemment implémentée, implémentez une fonction
+<code>bubble-iteration</code>
+qui, étant donné une liste, effectue une itération de
+l'algorithme de tri à bulles : 
+étant donné une liste, comparez
+tous les éléments de la liste par paires contiguës et
+permutez-les si nécessaire afin que les éléments de chaque
+paire soient dans un ordre croissant.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (bubble-iteration &#39;(5 4 3 2 1))
+&#39;(4 3 2 1 5)
+&gt; (bubble-iteration &#39;(3 2 1 5 4))
+&#39;(2 1 3 4 5)
+&gt; (bubble-iteration &#39;(2 1 3 4 5))
+&#39;(1 2 3 4 5)
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 2 : En utilisant la fonction <code>bubble-iteration</code> précédemment
+implémentée,  implémentez l'algorithme de tri à bulles sous la forme d'une
+fonction <code>bubble-sort</code> qui, étant donné une liste <code>l</code> de nombres et le nombre
+<code>iter</code>, renvoie le résultat de l'application de <code>iter</code> itérations de
+<code>bubble-iteration</code> à <code>l</code>.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (bubble-sort &#39;(5 4 3 2 1) 0)
+&#39;(5 4 3 2 1)
+&gt; (bubble-sort &#39;(5 4 3 2 1) 1)
+&#39;(4 3 2 1 5)
+&gt; (bubble-sort &#39;(5 4 3 2 1) 2)
+&#39;(3 2 1 4 5)
+&gt; (bubble-sort &#39;(5 4 3 2 1) 3)
+&#39;(2 1 3 4 5)
+&gt; (bubble-sort &#39;(5 4 3 2 1) 4)
+&#39;(1 2 3 4 5)
+&gt; (bubble-sort &#39;(5 4 3 2 1) 5)
+&#39;(1 2 3 4 5)
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="exercice-2-tri-pair-impair">Exercice 2 - Tri pair-impair</h2>
+<p>Le but de cet exercice est d'implémenter l'algorithme de tri pair-impair, qui,
+lorsqu'on lui fournit une liste <code>l</code> et un nombre d'itérations <code>iter</code> à
+effectuer, fait ce qui suit :</p>
+<ol>
+<li>Si <code>iter</code> est pair, il compare chaque élément ayant un indice pair dans
+<code>l</code> avec son voisin et les échange si nécessaire pour qu'ils soient dans
+l'ordre croissant.</li>
+<li>Si <code>iter</code> est impair, faites de même pour chaque élément dont l'indice
+dans <code>l</code> est impair.</li>
+</ol>
+<p>-Problème 0 : Implémentez une variante de la fonction <code>compare-and-swap</code>
+  ci-dessus qui retourne une liste de ses arguments dans l'ordre croissant au
+  lieu d'une paire.</p>
+<p>-Problème 1 : En utilisant la fonction <code>compare-and-swap-2</code>, implémentez une
+fonction appelée <code>even-iteration</code> qui prend une liste et fait ce qui suit :</p>
+<ol>
+<li>Si la taille de la liste est inférieure à 4, elle exécute l'algorithme
+<code>bubble-sort</code> implémenté précédemment pour 2 itérations. implémenté
+précédemment pour 2 itérations. </li>
+<li>Sinon, il compare et échange chaque élément
+ayant un indice pair dans <code>l</code> avec son voisin en utilisant
+<code>compare-and-swap-2</code>.</li>
+</ol>
+<p>-Problème 2 : Implémenter une fonction <code>remove-first-last</code> qui prend en entrée
+une liste <code>l</code> (que nous supposons être de taille au moins 2) et retourne une
+liste contenant les mêmes éléments, dans leur ordre original, à l'exception du
+premier et du dernier.</p>
+<p>-Problème 3 : En utilisant <code>remove-first-last</code> et <code>even-iteation</code>,
+implémentez une fonction <code>odd-iteration</code> qui, étant donné une liste <code>l</code>, fait
+ce qui suit : </p>
+<ol>
+<li>Si la taille de la liste est inférieure à 4, elle exécute
+l'algorithme <code>bubble-sort</code> implémenté précédemment pour 2 itérations.
+implémenté précédemment pour 2 itérations. </li>
+<li>Sinon, il compare et échange
+chaque élément ayant un indice impair dans <code>l</code> avec son voisin en utilisant
+<code>compare-and-swap-2</code>.</li>
+</ol>
+<h2 id="devoir-a-rendre-sur-moodle">Devoir à rendre sur moodle</h2>
+<p>En utilisant les fonctions <code>even-iteration</code> et <code>odd-iteration</code>,
+implémentées ci-dessus, implémentez une fonction <code>odd-even-sort</code>
+qui prend une liste <code>l</code> et un nombre <code>iter</code> d'itérations à effectuer et
+implémente l'algorithme de tri pair-impair décrit ci-dessus :</p>
+<ol>
+<li>si <code>iter</code> est 0, la fonction renvoie <code>l</code>,</li>
+<li>si il est pair, elle applique l'itération paire à <code>l</code> et s'appelle
+elle-même récursivement sur la même liste avec <code>iter</code>-1 comme second
+argument.</li>
+<li>s'il est impair, alors il applique <code>odd-iteration</code> à <code>l</code> et s'appelle
+récursivement sur la même liste avec <code>iter</code>-1 comme second argument.</li>
+</ol>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
