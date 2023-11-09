@@ -348,17 +348,43 @@
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
     <h1 id="exercice-0-echauffement">Exercice 0 - Échauffement</h1>
-<p>-Problème 0 : Définir deux valeurs dans <code>t1, t2</code> représentant les deux arbres suivants en Racket.</p>
-<p>-Problème 1 : Essayez d'appliquer certaines des fonctions primitives telles que
+<p>-Problème 0 : Définir deux valeurs dans <code>t1, t2</code> représentant les deux arbres suivants en Racket.
+<img alt="" src="../../../../assets/images/teaching/funProg/two_trees.svg" />
+-Problème 1 : Essayez d'appliquer certaines des fonctions primitives telles que
 <code>tree?, leaf?, root, left-subtree, right-subtree</code> sur ces deux valeurs.
 Pouvez-vous deviner les résultats sans les regarder ?</p>
 <h1 id="exercice-1-fonctions-sur-les-arbres">Exercice 1 - Fonctions sur les arbres</h1>
-<p>-Problème 0 : Implementez une fonction <code>num-leaves</code> qui calcule le nombre de feuilles dans l'arbre représenté par son argment.</p>
-<p>-Problème 1 : Etant donné une représentation d'un arbre telle que toutes les étiquettes sont des entiers positifs,
-implementez une fonction <code>find-min</code> qui renvoie l'étiquette minimale. Implementez aussi une fonction <code>find-max</code> qui fait la même chose pour l'étiquette maximale.</p>
+<p>-Problème 0 : Implementez une fonction <code>num-leaves</code> qui calcule le nombre de feuilles dans l'arbre représenté par son argment.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (num-leaves t1)
+2
+&gt; (num-leaves t2)
+3
+</code></pre></div>
+-Problème 1 : Etant donné une représentation d'un arbre telle que toutes les étiquettes sont des entiers positifs,
+implementez une fonction <code>find-max</code> qui renvoie l'étiquette maximale. Implementez aussi une fonction <code>find-min</code> qui fait la même chose pour l'étiquette minimale.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (find-max t1)
+3
+&gt; (find-max t2)
+5
+&gt; (find-min t1)
+1
+&gt; (find-min t2)
+1
+</code></pre></div></p>
 <h1 id="devoirs-a-telecharger-sur-moodle">Devoirs à télécharger sur moodle</h1>
 <p>-Problème 0 : Ecrivez une fonction <code>search</code> qui prend comme arguments une représentation d'arbre
-et une valeur et qui retourne <code>#t</code> si un sommet avec la valeur donnée comme label est trouvé, sinon elle retourne <code>#f</code></p>
+et une valeur et qui retourne <code>#t</code> si un sommet avec la valeur donnée comme label est trouvé, sinon elle retourne <code>#f</code>:
+<div class="highlight"><pre><span></span><code>&gt; (search t1 3)
+#t
+&gt; (search t1 5)
+#f
+&gt; (search t2 5)
+#t
+&gt; (search t2 6)
+#f
+</code></pre></div></p>
 </section>
 
             </main>
