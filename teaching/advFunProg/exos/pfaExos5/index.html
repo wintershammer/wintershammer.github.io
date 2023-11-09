@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.5.2, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercice 0 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-0">Exercice 0</a></li>
+        <li><a href="#exercice-1">Exercice 1</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercice-0">Exercice 0</h1>
+<p>Le but de ce premier exercice est de vous familiariser avec l'implémentation
+(basée sur le type <code>option</code>) de la monade Maybe présentée pendant le cours :
+<div class="highlight"><pre><span></span><code>module type Monad = sig
+  type &#39;a t
+  val return : &#39;a -&gt; &#39;a t
+  val ( &gt;&gt;= ) : &#39;a t -&gt; (&#39;a -&gt; &#39;b t) -&gt; &#39;b t
+end
+
+module Maybe : Monad with type &#39;a t = &#39;a option = struct 
+    type &#39;a t = &#39;a option 
+
+    let return x = Some x 
+
+    let ( &gt;&gt;= ) m f = match m with 
+        | None -&gt; None 
+        | Some x -&gt; f x
+end 
+</code></pre></div></p>
+<p>-Problème 0 : En utilisant la monade Maybe, implémentez le premier exemple que
+nous avons vu pendant le cours : une fonction <code>nth_to_str : int -&gt; int list -&gt; string
+option</code> qui prend en entrée une liste <code>l</code> et une valeur entière <code>n</code> et
+retourne soit :</p>
+<ol>
+<li>
+<p>Une valeur <code>Some s</code> où <code>s</code> est la représentation en chaîne du <code>n</code>-ème
+   élément de la liste (s'il existe).</p>
+</li>
+<li>
+<p>Ou <code>None</code> si ce n'est pas le cas.</p>
+</li>
+</ol>
+<p>La fonction <code>nth_to_str</code> doit utiliser les deux fonctions suivantes vues pendant le cours :</p>
+<p><div class="highlight"><pre><span></span><code>let nth_t l n = 
+    if n &lt; 0 then None else
+    let rec nth_aux l n =
+        match l with
+            | [] -&gt; None 
+            | a::l -&gt; if n = 0 then Some a else nth_aux l (n-1)
+    in nth_aux l n
+
+let str_of_int_m x = string_of_int x |&gt; return 
+</code></pre></div>
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># nth_to_str [1;2;3;4;5] 3;;
+- : string option = Some &quot;4&quot;
+# nth_to_str [1;2;3;4;5] 5;;
+- : string option = None
+# nth_to_str [1;2;3;4;5] (-1);;
+- : string option = None
+</code></pre></div></p>
+<p>-Problème 1 : Implémenter une fonction <code>nth_to_pretty_string : int -&gt; int list
+-&gt; string option</code> qui retourne soit :</p>
+<ol>
+<li>
+<p>Si l'index fourni est valide : une valeur <code>Some s</code> où <code>s</code> est de la
+   forme <code>The element at index *n* is *e*</code> avec <code>*n*</code> et <code>*e*</code> la chaîne de
+   représentant l'indice et de la valeur correspondante, respectivement.</p>
+</li>
+<li>
+<p>Si ce n'est pas le cas : <code>None</code>.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># nth_to_pretty_str [1;2;3] 0;;
+- : string option = Some &quot;The element at index 0 is: 1&quot;
+# nth_to_pretty_str [1;2;3] 1;;
+- : string option = Some &quot;The element at index 1 is: 2&quot;
+# nth_to_pretty_str [1;2;3] 2;;
+- : string option = Some &quot;The element at index 2 is: 3&quot;
+# nth_to_pretty_str [1;2;3] 3;;
+- : string option = None
+# nth_to_pretty_str [1;2;3] (-1);;
+- : string option = None
+</code></pre></div></p>
+</li>
+</ol>
+<h1 id="exercice-1">Exercice 1</h1>
+<p>-Problème 0 : Implémenter une fonction <code>comb_opt : 'a list -&gt; 'b list -&gt; ('a *
+'b) list option</code> qui, lorsqu'on lui donne deux listes <code>l, k</code>, retourne :</p>
+<ol>
+<li>
+<p>Si les deux listes d'entrée sont de même taille, <code>Some r</code> où <code>r</code> est une
+   liste dont le n-ième élément est un tuple constitué des n-ième éléments de
+   <code>l</code> et <code>k</code> respectivement.</p>
+</li>
+<li>
+<p>Si ce n'est pas le cas, <code>None</code>.</p>
+</li>
+</ol>
+<p>Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># comb_opt [1;2;3] [4;5;6];;
+- : (int * int) list option = Some [(1, 4); (2, 5); (3, 6)]
+# comb_opt [1;2;3;4] [5;6;7];;
+- : (int * int) list option = None
+</code></pre></div></p>
+<p>-Problème 1 : Implémenter une fonction <code>print_combined : int list -&gt; int list
+-&gt; unit list option</code> qui prend comme arguments deux listes <code>l, k</code> d'entiers
+et fait ce qui suit :</p>
+<ol>
+<li>
+<p>Si les deux listes sont de la même taille, disons <span class="arithmatex">\(\ell\)</span>, elle imprime
+   <span class="arithmatex">\(\ell\)</span> lignes, dont chacune est du format <code>a &lt;-&gt; b</code> où <code>a</code> et <code>b</code> sont
+   définis en fonction du numéro de ligne : pour la <span class="arithmatex">\(n\)</span>-ième ligne (<span class="arithmatex">\(1 \leq n
+   \leq \ell\)</span>), <code>a</code> est le <span class="arithmatex">\(n\)</span>-ième élément de la liste <code>l</code> et <code>b</code> est le
+   <span class="arithmatex">\(n\)</span>-ième élément de la liste <code>k</code>.</p>
+</li>
+<li>
+<p>Si ce n'est pas le cas, il retourne <code>None</code>.</p>
+</li>
+</ol>
+<p>Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># print_combined [1;2;3] [4;5;6];;
+1&lt;-&gt;4
+2&lt;-&gt;5
+3&lt;-&gt;6
+- : unit list option = Some [(); (); ()]
+# print_combined [1;2;3] [4;5;6;7];;
+- : unit list option = None
+</code></pre></div></p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
