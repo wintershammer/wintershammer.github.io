@@ -340,7 +340,7 @@
     <ul>
         <li><a href="#exercice-0">Exercice 0</a></li>
         <li><a href="#exercice-1">Exercice 1</a></li>
-        
+        <li><a href="#devoir-a-rendre-avant-le-29-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 29 octobre 2023, 23h59, heure de Paris:</a></li>
     </ul>
 </nav>
 </aside>
@@ -464,6 +464,146 @@ et fait ce qui suit :</p>
 # print_combined [1;2;3] [4;5;6;7];;
 - : unit list option = None
 </code></pre></div></p>
+<h2 id="devoir-a-rendre-avant-le-29-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 29 octobre 2023, 23h59, heure de Paris:</h2>
+<p>Cet exercice concerne la monade Error, qui est étroitement liée à la monade
+Maybe. Pour implémenter cette monade, nous allons utiliser la fonctionnalité
+fournie par le module <code>Result</code> de la bibliothèque standard d'OCaml (voir
+https://v2.ocaml.org/api/Result.html). </p>
+<p>Le type <code>('a, 'e) result</code> :
+<div class="highlight"><pre><span></span><code>type (&#39;a, &#39;e) t = (&#39;a, &#39;e) result = 
+    | Ok of &#39;a
+    | Error of &#39;e
+</code></pre></div>
+fournie par <code>Result</code> est paramétrée par <em>deux</em> paramètres:</p>
+<ol>
+<li>
+<p>Le paramètre de type <code>'a</code> qui représente les valeurs des calculs réussis.</p>
+</li>
+<li>
+<p>Le paramètre de type <code>'e</code> qui représente les valeurs retournées en cas d'erreur.</p>
+</li>
+</ol>
+<p>Dans notre cas, nous prendrons <code>'e = string</code> car en cas d'erreur, nous voulons retourner une chaîne de caractères décrivant l'erreur.
+Quant aux valeurs des calculs réussis, nous autorisons n'importe quelle valeur, donc nous gardons <code>'a</code> comme variable de 
+type et ne la fixons pas.</p>
+<p>Cela donne la monade suivante :</p>
+<p><div class="highlight"><pre><span></span><code>module Error : Monad with type &#39;a t = (&#39;a, string) result = struct
+    type &#39;a t = (&#39;a, string) result 
+
+    let return x = Ok x
+
+    let ( &gt;&gt;= ) m f = match m with 
+        | Error s -&gt; Error s
+        | Ok v -&gt; f v
+
+end
+</code></pre></div>
+Remarquez la grande similarité entre <code>Error</code> et <code>Maybe</code> : en fait,
+<code>Error</code> n'est différent que par le fait qu'au lieu de <code>None</code> il a <code>Error
+s</code> (qui porte avec lui une chaîne décrivant l'erreur) et qu'au lieu de <code>Some
+x</code> il a <code>Ok x</code>.</p>
+<p>Nous utiliserons cette monade pour mettre en œuvre une structure de base de données très simple.</p>
+<p>Notre base de données enregistre les étudiants et est composée de trois listes
+contenant des chaînes de caractères : 
+1. La première liste enregistre les noms des étudiants.</p>
+<ol>
+<li>
+<p>La deuxième liste enregistre les noms de famille des étudiants.</p>
+</li>
+<li>
+<p>La troisième liste enregistre les numéros des étudiants.</p>
+</li>
+</ol>
+<p>Le <span class="arithmatex">\(k\)</span>-ième élément de chaque liste est respectivement le nom, le prénom et le
+numéro d'étudiant d'un étudiant. Un exemple d'une telle base de données est 
+<div class="highlight"><pre><span></span><code>let example_db = ([&quot;Alice&quot; ; &quot;Bob&quot;],[&quot;Smith&quot; ; &quot;Joe&quot;],[&quot;001&quot; ; &quot;002&quot;]) 
+</code></pre></div>
+qui
+contient deux étudiants : "Alice Smith" avec le numéro "001" et "Bob Joe" avec
+le numéro "002". Voici un exemple de base de données non valide :</p>
+<p><div class="highlight"><pre><span></span><code>let example_db_invalid = ([&quot;Alice&quot; ; &quot;Bob&quot;],[&quot;Smith&quot; ; &quot;Joe&quot;],[&quot;001&quot;]) 
+</code></pre></div>
+car il manque le numéro d'étudiant de "Bob Joe".</p>
+<p>Une base de données est valide si les trois listes ont la même taille
+(c'est-à-dire si chaque étudiant a un nom, un prénom et un numéro bien
+définis).</p>
+<p>Voici la signature complète de la base de données :</p>
+<p><div class="highlight"><pre><span></span><code>module type Database = sig 
+    type database = string list * string list * string list
+
+    val empty : database
+
+    val is_valid : database -&gt; bool 
+
+    val print_db : database -&gt; unit list t 
+
+    val find_and_print : database -&gt; (string * string * string -&gt; bool) -&gt; unit list t 
+
+    val insert_into_database : string -&gt; string -&gt; string -&gt; database -&gt; database t 
+
+end
+</code></pre></div>
+(NB. le type monadique <code>'a t</code> ici est <code>('a, string) result</code>).</p>
+<p>Le but de cet exercice est de fournir une implémentation de cette base de
+données sous la forme d'un module appelé <code>MyDatabase</code>.</p>
+<p>-Problème 0 : Implémentez la fonction <code>is_valid</code> qui vérifie si une base de
+données est valide (en vérifiant que les trois listes sont de la même taille). 
+<div class="highlight"><pre><span></span><code># MyDatabase.is_valid example_db;;
+- : bool = true
+# MyDatabase.is_valid example_db_invalid;;
+- : bool = false
+</code></pre></div></p>
+<p>-Problème 1 : Implémentez la fonction <code>print_db</code> qui imprime le contenu de la
+base de données, en une ligne par entrée, au format :
+<div class="highlight"><pre><span></span><code>Nom : *n* Nom de famille : *s* Numéro : *i*
+</code></pre></div>
+où <code>n,s,i</code> sont le nom, le prénom et le numéro d'étudiant d'un étudiant.
+Par exemple, en appliquant cette fonction à l'exemple défini précédemment, nous obtenons :
+<div class="highlight"><pre><span></span><code># MyDatabase.print_db example_db;;
+Name: Alice Surname: Smith Student Number: 001
+Name: Bob Surname: Joe Student Number: 002
+- : unit list Error.t = Ok [(); ()]
+</code></pre></div></p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Vous pouvez créer des tuples de la forme <code>(n,s,i)</code> à partir des trois listes
+d'une base de données en modifiant légèrement la fonction <code>comb_opt</code> que nous
+avons implémentée en classe. En utilisant ces tuples, il est facile d'imprimer
+la ligne souhaitée. Bien sûr, une telle fonction échoue si on lui fournit trois
+listes de longueurs inégales, donc la fonction doit renvoyer <code>Error "Can't
+combine lists of different sizes"</code>.</p>
+</details>
+<p>-Problème 2 : 
+Implémentez la fonction <code>insert_into_database</code> qui prend trois chaînes de
+caractères et une base de données comme arguments et (si la base de données est
+valide) ajoute une nouvelle entrée à la base de données en utilisant la
+première chaîne comme nom, la deuxième comme nom de famille et la troisième
+comme numéro d'étudiant.</p>
+<p>Si la base de données n'est pas valide, le programme renvoie <code>Error "Cannot
+insert into invalid database"</code>.</p>
+<p>Voici des exemples: 
+<div class="highlight"><pre><span></span><code># MyDatabase.insert_into_database &quot;Carlos&quot; &quot;Jones&quot; &quot;123&quot; example_db;;
+- : MyDatabase.database Error.t =
+Ok
+ ([&quot;Carlos&quot;; &quot;Alice&quot;; &quot;Bob&quot;], [&quot;Jones&quot;; &quot;Smith&quot;; &quot;Joe&quot;], [&quot;123&quot;; &quot;001&quot;; &quot;002&quot;])
+# MyDatabase.insert_into_database &quot;Carlos&quot; &quot;Jones&quot; &quot;123&quot; example_db_invalid;;
+- : MyDatabase.database Error.t =
+Error &quot;Cannot insert into invalid database!&quot;
+</code></pre></div></p>
+<p>-Problème 3 (Bonus): Implémentez la fonction <code>find_and_print</code> qui prend comme
+arguments une base de données <code>b</code> et un prédicat <code>f : string * string * string -&gt;
+bool</code> et affiche toutes les entrées de la base de données <code>b</code> pour lesquelles
+<code>f</code> donne <code>true</code>. Par exemple :</p>
+<div class="highlight"><pre><span></span><code># let find_name n = function (x,_,_) -&gt; (x = n);;
+# MyDatabase.find_and_print example_db (find_name &quot;Alice&quot;);;
+Name: Alice Surname: Smith Student Number: 001
+- : unit list Error.t = Ok [()]
+# MyDatabase.find_and_print example_db (find_name &quot;Bob&quot;);;
+Name: Bob Surname: Joe Student Number: 002
+- : unit list Error.t = Ok [()]
+# MyDatabase.find_and_print example_db (find_name &quot;Neo&quot;);;
+- : unit list Error.t = Ok []
+</code></pre></div>
 </section>
 
             </main>
