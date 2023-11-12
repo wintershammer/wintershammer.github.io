@@ -340,6 +340,8 @@
     <ul>
         <li><a href="#exercice-0">Exercice 0</a></li>
         <li><a href="#exercice-1">Exercice 1</a></li>
+        <li><a href="#exercice-2-utilisation-de-la-monade-maybe-avec-des-listes">Exercice 2 : Utilisation de la monade Maybe avec des listes</a></li>
+        <li><a href="#exercice-3-utilisation-de-la-monade-maybe-avec-les-arbres">Exercice 3 : Utilisation de la monade Maybe avec les arbres</a></li>
         <li><a href="#devoir-a-rendre-avant-le-29-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 29 octobre 2023, 23h59, heure de Paris:</a></li>
     </ul>
 </nav>
@@ -397,7 +399,7 @@ Exemples de résultats attendus :
 # nth_to_str [1;2;3;4;5] (-1);;
 - : string option = None
 </code></pre></div></p>
-<p>-Problème 1 : Implémenter une fonction <code>nth_to_pretty_string : int -&gt; int list
+<p>-Problème 1 : Implémentez une fonction <code>nth_to_pretty_string : int -&gt; int list
 -&gt; string option</code> qui retourne soit :</p>
 <ol>
 <li>
@@ -422,7 +424,7 @@ Exemples de résultats attendus :
 </li>
 </ol>
 <h1 id="exercice-1">Exercice 1</h1>
-<p>-Problème 0 : Implémenter une fonction <code>comb_opt : 'a list -&gt; 'b list -&gt; ('a *
+<p>-Problème 0 : Implémentez une fonction <code>comb_opt : 'a list -&gt; 'b list -&gt; ('a *
 'b) list option</code> qui, lorsqu'on lui donne deux listes <code>l, k</code>, retourne :</p>
 <ol>
 <li>
@@ -440,7 +442,7 @@ Exemples de résultats attendus :
 # comb_opt [1;2;3;4] [5;6;7];;
 - : (int * int) list option = None
 </code></pre></div></p>
-<p>-Problème 1 : Implémenter une fonction <code>print_combined : int list -&gt; int list
+<p>-Problème 1 : Implémentez une fonction <code>print_combined : int list -&gt; int list
 -&gt; unit list option</code> qui prend comme arguments deux listes <code>l, k</code> d'entiers
 et fait ce qui suit :</p>
 <ol>
@@ -463,6 +465,163 @@ et fait ce qui suit :</p>
 - : unit list option = Some [(); (); ()]
 # print_combined [1;2;3] [4;5;6;7];;
 - : unit list option = None
+</code></pre></div></p>
+<h1 id="exercice-2-utilisation-de-la-monade-maybe-avec-des-listes">Exercice 2 : Utilisation de la monade Maybe avec des listes</h1>
+<p>Considérons les deux fonctions suivantes qui renvoient la "tête" et la "queue"
+d'une liste lorsqu'elle existe :
+<div class="highlight"><pre><span></span><code>let car l = match l with
+    | [] -&gt; None 
+    | h :: _ -&gt; Some h
+
+let cdr l = match l with 
+    | [] -&gt; None 
+    | _ :: t -&gt; Some t
+</code></pre></div></p>
+<p>Problème 0 : Définissez une fonction <code>cadr : 'a list -&gt; 'a option</code> qui
+renvoie le deuxième élément (s'il existe) d'une liste en utilisant les
+fonctions <code>car</code> et <code>cdr</code> définies ci-dessus.</p>
+<p>Essayez de le faire d'au moins deux façons :</p>
+<ol>
+<li>
+<p>Une façon en faisant explicitement du pattern matching avec des valeurs de type <code>option</code>.</p>
+</li>
+<li>
+<p>Une autre façon en utilisant la structure monadique du type <code>option</code> (la monade Maybe).</p>
+</li>
+</ol>
+<p>Exemples de comportements attendus :
+<div class="highlight"><pre><span></span><code># cadr [1;2;3];;
+- : int option = Some 2
+# cadr [1];;
+- : int option = None
+# cadr [];;
+- : &#39;a option = None
+</code></pre></div></p>
+<p>-Problème 1 : Faire la même chose pour une fonction <code>caddr : 'a list -&gt; 'a
+option</code> qui renvoie le troisième élément d'une liste (s'il existe). </p>
+<p>Exemples de comportements attendus :
+<div class="highlight"><pre><span></span><code># caddr [1;2;3];;
+- : int option = Some 3
+# caddr [1;2];;
+- : int option = None
+# caddr [1];;
+- : int option = None
+utop # caddr [];;
+- : &#39;a option = None
+</code></pre></div></p>
+<p>-Problème 2 : En utilisant les fonctions susmentionnées, implémentez une
+fonction <code>plus_car_cadr_caddr : int list -&gt; int option</code> qui ajoute le
+premier, le deuxième et le troisième élément d'une liste d'entiers (si
+possible). </p>
+<p>Exemples de comportements attendus :
+<div class="highlight"><pre><span></span><code># plus_car_cadr_caddr [1;2;3;4];;
+- : int option = Some 6
+# plus_car_cadr_caddr [1;2];;
+- : int option = None
+# plus_car_cadr_caddr [];;
+- : int option = None
+</code></pre></div></p>
+<p>-Problème 3 : En utilisant les fonctions susmentionnées, définissez une
+fonction <code>check_dups : 'a list -&gt; bool option</code> qui retourne <code>quelque chose
+de vrai</code> si une liste contient deux éléments identiques contigus et <code>quelque
+chose de faux</code> si ce n'est pas le cas.</p>
+<p>Exemples de comportements attendus :
+<div class="highlight"><pre><span></span><code># check_dups [1;2;3];;
+- : bool option = Some false
+# check_dups [1;3;3];;
+- : bool option = Some true
+# check_dups [1];;
+- : bool option = Some false
+# check_dups [];;
+- : bool option = Some false
+</code></pre></div></p>
+<p>-Problème 4 : Considérez la version monadique suivante de la fonction intégrée
+<code>mod</code>, qui au lieu de produire une exception <code>Division_by_zero</code> lorsque son
+second argument est zéro, retourne <code>None</code> :</p>
+<div class="highlight"><pre><span></span><code>let mod_t x y = match y with
+    | 0 -&gt; None 
+    | _ -&gt; Some (x mod y)
+</code></pre></div>
+<p>Implémentez une fonction <code>maybe_mod_list : int list -&gt; int -&gt; int list
+option</code> qui, lorsqu'on lui donne une liste <code>l</code> et un entier <code>m</code>, produit
+une nouvelle liste dont les éléments sont ceux de <code>l</code> modulo <code>m</code> (si
+possible). 
+Exemples de comportements attendus : 
+<div class="highlight"><pre><span></span><code># maybe_mod_list [1;2;3;4;5;6] 3;;
+- : int list option = Some [1; 2; 0; 1; 2; 0]
+# maybe_mod_list [1;2;3;4;5;6] 2;;
+- : int list option = Some [1; 0; 1; 0; 1; 0]
+# maybe_mod_list [1;2;3;4;5;6] 0;;
+- : int list option = None
+</code></pre></div></p>
+<details class="fun-fact">
+<summary>Fun-fact</summary>
+<p>Les structures <code>n</code> telles que <code>n = a list</code> qui permettent de faire
+correspondre des fonctions monadiques <code>f : 'a -&gt; 'b m</code> sur elles pour
+produire une valeur de type <code>'b n m</code> sont appelées "traversables". Les
+arbres que nous verrons dans le prochain exercice sont également
+traversables !</p>
+</details>
+<h1 id="exercice-3-utilisation-de-la-monade-maybe-avec-les-arbres">Exercice 3 : Utilisation de la monade Maybe avec les arbres</h1>
+<p>Considérons la définition suivante d'un type d'arbres binaires, quelques fonctions qui récupèrent respectivement l'enfant gauche, l'enfant droit, et la valeur d'un noeud (s'il n'est pas une feuille) et un exemple de valeur de ce type :</p>
+<div class="highlight"><pre><span></span><code>type &#39;a tree = 
+    | Leaf 
+    | Node of &#39;a * &#39;a tree * &#39;a tree 
+
+let left_child t = match t with
+    | Leaf -&gt; None 
+    | Node (_,l,_) -&gt; Some l 
+
+let right_child t = match t with
+    | Leaf -&gt; None 
+    | Node (_,_,r) -&gt; Some r
+
+let get_val t = match t with 
+    | Leaf -&gt; None 
+    | Node (v,_,_) -&gt; Some v 
+
+let example_tree = 
+    Node (1,
+        Node (2, Leaf, Leaf),
+        Node (3, 
+            Node (4, Leaf, Leaf),
+            Node (5, Leaf, Leaf)))
+</code></pre></div>
+<ul>
+<li>Problème 0 : Implémentez une fonction <code>follow_path : 'a tree -&gt; string list -&gt;
+  'a list option</code> qui retourne les valeurs rencontrées si l'on suit le chemin
+  décrit par une liste (dont les éléments sont soit <code>l</code> qui signifie un
+  virage à gauche, soit <code>r</code> qui signifie un virage à droite) dans l'arbre, en
+  commençant par la racine.</li>
+</ul>
+<p>Exemples de comportements attendus :
+<div class="highlight"><pre><span></span><code># follow_path example_tree [&quot;l&quot;;&quot;l&quot;];;
+- : int list option = Some [1; 2]
+# follow_path example_tree [&quot;l&quot;;&quot;l&quot;;&quot;r&quot;];;
+- : int list option = None
+# follow_path example_tree [&quot;r&quot;;&quot;l&quot;;&quot;l&quot;];;
+- : int list option = Some [1; 3; 4]
+# follow_path example_tree [&quot;r&quot;;&quot;r&quot;;&quot;l&quot;];;
+- : int list option = Some [1; 3; 5]
+# follow_path example_tree [&quot;r&quot;;&quot;l&quot;;&quot;l&quot;;&quot;l&quot;];;
+- : int list option = None
+</code></pre></div></p>
+<ul>
+<li>Problème 1 : implémentez une fonction <code>maybe_mod_tree : int tree -&gt; int -&gt; int tree option</code> qui, lorsqu'on lui donne un arbre avec des valeurs entières stockées à ses noeuds, renvoie un nouvel arbre dont les noeuds stockent les valeurs de l'original modulo le second argument de la fonction (s'il n'est pas zéro). </li>
+</ul>
+<p>Exemple de comportements attendus :
+<div class="highlight"><pre><span></span><code># maybe_mod_tree example_tree 2;;
+- : int tree option =
+Some
+ (Node (1, Node (0, Leaf, Leaf),
+   Node (1, Node (0, Leaf, Leaf), Node (1, Leaf, Leaf))))
+# maybe_mod_tree example_tree 3;;
+- : int tree option =
+Some
+ (Node (1, Node (2, Leaf, Leaf),
+   Node (0, Node (1, Leaf, Leaf), Node (2, Leaf, Leaf))))
+# maybe_mod_tree example_tree 0;;
+- : int tree option = None
 </code></pre></div></p>
 <h2 id="devoir-a-rendre-avant-le-29-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 29 octobre 2023, 23h59, heure de Paris:</h2>
 <p>Cet exercice concerne la monade Error, qui est étroitement liée à la monade

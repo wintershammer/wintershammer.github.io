@@ -373,6 +373,44 @@ Exemples de résultats attendus :
 &gt; (find-min t2)
 1
 </code></pre></div></p>
+<p>-Problème 2 : Ecrivez une fonction <code>num_nodes</code> qui calcule le nombre de noeuds dans l'arbre représenté par son argument. Exemple de résultats attendus :</p>
+<div class="highlight"><pre><span></span><code>&gt; (num-nodes t1);;
+1
+&gt; (num-nodes t2);;
+2
+</code></pre></div>
+<p>-Problème 3 : Implémentez une fonction <code>height</code> qui calcule la hauteur (la plus grande
+distance qu'une feuille peut avoir par rapport à la racine, mesurée en nombre
+d'arêtes parcourues pour atteindre cette feuille à partir de la racine) d'un
+arbre représenté par son argument.</p>
+<p>Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (height t1);;
+1
+&gt; (height t2);;
+2
+</code></pre></div>
+-Problème 4 : Implémentez une fonction <code>list-leaves</code> qui renvoie une liste de
+toutes les feuilles d'un arbre représenté par son argument. Exemples de
+résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (list-leaves t1);;
+&#39;(2 3)
+&gt; (list-leaves t2);;
+&#39;(4 5 3)
+</code></pre></div></p>
+<p>-Problème 5 : Implémenter une fonction <code>replace-sum</code> qui remplace les valeurs des noeuds internes par la somme des valeurs de leurs enfants (tout en laissant les feuilles intactes).</p>
+<p>Exemples de résultats attendus :</p>
+<div class="highlight"><pre><span></span><code>&gt; (replace-sum t1);;
+&#39;(5 (2 () ()) (3 () ()))
+&gt; (replace-sum t2);;
+&#39;(5 (9 (4 () ()) (5 () ())) (3 () ()))
+</code></pre></div>
+<p>-Problème 6 : Implémenter une fonction <code>replace-depth</code> qui remplace les valeurs des noeuds et des feuilles d'un arbre par leur distance à la racine.</p>
+<p>Exemples de résultats attendus :</p>
+<div class="highlight"><pre><span></span><code>&gt; (replace-depth t1);;
+&#39;(0 (1 () ()) (1 () ()))
+&gt; (replace-depth t2);;
+&#39;(0 (1 (2 () ()) (2 () ())) (1 () ()))
+</code></pre></div>
 <h1 id="devoirs-a-telecharger-sur-moodle">Devoirs à télécharger sur moodle</h1>
 <p>-Problème 0 : Ecrivez une fonction <code>search</code> qui prend comme arguments une représentation d'arbre
 et une valeur et qui retourne <code>#t</code> si un sommet avec la valeur donnée comme label est trouvé, sinon elle retourne <code>#f</code>:
