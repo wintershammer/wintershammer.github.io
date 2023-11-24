@@ -18,7 +18,7 @@
 
     
  
-<title>Exercices - Séance 0 - Alexandros Singh's Academic Homepage</title>
+<title>pfaExos7 - Alexandros Singh's Academic Homepage</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -340,165 +340,136 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercices-seance-0">Exercices - Séance 0</a></li>
-        <li><a href="#exercice-1-l-echauffement">Exercice (-1) - L' échauffement</a></li><li><a href="#exercice-0-points">Exercice 0 - Points</a></li><li><a href="#exercice-1-recherche-des-nombres-premier">Exercice 1 - Recherche des nombres premier</a></li><li><a href="#exercice-2-denombrement-des-arbres-binaires">Exercice 2 - Dénombrement des arbres binaires</a></li><li><a href="#devoir-a-rendre-avant-le-06-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 06 octobre 2023, 23h59, heure de Paris:</a></li>
+        <li><a href="#exercise-0">Exercise 0</a></li>
+        <li><a href="#exercise-1">Exercise 1</a></li>
+        <li><a href="#exercise-2">Exercise 2</a></li>
+        <li><a href="#exercise-3">Exercise 3</a></li>
+        <li><a href="#devoir-a-rendre-avant-le-1-decembre-2023-23h59-heure-de-paris">Devoir à rendre avant le 1 décembre 2023, 23h59, heure de Paris:</a></li>
+        
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h1 id="exercices-seance-0">Exercices - Séance 0</h1>
-<h2 id="exercice-1-l-echauffement">Exercice (-1) - L' échauffement</h2>
+    <h2 id="exercise-0">Exercise 0</h2>
 <ul>
-<li>Problème 0: Implémentez une fonction <code>prod-list</code> qui, 
-étant donné une liste de nombres, calcule leur produit. 
-Exemple de résultat attendu :
-<div class="highlight"><pre><span></span><code># prod_list [1;2;3;5];;
-- : int = 30
-</code></pre></div></li>
-<li>Problème 1:
-Implémente zune fonction <code>succ-list</code> qui, étant donné une liste de nombres, produit une nouvelle liste dont les éléments sont les successeurs des éléments respectifs de la liste initiale. Rappelons que le successeur d'un nombre est . Exemple de résultat attendu:
-<div class="highlight"><pre><span></span><code># succ_list [1;2;3;4;5];;
-- : int list = [2; 3; 4; 5; 6]
-</code></pre></div></li>
-</ul>
-<h2 id="exercice-0-points">Exercice 0 - Points</h2>
-<ul>
-<li>Problème 0: Implémentez une fonction <code>dot_line : int -&gt; string</code>
-telle que <code>dot_line k</code>
-renvoie une chaîne de k points.
-Exemple de résultat attendu :
-<div class="highlight"><pre><span></span><code># dot_line 5;;
-- : string = &quot;.....&quot;
-</code></pre></div></li>
-<li>Problème 1: Implémentez une fonction <code>dot_rect : int -&gt; string</code>
-telle que <code>dot_rect m n</code>
-renvoie une chaîne qui, lorsqu'elle est imprimée, produit
-m lignes de n points.
-Exemple de résultat attendu:
-<div class="highlight"><pre><span></span><code># print_string (dot_rect 5 12);;
-............
-............
-............
-............
-............- : unit = ()
-</code></pre></div></li>
-</ul>
-<h2 id="exercice-1-recherche-des-nombres-premier">Exercice 1 - Recherche des nombres premier</h2>
-<p>Un entier naturel <span class="arithmatex">\(n &gt; 1\)</span> est premier si ses seuls diviseurs sont lui-même et <span class="arithmatex">\(1\)</span>. </p>
-<ul>
-<li>Problème 1:
-Implémenter en OCaml une fonction <code>is_prime : int -&gt; bool</code> 
-telle que <code>is_prime n</code>, pour <code>n &gt; 2</code>, donne <code>vrai</code> si <code>n</code>
-est premier et <code>false</code> sinon.
-Exemple de résultat attendu :
-<div class="highlight"><pre><span></span><code># is_prime 51;;
-- : bool = false
-# is_prime 67;;
-- : bool = true
-</code></pre></div></li>
-<li>Problème 2:
-En utilisant la fonction que vous avez implémentée ci-dessus, implémentez
-une fonction <code>primes_leq_than : int -&gt; string</code> 
-telle que <code>primes_leq_than n</code> :<ul>
-<li>pour <code>n</code> positif est égale à la chaîne 
-de caractères obtenue en concaténant tous les
-nombres premiers inférieurs ou égaux à <code>n</code>,</li>
-<li>pour <code>n</code> nul ou négatif est égale à unechaîne de caractères contenant 
-un message d'erreur approprié de votre choix.
-Exemple de résultat attendu :
-<div class="highlight"><pre><span></span><code># primes_leq_than 100;;
-- : string =
-&quot; 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97&quot;
-# primes_leq_than (-5);;
-- : string = &quot;L&#39;entrée doit être positive.&quot;
-</code></pre></div></li>
-</ul>
+<li>
+<p>Problème 0: Définir une monade Reader qui donne accès à une seule valeur
+entière en tant qu'environnement partagé.</p>
+</li>
+<li>
+<p>Problème 1: Utilisez la monade que vous avez définie ci-dessus pour calculer une fonction
+simple de l'entier partagé, par exemple la somme de son carré et de son cube.</p>
 </li>
 </ul>
-<h2 id="exercice-2-denombrement-des-arbres-binaires">Exercice 2 - Dénombrement des arbres binaires</h2>
+<h2 id="exercise-1">Exercise 1</h2>
 <ul>
-<li>Problème 0:
-    Trouvez une définition récursive pour les arbres binaires.</li>
-</ul>
-<details class="solution">
-<summary>Solution</summary>
-<p><img alt="" src="../../../../assets/images/teaching/advFunProg/binaryTreeRec.svg" /></p>
-</details>
-<ul>
-<li>Problème 1:
-   En utilisant cette définition récursive, dérivez une récurrence pour 
-le nombre <span class="arithmatex">\(C_n\)</span> d'arbres binaires avec <span class="arithmatex">\(n\)</span> sommets internes.</li>
-</ul>
-<details class="solution">
-<summary>Solution</summary>
-<p>En raisonnant de manière récursive, nous obtenons la 
-récurrence suivante pour les fameux 
-<a href="https://fr.wikipedia.org/wiki/Nombre_de_Catalan">nombres Catalans</a>:
-<div align="center">
-<span class="arithmatex">\(C_0 = 1, C_n = \sum_{i=1}^{n}C_{i-1}C_{n-i}\)</span> pour <span class="arithmatex">\(n &gt; 0\)</span>.
-</div></p>
-</details>
-<ul>
-<li>Problème 2:</li>
-</ul>
-<p>La récurrence que nous avons dérivée n'est pas très efficace 
-(et un peu délicate à mettre en oeuvre comme vous le découvrirez dans votre devoir). 
-Une récurrence plus efficace pour <span class="arithmatex">\(C_n\)</span> est la suivante :<br />
-    <div align="center">
-    <span class="arithmatex">\(C_0 = 1, C_n = \frac{2(2n-1)}{n+1} C_{n-1}\)</span> pour <span class="arithmatex">\(n &gt; 0\)</span>.
-    </div>
-En utilisant cette récurrence, implémentez en OCaml une fonction <code>catalan : int -&gt; int</code> 
-telle que <code>catalan n</code> donne <span class="arithmatex">\(C_n\)</span>. 
-Exemple de résultat attendu:
-<div class="highlight"><pre><span></span><code># catalan 5;;
-- : int = 42
+<li>
+<p>Problème 0: Implémentez la monade ContextReader que nous avons vue pendant le CM.</p>
+</li>
+<li>
+<p>Problème 1: Définissez une fonction monadique <code>tell_age</code> qui prend comme
+arguments un entier positif <code>y</code> et une valeur <code>d</code> du type
+<div class="highlight"><pre><span></span><code>type context = {name : string ; surname : string ; age : int}
+</code></pre></div>
+et renvoie une chaîne de caractères de la forme 
+<div class="highlight"><pre><span></span><code>In *y* year(s), you&#39;ll be *a* years old!
+</code></pre></div>
+où <em>y</em> est la représentation en <code>string</code> de la valeur <code>d</code> 
+et <em>a</em> est l'âge de la personne représentée par <code>d</code> 
+au bout de <code>y</code> années à partir de maintenant.
+Par exemple :
+<div class="highlight"><pre><span></span><code># tell_age 1 {name = &quot;Alex&quot;; surname = &quot;Singh&quot;; age = 29};;
+- : string = &quot;In 1 year(s) you&#39;ll be 30 years old!&quot;
 </code></pre></div></p>
-<details class="hint">
-<summary>Hint</summary>
-<p>Le facteur <span class="arithmatex">\(\frac{2(2n-1)}{n+1}\)</span> est un nombre rationnel. 
-Pourtant, nous sommes sûrs que le résultat final est un entier puisqu'il 
-s'agit du nombre de quelque chose - à savoir des arbres avec <span class="arithmatex">\(n\)</span> sommets internes.
-Par conséquent, vous
-devrez peut-être utiliser les opérations arithmétiques <code>+., -., *., /.</code> 
-décrites dans la <a href="https://v2.ocaml.org/api/Float.html">documentation du module Float</a>, 
-mais à la fin, vous devrez arrondir et reconvertir le résultat final en <code>int</code> -
-vous pouvez trouverez des fonctions pour faire ça en utilisant la fonction de recherche de la
-<a href="https://v2.ocaml.org/api/index.html">documentation d'API</a>, comme indiqué dans la classe !</p>
-</details>
-<ul>
-<li>Problème 3: Réécrivez la fonction pour qu'elle soit récursive terminale.</li>
-</ul>
-<h2 id="devoir-a-rendre-avant-le-06-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 06 octobre 2023, 23h59, heure de Paris:</h2>
-<ul>
-<li>Problème 0 : Implémentez en OCaml une fonction <code>catalan_2 : int -&gt; int</code> telle que 
-<code>catalan_2 n</code> donne <span class="arithmatex">\(C_n\)</span> en utilisant la récurrence obtenue comme solution du Problème 1.
-Exemple de résultat attendu:
-<div class="highlight"><pre><span></span><code># catalan_2 5;;
-- : int = 42
-</code></pre></div></li>
-</ul>
-<details class="hint">
-<summary>Hint</summary>
-<p>Vous pouvez calculer la somme <span class="arithmatex">\(\sum\limits_{i=1}^{n} C_{i-1}C_{n-i}\)</span> de manière récursive. 
-Créez une fonction <code>cauchy i n</code> qui calcule la somme ci-dessus à partir de l'indice <span class="arithmatex">\(i\)</span> = <code>i</code>. 
-Attention: cette fonction est à la fois récursive en elle-même
-et mutuellement récursive avec <code>catalan</code>.</p>
-</details>
-<ul>
-<li>Problème 1 : Implémentez une fonction <code>print_catalans : (int -&gt; int) -&gt; int -&gt; string</code> dont le 
-premier argument est une fonction qui calcule le <span class="arithmatex">\(n\)</span>-ième nombre catalan et dont 
-le second argument est un nombre entier positif ou nul. 
-La fonction doit être telle que <code>print_catalans f n</code> 
-renvoie une chaîne de caractères obtenue en concaténant les résultats de 
-<code>f</code> appliqués à chacun des entiers compris entre 0 et <code>n</code> (y compris 0 et <code>n</code>).</li>
-</ul>
-<p>Exemple de résultat attendu :
-<div class="highlight"><pre><span></span><code># print_catalaéns catalan 10;;
-- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
-# print_catalans catalan_2 10;;
-- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
+</li>
+<li>
+<p>Problème 2: Composez cette fonction avec la fonction greet pour obtenir une
+fonction <code>greet_and_tell_age_next_year</code> qui salue qui salue la personne et
+lui indique son âge pour l'année prochaine. 
+Par exemple :
+<div class="highlight"><pre><span></span><code># greet_and_tell_age_next_year {name = &quot;Alex&quot;; surname = &quot;Singh&quot;; age = 29};;
+Hi Alex Singh, you are : 29 years old.
+In 1 year(s) you&#39;ll be 30!
+- : unit = ()
 </code></pre></div></p>
+</li>
+</ul>
+<h2 id="exercise-2">Exercise 2</h2>
+<ul>
+<li>Problème 0: Définissez une monade Reader qui permet d'accéder à une valeur du type suivant : </li>
+</ul>
+<div class="highlight"><pre><span></span><code>type three_vars = {x : int ; y : int ; z : int}
+</code></pre></div>
+<ul>
+<li>
+<p>Problème 0: Implémentez des fonctions monadiques pour accéder à chacun des éléments de l'enregistrement ci-dessus</p>
+</li>
+<li>
+<p>Problème 1: Utilisez ces fonctions pour calculer la somme de tous les éléments de cet environnement partagé.</p>
+</li>
+</ul>
+<h2 id="exercise-3">Exercise 3</h2>
+<ul>
+<li>
+<p>Problème 0: Passez de la monade précédente de l'exercice 2 à une monade State
+qui permet d'accéder à des valeurs du même type <code>three_vars</code>: </p>
+</li>
+<li>
+<p>Problème 0: Implémentez des fonctions monadiques pour accéder à chacun des éléments de l'enregistrement ci-dessus</p>
+</li>
+<li>
+<p>Problème 1: Utilisez ces fonctions pour implémenter une fonction
+<code>sum_before_after</code> qui calcule la somme de tous les éléments de cet
+environnement partagé puis la somme de l'environnement modifiée pour que <code>z</code>
+soit égal à <code>123</code>, et renvoie un tuple contenant les deux. 
+Par example:
+<div class="highlight"><pre><span></span><code># runState sum_before_after {x = 10; y = 20; z = 30};;
+- : (int * int) * s = ((60, 153), {x = 10; y = 20; z = 123})
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-1-decembre-2023-23h59-heure-de-paris">Devoir à rendre avant le 1 décembre 2023, 23h59, heure de Paris:</h2>
+<ul>
+<li>Problem 0: En utilisant une monade State qui donne accès à une Map contenant des paires
+d'un nom de variable (une chaîne) et d'une valeur (un entier positif), étendez
+votre solution au devoir de la séance 1 de manière à ce qu'elle puisse gérer un
+nombre arbitraire de variables personnalisées qui peuvent être définies à
+n'importe quelle valeur entière positive.</li>
+</ul>
+<p>Par exemple, le morceau de code suivant définit
+trois variables <code>a,b,c</code> avec des valeurs initiales <code>10,20,30</code> et ensuite
+les additionne:</p>
+<textarea name="calc" cols="40" rows="5">
+set a=10
+set b=20
+set c=30
+a+b+c
+END
+</textarea>
+
+<p>Expression analysée: <div style="background:rgba(220,220,220)" id="output"></div></p>
+<p>Expression évaluée (en supposant un contexte initial vide): <div id="output2"></div></p>
+<p><button onclick="myFunction()">Analyser &amp; évaluer</button></p>
+<script>
+    function myFunction() {
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output").textContent = CALC_PARSER.parse(document.getElementsByName("calc")[0].value);
+        }
+        catch (error){
+            document.getElementById("output").textContent = String(error);
+        }
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output2").textContent = CALC_EVALUATOR_2.parse(document.getElementsByName("calc")[0].value);
+
+        }
+        catch (error){
+            document.getElementById("output2").textContent = String(error);
+        }
+        }
+</script>
 </section>
 
             </main>
