@@ -364,8 +364,15 @@ Si vous voulez utiliser l'un des modules de <code>mods.ml</code>, vous devez l'i
 de manière appropriée dans votre fichier <code>exo_n.ml</code>. </p>
 <p>Pour vérifier que vos soumissions sont valides, vous pouvez exécuter la
 procédure suivante :</p>
-<div class="highlight"><pre><span></span><code>ocamlc -c mods.ml exo_0.ml exo_1.ml exo_2.ml exo_3.ml
+<p><div class="highlight"><pre><span></span><code>ocamlc -c mods.ml exo_0.ml exo_1.ml exo_2.ml exo_3.ml
 </code></pre></div>
+Si vous utilisez <code>ocaml</code> ou <code>utop</code> pour tester votre code (bien que je vous
+suggère plutôt d'utiliser Dune !) , </p>
+<p>n'oubliez pas de démarrer la session avec la commande suivante :
+<div class="highlight"><pre><span></span><code>#mod_use &quot;mods.ml&quot;
+</code></pre></div>
+avant de charger les fichiers de vos solutions, comme par example avec la commande 
+<code>#use exo_n.ml</code>.</p>
 <p>et vérifier que la compilation s'est déroulée sans erreur.</p>
 <h2 id="exercice-0-polynomes">Exercice 0 - Polynômes</h2>
 <p><em>Notions utiles pour cet exercice : les flottants, les listes et le module List, la récursivité, les opérations arithmétiques.</em></p>
