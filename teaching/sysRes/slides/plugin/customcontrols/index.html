@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.5.2, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Custom controls - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../sysRes/">Systèmes et Réseaux</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#custom-controls">Custom controls</a></li>
+        <li><a href="#installation">Installation</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#license">License</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="custom-controls">Custom controls</h1>
+<p>This plugin allows to add responsive custom controls to reveal.js which allow arbitrary positioning, layout, and behaviour of the controls.</p>
+<p><a href="https://rajgoel.github.io/reveal.js-demos/customcontrols-demo.html">Check out the live demo</a></p>
+<h2 id="installation">Installation</h2>
+<p>Copy the files <code>plugin.js</code> and <code>style.css</code> into the plugin folder of your reveal.js presentation, i.e. <code>plugin/customcontrols</code> and load the plugin as shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;plugin/customcontrols/style.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;plugin/customcontrols/plugin.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nx">RevealCustomControls</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Note, without configuration you need to add</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">link</span><span class="w"> </span><span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span><span class="w"> </span><span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css&quot;</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>between <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code> of your HTML file because the defaults use <a href="http://fontawesome.io/">Font Awesome</a>.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The plugin can be configured by adding custom controls and changing the layout of the slide number, e.g., by:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">Reveal</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="nx">customcontrols</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">controls</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">              </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;toggle-overview&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Toggle overview (O)&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;i class=&quot;fa fa-th&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Reveal.toggleOverview();&#39;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;i class=&quot;fa fa-pen-square&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Toggle chalkboard (B)&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;RevealChalkboard.toggleChalkboard();&#39;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;i class=&quot;fa fa-pen&quot;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Toggle notes canvas (C)&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;RevealChalkboard.toggleNotesCanvas();&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// ...</span>
+
+<span class="p">});</span>
+</code></pre></div>
+<p>The <code>id</code> and <code>title</code> are optional. The configuration should be self explaining and any number of controls can be added. The style file can be altered to control the layout and responsiveness of the custom controls.</p>
+<h2 id="license">License</h2>
+<p>MIT licensed</p>
+<p>Copyright (C) 2020 Asvin Goel</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
