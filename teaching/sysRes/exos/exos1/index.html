@@ -362,7 +362,7 @@
         <li><a href="#exercice-0-familiarisation-avec-fork-wait-waitpid">Exercice 0 - Familiarisation avec fork(), wait(), waitpid()</a></li>
         <li><a href="#exercice-1-manipuler-des-processus">exercice 1 - manipuler des processus</a></li>
         <li><a href="#exercice-2-processus-et-fichiers">Exercice 2 : Processus et fichiers</a></li>
-        <li><a href="#devoir">Devoir</a></li>
+        <li><a href="#devoir-de-deposer-avant-le-lundi-5022024-2300-gmt1">Devoir de déposer avant le lundi 5/02/2024 23:00 (GMT+1)</a></li>
         
     </ul>
 </nav>
@@ -433,18 +433,15 @@ par <code>init</code> qui fera un <code>wait()</code> pour les supprimer.</p>
   caractères sera écrite ?</p>
 </li>
 </ul>
-<h2 id="devoir">Devoir</h2>
+<h2 id="devoir-de-deposer-avant-le-lundi-5022024-2300-gmt1">Devoir de déposer avant le lundi 5/02/2024 23:00 (GMT+1)</h2>
 <ul>
-<li>
-<p>Exercice 0 : Lire la page wikipedia sur les 
-  <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_de_tri">réseaux de tri</a>.</p>
-</li>
-<li>
-<p>Exercice 1 : Implémentez un réseau de tri de votre choix pour des tableaux de
-  taille arbitraire (vous pouvez supposer qu'ils sont de taille paire si
-  nécessaire), en utilisant fork pour paralléliser autant d'échanges que
-  possible. </p>
-</li>
+<li>Problème 0 : Ecrivez un programme C qui prend en entrée un nom de chemin,
+  ouvre <em>d'abord</em> un flux FILE en utilisant le nom de chemin correspondant,
+  puis crée <code>N</code> processus enfants (où <code>N</code> est une constante entière
+  positive). Chaque processus enfant doit ensuite écrire son ID de processus
+  sur une nouvelle ligne de ce fichier. Enfin, le père doit lire tous les PIDs
+  dans le fichier et afficher sur la sortie standard  la chaîne "Mes enfants
+  sont:\n" suivie des PID, un par ligne.</li>
 </ul>
 </section>
 
