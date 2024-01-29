@@ -362,6 +362,7 @@
         <li><a href="#exercice-0-familiarisation-avec-fork-wait-waitpid">Exercice 0 - Familiarisation avec fork(), wait(), waitpid()</a></li>
         <li><a href="#exercice-1-manipuler-des-processus">exercice 1 - manipuler des processus</a></li>
         <li><a href="#exercice-2-processus-et-fichiers">Exercice 2 : Processus et fichiers</a></li>
+        <li><a href="#devoir">Devoir</a></li>
         
     </ul>
 </nav>
@@ -424,12 +425,25 @@ par <code>init</code> qui fera un <code>wait()</code> pour les supprimer.</p>
   seront-elles écrites ?</p>
 </li>
 <li>
-<p>Problème 2 : Écrire un programme C qui prend un nom de chemin en entrée,
+<p>Problème 1 : Écrire un programme C qui prend un nom de chemin en entrée,
   ouvre le fichier correspondant, puis crée un processus enfant. Les deux
   processus essaient alors d'écrire respectivement "Je suis le père avec le PID
   X" et "Je suis le fils avec le PID X" (avec <code>X</code> remplacé par le PID
   respectif), au début du fichier. Pouvez-vous deviner quelle chaîne de
   caractères sera écrite ?</p>
+</li>
+</ul>
+<h2 id="devoir">Devoir</h2>
+<ul>
+<li>
+<p>Exercice 0 : Lire la page wikipedia sur les 
+  <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_de_tri">réseaux de tri</a>.</p>
+</li>
+<li>
+<p>Exercice 1 : Implémentez un réseau de tri de votre choix pour des tableaux de
+  taille arbitraire (vous pouvez supposer qu'ils sont de taille paire si
+  nécessaire), en utilisant fork pour paralléliser autant d'échanges que
+  possible. </p>
 </li>
 </ul>
 </section>
