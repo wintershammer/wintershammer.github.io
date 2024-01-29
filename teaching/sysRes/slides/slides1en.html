@@ -97,56 +97,57 @@ Alexandros Singh (as@up8.edu), 2024
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Programmes et processus
-- Un programme est un fichier contenant des informations qui décrivent comment construire un processus au moment de l'exécution.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les informations qu'il contient comprennent:
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Des instructions en langage machine
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Données : valeurs initiales des variables, constantes littérales.
-	 - &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Données de liaison dynamique et de bibliothèque partagée
-- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Un processus est une instance d'un programme en cours d'exécution.
+### Programs and processes
+- A program is a file containing information that describes how to construct a process at run time.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The information it contains includes:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Machine-language instructions.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Data: initial values for variables, literal constants.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Dynamic linking and shared library data.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->A processes is an instance of an executing program.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Programmes et processus
-- Plusieurs processus peuvent être des instances du même programme.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Du point de vue du noyau, un processus consiste en:
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Mémoire de l'espace utilisateur contenant le code + variables. 
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Structures de données du noyau pour du "bookkeeping".
-- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Bookkeping : ID, tables de mémoire virtuelle, table des descripteurs de fichiers ouverts, données relatives aux signaux, etc.
+### Programs and processes
+- Multiple processes may be instances of the same program.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->From the kernel's perspective, a process consists of:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->User-space memory containing code + variables. 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Kernel data structures to do bookkeeping.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Bookkeping information: IDs, virtual memory tables,
+  open file descriptors table, signal-related data, etc.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Processus ID
-- Chaque processus possède un ID : un nombre entier positif qui l'identifie de manière unique.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'appel système ``getpid()`` renvoie l'identifiant du processus appelant.
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Les identifiants des processus sont utilisés par divers appels système, par exemple ``kill()`` qui envoie un signal de fin à un processus.
-- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Chaque processus a un parent : le processus qui l'a créé.
-- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Les processus ont une relation arborescente, avec ``init`` comme racine (ID 1).
+### Processes IDs
+- Each process has an ID: a positive integer that uniquely identifies it.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The ``getpid()`` system call returns the process ID of the calling processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Processes IDs are used by various system calls, for example ``kill()`` which sends a terminating signal to a process.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Each process has a parent: the processes that created it.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Processes have a tree-like relationship, with ``init`` as the root (ID 1).
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Processus ID
-- Exécutez ``pstree`` pour visualiser l'arbre des processus.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->La limite supérieure par défaut pour les PIDs est 32767, ajustable via ``proc/sys/kernel/pid_max`` (souvent `$2^{22}$`). 
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Utilisez l'appel système ``getppid()`` pour obtenir le PID du parent. 
-- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Si un processus devient orphelin parce que son parent se termine, il est adopté par ``init``.
-- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Le système de fichiers *proc* contient des informations sur les processus (typiquement mappé sur ``/proc``).
+### Processes IDs
+- Run ``pstree`` to view the tree of processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The default upper limti for PIDs is 32767, adjustable via ``/proc/sys/kernel/pid_max`` (usually set to `$2^{22}$`). 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Use the ``getppid()`` system call to get the parent's PID. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->If a process becomes orphaned because its parent terminates, it is adopted by ``init``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->The *proc filesystem* contains information about processes (typically mapped to ``/proc``).
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-###  Mémoire des processus
+### Memory layout of processes
 
-- La mémoire allouée à un processus est constituée de *segments* :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*texte* : contient les instructions en langage machine, read-only et partageable.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*données initialisées* : variables globales et statiques initialisées.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->*données non initialisées* ou *bss* : variables globales et statiques qui ne le sont pas - toute la mémoire de ce segment est initialisée à 0 par le système.
+- The memory allocated to a processes is made of *segments*:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*text*: contains the machine-language instructions, read-only and shareable (can be mapped to the virtual memory of multiple processes).
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*initialised data*: global and static variables that are initialised.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->*uninitialised data* or *bss*: global and static variables that are not - all memory in this segment is initialised to 0 by the system.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Mémoire des processus
-- La mémoire allouée à un processus est constituée de *segments
-	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*stack* : contient les cadres de pile pour les appels de fonction, stockant les variables locales, les arguments, la valeur de retour.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*heap* : zone qui peut être allouée dynamiquement, terminée par le *program break*.
+### Memory layoyt of processes
+- The memory allocated to a processes is made of *segments*:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*stack*: contains stack frames for function calls, storing local variables, arguments, return value.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*heap*: area which can be dynamically allocated, terminated by the *program break*.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -191,54 +192,49 @@ int main(void){ //allocated in frame for main()
 }
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<grid absolute="true" drag="100 100" drop="0 0">
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ### Virtual memory 
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les programmes sont (généralement) locaux :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Localité spatiale : les adresses mémoire référencées sont contiguës.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Localité temporelle: tendance à accéder aux mêmes parties de la mémoire dans un futur proche que dans un passé récent (pensez aux boucles).</script></section><section  data-markdown><script type="text/template"></grid></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Virtual memory
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Nous pouvons donc exécuter un programme en ne conservant qu'une partie de son espace d'adressage dans la mémoire vive.
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Diviser la mémoire en *pages* et la RAM en *trames de page*.
-- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Chargement des pages utilisées dans la RAM, stockage des pages inutilisées dans *swap* (espace disque).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Programs are (typically) local:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Spatially local: memory addresses referenced are contiguous.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Temporally local: tendency to access the same parts of memory in the near future as in recent past (think of loops).
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Therefore we can execute a program keeping only part of its address space in RAM.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Split memory in *pages* and RAM in *page frames*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Load used pages into RAM, stock unused pages in *swap* (disk space).
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Virtual memory
 
-- Lorsqu'une trame est référencée alors qu'elle ne se trouve pas dans la RAM, une *faute de page* se produit.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'exécution est suspendue jusqu'à ce que la page soit chargée de l'échange vers la mémoire.
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> + Avantages :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Processus isolés.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Lorsque cela est approprié, les processus peuvent partager la mémoire (e.g. les procs exécutant le même programme, ou utilisant ``shmget()`` et ``mmap()``) .
+- When a frame is referenced which is not in RAM, a *page fault* occurs.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Execution is suspended until page is loaded from swap to memory.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Advantages:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Processes isolated.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->When appropriate, processes can share memory: for example processes executing the same program, or using ``shmget()`` and ``mmap()`` (for interprocess communication).
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Virtual memory
-- Avantages :
-	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'utilisateur ne se préoccupe pas de la disposition physique du programme dans la RAM.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Le programme peut avoir une taille virtuelle supérieure à la capacité de la RAM.
-	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Meilleure utilisation du CPU/plus de processus dans la RAM.
+- Advantages:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->User not concerned with physical layout of program in RAM.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Program can have virtual size exceeding the capacity of RAM.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Better CPU utilisation/more processes in RAM.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Manipulation des processus
+### Manipulating processes
 
-- Nous utiliserons les appels système ``fork(), exit(), wait(), execve()`` pour manipuler les processus.
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``fork()`` : permet à un processus parent de créer un nouveau processus enfant. L'enfant obtient des copies de la pile, des données, du tas et des segments de texte du parent. 
-- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``exit(status)`` : termine un processus, libérant ses ressources. L'argument ``status`` est un entier déterminant l'état de terminaison.
+- We'll be using the ``fork(), exit(), wait(), execve()`` system calls to manipulate processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``fork()``: allows a parent processes to create a new child processes. The child obtains copies of the parent's stack/data/heap/text segments. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``exit(status)``: terminates a processes, liberating its resources. The ``status`` argument is an integer determing the termination status.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Manipulation des processus
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``wait(&status)`` : si aucun enfant ne s'est encore terminé, ``wait()`` suspend l'exécution jusqu'à ce que l'un d'entre eux le fasse. L'état de terminaison de ce fils est retourné dans l'argument ``status``.
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+### Manipulating creation
 
-### Manipulation des processus
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``execve(pathname, argv, envp)`` : charge un nouveau programme ``pathname`` avec la liste d'arguments ``argv`` et la liste d'environnement ``envp`` dans la mémoire du processus, en se débarrassant des segments de pile/données/heap actuels.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``wait(&status)``: if no child has not terminated yet, ``wait()`` suspends execution until one does. The termination status of said child is returned in the ``status`` argument.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``execve(pathname, argv, envp)``: system loads a new program ``pathname`` with argument list ``argv`` and environment list ``envp`` into processes memory, discarding current stack/data/heap segments.
 </div></script></section></div>
     </div>
 
