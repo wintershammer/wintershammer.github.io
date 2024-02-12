@@ -426,26 +426,34 @@ l'algorithme de tri pair-impair :</p>
   paire.</p>
 </li>
 <li>
-<p>Sortie : une liste contenant les mêmes entiers dans l'ordre croissant.</p>
+<p>Sortie : une liste contenant les mêmes entiers dans l'ordre croissant ainsi
+  que le nombre de swaps effectués.</p>
 </li>
 </ul>
-<p>L'algorithme est basé sur des itérations alternées des opérations parallèles
-suivantes :</p>
+<p>L'algorithme est basé sur des itérations alternées suivantes :</p>
 <ol>
 <li>
-<p>Un thread compare les paires d'éléments adjacents indexés pairs
-(c'est-à-dire les éléments avec les indices <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(i+2\)</span> où <span class="arithmatex">\(i\)</span> est pair). Si
+<p>L'itération paire consiste à compare les paires d'éléments adjacents indexés pairs
+(c'est-à-dire les éléments avec les indices <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(i+1\)</span> où <span class="arithmatex">\(i\)</span> est pair). Si
 la paire n'est pas dans le bon ordre (c'est-à-dire <span class="arithmatex">\(a[i] &lt; a[i+2]\)</span>), elle les
 échange.</p>
 </li>
 <li>
-<p>L'autre thread fait de même pour les paires indexées impaires (<span class="arithmatex">\(a[i],
-a[i+2]\)</span>) pour <span class="arithmatex">\(i\)</span> impair. </p>
+<p>L'itération impaire consiste les à compare paires indexées impaires (<span class="arithmatex">\(a[i],
+a[i+1]\)</span>) pour <span class="arithmatex">\(i\)</span> impair. </p>
 </li>
 </ol>
 <p>Après une itération, le thread principal vérifie que la liste est bien
-ordonnée. Si c'est le cas, il quitte en affichant la liste. Si ce n'est pas le
-cas, il recommence l'itération.</p>
+ordonnée. Si c'est le cas, il quitte en affichant la liste et le nombre de
+swaps effectués. Si ce n'est pas le cas, il recommence l'itération (en
+alternant pair et impair).</p>
+<p>La taille du tableau doit être définie comme une constante globale
+<code>ARRAY_SIZE</code> et votre code doit fonctionner pour toute valeur valide de
+celle-ci.</p>
+<p>Vous devez utiliser plusieurs threads par itération afin de paralléliser les
+comparaisons/échanges. Le nombre de threads que vous allez utiliser est à votre
+discrétion (entre 2 et <code>ARRAY_SIZE / 2</code>). Essayez d'équilibrer le coût de la
+création des threads avec l'accélération résultant de la concurrence. </p>
 </section>
 
             </main>
