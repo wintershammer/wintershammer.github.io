@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+### Séance 5
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internets
+-  An *internet* (lower-case i) connects different networks (subnets).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->A single address format is used to identify all hosts in the internet, regardless of details of each subnet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->TCP/IP is the dominant suite of protocols for internets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->The Internet (uppercase I) is a TCP/IP internet.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internets
+-  A *router* is a computer whose function is to connect subnets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Routers have multiple network interfaces, one for each subnet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Networking protocols define how information is transmitted across a network.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->They are often organised in *layers*, each building in the previous one to add features and abstract away details.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+
+- The TCP/IP protocol suite is a layered networking protocol.
+
+
+<img src="Pasted image 20240317122200.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+- The notion of *transparency* is crucial to the functioning of the TCP/IP protocol:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Each protocol hides details of the operation/complexity of lower layers.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->An application needs only to use the standard sockets API.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->It *doesn't* need to know much about the details of the operation of TCP.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+
+- Another important notion is that of encapsulation:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Data passed from higher layers to lower layers is treated as *opaque*.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Lower layers make no attempt to interpret the data of higher ones.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Instead, they place the information inside whatever type of packet they use, adding the relevant headers and passing them to lower layers.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+- Suppose for example that we want to access ``www.univ-paris8.fr``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->First, we need to find the IP address associated with this domain name, therefore our system creates a DNS packet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The DNS packet gets encapsulated in a UDP packet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->This in turn gets encapsulated in an IP packet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->This finally gets encapsulated in an Ethernet frame.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The network layer: IP
+- The network layer is concerned with delivering packets from source hosts to destination hosts.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->It performs various tasks, such as: 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->breaking data into fragments, 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->routing data across the internet, 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->providing services to the transport layer.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->There's two versions in use: IPv4 and IPv6, with a notable difference being the address range.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP datagrams
+
+- IP transmits data via datagrams. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Each datagram is independent and might even take different routes to traverse a network.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->A datagram includes a header (between 20 and 60 bytes) which includes the address of the target host and the sender.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP properties
+- IP is *connectionless* and *unreliable*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->No guarantee that packets arrive in the order they were transmitted or won't be duplicated.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->No error recovery. Packets with header errors are discarded.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->IPv4 provides a checksum for the IP header but not for the data inside the packet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Duplications may occur due to data-link layer mechanisms.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP fragmentation
+- IPv4 and v6 datagrams can be up to around 65,5k bytes (v6 optionally allows for larger ones).
+- Data-link layers impose limits (MTU) on size of frames (for Ethernet it is commonly around 1500 bytes).
+- IP defines the notion of the *path MTU*: the minimum MTU on all data-link layers taversed on the route from the source to the destination.
+- When an IP datagram is larger than the MTU, IP fragments the data and reassembles them at the final destination.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="white" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+```md
+
+```
+<img src="Pasted image 20240317130309.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP fragmentation
+- Fragmentation occurs transparently to higher layers.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->However, it is still considered undesirable:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->IP doesn't perform retransmission.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->A datagram can be reassembled only if all fragments can be gathered.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->This can lead to data loss (for UDP which doesn't retransmit) and degraded transfer rates (for TCP which does).
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Modern TCP implementations fragment their data to avoid IP fragmentation.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+- An IPv4 address consists of 32 bits.
+- For readability, we often write the 4 bytes of an address as decimals and separated by dots.
+- When an organisation applies for a range of IPv4 addresses, it receives a 32-bit network address and a corresponding 32-bit network mask.
+- The network mask consists of a sequence of 1s followed by 0s. The 1s indicate which part is the assigned network ID, while the 0s indicate the space available to be assigned to hosts.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+
+- Since network masks are uniquely determined by the number of initial 1s they have, we often write ranges of addresses as a network ID followed by an integer.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->For example, 204.152.189.0/24 indicates that the network ID consists of the leftmost 24 bits, with the remaining 8 bits specifying the host ID. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->In this case, the mask is 255.255.255.0.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->An entity holding this address can assign 254 unique Internet addresses: 204.152.189.1 - 204.152.189.254.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+
+- Two addresses can't be assigned:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->204.152.189.0, which is used to identify the network itself.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->204.152.189.255, which is the *subnet broadcast address*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Certain addresses have special meanings:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->127.0.0.0/8 is reserved for *loopback*: datagrams sent to such addresses (usually 127.0.0.1) loop back to the sending host.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Often used for tests (see the ``INADDR_LOOPBACK`` constant for C).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+- Another special address is ``INADDR_ANY``, the *wildcard*.
+- This is often used for applications that bind Internet domain sockets on hosts with many interfaces.
+- Organisations might divide their addresses into subnetworks, for which *subnet masks* are used.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The transport layer
+- Transport protocols provide end-to-end communication between applications.
+- In order to do this, they need a way to differentiate applications running on a host.
+- In TCP and UDP this is done via a 16-bit port number.
+- Some port numbers are assigned to specific applications/services (for example ``ssh`` uses 22,  HTTP uses 80, etc.)
+- This is done by the Internet Assigned Numbers Authority (http://www.iana.org).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The transport layer
+- In the Linux implementation of TCP/IP, 0 to 1023 are privileged port numbers, meaning only privileged processes may bind to these ports.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Though UDP and TCP ports are distinct, a service is usually assigned the same number in both TCP and UDP (even if it only uses one protocol).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*Ephemeral* ports are assigned to applications which don't select a particular one. In TCP and UDP this is done by binding the port 0.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The transport layer
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``/proc/sys/net/ipv4/`` ``ip_local_port_range`` specifies the ephemeral range.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  UDP
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->UDP adds only two features to IP: port numbers and a data checksum to allow for the detection of errors.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->To avoid IP fragmentation, UDP-based applications transmit conservatively, with small packets that ensure reassembly.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP
+- TCP provides a reliable, connection-oriented, bidirectional, byte-stream communcation channel.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->A TCP-based host sends acknowledgements to the sender when packets are delivered.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The sender keeps a timer for each packet: if no acknowledgement is received before expiration, the packet is *retransmitted*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Bytes in TCP packets are assigned a logical sequence number, to aid in reassembly, avoiding duplicates, and acknowledging which segment was received.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP
+- TCP also provides other sophisticated functions:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Flow control, preventing fast senders from overwhelming slow receivers.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Congestion control: preventing fast senders from overwhelming a network.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP 
+ - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->If a sender transmits faster than a router can relay, packets will be dropped, leading to degraded performance.
+ - &shy;<!-- .element: class="fragment" data-fragment-index="2" -->To avoid this, TCP employs a *slow-start* algorithm (initially transmitting at slow rate, ramping up exponentially) together with a *congestion-avoidance* algorithm to limit transmission to a detected optimal rate.
+
+--- 
+### Endianness
+
+-  IP addresses and port numbers are integers.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Different hardware architectures store bytes of multi-byte integers in different orders.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->The two orders are: most-significant byte first (big endian) and least-significant byte first (little endian).
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->This can cause problems when integer values are transmitted between hosts.
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->A fixed order, the *network byte order* (which is big endian) is used in such cases, which is understood by all hosts.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Endianness
+
+- Sometimes we need to make direct use of integer constants, such as port numbers passed as arguments or the constants ``INADDR_ANY`` and ``INADDR_LOOPBACK``. These are stored in host byte order.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Before storing them in socket address structures we must convert them to network byte order.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->In C this is done via the functions:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``htons, htonl, ntohs, ntohl`` included in ``arpa/inet.h``.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Marshalling
+- Apart from endianness, different hosts have different conventions for data types (for example the size of ``long`` being 32 bits or 64 bits), aligning of fields of a structure, etc.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Because of these differences, standards such as XDR, CORBA, XML may be employed to put data into a standard format.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->A simpler approach is to encode data in text form, with separate items being delimited by a designated character (typically the newline char).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internet socket addresses
+
+- An IPv4 socket address is stored in a ``sockaddr_in`` structure, defined in ``<netinet/in.h>`` as follows:
+<img src="Pasted image 20240317152611.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

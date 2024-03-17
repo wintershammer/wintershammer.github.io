@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+### Séance 5
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internets
+- Un *internet* (i minuscule) relie différents réseaux (sous-réseaux).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Un format d'adresse unique est utilisé pour identifier tous les hôtes de l'internet, indépendamment des détails de chaque sous-réseau.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->TCP/IP est la suite dominante de protocoles pour les internets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->L'internet (I majuscule) est un internet TCP/IP.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internets
+- Un *routeur* est un ordinateur dont la fonction est de connecter des sous-réseaux.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les routeurs ont plusieurs interfaces réseau, une pour chaque sous-réseau.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internets
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les protocoles de mise en réseau définissent la manière dont les informations sont transmises sur un réseau.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Ils sont souvent organisés en *couches*, chacune s'appuyant sur la précédente pour ajouter des fonctionnalités et faire abstraction des détails.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+
+- La suite de protocoles TCP/IP est un protocole de réseau à plusieurs couches.
+
+
+<img src="Pasted image 20240317122200.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+- La notion de *transparence* est cruciale pour le fonctionnement du protocole TCP/IP :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Chaque protocole cache les détails du fonctionnement/de la complexité des couches inférieures.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Une application n'a besoin que d'utiliser l'API standard des sockets.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Elle n'a pas besoin de connaître les détails du fonctionnement de TCP.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+
+- Une autre notion importante est celle de l'encapsulation.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les données transmises des couches supérieures aux couches inférieures sont traitées comme *opaques*.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP encapsulation
+-  Les couches inférieures ne tentent pas d'interpréter les données des couches supérieures.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Au lieu de cela, elles placent les informations dans n'importe quel type de paquet qu'elles utilisent, en ajoutant les en-têtes appropriés et en les transmettant aux couches inférieures.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP/IP suite
+- Supposons par exemple que nous voulions accéder à ``www.univ-paris8.fr``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Tout d'abord, nous devons trouver l'adresse IP associée à ce nom de domaine, c'est pourquoi notre système crée un paquet DNS.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Le paquet DNS est encapsulé dans un paquet UDP.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Celui-ci est à son tour encapsulé dans un paquet IP.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Ce dernier est finalement encapsulé dans une trame Ethernet.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La couche réseau : IP
+- La couche réseau s'occupe de la transmission des paquets des hôtes sources aux hôtes destinataires.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Elle exécute diverses tâches, telles que : 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->décomposer les données en fragments, 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->le routage des données à travers l'internet, 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->la fourniture de services à la couche transport.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Deux versions sont utilisées : IPv4 et IPv6, avec une différence notable au niveau du format et de la plage d'adresses.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP datagrams
+
+- Le protocole IP transmet les données via des datagrammes. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Chaque datagramme est indépendant et peut même emprunter des routes différentes pour traverser un réseau.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Un datagramme comprend un en-tête (entre 20 et 60 octets) qui inclut l'adresse de l'hôte cible et de l'expéditeur.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Propriétés de l'IP
+- Le protocole IP est *sans connexion* et *non fiable*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Aucune garantie que les paquets arrivent dans l'ordre où ils ont été transmis ou qu'ils ne seront pas dupliqués.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Pas de récupération des erreurs. Les paquets comportant des erreurs d'en-tête sont rejetés.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->IPv4 fournit une somme de contrôle pour l'en-tête IP, mais pas pour les données contenues dans le paquet.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Des duplications peuvent se produire en raison des mécanismes de la couche liaison de données.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La fragmentation IP
+- Les datagrammes IPv4 et v6 peuvent avoir une taille maximale d'environ 65,5k octets (v6 permet en option des datagrammes plus grands).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les couches de liaison de données imposent des limites (MTU) à la taille des trames (pour Ethernet, elle est généralement d'environ 1500 octets).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La fragmentation IP
+
+- IP définit la notion de *path MTU* : le MTU minimum sur toutes les couches de liaison de données, réparti sur la route de la source à la destination.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Lorsqu'un datagramme IP est plus grand que le MTU, IP fragmente les données et les réassemble à la destination finale.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="white" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+```md
+
+```
+<img src="Pasted image 20240317130309.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP fragmentation
+- La fragmentation est transparente pour les couches supérieures.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Cependant, elle est toujours considérée comme indésirable :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Le protocole IP n'effectue pas de retransmission.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Un datagramme ne peut être réassemblé que si tous les fragments peuvent être rassemblés.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP fragmentation
+
+- Cela peut entraîner une perte de données (pour UDP qui ne retransmet pas) et une dégradation des taux de transfert (pour TCP qui le fait).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les implémentations modernes de TCP fragmentent leurs données pour éviter la fragmentation IP.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Ce n'est pas le cas de l'UDP, il faut donc faire attention à la taille des paquets.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+
+- Une adresse IPv4 se compose de 32 bits.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Pour des raisons de lisibilité, nous écrivons souvent les 4 octets d'une adresse sous forme de décimales séparées par des points.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Lorsqu'une organisation demande une série d'adresses IPv4, elle reçoit une adresse de réseau de 32 bits et un masque de réseau correspondant de 32 bits.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+- Le masque de réseau consiste en une séquence de 1 suivis de 0. Les 1 indiquent la partie correspondant à l'ID réseau attribué, tandis que les 0 indiquent l'espace disponible à attribuer aux hôtes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Étant donné que les masques de réseau sont déterminés uniquement par le nombre de 1 initiaux qu'ils comportent, nous écrivons souvent les plages d'adresses sous la forme d'un ID de réseau suivi d'un nombre entier.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Par exemple, 204.152.189.0/24 indique que l'ID du réseau est constitué des 24 bits les plus à gauche, les 8 bits restants spécifiant l'ID de l'hôte. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Dans ce cas, le masque est 255.255.255.0.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Une entité détenant cette adresse peut attribuer 254 adresses Internet uniques : 204.152.189.1 - 204.152.189.254.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+
+- Deux adresses ne peuvent pas être attribuées :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->204.152.189.0, qui est utilisée pour identifier le réseau lui-même.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->204.152.189.255, qui est l'adresse de diffusion du sous-réseau.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Certaines adresses ont une signification particulière :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->127.0.0.0/8 est réservée au *loopback* : les datagrammes envoyés à de telles adresses (généralement 127.0.0.1) reviennent en boucle vers l'hôte émetteur.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### IP addresses
+- Une adresse de bouclage est souvent utilisé pour les tests (voir la constante ``INADDR_LOOPBACK`` pour C).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Une autre adresse spéciale est ``INADDR_ANY``, le *wildcard*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Elle est souvent utilisée pour les applications qui lient des sockets de domaine Internet sur des hôtes ayant de nombreuses interfaces.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Les organisations peuvent diviser leurs adresses en sous-réseaux, pour lesquels des *masques de sous-réseau* sont utilisés.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La couche transport
+- Les protocoles de transport assurent la communication de bout en bout entre les applications.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Pour ce faire, ils ont besoin d'un moyen de différencier les applications fonctionnant sur un hôte.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Dans les protocoles TCP et UDP, cela se fait par le biais d'un numéro de port de 16 bits.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La couche transport 
+
+- Certains numéros de port sont attribués à des applications/services spécifiques (par exemple, ``ssh`` utilise 22, HTTP utilise 80, etc.)
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Cette attribution est effectuée par l'Internet Assigned Numbers Authority (http://www.iana.org).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Bien que les ports UDP et TCP soient distincts, un service se voit généralement attribuer le même numéro dans les deux protocoles TCP et UDP (même s'il n'utilise qu'un seul protocole).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La couche transport
+- Dans l'implémentation Linux de TCP/IP, 0 à 1023 sont des numéros de port privilégiés, ce qui signifie que seuls les processus privilégiés peuvent se lier à ces ports.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les ports *éphémères* sont attribués aux applications qui n'en choisissent pas un en particulier. Dans TCP et UDP, cela se fait en liant le port 0.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La couche transport
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``/proc/sys/net/ipv4/`` `ip_local_port_range`` spécifie la plage éphémère.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  UDP
+
+ - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'UDP n'ajoute que deux fonctionnalités à l'IP : les numéros de port et une somme de contrôle des données pour permettre la détection des erreurs.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Pour éviter la fragmentation IP, les applications basées sur l'UDP transmettent de manière conservatrice, avec de petits paquets qui garantissent le réassemblage.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP
+- TCP fournit un canal de communication fiable, orienté connexion, bidirectionnel et à flux d'octets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Un hôte basé sur TCP envoie des accusés de réception à l'expéditeur lorsque les paquets sont livrés.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP 
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'expéditeur conserve un minuteur pour chaque paquet : si aucun accusé de réception n'est reçu avant l'expiration, le paquet est *retransmis*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Les octets des paquets TCP se voient attribuer un numéro de séquence logique, afin de faciliter le réassemblage, d'éviter les doublons et d'accuser réception du segment reçu.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP
+- Le protocole TCP offre également d'autres fonctions sophistiquées :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Contrôle de flux, empêchant les expéditeurs rapides de submerger les récepteurs lents.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Contrôle de la congestion : empêcher les expéditeurs rapides de submerger un réseau.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### TCP 
+ - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Si un expéditeur transmet plus rapidement qu'un routeur ne peut le faire, les paquets seront rejetés, ce qui entraînera une dégradation des performances.
+ - &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Pour éviter cela, le protocole TCP utilise un algorithme de démarrage lent (transmission initiale à faible vitesse, puis augmentation exponentielle) ainsi qu'un algorithme d'évitement des encombrements pour limiter la transmission à une vitesse optimale détectée.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Endianness (boutisme)
+
+- Les adresses IP et les numéros de port sont des nombres entiers.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les différentes architectures matérielles stockent les octets des entiers multi-octets dans des ordres différents.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Les deux ordres sont : l'octet le plus significatif en premier (big endian) et l'octet le moins significatif en premier (little endian).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Endianness (boutisme)
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Cela peut poser des problèmes lorsque des valeurs entières sont transmises entre des hôtes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Un ordre fixe, le *network byte order* (qui est big endian) est utilisé dans de tels cas, qui est compris par tous les hôtes.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Endianness (boutisme)
+
+- Parfois, nous avons besoin d'utiliser directement des constantes entières, comme les numéros de port passés en argument ou les constantes ``INADDR_ANY`` et ``INADDR_LOOPBACK``. Elles sont stockées dans l'ordre des octets de l'hôte.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Avant de les stocker dans des structures d'adresses de sockets, nous devons les convertir dans l'ordre des octets du réseau.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->En C, cela se fait via les fonctions :
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``htons, htonl, ntohs, ntohl`` incluses dans ``arpa/inet.h``.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Marshalling
+- Outre le boutisme, les hôtes ont des conventions différentes pour les types de données (par exemple, la taille de ``long`` est de 32 bits ou de 64 bits), l'alignement des champs d'une structure, etc.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->En raison de ces différences, des normes telles que XDR, CORBA, XML peuvent être utilisées pour mettre les données dans un format standard.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Marshalling 
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Une approche plus simple consiste à coder les données sous forme de texte, les éléments séparés étant délimités par un caractère désigné (typiquement le caractère de retour à la ligne).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Internet socket addresses
+
+- Une adresse de socket IPv4 est stockée dans une structure ``sockaddr_in``, définie dans ``<netinet/in.h>`` comme suit :
+<img src="Pasted image 20240317152611.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
