@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+
+### Séance 3
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La famille ``exec()``
+- Nous avons déjà vu comment fonctionne ``execve()``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les fonctions ``execl()`` et ``execlp()`` sont construites sur cette base.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ``execl()``
+
+-  Son premier argument est ``const char *pathname``, le chemin du programme à exécuter.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les arguments suivants ``const char *arg0, const char *arg1, ...`` sont passés au programme.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0"></script></section><section  data-markdown><script type="text/template">### ``execl()``
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les programmes prennent généralement leur nom comme premier argument (pensez à ``argv[0]``).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Le dernier argument est ``(char *) NULL``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->La variable ``envp`` de ``exec()`` est initialisée à la variable système globale ``environ``.
+</grid></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ``execlp()``
+- Identique à ``execl`` mais si le premier argument n'est pas un chemin (ne contient pas ``/``), le fichier est recherché dans les répertoires de ``PATH``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Pas forcément sûr/safe : des acteurs malveillants peuvent modifier le ``PATH`` pour y inclure des exécutables malveillants.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Communication interprocessus 
+- Nous avons vu comment utiliser ``fork()`` et ``wait()`` pour créer des processus.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ces processus obtiennent des copies des données de leurs parents.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Comment un processus enfant peut-il communiquer avec son parent ?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Présentation des tubes
+- La plus ancienne forme d'IPC sous UNIX (~1970s).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Vous les connaissez probablement déjà :
+	```
+	$ cat someFile.txt | wc -l 
+	```
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``cat`` imprime un fichier sur la sortie standard.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``wc -l`` compte le nombre de lignes de son entrée.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Le tube (``|``) nous permet d'utiliser la sortie d'un processus comme entrée d'un autre !
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Ils sont unidirectionnels : une entrée en écriture et une sortie en lecture.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Présentation des tubes
+- L'interpréteur de commandes crée deux processus, exécutant ``ls, wc``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->La sortie standard de ``ls`` est jointe à l'entrée d'écriture du tube.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->La sortie standard de ``wc`` est jointe à la sortie de lecture du tube.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Les tubes créés par un parent permettent la communication entre les processus enfants (à condition que le tube ait été créé avant les appels ``fork()``).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faits concernant les tubes
+- Un tube est un flux d'octets : les données sont traitées de manière séquentielle (dans l'ordre où elles ont été écrites).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->La lecture à partir d'un tube peut se faire en blocs de n'importe quelle taille, quelle que soit la taille des blocs écrits par le processus d'écriture.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Pas d'accès aléatoire (pas de ``lseek()``).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faits concernant les tubes
+- La lecture sur un tube vide se bloque jusqu'à ce qu'au moins un octet ait été écrit.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*Si* la sortie de lecture du tube est fermée, ``read()`` sur un tube vide donne ``0``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Par conséquent, il faut fermer l'entrée d'écriture des tubes lorsqu'ils ne sont pas utilisés.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faits concernant les tubes
+-  Écrire dans un tube pour lequel aucun processus n'a de descripteur de lecture ouvert entraîne un signal ``SIGPIPE`` de la part du noyau (par défaut, cela tue le processus).
+- Si un processus qui écrit sur un tube ne ferme pas la sortie de lecture du tube, il finira par remplir le tube et se bloquera.
+- Par conséquent, il faut fermer la sortie de lecture des tubes lorsqu'ils ne sont pas utilisés.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Faits concernant les tubes
+- Si plusieurs processus écrivent sur un même tube, les données peuvent être intercalées.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->L'écriture d'au plus ``PIPE_BUF`` (défini dans ``limits.h``) de bits à la fois est garantie atomique (pas d'entrelacement).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Si plus de ``PIPE_BUF`` octets sont écrits, ``write()`` transfère autant de données que possible puis se bloque jusqu'à ce que les données aient été supprimées (par la lecture).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Création de tubes
+- L'appel système ``pipe()`` crée des tubes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->En C:
+```
+#include <unistd.h>
+int pipe(int pipedes[2]);
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->L'entrée est : un tableau de deux descripteurs de fichiers.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``pipedes[0]`` est l'entrée de lecture.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->``pipedes[1]`` est la sortie en écriture.
+</div></script></section><section  data-markdown><script type="text/template"></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfaExos3 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-0-programmation-du-jeu-de-base">Exercice 0 - Programmation du jeu de base</a></li>
+        <li><a href="#exercice-1-programmation-dun-robot">Exercice 1 - Programmation d'un robot</a></li>
+        <li><a href="#devoir-a-rendre-avant-le-27-octobre-2023-23h59-heure-de-paris-proposez-et">Devoir à rendre avant le 27 octobre 2023, 23h59, heure de Paris: Proposez et</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <p>Le but de cette session d'exercices est d'implémenter le jeu tic-tac-toe en
+OCaml, ainsi qu'un bot contre lequel jouer, en se conformant à la signature
+suivante :
+<div class="highlight"><pre><span></span><code>module type Tictactoe = 
+    sig
+        type move = Empty | X | O
+        type board
+
+        val empty_board : board
+        val possible_moves : board -&gt; move 
+                             -&gt; (string * board) list
+        val play_move : board -&gt; move -&gt; string 
+                        -&gt; (string * board) option
+        val string_of_board : board -&gt; string
+        val string_of_move : move -&gt; string
+        val winning_config : board -&gt; bool 
+        val propose_move : board -&gt; move -&gt; string -&gt; string option
+    end
+</code></pre></div></p>
+<h2 id="exercice-0-programmation-du-jeu-de-base">Exercice 0 - Programmation du jeu de base</h2>
+<ul>
+<li>
+<p>Problème 0 : Implémentez les fonctions <code>string_of_move</code> et
+<code>string_of_board</code> qui renvoient une chaîne représentant leur entrée.</p>
+</li>
+<li>
+<p>Problème 1 : Implémenter trois fonctions <code>check_collumns</code>, <code>check_lines</code>,
+<code>check_diags</code> de type <code>board -&gt; bool</code> qui retournent <code>true</code> si une colonne,
+une ligne ou une diagonale contient respectivement trois occurrences du même
+<code>move</code> autre que <code>Empty</code>, sinon <code>false</code>. 
+Utilisez ces fonctions pour implémenter la
+fonction <code>winning_config : board -&gt; bool</code> qui vérifie qu'une configuration
+donné représente une configuration gagnante.</p>
+</li>
+<li>
+<p>Problème 2 : Implémenter une fonction <code>play_move : board -&gt; move -&gt; string</code>
+qui prend en entrée une configuration (représentée par une valeur de type
+<code>board</code>), le move à effectuer (<code>X</code> ou <code>O</code>, représenté par une valeur de
+type <code>move</code>) et une chaîne de caractères parmi <code>"aa", "ab", "ac", "ba",
+"bb", "bc", "ca", "cb", "cc</code>et : </p>
+</li>
+<li>Si la case du tableau dont les coordonnées
+sont données par la chaîne d'entrée est vide,
+la fonction renvoie une <code>Some (s, b')</code> où <code>b'</code> est le tableau mis à jour de
+façon à ce que cette case soit maintenant occupée par <code>X</code> ou <code>O</code> selon le
+cas.</li>
+<li>
+<p>Sinon, la fonction renvoie <code>None</code>.</p>
+</li>
+<li>
+<p>Problème 3 : 
+Implémenter la fonction <code>possible_moves : board -&gt; move -&gt; (string * board)
+list option</code> qui prend en entrée une configuration (le premier argument) et une
+valeur de type <code>move</code> (le second argument, que nous supposons être soit <code>X</code> soit <code>O</code>) 
+et qui retourne :</p>
+</li>
+<li>
+<p><code>None</code> si aucun jeu n'est possible en utilisant la valeur de type <code>move</code> fournie.</p>
+</li>
+<li><code>Some l</code>, où <code>l</code> contient tous les coups possibles représentés comme
+des paires d'une chaîne de caractères (la coordonnée à laquelle jouer) et le
+tableau qui en résulte.</li>
+</ul>
+<h2 id="exercice-1-programmation-dun-robot">Exercice 1 - Programmation d'un robot</h2>
+<p>Pour cet exercice, nous utiliserons le type suivant pour représenter notre
+arbre de jeu, que nous utiliserons pour analyser les mouvements possibles et
+leurs gains.</p>
+<ul>
+<li>
+<p>Problème 0 : Implémentez une fonction <code>make_tree : board -&gt; move -&gt; string</code>
+  qui prend comme arguments la configuration courante, la dernière valeur du
+  coup joué (<code>X</code> ou <code>O</code>), et la coordonnée où il a été joué (sous forme de
+  chaîne) et renvoie un arbre de jeu dont la racine est est la configuration
+  donnée.</p>
+</li>
+<li>
+<p>Problème 1 : Implémenter une fonction qui prend en entrée le plateau actuel,
+  la dernière valeur du coup joué et sa coordonnée, et qui retourne une
+  proposition pour le prochain coup. La fonction doit utiliser l'arbre de jeu
+  construit avec <code>make_tree</code> pour analyser le jeu et proposer un coup qui a la
+  possibilité de mener à une victoire pour le joueur dont les coups sont de
+  valeur opposée à celle donnée (par exemple si le dernier coup a été <code>X</code>,
+  nous voulons un coup pour <code>O</code> qui a l'opportunité de lui faire gagner la
+  partie).</p>
+</li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-27-octobre-2023-23h59-heure-de-paris-proposez-et">Devoir à rendre avant le 27 octobre 2023, 23h59, heure de Paris: Proposez et</h2>
+<p>implémentez une fonction <code>propose_move</code> alternative qui remplace celle que
+nous avons implémentée dans le cadre de l'Exercice 1, Problème 1. Un exemple
+d'algorithme alternatif est le suivant :</p>
+<p>1) Etant donné une configuration du plateau de tic-tac-toe, le dernier coup
+joué et l'endroit où il a été joué, construire l'arbre de jeu <code>t</code>.</p>
+<p>2) Noter tous les enfants de la racine de <code>t</code> en fonction d'une certaine
+métrique et retourner le coup qui correspond à l'enfant ayant le meilleur
+score.</p>
+<p>Un exemple d'une telle métrique pour un arbre est par exemple donné en
+pondérant chaque feuille par +1 si elle est gagnante pour le joueur, +1 si elle
+est à égalité, et -1 si elle est gagnante pour l'adversaire, et enfin en
+faisant la somme de ces poids sur toutes les feuilles.</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

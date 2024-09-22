@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercice 0 - Parcours en profondeur - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-0-parcours-en-profondeur">Exercice 0 - Parcours en profondeur</a></li>
+        <li><a href="#exercice-1-parcours-en-largeur">Exercice 1 - Parcours en largeur</a></li>
+        <li><a href="#exercice-3-operations-sur-les-arbres-binaires-de-recherche">Exercice 3 - Opérations sur les arbres binaires de recherche</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercice-0-parcours-en-profondeur">Exercice 0 - Parcours en profondeur</h1>
+<p>-Problem 0: Implémenter en Racket trois fonctions
+<code>prefix-traversal, infix-traversal,
+postfix-traversal</code> qui prennent en argument un arbre
+et renvoient la liste des étiquettes des sommets dans
+l'ordre où ils sont visités selon les parcours en
+profondeur préfixe, infixe et postfixe, respectivement.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>(define t1 &#39;(1 (2 () ()) (3 () ())))
+(define t2 &#39;(1 (2 (4 () ()) (5 () ())) (3 () ())))
+&gt; (prefix-traversal t1)
+&#39;(1 2 3)
+&gt; (prefix-traversal t2)
+&#39;(1 2 4 5 3)
+&gt; (infix-traversal t1)
+&#39;(2 1 3)
+&gt; (infix-traversal t2)
+&#39;(4 2 5 1 3)
+&gt; (postfix-traversal t1)
+&#39;(2 3 1)
+&gt; (postfix-traversal t2)
+&#39;(4 5 2 3 1)
+</code></pre></div></p>
+<h1 id="exercice-1-parcours-en-largeur">Exercice 1 - Parcours en largeur</h1>
+<p>-Problem 0: Implémenter en Racket une fonction
+<code>breadth-first-traversal</code> qui prend en argument un
+arbre et retourne la liste des étiquettes des sommets
+dans l'ordre où ils sont visités lors d'un parcours en
+largeur.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code>&gt; (breadth-first-traversal t1)
+&#39;(1 2 3)
+&gt; (breadth-first-traversal t1)
+&#39;(1 2 3 4 5)
+</code></pre></div></p>
+<h1 id="exercice-3-operations-sur-les-arbres-binaires-de-recherche">Exercice 3 - Opérations sur les arbres binaires de recherche</h1>
+<p><img alt="" src="../../../../assets/images/teaching/funProg/example_abr.svg" /></p>
+<p>-Problem 1: Implémentez une fonction <code>search</code> qui prend en entrée un arbre (supposé être
+un ABR) et une valeur et qui retourne <code>#t</code> si la valeur apparaît comme
+l'étiquette d'un sommet de l'arbre, sinon elle retourne <code>#f</code>. Exemples de
+résultats attendus (en utilisant l'arbre ABR ci-dessus comme exemple) :
+<div class="highlight"><pre><span></span><code>&gt; (search example-abr 5)
+#t
+&gt; (search example-abr 7)
+#t
+&gt; (search example-abr 6)
+#f
+&gt; (search example-abr 4)
+#f
+</code></pre></div></p>
+<p>-Problem 1: Implémentez une fonction <code>insert</code> qui prend en entrée un arbre (supposé être
+un ABR) et une valeur et qui insère la valeur (c'est-à-dire qui insère un
+nouveau sommet dans l'arbre avec la valeur donnée comme étiquette) dans l'arbre
+tout en conservant la propriété d'être un ABR.
+Exemples de résultats attendus:</p>
+<div class="highlight"><pre><span></span><code>&gt; (insert example-abr 6)
+&#39;(5 (2 (0 () ()) (3 () ())) (9 (7 (6 () ()) (8 () ())) (12 () ())))
+&gt; (insert example-abr 4)
+&#39;(5 (2 (0 () ()) (3 () (4 () ()))) (9 (7 () (8 () ())) (12 () ())))
+</code></pre></div>
+<p>-Problem 2: Implémenter une fonction <code>remove</code> qui prend en entrée un arbre
+(supposé être un ABR) et une valeur et si la valeur apparaît comme l'étiquette
+d'un sommet, elle effectue l'opération de suppression pour ce sommet dans
+l'arbre donné.
+Exemples de résultats attendus:</p>
+<div class="highlight"><pre><span></span><code>&gt; (delete example-abr 8)
+&#39;(5 (2 (0 () ()) (3 () ())) (9 (7 () ()) (12 () ())))
+&gt; (delete example-abr 2)
+&#39;(5 (0 () (3 () ())) (9 (7 () (8 () ())) (12 () ())))
+&gt; (delete example-abr 5)
+&#39;(3 (2 (0 () ()) ()) (9 (7 () (8 () ())) (12 () ())))
+</code></pre></div>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

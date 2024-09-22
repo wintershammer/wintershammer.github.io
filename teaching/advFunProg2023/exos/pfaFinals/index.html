@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfaFinals - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#preambule">Préambule :</a></li>
+        <li><a href="#exercice-0-polynomes">Exercice 0 - Polynômes</a></li>
+        <li><a href="#exercice-1-arbres-de-recherche-binaires">Exercice 1 - Arbres de recherche binaires</a></li>
+        <li><a href="#exercice-2-piles">Exercice 2 - Piles</a></li>
+        <li><a href="#exercice-3-parsing-base-sur-advent-of-code-2023-day-1">Exercice 3 - Parsing (Basé sur "Advent of Code 2023 - Day 1")</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h2 id="preambule">Préambule :</h2>
+<p>Chaque question donne droit à un maximum de 2 points. Il y a 10 questions,
+regroupées en 4 exercices, de sorte que la note maximale finale est de 20/20.</p>
+<p>Vous devez soumettre un fichier, appelé <code>exo_n.ml</code> où <code>n</code> <span class="arithmatex">\(\in
+\{0,1,2,3\}\)</span>, par exercice contenant l'ensemble des solutions proposées. </p>
+<p>Au cours des exercices suivants, vous aurez besoin d'utiliser certains modules
+fournis par le module <code>mods.ml</code> que j'ai mis à votre disposition 
+<a href="https://code.up8.edu/alex/programmation-fonctionnelle-avancee-2023/-/tree/main/finals">dans le repo git du cours.</a></p>
+<p>Vous ne devez pas copier le code contenu dans <code>mods.ml</code> ! 
+Si vous voulez utiliser l'un des modules de <code>mods.ml</code>, vous devez l'importer
+de manière appropriée dans votre fichier <code>exo_n.ml</code>. </p>
+<p>Pour vérifier que vos soumissions sont valides, vous pouvez exécuter la
+procédure suivante :</p>
+<p><div class="highlight"><pre><span></span><code>ocamlc -c mods.ml exo_0.ml exo_1.ml exo_2.ml exo_3.ml
+</code></pre></div>
+Si vous utilisez <code>ocaml</code> ou <code>utop</code> pour tester votre code (bien que je vous
+suggère plutôt d'utiliser Dune !) , 
+n'oubliez pas de démarrer la session avec la commande suivante :
+<div class="highlight"><pre><span></span><code>#mod_use &quot;mods.ml&quot;
+</code></pre></div>
+avant de charger les fichiers de vos solutions, comme par example avec la commande 
+<code>#use exo_n.ml</code>.</p>
+<p>et vérifier que la compilation s'est déroulée sans erreur.</p>
+<h2 id="exercice-0-polynomes">Exercice 0 - Polynômes</h2>
+<p><em>Notions utiles pour cet exercice : les flottants, les listes et le module List, la récursivité, les opérations arithmétiques.</em></p>
+<p>Cet exercice traite des polynômes à coefficients réels, c'est-à-dire des
+sommes de la forme <span class="arithmatex">\(\sum_{0 \leq i \leq n} a_i x^i = a_n x^n + a_{n-1} x^{n-1}
++ \dots + a_1 x + a_0, a_i \in \mathbb{R}\)</span>. </p>
+<p>Nous représenterons un polynôme par une liste de longueur égale à son degré, de
+telle sorte que le i-ème élément de cette liste soit un <code>float</code> représentant
+de <span class="arithmatex">\(a_i\)</span>. </p>
+<p>Par exemple, le polynôme <span class="arithmatex">\(x^2-5\)</span> donne la liste <code>[1.;0.;-5.]</code> .</p>
+<p>-Problème 0 : 
+Rappelons que la dérivée d'un polynôme <span class="arithmatex">\(\sum_{0 \leq i \leq n} a_i x^i\)</span> est <span class="arithmatex">\(\sum_{1 \leq i \leq n} i a_i x^{i-1}\)</span> (la dérivée d'une constante correspondant à la somme vide, donc étant 0). </p>
+<p>Implémentez en OCaml une fonction <code>diff : float list -&gt; float list</code> qui calcule la liste correspondant à la dérivée du polynôme représenté en entrée. 
+Par exemple, pour le polynôme <span class="arithmatex">\(p_0 = x^2+2x+1\)</span> dont la dérivée est <span class="arithmatex">\((p_0)' = 2x+2\)</span>, on a : </p>
+<div class="highlight"><pre><span></span><code># diff [1.;2.;1.]; ;
+- : float list = [2. ; 2.]
+</code></pre></div>
+<p>-Problème 1 :
+Implémentez une fonction <code>eval_poly : float list -&gt; float -&gt; float</code> qui prend en entrée une liste représentant un polynôme et un <code>float</code> représentant un certain point et retourne un <code>float</code> représentant la valeur du polynôme évaluée en ce point.</p>
+<p>Par exemple, <span class="arithmatex">\(-3x^2+\frac{6x}{7} + (3.14)\)</span> évalué à <span class="arithmatex">\(0.5772\)</span> donne :</p>
+<div class="highlight"><pre><span></span><code># eval_poly [-3. ; 6. /. 7. ; 3.14] 0.5772; ;
+
+- : float = 2.63526333714285688
+</code></pre></div>
+<p>-Problème 2 :
+La méthode Newton-Raphson, nommée d'après Isaac Newton et Joseph
+Raphson, est un algorithme d'approximation des racines d'une 
+fonction <span class="arithmatex">\(f(n)\)</span> différentiable à valeur réelle. Elle est décrite 
+par l'itération :</p>
+<p><span class="arithmatex">\(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\)</span>,</p>
+<p>où <span class="arithmatex">\(f'(x)\)</span> est la dérivée de <span class="arithmatex">\(f(x)\)</span>.</p>
+<p>Implémentez en OCaml une fonction <code>newton_raphson : float list -&gt;
+float -&gt; float -&gt; float</code> qui prend en entrée:</p>
+<ol>
+<li>une liste <code>p : float
+list</code> représentant un polynôme, </li>
+<li>une valeur numérique <code>x : float</code>
+représentant un point initial, </li>
+<li>et une valeur numérique <code>err :
+float</code> qui représente une erreur additive, </li>
+</ol>
+<p>et retourne comme résultat
+un <code>float</code> qui est l'approximation d'une racine du polynôme d'entrée, calculée en utilisant l'itération de
+Newton-Raphson<br />
+L'approximation doit être telle que <code>(newton_raphson p x err) |&gt; eval_poly p) &lt; err</code>, c'est-à-dire que le résultat du polynôme évalué à cette approximation est inférieur à <span class="arithmatex">\(\pm\)</span><code>err</code>. </p>
+<div class="highlight"><pre><span></span><code># let poly = [1.; 0.; -5.];;
+val poly : float list = [1.; 0.; -5.]
+# newton_raphson poly (-1.) 0.01;;
+- : float = -2.23809523809523814
+# newton_raphson poly (-1.) 0.0001;;
+- : float = -2.23606889564336342
+# newton_raphson poly (-1.) 0.000001;;
+- : float = -2.2360679774999781
+# newton_raphson poly 1. 0.01;;
+- : float = 2.23809523809523814
+# newton_raphson poly 1. 0.0001;;
+- : float = 2.23606889564336342
+# newton_raphson poly 1. 0.000001;;
+- : float = 2.2360679774999781
+</code></pre></div>
+<h2 id="exercice-1-arbres-de-recherche-binaires">Exercice 1 - Arbres de recherche binaires</h2>
+<p><em>Notions utiles pour cet exercice : les types de données algébriques, les arbres, les listes et le module List, la Monade Writer.</em></p>
+<p>Cet exercice concerne les arbres binaires de recherche, qui sont des arbres binaires tels que :</p>
+<ol>
+<li>
+<p>La valeur de la racine est supérieure à toutes les valeurs de son fils gauche (sous-arbre gauche). </p>
+</li>
+<li>
+<p>La valeur de la racine est inférieure à toutes les valeurs de son fils droit (sous-arbre droit).</p>
+</li>
+<li>
+<p>Les enfants de gauche et de droite de la racine sont des arbres de recherche binaires.</p>
+</li>
+</ol>
+<p>Nous représenterons les arbres de recherche binaires à l'aide du type de données algébrique :</p>
+<div class="highlight"><pre><span></span><code>type abr =
+    | Empty 
+    | Node of int * abr * abr
+</code></pre></div>
+<p>-Problème 3 :
+Implémenter une fonction <code>insert : int -&gt; abr -&gt; abr</code> qui prend en entrée un entier et un arbre et renvoie un nouvel arbre de recherche binaire qui contient toutes les valeurs de l'ancien en plus de la nouvelle valeur. </p>
+<p>Par exemple, l'insertion successive des valeurs 4,8,6,1,3,5 dans un arbre initialement vide donne : </p>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/insert_example.svg" /></p>
+<p>C'est-à-dire : 
+<div class="highlight"><pre><span></span><code># List.fold_right (fun x y -&gt; insert x y) [4;8;6;1;3;5] Empty;;
+- : abr =
+Node (5, Node (3, Node (1, Empty, Empty), Node (4, Empty, Empty)),
+ Node (6, Empty, Node (8, Empty, Empty)))
+</code></pre></div></p>
+<p>-Problème 4 :
+Implémenter une fonction <code>search</code> qui prend en entrée:</p>
+<ol>
+<li>un entier,</li>
+<li>et un arbre</li>
+</ol>
+<p>et renvoie: </p>
+<ol>
+<li>un booléen correspondant au fait que la valeur existe (ou non) dans
+un arbre,</li>
+<li><em>ainsi</em> qu'une chaîne composée des lettres "l" et "r" représentant le
+chemin (la succession de visites d'enfants gauche et droite) nécessaire pour y
+accéder, en partant de la racine (une chaîne vide si l'entier n'existe pas dans
+l'arbre).</li>
+</ol>
+<p>La fonction que vous implémentez doit être de l'un des deux types suivants :</p>
+<ol>
+<li>
+<p><code>recherche : int -&gt; abr -&gt; bool * string</code>,</p>
+</li>
+<li>
+<p><code>recherche : int -&gt; abr -&gt; bool StringWriter.t</code> 
+où <code>StringWriter</code> est un module (que vous devez créer) implémentant une
+monade Writer manipulant des chaînes de caractères.</p>
+</li>
+</ol>
+<p>Les réponses du premier type seront notées avec un maximum de 1 point,
+les réponses du deuxième type seront notées avec un maximum de 2 points.
+Si vous choisissez la seconde option, vous pouvez créer une monade Writer en
+utilisant le foncteur <code>MakeWriter</code> fourni.</p>
+<p>A titre d'exemple, considérez une implémentation de la fonction <code>search</code>
+utilisant une monade Writer, ainsi que l'exemple d'arbre ci-dessus. Nous avons
+alors : </p>
+<div class="highlight"><pre><span></span><code># let ex = List.fold_right (fun x y -&gt; insert x y) [4;8;6;1;3;5] Empty;;
+val example : abr =
+  Node (5, Node (3, Node (1, Empty, Empty), Node (4, Empty, Empty)),
+   Node (6, Empty, Node (8, Empty, Empty)))
+# search 6 ex;;
+- : bool t = Writer (true, &quot;r&quot;)
+# search 4 ex;;
+- : bool t = Writer (true, &quot;rl&quot;)
+# search 8 ex;;
+- : bool t = Writer (true, &quot;rr&quot;)
+# search 42 ex;;
+- : bool t = Writer (false, &quot;&quot;)
+</code></pre></div>
+<p>-Problème 5 :
+Implémentez une fonction <code>tree_sort: int list -&gt; int list</code> 
+qui trie une liste d'entrée en utilisant l'algorithme de tri par arbre :</p>
+<p>Construire un arbre de recherche binaire à partir de la liste d'entrée et
+renvoyer une nouvelle liste contenant les éléments de cet arbre dans l'ordre où
+ils sont visités par l'algorithme de parcours infixe.</p>
+<p>Par exemple :
+<div class="highlight"><pre><span></span><code># tree_sort [5;2;1;3;4];;
+- : int list = [1; 2; 3; 4; 5]
+</code></pre></div></p>
+<h2 id="exercice-2-piles">Exercice 2 - Piles</h2>
+<p><em>Notions utiles pour cet exercice : récursion, listes et module List, modules et structures, monade Maybe.</em></p>
+<p>-Problème 6 : Implémenter une fonction <code>rev_list : 'a list -&gt; 'a list</code> qui inverse une liste (c'est-à-dire qui retourne une nouvelle liste dont les éléments sont ceux de l'entrée dans l'ordre inverse) en utilisant le module <code>Stack</code> fourni.</p>
+<p>Vous pouvez (ou non) utiliser la monade Maybe pour mettre en œuvre la
+fonction ci-dessus. Les réponses élégantes et simples seront mieux notées.</p>
+<p>Par exemple : 
+<div class="highlight"><pre><span></span><code># rev_list [1;2;3;4;5];;
+- : int list = [5; 4; 3; 2; 1]
+</code></pre></div></p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Insérez tous les éléments de la liste dans une pile, puis <code>pop</code> la pile
+jusqu'à ce qu'elle soit vide, en stockant chaque élément retiré dans une
+nouvelle liste. </p>
+</details>
+<p>-Problème 7: Implémentez une fonction <code>sort_stack : 'a ListStack.t -&gt; 'a
+ListStack.t</code> qui prend en entrée une pile et la trie par ordre décroissant
+(c'est-à-dire qu'elle retourne une pile qui contient les mêmes éléments par
+ordre décroissant).</p>
+<p>Pour ce faire, votre fonction doit mettre en œuvre l'algorithme suivant :</p>
+<ol>
+<li>
+<p>Soit <code>s</code> une pile que nous voulons trier et <code>t</code> une seconde pile qui est
+   initialement vide.</p>
+</li>
+<li>
+<p>Si <code>s</code> est vide, renvoyez <code>t</code>.</p>
+</li>
+<li>
+<p>Si <code>t</code> est vide, alors dépilez le premier élément de la pile <code>s</code>,
+   insérez-le dans <code>t</code>, et appliquer l'algortithme récursivement aux deux nouvelles piles. </p>
+</li>
+<li>
+<p>Si aucune des deux piles n'est vide alors, notons <code>a</code> l'élément
+   au sommet de la pile <code>s</code> et <code>b</code> l'élément au sommet de la pile
+   <code>t</code>:  </p>
+<ol>
+<li>
+<p>Si <code>b &gt; a</code>, alors dépilez les piles <code>s</code> et <code>t</code> pour obtenir deux
+nouvelles piles <code>popped_s</code> et <code>popped_t</code>. Insérez les éléments <code>b</code> puis
+<code>a</code> dans <code>popped_s</code> et appelez l'algorithme récursivement avec cette
+nouvelle pile et <code>popped_t</code> comme seconde pile. </p>
+</li>
+<li>
+<p>Si ce n'est pas le cas, dépilez la pile <code>s</code> pour obtenir <code>popped_s</code>,
+insérer l'élément <code>a</code> dans <code>t</code>, et appeler l'algorithme respectivement sur
+les deux nouvelles listes.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Une fois encore, vous pouvez choisir d'utiliser (ou non) la monade Maybe pour
+implémenter votre fonction. Les implémentations utilisant la monade seront
+mieux notées. </p>
+<p>Par exemple :
+<div class="highlight"><pre><span></span><code># sort_stack (List.fold_right (fun x y -&gt; push x y) [4;3;1;2;5] empty);;
+- : int list = [5; 4; 3; 2; 1]
+</code></pre></div></p>
+<h2 id="exercice-3-parsing-base-sur-advent-of-code-2023-day-1">Exercice 3 - Parsing (Basé sur "Advent of Code 2023 - Day 1")</h2>
+<p><em>Notions utiles pour cet exercice : les chaînes de caractères et la bibliothèque String (en particulier les fonctions <code>starts_with</code> et <code>sub</code>), la monade MaybeMonadPlus.</em></p>
+<p>Cet exercice concerne l'analyse syntaxique des chaînes de caractères.</p>
+<p>Vous êtes libre d'implémenter ces fonctions comme vous le souhaitez, tant qu'elles affichent les résultats désirés. </p>
+<p>-Problème 0 : Implémenter une fonction <code>parse</code> qui prend en entrée une chaîne
+de caractères et imprime tous les chiffres trouvés dans la chaîne, dans l'ordre
+de gauche à droite.</p>
+<p>Par exemple, l'application de <code>parse</code> à <code>"good1luck2everyone3!"</code> résulte en
+l'impression de ce qui suit :</p>
+<p><div class="highlight"><pre><span></span><code>1
+2
+3
+</code></pre></div>
+et son application à <code>"j0y3us3s_f3t3s_4_t0us"</code> donne:
+<div class="highlight"><pre><span></span><code>0
+3
+3
+3
+3
+4
+0
+</code></pre></div></p>
+<p>-Problème 9 : Implémentez une fonction <code>parse_2</code> qui prend en entrée une chaîne
+de caractères et fait comme ci-dessus, mais cette fois-ci elle imprime aussi
+tous les chiffres correspondant aux sous-mots de la chaîne d'entrée qui
+signifient un chiffre (i.e. "zero", "one", "two", ..., "nine").</p>
+<p>Par exemple, l'application de <code>parse_2</code> à <code>"thirtytwoplus5givesthirtyseven"</code> résulte en
+l'impression de ce qui suit :</p>
+<p><div class="highlight"><pre><span></span><code>2
+5
+7
+</code></pre></div>
+et son application à <code>"today_is_december_15_twothousandandtwentythree!"</code> donne:
+<div class="highlight"><pre><span></span><code>1
+5
+2
+3
+</code></pre></div></p>
+<p>Bonus: Votre fonction peut analyser des sous-mots qui se chevauchent (par
+exemple <code>(parse_2 "eightwone")</code> affiche 8 puis 2 puis 1 dans la console).  </p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

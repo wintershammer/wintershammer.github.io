@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+### Séance 0
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Objectifs du cours
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Apprendre à utiliser les principales abstractions fournies par les noyaux Unix: fichiers, processus, threads, sockets.
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Obtenir une intuition de base sur le fonctionnement du noyau.
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Apprendre la programmation  système sous Unix (en C).
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Comprendre les bases du modèle OSI.
+1. &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Apprendre les bases de la programmation avec l'API POSIX.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Programmation système en C
+- Le langage C est étroitement lié au système d'exploitation UNIX.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ce cours sera axé sur la programmation en C.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*Vous ne pouvez pas valider ce module sans écrire du code C propre.*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Le noyau (kernel)
+- Le noyau est la partie du code du système d'exploitation qui réside toujours en mémoire.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Quelques tâches du noyau:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Création, ordonnancement des processus.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Gestion de la mémoire. 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Gestion du système de fichiers.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Entrées/sorties réseau.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Accès aux périphériques.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="7" -->Networking.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="8" -->Mise à disposition d'une API d'appels système.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Modes Kernel et User 
+- CPUs ont (au moins) deux modes de fonctionnement : le mode noyau et le mode utilisateur.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Exemples de processus disponibles uniquement en mode noyau : arrêter le système, accéder au matériel de gestion de la mémoire, lancer des E/S de périphériques.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->La séparation des deux au niveau du matériel garantit que les processus utilisateur ne peuvent pas effectuer d'opérations susceptibles de compromettre le fonctionnement du système..
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Modes Kernel et User
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les capacités du mode utilisateur sont un sous-ensemble du mode noyau:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Accès uniquement à la mémoire désignée comme *espace utilisateur*.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Les tentatives d'accès à l'espace du noyau entraînent des exceptions matérielles.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Everything is a file 
+-  Fichiers : flux séquentiels d'octets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Les fichiers UNIX sont structurés de manière hiérarchique, le ``/`` se trouvant à la base.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Les fichiers ont plusieurs types: regular, devices, pipes, sockets, directories, symbolic links, etc.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Universalité des entrées/sorties (I/O): les mêmes appels système (eg. ``open(), close()``), nous permettent de travailler avec tous!
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Le noyau traduit les demandes d'I/O en opérations appropriées du système de fichiers/driver périphérique.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Descripteurs de fichiers 
+- Les fichiers ouverts sont désignés par des descripteurs de fichiers qui sont des nombres entiers non négatifs.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Une façon typique d'obtenir un descripteur de fichier est d'utiliser l'appel système ``open()``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Trois descripteurs de fichiers standard (hérités d'un shell):
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``0``, *standard input*.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->``1``, *standard output*.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->``2``, *standard error*.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quatre appels système fondamentaux 
+- ``open(pathname,flags,mode)``: 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ouvre le fichier identifié par pathname et renvoie un descripteur de fichier.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->L'argument ``flags`` précise si le fichier doit être ouvert en lecture, en écriture ou les deux. L'argument ``mode`` spécifie les autorisations à accorder au fichier s'il est créé par cet appel.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Si le fichier n'existe pas, open() peut le créer, en fonction des paramètres de l'argument bitmask flags.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quatre appels système fondamentaux 
+- ``read(fd, buffer, count)``: 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Lit au maximum le nombre d'octets du fichier ouvert référencé par fd et les stocke dans ``buffer``.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Renvoie le nombre d'octets effectivement lus.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Si aucun autre octet ne peut être lu (la fin du fichier a été rencontrée), ``read`` renvoie 0.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quatre appels système fondamentaux 
+- ``write(fd, buffer, count)``: 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Écrit jusqu'à ``count`` nombre d'octets du ``buffer`` dans le fichier ouvert indiqué par ``fd``.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->le nombre d'octets effectivement écrits, qui peut être inférieur au `count`.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quatre appels système fondamentaux 
+- ``close(fd)``: 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Appelé une fois les opérations d'I/O terminées.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Libère le descripteur de fichier fd et les ressources du noyau qui lui sont associées.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La bibliothèque ``stdio``
+- Vous êtes également familier avec les fonctions de ``stdio``  (``fopen(), fclose(),`` etc.)
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ils s'appuient sur les appels système d'I/O (comme ``open(), close(), read(), write()``).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Ils travaillent avec des structures ``FILE``, des flux d'octets.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Ils sont tamponnés (buffered)!
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Ne convient pas si vous voulez faire d'I/O avec un périphérique qui supporte ``ioctl()``.
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

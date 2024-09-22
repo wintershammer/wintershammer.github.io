@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices - Séance 0 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-seance-0">Exercices - Séance 0</a></li>
+        <li><a href="#exercice-1-l-echauffement">Exercice (-1) - L' échauffement</a></li><li><a href="#exercice-0-points">Exercice 0 - Points</a></li><li><a href="#exercice-1-recherche-des-nombres-premier">Exercice 1 - Recherche des nombres premier</a></li><li><a href="#exercice-2-denombrement-des-arbres-binaires">Exercice 2 - Dénombrement des arbres binaires</a></li><li><a href="#devoir-a-rendre-avant-le-06-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 06 octobre 2023, 23h59, heure de Paris:</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-seance-0">Exercices - Séance 0</h1>
+<h2 id="exercice-1-l-echauffement">Exercice (-1) - L' échauffement</h2>
+<ul>
+<li>Problème 0: Implémentez une fonction <code>prod-list</code> qui, 
+étant donné une liste de nombres, calcule leur produit. 
+Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># prod_list [1;2;3;5];;
+- : int = 30
+</code></pre></div></li>
+<li>Problème 1:
+Implémente zune fonction <code>succ-list</code> qui, étant donné une liste de nombres, produit une nouvelle liste dont les éléments sont les successeurs des éléments respectifs de la liste initiale. Rappelons que le successeur d'un nombre est . Exemple de résultat attendu:
+<div class="highlight"><pre><span></span><code># succ_list [1;2;3;4;5];;
+- : int list = [2; 3; 4; 5; 6]
+</code></pre></div></li>
+</ul>
+<h2 id="exercice-0-points">Exercice 0 - Points</h2>
+<ul>
+<li>Problème 0: Implémentez une fonction <code>dot_line : int -&gt; string</code>
+telle que <code>dot_line k</code>
+renvoie une chaîne de k points.
+Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># dot_line 5;;
+- : string = &quot;.....&quot;
+</code></pre></div></li>
+<li>Problème 1: Implémentez une fonction <code>dot_rect : int -&gt; string</code>
+telle que <code>dot_rect m n</code>
+renvoie une chaîne qui, lorsqu'elle est imprimée, produit
+m lignes de n points.
+Exemple de résultat attendu:
+<div class="highlight"><pre><span></span><code># print_string (dot_rect 5 12);;
+............
+............
+............
+............
+............- : unit = ()
+</code></pre></div></li>
+</ul>
+<h2 id="exercice-1-recherche-des-nombres-premier">Exercice 1 - Recherche des nombres premier</h2>
+<p>Un entier naturel <span class="arithmatex">\(n &gt; 1\)</span> est premier si ses seuls diviseurs sont lui-même et <span class="arithmatex">\(1\)</span>. </p>
+<ul>
+<li>Problème 1:
+Implémenter en OCaml une fonction <code>is_prime : int -&gt; bool</code> 
+telle que <code>is_prime n</code>, pour <code>n &gt; 2</code>, donne <code>vrai</code> si <code>n</code>
+est premier et <code>false</code> sinon.
+Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># is_prime 51;;
+- : bool = false
+# is_prime 67;;
+- : bool = true
+</code></pre></div></li>
+<li>Problème 2:
+En utilisant la fonction que vous avez implémentée ci-dessus, implémentez
+une fonction <code>primes_leq_than : int -&gt; string</code> 
+telle que <code>primes_leq_than n</code> :<ul>
+<li>pour <code>n</code> positif est égale à la chaîne 
+de caractères obtenue en concaténant tous les
+nombres premiers inférieurs ou égaux à <code>n</code>,</li>
+<li>pour <code>n</code> nul ou négatif est égale à unechaîne de caractères contenant 
+un message d'erreur approprié de votre choix.
+Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># primes_leq_than 100;;
+- : string =
+&quot; 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97&quot;
+# primes_leq_than (-5);;
+- : string = &quot;L&#39;entrée doit être positive.&quot;
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="exercice-2-denombrement-des-arbres-binaires">Exercice 2 - Dénombrement des arbres binaires</h2>
+<ul>
+<li>Problème 0:
+    Trouvez une définition récursive pour les arbres binaires.</li>
+</ul>
+<details class="solution">
+<summary>Solution</summary>
+<p><img alt="" src="../../../assets/images/teaching/advFunProg/binaryTreeRec.svg" /></p>
+</details>
+<ul>
+<li>Problème 1:
+   En utilisant cette définition récursive, dérivez une récurrence pour 
+le nombre <span class="arithmatex">\(C_n\)</span> d'arbres binaires avec <span class="arithmatex">\(n\)</span> sommets internes.</li>
+</ul>
+<details class="solution">
+<summary>Solution</summary>
+<p>En raisonnant de manière récursive, nous obtenons la 
+récurrence suivante pour les fameux 
+<a href="https://fr.wikipedia.org/wiki/Nombre_de_Catalan">nombres Catalans</a>:
+<div align="center">
+<span class="arithmatex">\(C_0 = 1, C_n = \sum_{i=1}^{n}C_{i-1}C_{n-i}\)</span> pour <span class="arithmatex">\(n &gt; 0\)</span>.
+</div></p>
+</details>
+<ul>
+<li>Problème 2:</li>
+</ul>
+<p>La récurrence que nous avons dérivée n'est pas très efficace 
+(et un peu délicate à mettre en oeuvre comme vous le découvrirez dans votre devoir). 
+Une récurrence plus efficace pour <span class="arithmatex">\(C_n\)</span> est la suivante :<br />
+    <div align="center">
+    <span class="arithmatex">\(C_0 = 1, C_n = \frac{2(2n-1)}{n+1} C_{n-1}\)</span> pour <span class="arithmatex">\(n &gt; 0\)</span>.
+    </div>
+En utilisant cette récurrence, implémentez en OCaml une fonction <code>catalan : int -&gt; int</code> 
+telle que <code>catalan n</code> donne <span class="arithmatex">\(C_n\)</span>. 
+Exemple de résultat attendu:
+<div class="highlight"><pre><span></span><code># catalan 5;;
+- : int = 42
+</code></pre></div></p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Le facteur <span class="arithmatex">\(\frac{2(2n-1)}{n+1}\)</span> est un nombre rationnel. 
+Pourtant, nous sommes sûrs que le résultat final est un entier puisqu'il 
+s'agit du nombre de quelque chose - à savoir des arbres avec <span class="arithmatex">\(n\)</span> sommets internes.
+Par conséquent, vous
+devrez peut-être utiliser les opérations arithmétiques <code>+., -., *., /.</code> 
+décrites dans la <a href="https://v2.ocaml.org/api/Float.html">documentation du module Float</a>, 
+mais à la fin, vous devrez arrondir et reconvertir le résultat final en <code>int</code> -
+vous pouvez trouverez des fonctions pour faire ça en utilisant la fonction de recherche de la
+<a href="https://v2.ocaml.org/api/index.html">documentation d'API</a>, comme indiqué dans la classe !</p>
+</details>
+<ul>
+<li>Problème 3: Réécrivez la fonction pour qu'elle soit récursive terminale.</li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-06-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 06 octobre 2023, 23h59, heure de Paris:</h2>
+<ul>
+<li>Problème 0 : Implémentez en OCaml une fonction <code>catalan_2 : int -&gt; int</code> telle que 
+<code>catalan_2 n</code> donne <span class="arithmatex">\(C_n\)</span> en utilisant la récurrence obtenue comme solution du Problème 1.
+Exemple de résultat attendu:
+<div class="highlight"><pre><span></span><code># catalan_2 5;;
+- : int = 42
+</code></pre></div></li>
+</ul>
+<details class="hint">
+<summary>Hint</summary>
+<p>Vous pouvez calculer la somme <span class="arithmatex">\(\sum\limits_{i=1}^{n} C_{i-1}C_{n-i}\)</span> de manière récursive. 
+Créez une fonction <code>cauchy i n</code> qui calcule la somme ci-dessus à partir de l'indice <span class="arithmatex">\(i\)</span> = <code>i</code>. 
+Attention: cette fonction est à la fois récursive en elle-même
+et mutuellement récursive avec <code>catalan</code>.</p>
+</details>
+<ul>
+<li>Problème 1 : Implémentez une fonction <code>print_catalans : (int -&gt; int) -&gt; int -&gt; string</code> dont le 
+premier argument est une fonction qui calcule le <span class="arithmatex">\(n\)</span>-ième nombre catalan et dont 
+le second argument est un nombre entier positif ou nul. 
+La fonction doit être telle que <code>print_catalans f n</code> 
+renvoie une chaîne de caractères obtenue en concaténant les résultats de 
+<code>f</code> appliqués à chacun des entiers compris entre 0 et <code>n</code> (y compris 0 et <code>n</code>).</li>
+</ul>
+<p>Exemple de résultat attendu :
+<div class="highlight"><pre><span></span><code># print_catalaéns catalan 10;;
+- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
+# print_catalans catalan_2 10;;
+- : string = &quot; 1 2 5 14 42 132 429 1430 4862 16796&quot;
+</code></pre></div></p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

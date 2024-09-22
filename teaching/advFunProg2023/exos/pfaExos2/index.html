@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfaExos2 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</a></li>
+        <li><a href="#exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</a></li>
+        <li><a href="#devoir-a-rendre-avant-le-20-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 20 octobre 2023, 23h59, heure de Paris:</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <p>Exercice 0 - Arbres binaires</p>
+<ul>
+<li>
+<p>Problème 0 : Implémentez les arbres binaires comme un type algébrique appelé <code>binary_tree</code>.</p>
+</li>
+<li>
+<p>Problème 1 : Décrivez les valeurs de <code>binary_tree</code> correspondant aux arbres suivants.
+<img alt="" src="../../../../assets/images/teaching/advFunProg/binary_trees.svg" /></p>
+</li>
+<li>
+<p>Problème 2 : Implémentez une fonction <code>count_nodes : binary_tree -&gt; int</code> qui compte le nombre de noeuds dans un arbre donné.</p>
+</li>
+<li>
+<p>Problème 3 : Pouvez-vous penser à une version plus efficace ?</p>
+</li>
+<li>
+<p>Problème 4 : Reformulez <code>binary_tree</code> en un nouveau type de données algébrique appelé <code>decorated_binary_tree</code>, 
+paramétré par une variable de type <code>'a</code>, 
+de telle sorte que chaque noeud et chaque feuille stocke une valeur de type <code>'a</code>.</p>
+</li>
+<li>
+<p>Problème 5 : Décrivez les valeurs de <code>decorated_binary_tree</code> correspondant aux arbres suivants:
+<img alt="" src="../../../../assets/images/teaching/advFunProg/decorated_trees.svg" /></p>
+</li>
+<li>
+<p>Problème 6 : Implémentez une fonction <code>tree_sum : int decorated_binary_tree -&gt; int</code> qui additionne 
+les valeurs stockées dans les noeuds et les feuilles d'un arbre en entrée.</p>
+</li>
+<li>
+<p>Problème 7 : Pouvez-vous penser à une version plus efficace ?</p>
+</li>
+<li>
+<p>Problème 8 : Implémentez une fonction <code>search_tree : 'a decorated_binary_tree -&gt; 'a -&gt; bool</code> 
+qui recherche dans l'arbre d'entrée un élément correspondant à son 
+second argument et renvoie true s'il en trouve un, sinon false.</p>
+</li>
+<li>
+<p>Problème 9 : Pouvez-vous imaginer une version plus efficace ?</p>
+</li>
+</ul>
+<p>Dans ce qui suit, le type <code>internally_decorated_tree</code> est donné par :</p>
+<div class="highlight"><pre><span></span><code>type &#39;a internally_decorated_tree = 
+    Leaf
+    | Node of &#39;a * &#39;a internally_decorated_tree * &#39;a
+    internally_decorated_tree
+</code></pre></div>
+<h2 id="exercice-1-map-sur-les-arbres">Exercice 1 - Map sur les arbres</h2>
+<p>Utilisez la fonction map sur les arbres dans vos solutions à tous les problèmes
+suivants. </p>
+<ul>
+<li>Problème 0: Implémentez une fonction <code>succ : int internally_decorated_tree -&gt;
+int internally_decorated_tree</code> telle que la valeur d'un noeud de 
+<code>succ t</code> soit le successeur de la valeur du noeud correspondant de <code>t</code>.</li>
+</ul>
+<h2 id="exercice-1-fold-sur-les-arbres">Exercice 1: Fold sur les arbres</h2>
+<p>Utilisez la fonction fold sur les arbres dans vos solutions à tous les
+problèmes suivants.</p>
+<ul>
+<li>
+<p>Problème 0: Implémentez une fonction <code>tree_sum : int
+internally_decorated_tree -&gt; int</code> telle que <code>tree_sum t</code> soit égale à la
+somme des valeurs de tous les noeuds de <code>t</code>.</p>
+</li>
+<li>
+<p>Problème 1: Implémentez une fonction <code>tree_prod : int
+internally_decorated_tree -&gt; int</code> telle que <code>tree_prod t</code> soit égal au
+produit des valeurs de tous les noeuds de <code>t</code>.</p>
+</li>
+<li>
+<p>Problème 2: Implémentez une fonction <code>search_in_tree : int
+internally_decorated_tree -&gt; int -&gt; bool</code> telle que <code>search_in_tree t e</code> est
+<code>vrai</code> si <code>e</code> apparaît comme la valeur de n'importe quel noeud de <code>t</code>.</p>
+</li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-20-octobre-2023-23h59-heure-de-paris">Devoir à rendre avant le 20 octobre 2023, 23h59, heure de Paris:</h2>
+<ul>
+<li>
+<p>Problème 0 : La sérialisation d'un arbre est une liste qui contient tous les éléments de
+l'arbre dans un ordre donné. Un algorithme récursif pour sérialiser un arbre
+binaire (non vide) est le suivant :</p>
+<ul>
+<li>Soit <span class="arithmatex">\(v\)</span> la valeur de la racine actuelle, <span class="arithmatex">\(l\)</span> le sous-arbre de gauche,
+et <span class="arithmatex">\(r\)</span> le sous-arbre de droite. Soit <span class="arithmatex">\(s_v = [v]\)</span> une liste dont le seul élément
+est la valeur <span class="arithmatex">\(v\)</span> de la racine courante, <span class="arithmatex">\(s_l\)</span> la sérialisation du sous-arbre
+gauche <span class="arithmatex">\(l\)</span>, et <span class="arithmatex">\(s_r\)</span> la sérialisation du sous-arbre droit <span class="arithmatex">\(r\)</span>. Les valeurs
+<span class="arithmatex">\(s_l\)</span> et <span class="arithmatex">\(s_r\)</span> sont calculées récursivement.</li>
+<li>L'algorithme renvoie ensuite la sérialisation de l'arbre entier en
+concaténant les <span class="arithmatex">\(s_v, s_l,s_r\)</span> dans l'un des trois ordres suivants :<ol>
+<li>D'abord <span class="arithmatex">\(s_v\)</span>, puis <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_r\)</span> (ordre préfixe).</li>
+<li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_r\)</span>, puis <span class="arithmatex">\(s_v\)</span> (ordre postfixe).</li>
+<li>D'abord <span class="arithmatex">\(s_l\)</span>, puis <span class="arithmatex">\(s_v\)</span>, puis <span class="arithmatex">\(s_r\)</span> (ordre infixe). </ul>
+Implémenter trois fonctions <code>serialise_prefix</code>, <code>serialise_postfix</code> et
+<code>serialise_infix</code> en OCaml (en utilisant la fonction fold pour les arbres que nous avons écrite en classe), toutes de type <code>'a internally_decorated_tree -&gt; 
+'a list</code> qui exécutent les trois variantes (préfixe, postfixe et infixe) de
+l'algorithme ci-dessus sur les valeurs du type 
+<code>'a internally_decorated_tree</code> 
+défini plus haut. 
+Exemples de deux arbres (un
+<code>int internally_decorated_tree</code>
+et un <code>string internally_decoracted_tree</code>) et les résultats des trois fonctions
+mentionnées ci-dessus appliquées à chacun d'eux :</li>
+</ol>
+</li>
+</ul>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/internally_decorated_trees.svg" />
+<div class="highlight"><pre><span></span><code># (* définissant les exemples *);;
+# let first_example = Node (&quot;a&quot;,
+                        Node (&quot;b&quot;, Leaf,
+                            Node (&quot;c&quot;, Leaf, Leaf)),
+                        Node (&quot;d&quot;,
+                            Node (&quot;e&quot;, Leaf, Leaf), Leaf));;
+val first_example : string internally_decorated_tree =
+  Node (&quot;a&quot;,
+   Node (&quot;b&quot;, Leaf,
+    Node (&quot;c&quot;, Leaf, Leaf)),
+   Node (&quot;d&quot;,
+    Node (&quot;e&quot;, Leaf, Leaf),
+    Leaf))
+# let second_example = Node (&quot;0&quot;,
+                        Node (&quot;1&quot;,
+                            Node (&quot;2&quot;, Leaf, Leaf),
+                            Node (&quot;3&quot;, Leaf,
+                                Node (&quot;4&quot;, Leaf, Leaf))),
+                        Node (&quot;5&quot;,
+                            Node (&quot;6&quot;, Leaf, Leaf), Leaf));;
+val second_example : string internally_decorated_tree =
+  Node (&quot;0&quot;,
+   Node (&quot;1&quot;,
+    Node (&quot;2&quot;, Leaf, Leaf),
+    Node (&quot;3&quot;, Leaf,
+     Node (&quot;4&quot;, Leaf, Leaf))),
+   Node (&quot;5&quot;,
+    Node (&quot;6&quot;, Leaf, Leaf),
+    Leaf))
+# (* appliquant nos fonctions aux deux exemples *);;
+# serialise_prefix first_example;;
+- : string list = [&quot;a&quot;; &quot;b&quot;; &quot;c&quot;; &quot;d&quot;; &quot;e&quot;]
+# serialise_prefix second_example;;
+- : string list = [&quot;0&quot;; &quot;1&quot;; &quot;2&quot;; &quot;3&quot;; &quot;4&quot;; &quot;5&quot;; &quot;6&quot;] 
+# serialise_infix first_example;;
+- : string list = [&quot;b&quot;; &quot;c&quot;; &quot;a&quot;; &quot;e&quot;; &quot;d&quot;]
+# serialise_infix second_example;;
+- : string list = [&quot;2&quot;; &quot;1&quot;; &quot;3&quot;; &quot;4&quot;; &quot;0&quot;; &quot;6&quot;; &quot;5&quot;]
+# serialise_postfix first_example;;
+- : string list = [&quot;c&quot;; &quot;b&quot;; &quot;e&quot;; &quot;d&quot;; &quot;a&quot;]
+# serialise_postfix second_example;;
+- : string list = [&quot;2&quot;; &quot;4&quot;; &quot;3&quot;; &quot;1&quot;; &quot;6&quot;; &quot;5&quot;; &quot;0&quot;]
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 1: La hauteur d'un arbre binaire est la longueur des chemins les plus longs (mesurés en nombre de nœuds parcourus) entre la racine et n'importe laquelle des feuilles.
+Voici un exemple d'arbre binaire de hauteur 4 avec un chemin maximal surligné.</p>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/internally_dec_tree_height_4.svg" />
+Ecrivez une fonction <code>tree_height : 'a internally_decorated_tree -&gt; int</code> qui calcule la hauteur d'un arbre donné en utilisant la fonction fold pour les arbres que nous avons écrite en classe pour implémenter l'algorithme récursif suivant :</p>
+<ol>
+<li>Calculez récursivement la hauteur <span class="arithmatex">\(h_l\)</span> du sous-arbre gauche et la hauteur <span class="arithmatex">\(h_r\)</span> du sous-arbre droit.</li>
+<li>La hauteur de l'arbre entier est alors <span class="arithmatex">\(1 + max(h_l, h_r)\)</span>. </ul></li>
+</ol>
+</li>
+</ul>
+<p>Exemples de résultats attendus (en réutilisant les exemples du problème précédent) :
+<div class="highlight"><pre><span></span><code># tree_height first_example;;
+- : int = 3
+# tree_height second_example;;
+- : int = 4
+</code></pre></div></p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

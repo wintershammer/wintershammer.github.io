@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfaExos7 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercise-0">Exercise 0</a></li>
+        <li><a href="#exercise-1">Exercise 1</a></li>
+        <li><a href="#exercise-2">Exercise 2</a></li>
+        <li><a href="#exercise-3">Exercise 3</a></li>
+        <li><a href="#devoir-a-rendre-avant-le-1-decembre-2023-23h59-heure-de-paris">Devoir à rendre avant le 1 décembre 2023, 23h59, heure de Paris:</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h2 id="exercise-0">Exercise 0</h2>
+<ul>
+<li>
+<p>Problème 0: Définir une monade Reader qui donne accès à une seule valeur
+entière en tant qu'environnement partagé.</p>
+</li>
+<li>
+<p>Problème 1: Utilisez la monade que vous avez définie ci-dessus pour calculer une fonction
+simple de l'entier partagé, par exemple la somme de son carré et de son cube.</p>
+</li>
+</ul>
+<h2 id="exercise-1">Exercise 1</h2>
+<ul>
+<li>
+<p>Problème 0: Implémentez la monade ContextReader que nous avons vue pendant le CM.</p>
+</li>
+<li>
+<p>Problème 1: Définissez une fonction monadique <code>tell_age</code> qui prend comme
+arguments un entier positif <code>y</code> et une valeur <code>d</code> du type
+<div class="highlight"><pre><span></span><code>type context = {name : string ; surname : string ; age : int}
+</code></pre></div>
+et renvoie une chaîne de caractères de la forme 
+<div class="highlight"><pre><span></span><code>In *y* year(s), you&#39;ll be *a* years old!
+</code></pre></div>
+où <em>y</em> est la représentation en <code>string</code> de la valeur <code>d</code> 
+et <em>a</em> est l'âge de la personne représentée par <code>d</code> 
+au bout de <code>y</code> années à partir de maintenant.
+Par exemple :
+<div class="highlight"><pre><span></span><code># tell_age 1 {name = &quot;Alex&quot;; surname = &quot;Singh&quot;; age = 29};;
+- : string = &quot;In 1 year(s) you&#39;ll be 30 years old!&quot;
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 2: Composez cette fonction avec la fonction greet pour obtenir une
+fonction <code>greet_and_tell_age_next_year</code> qui salue qui salue la personne et
+lui indique son âge pour l'année prochaine. 
+Par exemple :
+<div class="highlight"><pre><span></span><code># greet_and_tell_age_next_year {name = &quot;Alex&quot;; surname = &quot;Singh&quot;; age = 29};;
+Hi Alex Singh, you are : 29 years old.
+In 1 year(s) you&#39;ll be 30!
+- : unit = ()
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="exercise-2">Exercise 2</h2>
+<ul>
+<li>Problème 0: Définissez une monade Reader qui permet d'accéder à une valeur du type suivant : </li>
+</ul>
+<div class="highlight"><pre><span></span><code>type three_vars = {x : int ; y : int ; z : int}
+</code></pre></div>
+<ul>
+<li>
+<p>Problème 0: Implémentez des fonctions monadiques pour accéder à chacun des éléments de l'enregistrement ci-dessus</p>
+</li>
+<li>
+<p>Problème 1: Utilisez ces fonctions pour calculer la somme de tous les éléments de cet environnement partagé.</p>
+</li>
+</ul>
+<h2 id="exercise-3">Exercise 3</h2>
+<ul>
+<li>
+<p>Problème 0: Passez de la monade précédente de l'exercice 2 à une monade State
+qui permet d'accéder à des valeurs du même type <code>three_vars</code>: </p>
+</li>
+<li>
+<p>Problème 0: Implémentez des fonctions monadiques pour accéder à chacun des éléments de l'enregistrement ci-dessus</p>
+</li>
+<li>
+<p>Problème 1: Utilisez ces fonctions pour implémenter une fonction
+<code>sum_before_after</code> qui calcule la somme de tous les éléments de cet
+environnement partagé puis la somme de l'environnement modifiée pour que <code>z</code>
+soit égal à <code>123</code>, et renvoie un tuple contenant les deux. 
+Par example:
+<div class="highlight"><pre><span></span><code># runState sum_before_after {x = 10; y = 20; z = 30};;
+- : (int * int) * s = ((60, 153), {x = 10; y = 20; z = 123})
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="devoir-a-rendre-avant-le-1-decembre-2023-23h59-heure-de-paris">Devoir à rendre avant le 1 décembre 2023, 23h59, heure de Paris:</h2>
+<ul>
+<li>Problem 0: En utilisant une monade State qui donne accès à une Map contenant des paires
+d'un nom de variable (une chaîne) et d'une valeur (un entier positif), étendez
+votre solution au devoir de la séance 1 de manière à ce qu'elle puisse gérer un
+nombre arbitraire de variables personnalisées qui peuvent être définies à
+n'importe quelle valeur entière positive.</li>
+</ul>
+<p>Par exemple, le morceau de code suivant définit
+trois variables <code>a,b,c</code> avec des valeurs initiales <code>10,20,30</code> et ensuite
+les additionne:</p>
+<textarea name="calc" cols="40" rows="5">
+set a=10
+set b=20
+set c=30
+a+b+c
+END
+</textarea>
+
+<p>Expression analysée: <div style="background:rgba(220,220,220)" id="output"></div></p>
+<p>Expression évaluée (en supposant un contexte initial vide): <div id="output2"></div></p>
+<p><button onclick="myFunction()">Analyser &amp; évaluer</button></p>
+<script>
+    function myFunction() {
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output").textContent = CALC_PARSER.parse(document.getElementsByName("calc")[0].value);
+        }
+        catch (error){
+            document.getElementById("output").textContent = String(error);
+        }
+        try {
+            //console.log(PARSER.parse(document.getElementsByName("calc")[0].value));
+            document.getElementById("output2").textContent = CALC_EVALUATOR_2.parse(document.getElementsByName("calc")[0].value);
+
+        }
+        catch (error){
+            document.getElementById("output2").textContent = String(error);
+        }
+        }
+</script>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

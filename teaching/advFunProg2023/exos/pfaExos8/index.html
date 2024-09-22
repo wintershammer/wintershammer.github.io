@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercise 0 - Monade de listes - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercise-0-monade-de-listes">Exercise 0 - Monade de listes</a></li>
+        <li><a href="#exercise-1-parsing-with-the-maybemonadplus">Exercise 1: Parsing with the MaybeMonadPlus</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercise-0-monade-de-listes">Exercise 0 - Monade de listes</h1>
+<ul>
+<li>
+<p>Problème 0: En utilisant la monade <code>ListMonad</code>, écrivez une fonction qui triple tous les éléments d'une liste.
+Par exemple :
+<div class="highlight"><pre><span></span><code># [1;2;3;4] &gt;&gt;= triple;;
+- : int list = [1; 1; 1; 2; 2; 2; 3; 3; 3; 4; 4; 4]
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 1 : En utilisant la monade <code>ListMonadPlus</code>, implementez une fonction
+<code>even_nums</code> dont l'entrée est un entier <code>n</code> 
+(supposé positif) et dont le résultat est une liste qui contient toutes les
+paires de nombres <code>a</code> pour lesquelles <code>0 &lt; a &lt;= n</code> est valable et <code>a</code> est
+pair.
+Par exemple :
+<div class="highlight"><pre><span></span><code># even_nums 10;;
+- : int list = [0; 2; 4; 6; 8]
+</code></pre></div></p>
+</li>
+</ul>
+<details class="hint">
+<summary>Hint</summary>
+<p>Utilisez la fonction guard !</p>
+</details>
+<ul>
+<li>Problème 2 : Implementez une fonction <code>sum_is_odd</code> qui prend en entrée un entier
+<code>n</code> (supposé positif) et renvoie une liste de paires <code>(a,b)</code> telles que <code>0 &lt; a
+&lt;= n, 0 &lt; b &lt;= n</code> et <code>a+b</code> est impair.
+Par exemple :
+<div class="highlight"><pre><span></span><code># sum_is_odd 4;;
+- : (int * int) list =
+[(0, 1); (0, 3); (1, 0); (1, 2); (2, 1); (2, 3); (3, 0); (3, 2)
+</code></pre></div></li>
+</ul>
+<details class="hint">
+<summary>Hint</summary>
+<p>Comme ci-dessus !</p>
+</details>
+<ul>
+<li>
+<p>Problème 3 : Implementez une fonction <code>pythagorean_triplets</code> qui prend en
+  entrée un entier <code>n</code> (supposé positif) et renvoie un triplet de paires
+<code>(a,b,c)</code> telles que <code>0 &lt; a &lt;= n, 0 &lt; b &lt;= n, 0 &lt; c &lt;= n</code> et <code>a^2+b^2=c^2</code>.
+Par exemple:
+<div class="highlight"><pre><span></span><code># pythagorean_triplets 10;;
+- : (int * int * int) list = [(3, 4, 5); (4, 3, 5); (6, 8, 10); (8, 6, 10)]
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 3 : En utilisant la monade <code>ListMonadPlus</code>, implementez une fonction
+<code>palindromes</code> qui prend en entrée un 
+entier <code>n</code> (supposé être positif) et renvoie une liste de toutes les chaînes
+palindromes composées des caractères <code>'0', '1'</code> de taille inférieure ou égale
+à <code>n</code>.
+Par exemple:
+<div class="highlight"><pre><span></span><code># check_1 5;;
+- : string list =
+[&quot;00000&quot;; &quot;00100&quot;; &quot;01010&quot;; &quot;01110&quot;; &quot;10001&quot;; &quot;10101&quot;; &quot;11011&quot;; &quot;11111&quot;]
+# check_1 6;;
+- : string list =
+[&quot;000000&quot;; &quot;001100&quot;; &quot;010010&quot;; &quot;011110&quot;; &quot;100001&quot;; &quot;101101&quot;; &quot;110011&quot;;
+ &quot;111111&quot;]
+</code></pre></div></p>
+</li>
+</ul>
+<h1 id="exercise-1-parsing-with-the-maybemonadplus">Exercise 1: Parsing with the MaybeMonadPlus</h1>
+<ul>
+<li>
+<p>Problème 0: En utilisant la monade <code>MaybeMonadPlus</code>, implementez une fonction <code>parse_char</code>
+qui prend en entrée un caractère <code>c</code> et une chaîne <code>s</code>, et si <code>s</code> commence
+par <code>c</code>, renvoie une valeur monadique contenant le reste de la chaîne <code>s</code>
+(avec le premier caractère supprimé), sinon elle renvoie une valeur monadique
+signifiant un échec. 
+Par exemple :
+<div class="highlight"><pre><span></span><code># parse_char &#39;0&#39; &quot;0101&quot;;;
+- : string option = Some &quot;101&quot;
+# parse_char &#39;0&#39; &quot;1010&quot;;;
+- : string option = None
+</code></pre></div></p>
+</li>
+<li>
+<p>Problème 1: Utilisez la fonction ci-dessus pour implémenter une fonction
+<code>expr</code> qui analyse les expressions de la grammaire suivante : 
+<div class="highlight"><pre><span></span><code>expr := term 
+term := factor | factor op expr 
+op := &#39;+&#39; | &#39;-&#39;
+factor := digit | &#39;(&#39; expr &#39;)&#39;
+digit := &#39;0&#39; | &#39;1&#39; 
+</code></pre></div>
+Plus précisément, si une chaîne donnée <code>s</code> est conforme à la grammaire
+ci-dessus, alors <code>expr s</code> doit résulter en <code>Some ""</code>, c'est-à-dire qu'il
+doit consommer tous les caractères de la chaîne. Si ce n'est pas le cas, elle
+consomme partiellement la chaîne et renvoie <code>Some p</code> où <code>p</code> est une
+chaîne non vide de caractères, ou bien elle renvoie None .</p>
+</li>
+</ul>
+<p>Par exemple :
+<div class="highlight"><pre><span></span><code># expr &quot;0&quot;;;
+- : string option = Some &quot;&quot;
+utop # expr &quot;1+0&quot;;;
+- : string option = Some &quot;&quot;
+# expr &quot;(1+0)-1&quot;;;
+- : string option = Some &quot;&quot;
+# expr &quot;(1+1)-1+(1+(1+0-1+0))&quot;;;
+- : string option = Some &quot;&quot;
+# expr &quot;2&quot;;;
+- : string option = None
+utop # expr &quot;1+2&quot;;;
+- : string option = Some &quot;+2&quot;
+</code></pre></div></p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

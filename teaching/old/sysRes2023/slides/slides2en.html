@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+### Séance 3
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The ``exec()`` family
+- We've already seen how ``execve()`` works.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The functions ``execl()`` and ``execlp()`` are built on top of it.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ``execl()``
+
+- Its first argument is ``const char *pathname``, the path of the program to execute.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The following arguments ``const char *arg0, const char *arg1, ...`` are passed to the program.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Programs usually take as first argument their names (think of ``argv[0]``).
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->The last argument is ``(char *) NULL``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->The ``envp`` variable of ``exec()`` is initialised to a global system variable ``environ``.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ``execlp()``
+- Same as ``execl`` but if the first argument is not a path (doesn't contain ``/``), the file is looked for in directories of ``PATH``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Not always safe: malicious actors may modify ``PATH`` to include malicious executables.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Interprocess communication 
+- We saw how to use ``fork()`` and ``wait()`` to create processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->These processes obtain copies of their parent's data.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->How can a child process communicate with its parent?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducing pipes
+- The oldest form of IPC in UNIX (~1970s).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->You're probably already familiar with them:
+	```
+	$ cat someFile.txt | wc -l 
+	```
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``cat`` prints a file on the standard output.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``wc -l`` counts how many lines its input has
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->The pipe (``|``) allows us to use the output of one process as the input of another!
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->They are unidirectional: one writing and one reading end.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introducing pipes
+- The shell creates two processes, executing ``ls, wc``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The standard output of ``ls`` is joined to the write end of the pipe.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The standard output of ``wc`` is joined to the read end of the pipe.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Pipes created by a parent allow communication of child processes (provided that the pipe was created before the ``fork()`` calls).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Facts about pipes
+- A pipe is a byte stream: data is handled sequentially (in the order they were written).
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Reading from a pipe can be done with blocks of any size, regardless of the size of the blocks written by the writing process.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->No random access (no ``lseek()``).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Facts about pipes
+- Reading from a pipe that is empty will block until at least one byte has been written to it.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*If* the write end of the pipe is closed, ``read()`` on an empty pipe results in ``0``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Therefore: close the writing end of pipes when not in use.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Facts about pipes
+- Writing to a pipe for which no process has an open read descriptor results in a ``SIGPIPE`` signal from the kernel (by default this kills the process).
+- If a writing process doesn't close the read end of the pipe, then eventually it will fill the pipe and block.
+- Therefore: close the reading end of pipes when not in use.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Pipes
+- If multiple processes are writing to a single pipe, data may be interleaved.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Writing at most ``PIPE_BUF`` (defined in ``limits.h``) bites at a time is guaranteed to be atomic (no interleaving).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->If more than ``PIPE_BUF`` bytes are written, ``write()`` transfers as much data as possible then blocks until data has been removed (by being read).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Creating pipes
+- The ``pipe()`` system call creates pipes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->In C:
+```
+#include <unistd.h>
+int pipe(int pipedes[2]);
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The input is: an array of two file descriptors
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->``pipedes[0]`` is the read end.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->``pipedes[1]`` is the write end.
+</div></script></section><section  data-markdown><script type="text/template"></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

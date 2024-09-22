@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Programmation fonctionnelle - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#programmation-fonctionnelle">Programmation fonctionnelle</a></li>
+        <li><a href="#modalites-devaluation">Modalités d'évaluation</a></li><li><a href="#materiel-de-cours">Matériel de cours</a></li><li><a href="#ressources">Ressources</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="programmation-fonctionnelle">Programmation fonctionnelle</h1>
+<p>Cette page est dédiée au cours "Programmation fonctionnelle", L1 groupe C,
+Licence Informatique, Univ. Paris 8, 2023.</p>
+<p>Pour plus de détails concernant la planification, voir : 
+<a href="https://informatique.up8.edu/licence-iv/edt/l1-c.html">ici.</a></p>
+<h2 id="modalites-devaluation">Modalités d'évaluation</h2>
+<p>L'évaluation sera basée sur les éléments suivants :</p>
+<ul>
+<li>
+<p>Trois notes <span class="arithmatex">\(n_1,n_2,n_3\)</span> sur des évaluations écrites, 
+en commun avec les autres groupes. 
+Les dates des évaluations écrites vous seront 
+communiquées suffisamment à l'avance.</p>
+</li>
+<li>
+<p>Une note <span class="arithmatex">\(n_4\)</span> sur les rendus de certaines séances de TP sélectionnées.</p>
+</li>
+</ul>
+<p>La note finale sera la moyenne des trois notes maximales parmi <span class="arithmatex">\(n_1, n_2, n_3,n_4\)</span>. </p>
+<h2 id="materiel-de-cours">Matériel de cours</h2>
+<ul>
+<li>
+<p>Séance #0 : Introduction à la programmation fonctionnelle et Racket, 
+fonctions, récursion, identificateurs et liaisons, 
+paires et listes, booléens et conditionnels.
+<a href="../../assets/pdfs/teaching/funProg/fun00.pdf">slides</a>
+<a href="../exos/pfExos0/">exercices</a></p>
+</li>
+<li>
+<p>Séance #1 : Plus sur la récursion, récursion terminale.
+<a href="../../assets/pdfs/teaching/funProg/fun01.pdf">slides</a>
+<a href="../exos/pfExos1/">exercises</a></p>
+</li>
+<li>
+<p>Séance #2: Exercices sur les listes, les fonctions map et fold.
+<a href="../../assets/pdfs/teaching/funProg/fun02.pdf">slides</a>
+<a href="../exos/pfExos2/">exercises</a></p>
+</li>
+<li>
+<p>Séance #3: Algorithmes de tri et de recherche : 
+tri par sélection, tri à bulles, recherche binaire.
+<a href="../../assets/pdfs/teaching/funProg/fun03.pdf">slides</a>
+<a href="../exos/pfExos3/">exercises</a></p>
+</li>
+<li>
+<p>Séance #4: Motifs et pattern matching.
+<a href="../../assets/pdfs/teaching/funProg/fun04.pdf">slides</a>
+<a href="../exos/pfExos4/">exercises</a></p>
+</li>
+<li>
+<p>Séance #5: Introduction aux arbres.
+<a href="../../assets/pdfs/teaching/funProg/fun05.pdf">slides</a>
+<a href="../exos/pfExos5/">exercises</a>
+<a href="https://code.up8.edu/alex/programmation-fonctionnelle-2023/-/tree/main/week5/">code</a></p>
+</li>
+<li>
+<p>Séance #6: Traversées d'arbres, introduction aux arbres binaires de recherche.
+<a href="../../assets/pdfs/teaching/funProg/fun06.pdf">slides</a>
+<a href="../exos/pfExos6/">exercises</a></p>
+</li>
+<li>
+<p>Séance #7: 2htdp/image, primitifs geometriques.
+<a href="../../assets/pdfs/teaching/funProg/fun07.pdf">slides</a>
+<a href="../../assets/pdfs/teaching/funProg/TP7.pdf">exercises (par Benjamin Dupont)</a></p>
+</li>
+<li>
+<p>Séance #8: 2htdp/image, turtle graphics.
+<a href="../../assets/pdfs/teaching/funProg/fun08.pdf">slides (par Benjamin Dupont)</a></p>
+</li>
+</ul>
+<h2 id="ressources">Ressources</h2>
+<ul>
+<li>
+<p><a href="https://docs.racket-lang.org/">Documentation Racket</a>:
+Ressource essentielle avec des tutoriels, 
+de la documentation sur les bibliothèques de base, etc.</p>
+</li>
+<li>
+<p><a href="https://racket-lang.org/books.html">Divers livres sur Racket</a>:
+Allant de l'introduction au matériel sophistiqué sur Racket.</p>
+</li>
+<li>
+<p><a href="https://web.mit.edu/6.001/6.037/sicp.pdf">Structure and Interpretation of Computer Programs, Harold Abelson, Gerald Jay Sussman, Julie Sussman</a>:
+Introduction classique à la programmation, 
+avec de nombreux exemples en Scheme qui sont pour la plupart valables en Racket aussi, 
+peut-être avec quelques réécritures minimales nécessaires. 
+Des lectures d'accompagnement sont également disponibles 
+<a href="https://www.youtube.com/watch?v=-J_xL4IGhJA&amp;list=PLE18841CABEA24090">en ligne</a>.</p>
+</li>
+<li>
+<p><a href="https://bocal.cs.univ-paris8.fr/~n/cours/pf/">Slides de Nicolas Jouandeau</a></p>
+</li>
+</ul>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

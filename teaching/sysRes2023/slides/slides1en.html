@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Systèmes et réseaux
+### Séance 1
+
+<img src="https://informatique.up8.edu/licence-iv/logo.png" alt="Image|120" style="width: 120px; object-fit: fill">
+
+
+Alexandros Singh (as@up8.edu), 2024
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Programs and processes
+- A program is a file containing information that describes how to construct a process at run time.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The information it contains includes:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Machine-language instructions.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Data: initial values for variables, literal constants.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Dynamic linking and shared library data.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->A processes is an instance of an executing program.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Programs and processes
+- Multiple processes may be instances of the same program.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->From the kernel's perspective, a process consists of:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->User-space memory containing code + variables. 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Kernel data structures to do bookkeeping.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Bookkeping information: IDs, virtual memory tables,
+  open file descriptors table, signal-related data, etc.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Processes IDs
+- Each process has an ID: a positive integer that uniquely identifies it.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The ``getpid()`` system call returns the process ID of the calling processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Processes IDs are used by various system calls, for example ``kill()`` which sends a terminating signal to a process.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Each process has a parent: the processes that created it.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Processes have a tree-like relationship, with ``init`` as the root (ID 1).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Processes IDs
+- Run ``pstree`` to view the tree of processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The default upper limti for PIDs is 32767, adjustable via ``/proc/sys/kernel/pid_max`` (usually set to `$2^{22}$`). 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Use the ``getppid()`` system call to get the parent's PID. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->If a process becomes orphaned because its parent terminates, it is adopted by ``init``.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->The *proc filesystem* contains information about processes (typically mapped to ``/proc``).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Memory layout of processes
+
+- The memory allocated to a processes is made of *segments*:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*text*: contains the machine-language instructions, read-only and shareable (can be mapped to the virtual memory of multiple processes).
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*initialised data*: global and static variables that are initialised.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->*uninitialised data* or *bss*: global and static variables that are not - all memory in this segment is initialised to 0 by the system.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Memory layoyt of processes
+- The memory allocated to a processes is made of *segments*:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->*stack*: contains stack frames for function calls, storing local variables, arguments, return value.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->*heap*: area which can be dynamically allocated, terminated by the *program break*.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Memory layout of processes
+
+```
+#include <stdlib.h>
+
+char buffer[256];
+int intArray[] = {1,2,3};
+
+int main(void){
+	static int val = 42;
+	static char s[20];
+	
+	int *i; 
+	i = malloc(1024);
+	
+	exit(EXIT_SUCCESS);
+}
+
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Memory layout of processes
+
+```
+#include <stdlib.h>
+
+char buffer[256]; //Uninitialised data segment
+int intArray[] = {1,2,3}; //Initialised data segment
+
+int main(void){ //allocated in frame for main()
+	static int val = 42; //Inialised data segment
+	static char s[20]; //Uninitialised data segment
+	
+	int *i; //allocated in frame for main()
+	i = malloc(1024); //Pointer to heap segment
+	
+	exit(EXIT_SUCCESS);
+}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Virtual memory 
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Programs are (typically) local:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Spatially local: memory addresses referenced are contiguous.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Temporally local: tendency to access the same parts of memory in the near future as in recent past (think of loops).
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Therefore we can execute a program keeping only part of its address space in RAM.
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Split memory in *pages* and RAM in *page frames*.
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Load used pages into RAM, stock unused pages in *swap* (disk space).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Virtual memory
+
+- When a frame is referenced which is not in RAM, a *page fault* occurs.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Execution is suspended until page is loaded from swap to memory.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Advantages:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Processes isolated.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->When appropriate, processes can share memory: for example processes executing the same program, or using ``shmget()`` and ``mmap()`` (for interprocess communication).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Virtual memory
+- Advantages:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->User not concerned with physical layout of program in RAM.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Program can have virtual size exceeding the capacity of RAM.
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Better CPU utilisation/more processes in RAM.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Manipulating processes
+
+- We'll be using the ``fork(), exit(), wait(), execve()`` system calls to manipulate processes.
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``fork()``: allows a parent processes to create a new child processes. The child obtains copies of the parent's stack/data/heap/text segments. 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``exit(status)``: terminates a processes, liberating its resources. The ``status`` argument is an integer determing the termination status.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Manipulating creation
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->``wait(&status)``: if no child has not terminated yet, ``wait()`` suspends execution until one does. The termination status of said child is returned in the ``status`` argument.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->``execve(pathname, argv, envp)``: system loads a new program ``pathname`` with argument list ``argv`` and environment list ``envp`` into processes memory, discarding current stack/data/heap segments.
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

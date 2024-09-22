@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>pfaExos6 - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../mpif/mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercice-0">Exercice 0</a></li>
+        <li><a href="#exercice-1">Exercice 1</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <p>Voici les signatures d'un monoïde, d'une version de la monade <code>Writer</code> et d'un
+foncteur qui construit une telle monade à partir d'un monoïde. 
+<div class="highlight"><pre><span></span><code>module type WriterMonad  = sig 
+    include Monad
+    type m
+    val tell: m -&gt; unit t
+    val writer: &#39;a * m -&gt; &#39;a t
+    val runWriter: &#39;a t -&gt; &#39;a * m
+end
+
+type &#39;c writerT = Writer of &#39;c
+
+module MakeWriter (M : Monoid) : (WriterMonad with type m = M.m) 
+with type &#39;a t = (&#39;a * M.m) writerT = struct
+
+    type m = M.m
+    let ( @ ) = M.(@)
+
+    type &#39;a t = (&#39;a * m) writerT
+
+    let writer (r, o) = Writer (r, o)
+    let tell (x : m) : unit t = Writer ((),x)
+
+    let runWriter m = match m with
+        | Writer (a,b) -&gt; (a,b)
+
+    let return x = Writer (x, M.i)
+
+    let ( &gt;&gt;= ) m f = 
+        let (old_v, old_w) = runWriter m in
+        let (new_v, new_w) = runWriter (f old_v) in 
+        writer (new_v, old_w @ new_w)
+
+end
+</code></pre></div></p>
+<h1 id="exercice-0">Exercice 0</h1>
+<p>-Problème 0: Définissez une structure de signature <code>Monoid</code> qui encode le
+monoïde des entiers avec l'addition comme opération binaire. Vérifier que les
+lois des monoïdes sont valides pour cette structure.</p>
+<p>-Problème 1: En utilisant ce monoïde, construisez la monade correspondante
+<code>AddWriter</code> en utilisant le foncteur ci-dessus.</p>
+<p>-Problème 2: En utilisant cette monade, implémentez une fonction <code>len</code> qui
+calcule et renvoie une valeur monadique composée de la liste elle-même et de sa
+longueur. En d'autres termes, cette fonction se comporte comme une identité sur
+les listes mais elle utilise la monade comme un accumulateur pour calculer la
+longueur de la liste. 
+Exemple des résultats attendus :
+<div class="highlight"><pre><span></span><code># len [];;
+- : &#39;a list AddWriter.t = Writer ([], 0)
+utop # len [0;1;2;3;4;5;6;7;8;9];;
+- : int list AddWriter.t =
+Writer ([0; 1; 2; 3; 4; 5; 6; 7; 8; 9], 10)
+</code></pre></div></p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Vous pouvez utiliser la fonction <code>mapM</code> que nous avons implémentée pour résoudre les
+les exercices 2 et 3 de la <a href="https://wintershammer.github.io/teaching/advFunProg/exos/pfaExos5/">séance 5</a></p>
+</details>
+<p>-Problème 3: En utilisant à nouveau la monade ci-dessus, implémentez une fonction
+<code>search</code> qui prend en entrée une liste et une valeur et recherche cette
+valeur dans la liste, retournant true si elle l'a trouvée et false si elle ne
+l'a pas trouvée, ainsi que le nombre de comparaisons qu'elle a effectuées, les
+deux faisant partie d'une seule valeur monadique. Utiliser la valeur retournée
+pour juger si votre fonction est efficace ou non en termes de nombre de
+comparaisons effectuées.</p>
+<p>Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># search [1;2;3;4;5] 3;;
+- : bool AddWriter.t = Writer (true, 2)
+# search [1;2;3;4;5] 0;;
+- : bool AddWriter.t = Writer (false, 5)
+</code></pre></div></p>
+<h1 id="exercice-1">Exercice 1</h1>
+<p>-Problème 0: Donnez une structure avec la signature <code>Monoid</code> qui encode le
+monoïde des chaînes de caractères avec la concaténation comme opération
+binaire.</p>
+<p>-Problème 1: Créez la monade <code>StringWriter</code> correspondante en utilisant le foncteur présenté ci-dessus.</p>
+<p><img alt="" src="../../../../assets/images/teaching/advFunProg/tree_to_search.svg" /></p>
+<p>-Problème 2: Voici une définition d'un type pour les arbres binaires
+et une valeur encodant l'exemple d'arbre ci-dessus:
+<div class="highlight"><pre><span></span><code>type abr = 
+    | Leaf of int 
+    | Node of int * abr * abr
+
+let example_tree = 
+    Node (0, 
+        Node (1, 
+            Node (2, Leaf 3, Leaf 4), 
+            (Leaf 5)), 
+        Node (6, Leaf 7, Leaf 8))
+</code></pre></div>
+Écrivez une fonction <code>search</code> qui prend en entrée un arbre binaire et une
+valeur et retourne <code>true</code> ou <code>false</code> selon que la valeur existe ou non dans
+l'arbre, ainsi qu'une chaîne composée des caractères "l" et "r" qui encode le
+chemin vers la valeur (si elle existe). 
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># search example_tree 3;;
+- : bool StringWriter.t =
+Writer (true, &quot;lll&quot;)
+# search example_tree 5;;
+- : bool StringWriter.t = Writer (true, &quot;lr&quot;)
+# search example_tree 7;;
+- : bool StringWriter.t = Writer (true, &quot;rl&quot;)
+# search example_tree 10;;
+- : bool StringWriter.t = Writer (false, &quot;&quot;)
+</code></pre></div></p>
+<p>-Problème 3: Supposons qu'au lieu de la chaîne de caractères ci-dessus encodant le chemin,
+nous voulions les sommets (autres que la racine) qui composent ce chemin.
+Modifiez votre code pour obtenir ce résultat.
+Exemples de résultats attendus :
+<div class="highlight"><pre><span></span><code># search example_tree 3;;
+- : bool ListWriter.t = Writer (true, [1; 2; 3])
+# search example_tree 5;;
+- : bool ListWriter.t = Writer (true, [1; 5])
+# search example_tree 7;;
+- : bool ListWriter.t = Writer (true, [6; 7])
+# search example_tree 10;;
+- : bool ListWriter.t = Writer (false, [])
+</code></pre></div></p>
+<details class="hint">
+<summary>Hint</summary>
+<p>Créez un monoïde pour les listes avec concaténation et sa monade correspondant.</p>
+</details>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
