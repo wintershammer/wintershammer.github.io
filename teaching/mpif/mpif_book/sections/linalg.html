@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analytic geometry and linear algebra &#8212; Maths for computer science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/linalg';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Arithmetic and applications" href="arith.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Maths for computer science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mathematics for Computer Science 2024-2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sets.html">Naive theory of sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sets_fr.html">Théorie naïve des ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proba.html">Introduction to discrete probability theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arith.html">Arithmetic and applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analytic geometry and linear algebra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sections/linalg.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analytic geometry and linear algebra</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-geometry-in-two-dimensions">Euclidean geometry in two dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-vector-spaces">Euclidean vector spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-maps-and-their-matrices">Linear maps and their matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalings">Scalings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotations-and-reflections">Rotations and reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composing-linear-maps">Composing linear maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-bases">More on bases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-in-higher-dimensions">Geometry in higher dimensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analytic-geometry-and-linear-algebra">
+<h1>Analytic geometry and linear algebra<a class="headerlink" href="#analytic-geometry-and-linear-algebra" title="Link to this heading">#</a></h1>
+<section id="euclidean-geometry-in-two-dimensions">
+<h2>Euclidean geometry in two dimensions<a class="headerlink" href="#euclidean-geometry-in-two-dimensions" title="Link to this heading">#</a></h2>
+<p>Many quantities in our physical world, such as the temperature a given place,
+or its altitude, are described by a single number. Such quantities are deemed <em>scalar</em>.
+Others however require more information to model: for example, to describe the flow
+of air at a point we must specify not only the “intensity” or <em>magnitude</em> of the flow
+but also its <em>direction</em>. Mathematically, such a quantity is modeled by a <em>vector</em> in the
+Euclidean vector space (usually <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> or <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>).
+Such Euclidean vector spaces will be the primary focus of this chapter.</p>
+<p>We start with a familiar Euclidean space: the infinite plane, a two-dimensional world.
+Our first concern is to establish a coordinate system.
+We may choose some arbitrary position in this plane to be the <em>origin</em>,
+to which we assign the coordinate <span class="math notranslate nohighlight">\((0,0)\)</span>. The rest of the positions
+are then given coordinates in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, intuitively measuring the “vertical”
+and “horizontal” displacement from the origin: this is the familiar Cartesian coordinate
+system.</p>
+<p>We should also establish a notion of distance: given two arbitrary points, how
+far are they from eachother? The answer is given by applying the Pythagorean
+theorem:</p>
+<img alt="../_images/Euclidean_distance_2d.svg" class="align-center" src="../_images/Euclidean_distance_2d.svg" />
+<p>Therefore we may define the <em>Euclidean distance</em> between two points <span class="math notranslate nohighlight">\(p,q\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[d(p,q) = \sqrt{(p_1-q_1)^2 + (p_2-q_2)^2}\]</div>
+<p>Scalar quantities are simply real numbers attached to each point <span class="math notranslate nohighlight">\((x,y)\)</span>.
+For example, we can imagine running a heater at the origin for a few minutes and then
+measuring the resulting temperatures <span class="math notranslate nohighlight">\(T(x,y)\)</span> in space:</p>
+<a class="reference internal image-reference" href="../_images/heat.svg"><img alt="../_images/heat.svg" class="align-center" src="../_images/heat.svg" style="width: 516.0px; height: 516.0px;" /></a>
+<p>On the other hand, quantities such as the flow of air are described by
+an assignment of a vector, a directed line segment, to each point:</p>
+<a class="reference internal image-reference" href="../_images/vectorField.svg"><img alt="../_images/vectorField.svg" class="align-center" src="../_images/vectorField.svg" style="width: 878.4000000000001px; height: 898.2px;" /></a>
+<p>Focusing on a single point, take the origin <span class="math notranslate nohighlight">\((0,0)\)</span> for simplicity,
+we can consider a number of vectors emanating from it:</p>
+<a class="reference internal image-reference" href="../_images/vecsAtO.svg"><img alt="../_images/vecsAtO.svg" class="align-center" src="../_images/vecsAtO.svg" style="width: 516.0px; height: 516.0px;" /></a>
+<p>These vectors are completely determined by their endpoint coordinates,
+so that we can write <span class="math notranslate nohighlight">\(\vec{v} = (v_1,v_2)\)</span> for the vector with coordinates <span class="math notranslate nohighlight">\(x,y\)</span>.</p>
+<p>What are the possible operations we can apply to these vectors?
+We can <em>multiply</em> a vector by a scalar (an element of <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>):</p>
+<div class="math notranslate nohighlight" id="equation-vec-times-num">
+<span class="eqno">(13)<a class="headerlink" href="#equation-vec-times-num" title="Link to this equation">#</a></span>\[a \cdot \vec{v} = a \cdot (v_1,v_2) = (av_1,av_2)\]</div>
+<p>Geometrically this corresponds to stretching and flipping the vectors:</p>
+<a class="reference internal image-reference" href="../_images/vecsAtO2.svg"><img alt="../_images/vecsAtO2.svg" class="align-center" src="../_images/vecsAtO2.svg" style="width: 1156.0px; height: 516.0px;" /></a>
+<p>Try playing around with the value of <span class="math notranslate nohighlight">\(a\)</span> below:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/wrnjpgny&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="400"
+            src="https://www.geogebra.org/graphing/wrnjpgny"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>We can also add vectors two vectors <span class="math notranslate nohighlight">\(\vec{v}=(v_1,v_2), \vec{u}=(u_1,u_2)\)</span>, using the <em>parallelogram rule</em>:</p>
+<div class="math notranslate nohighlight" id="equation-vec-sum">
+<span class="eqno">(14)<a class="headerlink" href="#equation-vec-sum" title="Link to this equation">#</a></span>\[\vec{v} + \vec{u} = (v_1,v_2) + (u_1,u_2) = (v_1+u_1, v_2+u_2)\]</div>
+<p>Geometrically, the sum looks like:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/nyteysw8&quot;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="400"
+            src="https://www.geogebra.org/graphing/nyteysw8"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+<section id="euclidean-vector-spaces">
+<h2>Euclidean vector spaces<a class="headerlink" href="#euclidean-vector-spaces" title="Link to this heading">#</a></h2>
+<p>Collecting together all possible vectors that emanate from a point into
+a set <span class="math notranslate nohighlight">\(V\)</span> equipped with the operations of scalar multiplcation and vector addition
+yields the very important notion of a <em>vector space</em></p>
+<div class="proof definition admonition" id="def-vecspace">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Vector space (over <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>))</p>
+<section class="definition-content" id="proof-content">
+<p>A <em>vector space</em> over <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is a non-empty set <span class="math notranslate nohighlight">\(V\)</span> together
+with two binary operations <span class="math notranslate nohighlight">\(\cdot: \mathbb{R} \times V \rightarrow V\)</span>
+(scalar multiplication)
+and <span class="math notranslate nohighlight">\(+: \mathbb{V} \times \mathbb{V} \rightarrow V\)</span> (vector addition)
+which satisfy:</p>
+<ol class="arabic simple">
+<li><p>For every <span class="math notranslate nohighlight">\(\vec{u},\vec{v},\vec{w} \in V\)</span>:
+<span class="math notranslate nohighlight">\(\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}\)</span>.</p></li>
+<li><p>For ever <span class="math notranslate nohighlight">\(\vec{u},\vec{v} \in V\)</span>:
+<span class="math notranslate nohighlight">\(\vec{u}+\vec{v}=\vec{v}+\vec{u}\)</span>.</p></li>
+<li><p>There exists an element <span class="math notranslate nohighlight">\(\vec{0} \in V\)</span> such that for all <span class="math notranslate nohighlight">\(v \in \mathbb{V}\)</span>,
+<span class="math notranslate nohighlight">\(\vec{v} + \vec{0} = \vec{v}\)</span>.</p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(\vec{v} \in V\)</span>, there exists an element <span class="math notranslate nohighlight">\(\vec{v'} \in \mathbb{V}\)</span> such that
+<span class="math notranslate nohighlight">\(\vec{v} + \vec{v'} = 0\)</span>. We usually notate <span class="math notranslate nohighlight">\(\vec{v'} = -\vec{v}\)</span>.</p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\vec{v} \in \mathbb{R}\)</span>: <span class="math notranslate nohighlight">\(a(b\vec{v})=(ab)\vec{v}\)</span>.</p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(\vec{v} \in V\)</span>: <span class="math notranslate nohighlight">\(1\vec{v} = v\)</span>.</p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(a \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\vec{u},\vec{v} \in V\)</span>: <span class="math notranslate nohighlight">\(a(\vec{u}+\vec{v})=a\vec{u} + a\vec{v}\)</span>.</p></li>
+<li><p>For every <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\vec{v} \in V\)</span>: <span class="math notranslate nohighlight">\((a+b)\vec{v}=a\vec{v} + b\vec{v}\)</span>.</p></li>
+</ol>
+</section>
+</div><p>A fundamental result of linear algebra is then that <em>every</em> Euclidean vector
+in this vector space can be decomposed into a <em>linear combination</em> of scalar multiplications
+and additions of a fixed number of vectors: the <em>basis</em>. That is,
+there exists a set <span class="math notranslate nohighlight">\(B = \{\vec{i}, \vec{j}\}\)</span> of basis vectors such that
+every <span class="math notranslate nohighlight">\(v \in V\)</span> can be written as a sum of scalar multiples of elements in <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-lin-comb">
+<span class="eqno">(15)<a class="headerlink" href="#equation-lin-comb" title="Link to this equation">#</a></span>\[\vec{v} = c_1 \vec{i} + c_2 \vec{j}\]</div>
+<p>We usually list the <em>coefficients</em> of these linear combinations in
+<em>collumn vector notation</em>:</p>
+<div class="math notranslate nohighlight" id="equation-collumnvec">
+<span class="eqno">(16)<a class="headerlink" href="#equation-collumnvec" title="Link to this equation">#</a></span>\[\begin{split}\vec{v} = \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}\end{split}\]</div>
+<p>Indeed, all this time we’ve been using (implicitly) the <em>standard basis</em> for <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> which
+consists of two vectors of length <span class="math notranslate nohighlight">\(1\)</span> that start at <span class="math notranslate nohighlight">\(0\)</span> and end at <span class="math notranslate nohighlight">\((1,0)\)</span> and <span class="math notranslate nohighlight">\((0,1)\)</span>.
+In collumn vector notation, these are <span class="math notranslate nohighlight">\(\vec{i} = \begin{pmatrix}1 \\ 0 \end{pmatrix}\)</span>
+and <span class="math notranslate nohighlight">\(\vec{j} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>.</p>
+</section>
+<section id="linear-maps-and-their-matrices">
+<h2>Linear maps and their matrices<a class="headerlink" href="#linear-maps-and-their-matrices" title="Link to this heading">#</a></h2>
+<p>Given two vector spaces <span class="math notranslate nohighlight">\(V, W\)</span>, we can consider the set of functions <span class="math notranslate nohighlight">\(f: V \rightarrow W\)</span>
+that transform vectors of <span class="math notranslate nohighlight">\(V\)</span> to vectors of <span class="math notranslate nohighlight">\(W\)</span> and respect the operations of scalar multiplication
+and vector addition:</p>
+<div class="proof definition admonition" id="def-linmap">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Linear map)</p>
+<section class="definition-content" id="proof-content">
+<p>A <em>linear map</em> is a function <span class="math notranslate nohighlight">\(f: V \rightarrow W\)</span> such that for
+any two vectors <span class="math notranslate nohighlight">\(\vec{v}, \vec{u} \in V\)</span> and any <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(\vec{v} + \vec{u}) = f(\vec{v}) + f(\vec{u})\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(c\vec{v}) = cf(\vec{v})\)</span>.</p></li>
+</ol>
+</section>
+</div><p>The axioms of vector spaces then imply that linear maps <em>conserve linear combinations</em>:</p>
+<div class="math notranslate nohighlight" id="equation-linmapcomb">
+<span class="eqno">(17)<a class="headerlink" href="#equation-linmapcomb" title="Link to this equation">#</a></span>\[f(c_1\vec{v_1} + c_2\vec{v_1}) = c_1f(\vec{v_1}) + c_2f(\vec{v_2}).\]</div>
+<p>Since, as we mentioned before, every vector can be written as a linear
+combination of the two basis vectors of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, to understand
+a linear map we need only understand its effect
+on the basis vectors <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span>. Indeed, writing out
+the result of <span class="math notranslate nohighlight">\(f\)</span> to the basis vectors we have:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-09a3942a-13f8-499a-86ea-b56a4bfc6db8">
+<span class="eqno">(18)<a class="headerlink" href="#equation-09a3942a-13f8-499a-86ea-b56a4bfc6db8" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(\vec{i}) &amp;= c_{1,1}\vec{i} + c_{2,1}\vec{j},\\
+f(\vec{j}) &amp;= c_{1,2}\vec{i} + c_{2,2}\vec{j}.
+\end{align}\]</div>
+<p>These four coefficients <span class="math notranslate nohighlight">\(c_{1,1}, c_{1,2}, c_{2,1}, c_{2,2}\)</span> <strong>completely define the
+map <span class="math notranslate nohighlight">\(f\)</span></strong>!</p>
+<p>It is convenient to collect these coefficients into an object called the
+<em>matrix</em> of the map <span class="math notranslate nohighlight">\(f\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_f=
+\begin{pmatrix}
+  c_{1,1} &amp; c_{1,2}\\ 
+  c_{2,1} &amp; c_{2,2}
+\end{pmatrix}\end{split}\]</div>
+<p>Let us consider a simple example: the map <span class="math notranslate nohighlight">\(R\)</span> that sends <span class="math notranslate nohighlight">\(\vec{i}\)</span> to <span class="math notranslate nohighlight">\(\vec{j}\)</span>
+and <span class="math notranslate nohighlight">\(\vec{j}\)</span> to <span class="math notranslate nohighlight">\(\vec{i}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-87c296f8-4520-4d11-80ed-9e25ace657c7">
+<span class="eqno">(19)<a class="headerlink" href="#equation-87c296f8-4520-4d11-80ed-9e25ace657c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+R(\vec{i}) &amp;= \vec{j} = 0\vec{i} + 1\vec{j},\\
+R(\vec{j}) &amp;= \vec{i} = 1\vec{i} + 0\vec{j}.
+\end{align}\]</div>
+<p>Therefore we have <span class="math notranslate nohighlight">\(c_{1,1} = 0, c_{1,2} = 1, c_{2,1} = 1, c_{2,2} = 0\)</span> and the matrix of <span class="math notranslate nohighlight">\(R\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_R=
+\begin{pmatrix}
+  0 &amp; 1\\ 
+  1 &amp; 0
+\end{pmatrix}\end{split}\]</div>
+<p>What is the result of <span class="math notranslate nohighlight">\(f\)</span> applied to an arbitrary vector, say <span class="math notranslate nohighlight">\(\vec{v} = \begin{pmatrix} \sqrt{2} \\ \pi \end{pmatrix}\)</span>?
+Using the decomposition of <span class="math notranslate nohighlight">\(\vec{v}\)</span> into the basis vectors we compute:</p>
+<div class="math notranslate nohighlight" id="equation-examplef">
+<span class="eqno">(20)<a class="headerlink" href="#equation-examplef" title="Link to this equation">#</a></span>\[\begin{split}f(\vec{v}) = f(\sqrt{2}~\vec{i} + \pi \vec{j}) = \sqrt{2}f(\vec{i}) + \pi f(\vec{j}) = \sqrt{2}~\vec{j} + \pi \vec{i} = 
+\begin{pmatrix} \pi \\ \sqrt{2} \end{pmatrix}\end{split}\]</div>
+<p>There’s an easier way to do this calculation: matrix-vector multiplication!</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+  c_{1,1} &amp; c_{1,2}\\ 
+  c_{2,1} &amp; c_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+  v_1 \\
+  v_2
+\end{pmatrix} = 
+\begin{pmatrix}
+  c_{1,1} v_1 + c_{1,2} v_2 \\
+  c_{2,1} v_1 + c_{2,2} v_2
+\end{pmatrix} \end{split}\]</div>
+<p>Using this, we can easily calculate <span class="math notranslate nohighlight">\(R(\begin{smallmatrix}
+  \sqrt{2}\\
+  \pi
+\end{smallmatrix})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+  1 &amp; 0\\ 
+  0 &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+  \sqrt{2}\\
+  \pi
+\end{pmatrix} = 
+\begin{pmatrix}
+  0 \cdot \sqrt{2} + 1 \cdot \pi \\
+  1 \cdot \sqrt{2} + 0 \cdot \pi
+\end{pmatrix} =
+\begin{pmatrix}
+  \pi \\
+  \sqrt{2}
+\end{pmatrix}\end{split}\]</div>
+<p>Geometrically, the result of applying <span class="math notranslate nohighlight">\(R\)</span> is a reflection:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/xup8sbkf&quot;</span><span class="p">,</span><span class="mi">900</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="500"
+            src="https://www.geogebra.org/graphing/xup8sbkf"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>The rest of this section is dedicated to a discussion of
+important classes of linear maps and their matrices:
+scaling, the Euclidean transformations of rotations
+and reflections, and projections.</p>
+</section>
+<section id="scalings">
+<h2>Scalings<a class="headerlink" href="#scalings" title="Link to this heading">#</a></h2>
+<p>As we’ve mentioned before, scaling an individual
+vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> by a factor <span class="math notranslate nohighlight">\(a \in \mathbb{R}\)</span> is
+achieved by scalar multiplication <span class="math notranslate nohighlight">\(a\vec{v}\)</span>.
+Applying this transform on the basis vectors we find:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0aaa313d-3db9-437d-ae9b-95d7b48674a7">
+<span class="eqno">(21)<a class="headerlink" href="#equation-0aaa313d-3db9-437d-ae9b-95d7b48674a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+S_a(\vec{i}) &amp;= a\vec{i} = a\vec{i} + 0\vec{j},\\
+S_a(\vec{j}) &amp;= a\vec{j} = 0\vec{i} + a\vec{j}.
+\end{align}\]</div>
+<p>The corresponding matrix is therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M =
+\begin{pmatrix}
+  a &amp; 0\\ 
+  0 &amp; a
+\end{pmatrix}\end{split}\]</div>
+<p>and its effect on various vectors can be seen in the following figure:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/sqtxyazp&quot;</span><span class="p">,</span><span class="mi">900</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="500"
+            src="https://www.geogebra.org/graphing/sqtxyazp"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+<section id="rotations-and-reflections">
+<h2>Rotations and reflections<a class="headerlink" href="#rotations-and-reflections" title="Link to this heading">#</a></h2>
+<p>Rotations are easier to analyse if we adopt an alternative coordinate system:
+<em>polar coordinates</em>. Instead of describing points by pairs <span class="math notranslate nohighlight">\((x,y)\)</span> of distances
+along the two axes, we describe them by pairs <span class="math notranslate nohighlight">\((r, \phi)\)</span> of an <em>angle</em>
+<span class="math notranslate nohighlight">\(\phi \in (-\pi,\pi]\)</span> from the <span class="math notranslate nohighlight">\(x\)</span>-axis and a <em>radius</em> <span class="math notranslate nohighlight">\(r\)</span>. The two
+coordinate systems <span class="math notranslate nohighlight">\((x,y)\)</span> and <span class="math notranslate nohighlight">\((r,\phi)\)</span> are related by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c6b984d7-0b3b-413b-97df-e591b44ceb4d">
+<span class="eqno">(22)<a class="headerlink" href="#equation-c6b984d7-0b3b-413b-97df-e591b44ceb4d" title="Permalink to this equation">#</a></span>\[\begin{align}
+x &amp;= r \cos\phi,\\
+y &amp;= r \sin\phi,
+\end{align}\]</div>
+<p>as demonstrated here:</p>
+<img alt="../_images/Polar_to_cartesian.svg" class="align-center" src="../_images/Polar_to_cartesian.svg" />
+<p>Rotations are easily carried out in polar coordinates:
+rotating a point <span class="math notranslate nohighlight">\(p = (r, \phi)\)</span> by <span class="math notranslate nohighlight">\(\theta\)</span> degrees
+results in the point <span class="math notranslate nohighlight">\(p' = (r, \phi + \theta)\)</span>:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/ffbrpfqr&quot;</span><span class="p">,</span><span class="mi">900</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="500"
+            src="https://www.geogebra.org/graphing/ffbrpfqr"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>Let us now investigate how a rotation operation <span class="math notranslate nohighlight">\(R_{\theta}\)</span> affects
+the two basis vectors <span class="math notranslate nohighlight">\(\vec{i}, \vec{j}\)</span>. First, let us convert their
+coordinates from Cartesian to polar:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ec908528-0227-4630-8ef0-422441afba46">
+<span class="eqno">(23)<a class="headerlink" href="#equation-ec908528-0227-4630-8ef0-422441afba46" title="Permalink to this equation">#</a></span>\[\begin{align}
+(1,0) &amp;\rightarrow (1,0),\\
+(0,1) &amp;\rightarrow \left(1,\frac{\pi}{2}\right).
+\end{align}\]</div>
+<p>Rotating by an angle <span class="math notranslate nohighlight">\(\theta\)</span> then yields:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0c83de42-4a06-4603-9bdd-eba17c95ce9a">
+<span class="eqno">(24)<a class="headerlink" href="#equation-0c83de42-4a06-4603-9bdd-eba17c95ce9a" title="Permalink to this equation">#</a></span>\[\begin{align}
+(1,0) &amp;\rightarrow (1,\theta), \\
+\left(1,\frac{\pi}{2}\right) &amp;\rightarrow \left(1,\frac{\pi}{2}+\theta \right).
+\end{align}\]</div>
+<p>Converting back to Cartesian coordiates we therefore have:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3d49f784-aac6-423c-b38c-804a8c847980">
+<span class="eqno">(25)<a class="headerlink" href="#equation-3d49f784-aac6-423c-b38c-804a8c847980" title="Permalink to this equation">#</a></span>\[\begin{align}
+(1,0) &amp;\rightarrow \left( \cos\theta,\sin\theta \right), \\
+(0,1) &amp;\rightarrow \left(\cos \left(\frac{\pi}{2} + \theta\right), \sin \left(\frac{\pi}{2} + \theta\right)\right).
+\end{align}\]</div>
+<p>Using the basic trigonometric identities <span class="math notranslate nohighlight">\(\cos \left(\frac{\pi}{2} + \theta \right) = -\sin\theta\)</span> and
+<span class="math notranslate nohighlight">\(\sin \left(\frac{\pi}{2} + \theta \right) = \cos\theta\)</span> we finally have:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2383c3bc-6944-4ef0-a70e-7afa78d149c4">
+<span class="eqno">(26)<a class="headerlink" href="#equation-2383c3bc-6944-4ef0-a70e-7afa78d149c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+R_{\theta} \vec{i} &amp;= (\cos\theta, \sin\theta) = \cos\theta \vec{i} + \sin\theta \vec{j},\\
+R_{\theta} \vec{j} &amp;= (-\sin\theta,\cos\theta) = -\sin\theta\vec{j} + \cos\theta\vec{j}
+\end{align}\]</div>
+<p>The corresponding matrix is therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_{\theta} =
+\begin{pmatrix}
+  \cos \theta &amp; \sin\theta \\ 
+  -\sin\theta &amp; \cos\theta
+\end{pmatrix}\end{split}\]</div>
+<p>Its effect on our example set of vectors is:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/graphing/gvw2rqys&quot;</span><span class="p">,</span><span class="mi">900</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="500"
+            src="https://www.geogebra.org/graphing/gvw2rqys"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+<section id="composing-linear-maps">
+<h2>Composing linear maps<a class="headerlink" href="#composing-linear-maps" title="Link to this heading">#</a></h2>
+<p>Consider two arbitrary linear maps <span class="math notranslate nohighlight">\(f(\vec{v}), g(\vec{v})\)</span> which act on the basis states as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-646bf157-41d2-4cd0-8baf-8ed210ab1c58">
+<span class="eqno">(27)<a class="headerlink" href="#equation-646bf157-41d2-4cd0-8baf-8ed210ab1c58" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(\vec{i}) &amp;= f_{1,1}\vec{i} + f_{2,1}\vec{j} \\
+f(\vec{j}) &amp;= f_{1,2}\vec{i} + f_{2,2}\vec{j} \\
+g(\vec{i}) &amp;= g_{1,1}\vec{i} + g_{2,1}\vec{j} \\
+g(\vec{j}) &amp;= g_{1,2}\vec{i} + g_{2,2}\vec{j} \\
+\end{align}\]</div>
+<p>Composing <span class="math notranslate nohighlight">\(f\)</span> with <span class="math notranslate nohighlight">\(g\)</span> yields a new linear map <span class="math notranslate nohighlight">\(f(g(\vec{v}))\)</span>
+whose effect on the basis vectors is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-180ac740-a981-4254-901b-da973e93aa1d">
+<span class="eqno">(28)<a class="headerlink" href="#equation-180ac740-a981-4254-901b-da973e93aa1d" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(g(\vec{i})) &amp;= f\left(g_{1,1}\vec{i} + g_{2,1}\vec{j}\right) \\
+&amp;= g_{1,1}f(\vec{i}) + g_{2,1}f(\vec{j}) \\
+&amp;= g_{1,1}(f_{1,1}\vec{i} + f_{2,1}\vec{j}) + g_{2,1}(f_{1,2}\vec{i} + f_{2,2}\vec{j}) \\
+&amp;= (g_{1,1}f_{1,1}+g_{2,1}f_{1,2})\vec{i} + (g_{1,1}f_{2,1} + g_{2,1}f_{2,2})\vec{j}
+\end{align}\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight" id="equation-825ebc5c-2117-4394-b08f-715387ab265b">
+<span class="eqno">(29)<a class="headerlink" href="#equation-825ebc5c-2117-4394-b08f-715387ab265b" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(g(\vec{j})) &amp;= f\left(g_{1,2}\vec{i} + g_{2,2}\vec{j}\right) \\
+&amp;= g_{1,2}f(\vec{i}) + g_{2,2}f(\vec{j}) \\
+&amp;= g_{1,2}(f_{1,1}\vec{i} + f_{2,1}\vec{j}) + g_{2,2}(f_{1,2}\vec{i} + f_{2,2}\vec{j}) \\
+&amp;= (g_{1,2}f_{1,1}+g_{2,2}f_{1,2})\vec{i} + (g_{1,2}f_{2,1} + g_{2,2}f_{2,2})\vec{j}
+\end{align}\]</div>
+<p>Collecting these coefficients in a matrix we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{f \circ g} =
+\begin{pmatrix}
+  g_{1,1}f_{1,1}+g_{2,1}f_{1,2} &amp; g_{1,2}f_{1,1}+g_{2,2}f_{1,2} \\ 
+  g_{1,1}f_{2,1} + g_{2,1}f_{2,2} &amp; g_{1,2}f_{2,1} + g_{2,2}f_{2,2}
+\end{pmatrix}.\end{split}\]</div>
+<p>With this in mind, let us define the operation of <em>multiplication</em> of two matrices as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+  f_{1,1} &amp; f_{1,2} \\
+  f_{2,1} &amp; f_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+  g_{1,1} &amp; g_{1,2} \\
+  g_{2,1} &amp; g_{2,2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+  g_{1,1}f_{1,1}+g_{2,1}f_{1,2} &amp; g_{1,2}f_{1,1}+g_{2,2}f_{1,2} \\ 
+  g_{1,1}f_{2,1} + g_{2,1}f_{2,2} &amp; g_{1,2}f_{2,1} + g_{2,2}f_{2,2}
+\end{pmatrix}\end{split}\]</div>
+<p>The <strong>composing two linear maps <span class="math notranslate nohighlight">\(f, g\)</span></strong> corresponds to <strong>multiplying their matrices <span class="math notranslate nohighlight">\(M_f, M_g\)</span></strong>.</p>
+</section>
+<section id="projections">
+<h2>Projections<a class="headerlink" href="#projections" title="Link to this heading">#</a></h2>
+<p>Projections are a class of linear maps particularly important for computer graphics.</p>
+<div class="proof definition admonition" id="def-proj">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Projection)</p>
+<section class="definition-content" id="proof-content">
+<p>A linear map <span class="math notranslate nohighlight">\(P: V \rightarrow V\)</span> is a projection if <span class="math notranslate nohighlight">\(P(P(\vec{v})) = P(\vec{v})\)</span>.
+In terms of the matrix <span class="math notranslate nohighlight">\(M_P\)</span>, this condition becomes <span class="math notranslate nohighlight">\(M_{P}^{2} = M_P\)</span>.</p>
+</section>
+</div></section>
+<section id="more-on-bases">
+<h2>More on bases<a class="headerlink" href="#more-on-bases" title="Link to this heading">#</a></h2>
+<p>So far, we’ve worked with the basis given by the set <span class="math notranslate nohighlight">\(\{\vec{i},\vec{j}\}\)</span> of
+vectors with coordinates <span class="math notranslate nohighlight">\((1,0)\)</span> and <span class="math notranslate nohighlight">\((0,1)\)</span> in Cartesian coordinates. An important
+fact of linear algebra is the existence of other bases, infinitely many of them in fact!</p>
+<p>To state the above fact more precisely, we’ll need to employ the following notion of
+<em>linear independence</em>:</p>
+<div class="proof definition admonition" id="def-lindep">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Linear independence)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(S = \{\vec{v_1},\dots,\vec{v_n}\}\)</span> be a set of vectors of cardinality <span class="math notranslate nohighlight">\(\lvert S \rvert = n \in \mathbb{N}\)</span>.
+Then <span class="math notranslate nohighlight">\(S\)</span> is linearly independent if there exist <span class="math notranslate nohighlight">\(a_1, \dots, a_n \in \mathbb{R} \setminus \{0\}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[a_1 \vec{v_1} + \dots + a_n \vec{v_n} = \vec{0}.\]</div>
+</section>
+</div><p>The precise statement of the above fact is then:</p>
+<div class="proof lemma admonition" id="lem-basis">
+<p class="admonition-title"><span class="caption-number">Lemma 6 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(S = \{\vec{v_1},\vec{v_2}\}\)</span> be a set of vectors of cardinality 2.
+Then <span class="math notranslate nohighlight">\(S\)</span> is a basis if and only if it is linearly independent.</p>
+</section>
+</div><p>This is equivalent to saying that <span class="math notranslate nohighlight">\(\vec{v_1}\)</span> and <span class="math notranslate nohighlight">\(\vec{v_2}\)</span> do not lie on the same line.</p>
+<p>Therefore, any two non-colinear vectors define a basis, an alternative coordinate system for
+us to compute with:</p>
+<p><strong>briefly describe without much calculation</strong></p>
+</section>
+<section id="geometry-in-higher-dimensions">
+<h2>Geometry in higher dimensions<a class="headerlink" href="#geometry-in-higher-dimensions" title="Link to this heading">#</a></h2>
+<p>Generalising from the case of the infinite line, we can consider a plan or a higher-dimensional
+space with <span class="math notranslate nohighlight">\(n\)</span> degrees of freedom, whose coordinate system is given by <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.
+This is called the <em><span class="math notranslate nohighlight">\(n\)</span>-dimensional Euclidean space</em>.</p>
+<p>Distances in <span class="math notranslate nohighlight">\(n\)</span>-dimensional Euclidean space are given by:</p>
+<div class="proof definition admonition" id="def-eucnorm">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Euclidean norm)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(p = (p_1, \dots, p_n), q = (q_1, \dots, q_n) \in \mathbb{R}^n\)</span> be two points in <span class="math notranslate nohighlight">\(n\)</span>-dimensional
+Euclidean space. The <em>Euclidean distance</em> between <span class="math notranslate nohighlight">\(p,q\)</span> is defined to be:</p>
+<div class="math notranslate nohighlight">
+\[d(p,q) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2 + \dots + (p_n - q_n)^2} =
+\sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}\]</div>
+</section>
+</div><p>One can quickly verify that this reduces to <span class="math notranslate nohighlight">\(d(p,q) = \lvert p - q \rvert\)</span> for <span class="math notranslate nohighlight">\(n=1\)</span>,
+in agreement with the previous section.</p>
+<p>The geometric interpretation of a vector in an Euclidean space then becomes:</p>
+<div class="proof definition admonition" id="def-euclvec">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Vector (Euclidean))</p>
+<section class="definition-content" id="proof-content">
+<p>A vector <span class="math notranslate nohighlight">\(\vec{ab}\)</span> is a line segment between two points <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,
+directed <em>from</em> <span class="math notranslate nohighlight">\(a\)</span> <em>to</em> <span class="math notranslate nohighlight">\(b\)</span>. Its <em>length</em> (or <em>norm</em>, or <em>magnitude</em>)
+<span class="math notranslate nohighlight">\(\left\lVert \vec{ab} \right\rVert\)</span> is the Euclidean distance <span class="math notranslate nohighlight">\(d(a,b)\)</span>.</p>
+</section>
+</div><p>We now focus on operations on vectors. First of all, vectors can be
+multiplied by a scalar (in our case, a real number). Intuitively, this
+corresponds to “stretching” and potentially flipping (if the scalar is negative)
+the direction of a vector:</p>
+<div class="proof definition admonition" id="def-scalmult">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Scalar multiplication)</p>
+<section class="definition-content" id="proof-content">
+<p>Given a vector <span class="math notranslate nohighlight">\(\vec{ab}\)</span> and a scalar <span class="math notranslate nohighlight">\(c \in \mathbb{R}\)</span>,
+we define:</p>
+<p>$$a\vec{ab} =</p>
+</section>
+</div><section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<p>Define the one-dimensional Euclidean space. What is the difference between vectors
+and scalars in this case?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="arith.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Arithmetic and applications</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-geometry-in-two-dimensions">Euclidean geometry in two dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-vector-spaces">Euclidean vector spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-maps-and-their-matrices">Linear maps and their matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalings">Scalings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotations-and-reflections">Rotations and reflections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composing-linear-maps">Composing linear maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-bases">More on bases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-in-higher-dimensions">Geometry in higher dimensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alexandros Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

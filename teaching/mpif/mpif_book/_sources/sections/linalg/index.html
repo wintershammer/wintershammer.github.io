@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Analytic geometry and linear algebra - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#analytic-geometry-and-linear-algebra">Analytic geometry and linear algebra</a></li>
+        <li><a href="#euclidean-geometry-in-two-dimensions">Euclidean geometry in two dimensions</a></li><li><a href="#linear-maps-and-their-matrices">Linear maps and their matrices</a></li><li><a href="#more-on-bases">More on bases</a></li><li><a href="#geometry-in-higher-dimensions">Geometry in higher dimensions</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+    
+    
+    
+    
+    
+
+<section id="mkdocs-terminal-content">
+    <h1 id="analytic-geometry-and-linear-algebra">Analytic geometry and linear algebra</h1>
+<h2 id="euclidean-geometry-in-two-dimensions">Euclidean geometry in two dimensions</h2>
+<p>Many quantities in our physical world, such as the temperature a given place,
+or its altitude, are described by a single number. Such quantities are deemed <em>scalar</em>.
+Others however require more information to model: for example, to describe the flow
+of air at a point we must specify not only the "intensity" or <em>magnitude</em> of the flow
+but also its <em>direction</em>. Mathematically, such a quantity is modeled by a <em>vector</em> in the
+Euclidean vector space (usually <span class="arithmatex">\(\mathbb{R}^2\)</span> or <span class="arithmatex">\(\mathbb{R}^3\)</span>). 
+Such Euclidean vector spaces will be the primary focus of this chapter.</p>
+<p>We start with a familiar Euclidean space: the infinite plane, a two-dimensional world. 
+Our first concern is to establish a coordinate system. 
+We may choose some arbitrary position in this plane to be the <em>origin</em>, 
+to which we assign the coordinate <span class="arithmatex">\((0,0)\)</span>. The rest of the positions
+are then given coordinates in <span class="arithmatex">\(\mathbb{R}^2\)</span>, intuitively measuring the "vertical"
+and "horizontal" displacement from the origin: this is the familiar Cartesian coordinate
+system.</p>
+<p>We should also establish a notion of distance: given two arbitrary points, how
+far are they from eachother? The answer is given by applying the Pythagorean
+theorem:</p>
+<p>```{image} ../images/Euclidean_distance_2d.svg
+:align: center
+<div class="highlight"><pre><span></span><code>Therefore we may define the *Euclidean distance* between two points $p,q$ as:
+
+$$d(p,q) = \sqrt{(p_1-q_1)^2 + (p_2-q_2)^2}$$
+
+Scalar quantities are simply real numbers attached to each point $(x,y)$. 
+For example, we can imagine running a heater at the origin for a few minutes and then 
+measuring the resulting temperatures $T(x,y)$ in space:
+
+```{image} ../images/heat.svg
+:align: center
+:scale: 200%
+</code></pre></div></p>
+<p>On the other hand, quantities such as the flow of air are described by
+an assignment of a vector, a directed line segment, to each point:</p>
+<p>```{image} ../images/vectorField.svg
+:align: center
+:scale: 20%
+<div class="highlight"><pre><span></span><code>Focusing on a single point, take the origin $(0,0)$ for simplicity, 
+we can consider a number of vectors emanating from it:
+
+```{image} ../images/vecsAtO.svg
+:align: center
+:scale: 200%
+</code></pre></div>
+These vectors are completely determined by their endpoint coordinates,
+so that we can write <span class="arithmatex">\(\vec{v} = (v_1,v_2)\)</span> for the vector with coordinates <span class="arithmatex">\(x,y\)</span>.</p>
+<p>What are the possible operations we can apply to these vectors? 
+We can <em>multiply</em> a vector by a scalar (an element of <span class="arithmatex">\(\mathbb{R}\)</span>):</p>
+<p><div class="highlight"><pre><span></span><code>:label: vec-times-num
+a \cdot \vec{v} = a \cdot (v_1,v_2) = (av_1,av_2)
+</code></pre></div>
+Geometrically this corresponds to stretching and flipping the vectors:</p>
+<p>```{image} ../images/vecsAtO2.svg
+:align: center
+:scale: 200%
+<div class="highlight"><pre><span></span><code>Try playing around with the value of $a$ below:
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame(&quot;https://www.geogebra.org/graphing/wrnjpgny&quot;, 900,400)
+</code></pre></div></p>
+<p>We can also add vectors two vectors <span class="arithmatex">\(\vec{v}=(v_1,v_2), \vec{u}=(u_1,u_2)\)</span>, using the <em>parallelogram rule</em>:</p>
+<p><div class="highlight"><pre><span></span><code>:label: vec-sum
+\vec{v} + \vec{u} = (v_1,v_2) + (u_1,u_2) = (v_1+u_1, v_2+u_2)
+</code></pre></div>
+Geometrically, the sum looks like:
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame("https://www.geogebra.org/graphing/nyteysw8", 900,400)
+<div class="highlight"><pre><span></span><code>## Euclidean vector spaces
+
+Collecting together all possible vectors that emanate from a point into
+a set $V$ equipped with the operations of scalar multiplcation and vector addition
+yields the very important notion of a *vector space*
+
+````{prf:definition} Vector space (over $\mathbb{R}$)
+:label: def-vecspace 
+
+A *vector space* over $\mathbb{R}$ is a non-empty set $V$ together
+with two binary operations $\cdot: \mathbb{R} \times V \rightarrow V$ 
+(scalar multiplication)
+and $+: \mathbb{V} \times \mathbb{V} \rightarrow V$ (vector addition)
+which satisfy:
+
+1. For every $\vec{u},\vec{v},\vec{w} \in V$: 
+$\vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}$.
+2. For ever $\vec{u},\vec{v} \in V$: 
+$\vec{u}+\vec{v}=\vec{v}+\vec{u}$.
+3. There exists an element $\vec{0} \in V$ such that for all $v \in \mathbb{V}$, 
+$\vec{v} + \vec{0} = \vec{v}$.
+4. For every $\vec{v} \in V$, there exists an element $\vec{v&#39;} \in \mathbb{V}$ such that 
+$\vec{v} + \vec{v&#39;} = 0$. We usually notate $\vec{v&#39;} = -\vec{v}$.
+5. For every $a,b \in \mathbb{R}$ and $\vec{v} \in \mathbb{R}$: $a(b\vec{v})=(ab)\vec{v}$.
+6. For every $\vec{v} \in V$: $1\vec{v} = v$.
+7. For every $a \in \mathbb{R}$ and $\vec{u},\vec{v} \in V$: $a(\vec{u}+\vec{v})=a\vec{u} + a\vec{v}$.
+8. For every $a,b \in \mathbb{R}$ and $\vec{v} \in V$: $(a+b)\vec{v}=a\vec{v} + b\vec{v}$.
+````
+
+A fundamental result of linear algebra is then that *every* Euclidean vector
+in this vector space can be decomposed into a *linear combination* of scalar multiplications
+and additions of a fixed number of vectors: the *basis*. That is,
+there exists a set $B = \{\vec{i}, \vec{j}\}$ of basis vectors such that
+every $v \in V$ can be written as a sum of scalar multiples of elements in $B$:
+
+```{math}
+:label: lin-comb
+\vec{v} = c_1 \vec{i} + c_2 \vec{j}
+</code></pre></div></p>
+<p>We usually list the <em>coefficients</em> of these linear combinations in
+<em>collumn vector notation</em>:
+<div class="highlight"><pre><span></span><code>:label: collumnvec
+\vec{v} = \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}
+</code></pre></div></p>
+<p>Indeed, all this time we've been using (implicitly) the <em>standard basis</em> for <span class="arithmatex">\(\mathbb{R}^2\)</span> which
+consists of two vectors of length <span class="arithmatex">\(1\)</span> that start at <span class="arithmatex">\(0\)</span> and end at <span class="arithmatex">\((1,0)\)</span> and <span class="arithmatex">\((0,1)\)</span>.
+In collumn vector notation, these are <span class="arithmatex">\(\vec{i} = \begin{pmatrix}1 \\ 0 \end{pmatrix}\)</span>
+and <span class="arithmatex">\(\vec{j} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\)</span>. </p>
+<h2 id="linear-maps-and-their-matrices">Linear maps and their matrices</h2>
+<p>Given two vector spaces <span class="arithmatex">\(V, W\)</span>, we can consider the set of functions <span class="arithmatex">\(f: V \rightarrow W\)</span>
+that transform vectors of <span class="arithmatex">\(V\)</span> to vectors of <span class="arithmatex">\(W\)</span> and respect the operations of scalar multiplication 
+and vector addition:</p>
+<p>````{prf:definition} Linear map
+:label: def-linmap</p>
+<p>A <em>linear map</em> is a function <span class="arithmatex">\(f: V \rightarrow W\)</span> such that for
+any two vectors <span class="arithmatex">\(\vec{v}, \vec{u} \in V\)</span> and any <span class="arithmatex">\(c \in \mathbb{R}\)</span>:</p>
+<ol>
+<li><span class="arithmatex">\(f(\vec{v} + \vec{u}) = f(\vec{v}) + f(\vec{u})\)</span>,</li>
+<li><span class="arithmatex">\(f(c\vec{v}) = cf(\vec{v})\)</span>.
+<div class="highlight"><pre><span></span><code>The axioms of vector spaces then imply that linear maps *conserve linear combinations*:
+
+```{math}
+:label: linmapcomb 
+f(c_1\vec{v_1} + c_2\vec{v_1}) = c_1f(\vec{v_1}) + c_2f(\vec{v_2}).
+```
+
+Since, as we mentioned before, every vector can be written as a linear
+combination of the two basis vectors of $\mathbb{R}^2$, to understand
+a linear map we need only understand its effect 
+on the basis vectors $\vec{i}, \vec{j}$. Indeed, writing out
+the result of $f$ to the basis vectors we have:
+
+\begin{align}
+f(\vec{i}) &amp;= c_{1,1}\vec{i} + c_{2,1}\vec{j},\\
+f(\vec{j}) &amp;= c_{1,2}\vec{i} + c_{2,2}\vec{j}.
+\end{align}
+
+These four coefficients $c_{1,1}, c_{1,2}, c_{2,1}, c_{2,2}$ **completely define the
+map $f$**!
+
+It is convenient to collect these coefficients into an object called the
+*matrix* of the map $f$:
+
+```{math}
+M_f=
+\begin{pmatrix}
+  c_{1,1} &amp; c_{1,2}\\ 
+  c_{2,1} &amp; c_{2,2}
+\end{pmatrix}
+```
+
+Let us consider a simple example: the map $R$ that sends $\vec{i}$ to $\vec{j}$
+and $\vec{j}$ to $\vec{i}$:
+
+\begin{align}
+R(\vec{i}) &amp;= \vec{j} = 0\vec{i} + 1\vec{j},\\
+R(\vec{j}) &amp;= \vec{i} = 1\vec{i} + 0\vec{j}.
+\end{align}
+
+Therefore we have $c_{1,1} = 0, c_{1,2} = 1, c_{2,1} = 1, c_{2,2} = 0$ and the matrix of $R$ is:
+
+```{math}
+M_R=
+\begin{pmatrix}
+  0 &amp; 1\\ 
+  1 &amp; 0
+\end{pmatrix}
+```
+
+What is the result of $f$ applied to an arbitrary vector, say $\vec{v} = \begin{pmatrix} \sqrt{2} \\ \pi \end{pmatrix}$?
+Using the decomposition of $\vec{v}$ into the basis vectors we compute:
+
+```{math}
+:label: exampleF 
+f(\vec{v}) = f(\sqrt{2}~\vec{i} + \pi \vec{j}) = \sqrt{2}f(\vec{i}) + \pi f(\vec{j}) = \sqrt{2}~\vec{j} + \pi \vec{i} = 
+\begin{pmatrix} \pi \\ \sqrt{2} \end{pmatrix}
+```
+
+There&#39;s an easier way to do this calculation: matrix-vector multiplication!
+
+```{math}
+\begin{pmatrix}
+  c_{1,1} &amp; c_{1,2}\\ 
+  c_{2,1} &amp; c_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+  v_1 \\
+  v_2
+\end{pmatrix} = 
+\begin{pmatrix}
+  c_{1,1} v_1 + c_{1,2} v_2 \\
+  c_{2,1} v_1 + c_{2,2} v_2
+\end{pmatrix} 
+```
+
+Using this, we can easily calculate $R(\begin{smallmatrix}
+  \sqrt{2}\\
+  \pi
+\end{smallmatrix})$:
+
+```{math}
+\begin{pmatrix}
+  1 &amp; 0\\ 
+  0 &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+  \sqrt{2}\\
+  \pi
+\end{pmatrix} = 
+\begin{pmatrix}
+  0 \cdot \sqrt{2} + 1 \cdot \pi \\
+  1 \cdot \sqrt{2} + 0 \cdot \pi
+\end{pmatrix} =
+\begin{pmatrix}
+  \pi \\
+  \sqrt{2}
+\end{pmatrix}
+```
+Geometrically, the result of applying $R$ is a reflection:
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame(&quot;https://www.geogebra.org/graphing/xup8sbkf&quot;,900,500)
+```
+The rest of this section is dedicated to a discussion of
+important classes of linear maps and their matrices:
+scaling, the Euclidean transformations of rotations
+and reflections, and projections.
+
+## Scalings
+
+As we&#39;ve mentioned before, scaling an individual 
+vector $\vec{v}$ by a factor $a \in \mathbb{R}$ is
+achieved by scalar multiplication $a\vec{v}$. 
+Applying this transform on the basis vectors we find:
+
+\begin{align}
+S_a(\vec{i}) &amp;= a\vec{i} = a\vec{i} + 0\vec{j},\\
+S_a(\vec{j}) &amp;= a\vec{j} = 0\vec{i} + a\vec{j}.
+\end{align}
+
+The corresponding matrix is therefore:
+
+```{math}
+M =
+\begin{pmatrix}
+  a &amp; 0\\ 
+  0 &amp; a
+\end{pmatrix}
+```
+and its effect on various vectors can be seen in the following figure:
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame(&quot;https://www.geogebra.org/graphing/sqtxyazp&quot;,900,500)
+```
+## Rotations and reflections
+
+Rotations are easier to analyse if we adopt an alternative coordinate system:
+*polar coordinates*. Instead of describing points by pairs $(x,y)$ of distances
+along the two axes, we describe them by pairs $(r, \phi)$ of an *angle*
+$\phi \in (-\pi,\pi]$ from the $x$-axis and a *radius* $r$. The two
+coordinate systems $(x,y)$ and $(r,\phi)$ are related by:
+
+\begin{align}
+x &amp;= r \cos\phi,\\
+y &amp;= r \sin\phi,
+\end{align}
+
+as demonstrated here:
+
+```{image} ../images/Polar_to_cartesian.svg
+:align: center
+```
+Rotations are easily carried out in polar coordinates:
+rotating a point $p = (r, \phi)$ by $\theta$ degrees
+results in the point $p&#39; = (r, \phi + \theta)$:
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame(&quot;https://www.geogebra.org/graphing/ffbrpfqr&quot;,900,500)
+```
+Let us now investigate how a rotation operation $R_{\theta}$ affects 
+the two basis vectors $\vec{i}, \vec{j}$. First, let us convert their
+coordinates from Cartesian to polar:
+
+\begin{align}
+(1,0) &amp;\rightarrow (1,0),\\
+(0,1) &amp;\rightarrow \left(1,\frac{\pi}{2}\right).
+\end{align}
+
+Rotating by an angle $\theta$ then yields:
+
+\begin{align}
+(1,0) &amp;\rightarrow (1,\theta), \\
+\left(1,\frac{\pi}{2}\right) &amp;\rightarrow \left(1,\frac{\pi}{2}+\theta \right).
+\end{align}
+
+Converting back to Cartesian coordiates we therefore have:
+
+\begin{align}
+(1,0) &amp;\rightarrow \left( \cos\theta,\sin\theta \right), \\
+(0,1) &amp;\rightarrow \left(\cos \left(\frac{\pi}{2} + \theta\right), \sin \left(\frac{\pi}{2} + \theta\right)\right).
+\end{align}
+
+Using the basic trigonometric identities $\cos \left(\frac{\pi}{2} + \theta \right) = -\sin\theta$ and
+$\sin \left(\frac{\pi}{2} + \theta \right) = \cos\theta$ we finally have:
+
+\begin{align}
+R_{\theta} \vec{i} &amp;= (\cos\theta, \sin\theta) = \cos\theta \vec{i} + \sin\theta \vec{j},\\
+R_{\theta} \vec{j} &amp;= (-\sin\theta,\cos\theta) = -\sin\theta\vec{j} + \cos\theta\vec{j}
+\end{align}
+
+The corresponding matrix is therefore:
+
+```{math}
+R_{\theta} =
+\begin{pmatrix}
+  \cos \theta &amp; \sin\theta \\ 
+  -\sin\theta &amp; \cos\theta
+\end{pmatrix}
+```
+Its effect on our example set of vectors is:
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import IFrame
+IFrame(&quot;https://www.geogebra.org/graphing/gvw2rqys&quot;,900,500)
+```
+
+## Composing linear maps
+
+Consider two arbitrary linear maps $f(\vec{v}), g(\vec{v})$ which act on the basis states as:
+
+\begin{align}
+f(\vec{i}) &amp;= f_{1,1}\vec{i} + f_{2,1}\vec{j} \\
+f(\vec{j}) &amp;= f_{1,2}\vec{i} + f_{2,2}\vec{j} \\
+g(\vec{i}) &amp;= g_{1,1}\vec{i} + g_{2,1}\vec{j} \\
+g(\vec{j}) &amp;= g_{1,2}\vec{i} + g_{2,2}\vec{j} \\
+\end{align}
+
+Composing $f$ with $g$ yields a new linear map $f(g(\vec{v}))$
+whose effect on the basis vectors is:
+
+\begin{align}
+f(g(\vec{i})) &amp;= f\left(g_{1,1}\vec{i} + g_{2,1}\vec{j}\right) \\
+&amp;= g_{1,1}f(\vec{i}) + g_{2,1}f(\vec{j}) \\
+&amp;= g_{1,1}(f_{1,1}\vec{i} + f_{2,1}\vec{j}) + g_{2,1}(f_{1,2}\vec{i} + f_{2,2}\vec{j}) \\
+&amp;= (g_{1,1}f_{1,1}+g_{2,1}f_{1,2})\vec{i} + (g_{1,1}f_{2,1} + g_{2,1}f_{2,2})\vec{j}
+\end{align}
+
+and
+
+\begin{align}
+f(g(\vec{j})) &amp;= f\left(g_{1,2}\vec{i} + g_{2,2}\vec{j}\right) \\
+&amp;= g_{1,2}f(\vec{i}) + g_{2,2}f(\vec{j}) \\
+&amp;= g_{1,2}(f_{1,1}\vec{i} + f_{2,1}\vec{j}) + g_{2,2}(f_{1,2}\vec{i} + f_{2,2}\vec{j}) \\
+&amp;= (g_{1,2}f_{1,1}+g_{2,2}f_{1,2})\vec{i} + (g_{1,2}f_{2,1} + g_{2,2}f_{2,2})\vec{j}
+\end{align}
+
+Collecting these coefficients in a matrix we have:
+
+```{math}
+M_{f \circ g} =
+\begin{pmatrix}
+  g_{1,1}f_{1,1}+g_{2,1}f_{1,2} &amp; g_{1,2}f_{1,1}+g_{2,2}f_{1,2} \\ 
+  g_{1,1}f_{2,1} + g_{2,1}f_{2,2} &amp; g_{1,2}f_{2,1} + g_{2,2}f_{2,2}
+\end{pmatrix}.
+```
+With this in mind, let us define the operation of *multiplication* of two matrices as:
+
+```{math}
+\begin{pmatrix}
+  f_{1,1} &amp; f_{1,2} \\
+  f_{2,1} &amp; f_{2,2}
+\end{pmatrix}
+\begin{pmatrix}
+  g_{1,1} &amp; g_{1,2} \\
+  g_{2,1} &amp; g_{2,2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+  g_{1,1}f_{1,1}+g_{2,1}f_{1,2} &amp; g_{1,2}f_{1,1}+g_{2,2}f_{1,2} \\ 
+  g_{1,1}f_{2,1} + g_{2,1}f_{2,2} &amp; g_{1,2}f_{2,1} + g_{2,2}f_{2,2}
+\end{pmatrix}
+```
+The **composing two linear maps $f, g$** corresponds to **multiplying their matrices $M_f, M_g$**.
+
+## Projections
+
+Projections are a class of linear maps particularly important for computer graphics.
+
+````{prf:definition} Projection
+:label: def-proj
+
+A linear map $P: V \rightarrow V$ is a projection if $P(P(\vec{v})) = P(\vec{v})$.
+In terms of the matrix $M_P$, this condition becomes $M_{P}^{2} = M_P$.
+</code></pre></div></li>
+</ol>
+<h2 id="more-on-bases">More on bases</h2>
+<p>So far, we've worked with the basis given by the set <span class="arithmatex">\(\{\vec{i},\vec{j}\}\)</span> of
+vectors with coordinates <span class="arithmatex">\((1,0)\)</span> and <span class="arithmatex">\((0,1)\)</span> in Cartesian coordinates. An important
+fact of linear algebra is the existence of other bases, infinitely many of them in fact!</p>
+<p>To state the above fact more precisely, we'll need to employ the following notion of
+<em>linear independence</em>:</p>
+<p>````{prf:definition} Linear independence
+:label: def-lindep</p>
+<p>Let <span class="arithmatex">\(S = \{\vec{v_1},\dots,\vec{v_n}\}\)</span> be a set of vectors of cardinality <span class="arithmatex">\(\lvert S \rvert = n \in \mathbb{N}\)</span>. 
+Then <span class="arithmatex">\(S\)</span> is linearly independent if there exist <span class="arithmatex">\(a_1, \dots, a_n \in \mathbb{R} \setminus \{0\}\)</span> such that:
+<div class="highlight"><pre><span></span><code>a_1 \vec{v_1} + \dots + a_n \vec{v_n} = \vec{0}.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The precise statement of the above fact is then:
+
+````{prf:lemma} 
+:label: lem-basis
+
+Let $S = \{\vec{v_1},\vec{v_2}\}$ be a set of vectors of cardinality 2. 
+Then $S$ is a basis if and only if it is linearly independent.   
+</code></pre></div>
+This is equivalent to saying that <span class="arithmatex">\(\vec{v_1}\)</span> and <span class="arithmatex">\(\vec{v_2}\)</span> do not lie on the same line.</p>
+<p>Therefore, any two non-colinear vectors define a basis, an alternative coordinate system for
+us to compute with:</p>
+<p><strong>briefly describe without much calculation</strong></p>
+<h2 id="geometry-in-higher-dimensions">Geometry in higher dimensions</h2>
+<p>Generalising from the case of the infinite line, we can consider a plan or a higher-dimensional
+space with <span class="arithmatex">\(n\)</span> degrees of freedom, whose coordinate system is given by <span class="arithmatex">\(\mathbb{R}^n\)</span>.
+This is called the <em><span class="arithmatex">\(n\)</span>-dimensional Euclidean space</em>.</p>
+<p>Distances in <span class="arithmatex">\(n\)</span>-dimensional Euclidean space are given by:
+````{prf:definition} Euclidean norm
+:label: def-eucnorm</p>
+<p>Let <span class="arithmatex">\(p = (p_1, \dots, p_n), q = (q_1, \dots, q_n) \in \mathbb{R}^n\)</span> be two points in <span class="arithmatex">\(n\)</span>-dimensional 
+Euclidean space. The <em>Euclidean distance</em> between <span class="arithmatex">\(p,q\)</span> is defined to be:</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(d(p,q) = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2 + \dots + (p_n - q_n)^2} =
+\sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}\)</span>\)</span>
+<div class="highlight"><pre><span></span><code>One can quickly verify that this reduces to $d(p,q) = \lvert p - q \rvert$ for $n=1$,
+in agreement with the previous section.
+
+The geometric interpretation of a vector in an Euclidean space then becomes:
+
+````{prf:definition} Vector (Euclidean)
+:label: def-euclvec
+
+A vector $\vec{ab}$ is a line segment between two points $a$ and $b$,
+directed *from* $a$ *to* $b$. Its *length* (or *norm*, or *magnitude*) 
+$\left\lVert \vec{ab} \right\rVert$ is the Euclidean distance $d(a,b)$.
+</code></pre></div>
+We now focus on operations on vectors. First of all, vectors can be
+multiplied by a scalar (in our case, a real number). Intuitively, this
+corresponds to "stretching" and potentially flipping (if the scalar is negative)
+the direction of a vector:</p>
+<p>````{prf:definition} Scalar multiplication
+:label: def-scalmult</p>
+<p>Given a vector <span class="arithmatex">\(\vec{ab}\)</span> and a scalar <span class="arithmatex">\(c \in \mathbb{R}\)</span>, 
+we define:</p>
+<p>$$a\vec{ab} = 
+````</p>
+<h3 id="exercise">Exercise</h3>
+<p>Define the one-dimensional Euclidean space. What is the difference between vectors
+and scalars in this case?</p>
+</section>
+
+<section id="mkdocs-terminal-after-content">
+    
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

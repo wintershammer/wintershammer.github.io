@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Théorie naïve des ensembles &#8212; Maths for computer science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/sets_fr';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Mathematics for Computer Science 2024-2025" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Maths for computer science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mathematics for Computer Science 2024-2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Théorie naïve des ensembles</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sections/sets_fr.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Théorie naïve des ensembles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langage-mathematique">Langage mathématique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-ensembles-et-leurs-elements">Les ensembles et leurs éléments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-et-quantificateurs">Variables et quantificateurs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-relation-de-sous-ensemble">La relation de sous-ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-sur-les-ensembles">Opérations sur les ensembles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinalite">Cardinalité</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-et-produits-cartesiens">Tuples et produits cartésiens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-des-parties">Ensemble des parties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="theorie-naive-des-ensembles">
+<h1>Théorie naïve des ensembles<a class="headerlink" href="#theorie-naive-des-ensembles" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>La théorie des ensembles est l’étude mathématique des collections d’objets.
+Branche relativement récente des mathématiques, elle est née à la fin de l’année 1873
+dans les travaux de <a class="reference external" href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a>
+qui étudiait les propriétés des nombres réels.</p>
+<p>Malgré l’apparente simplicité des objets de base qu’elle traite, les ensembles
+et leurs éléments, la théorie des ensembles est une branche riche et
+fondamentale des mathématiques modernes. Sa naissance a marqué un tournant,
+jouant un rôle central dans la quête pour une fondation formelle des
+mathématiques qui s’est déroulée à la fin du 19e et au début du 20e siècle.
+À cette époque, il est devenu évident que des concepts tels que les ensembles
+infinis n’étaient pas traités correctement par les mathématiciens :
+de célèbres <a class="reference external" href="https://fr.wikipedia.org/wiki/Paradoxe_de_Russell">paradoxes</a>
+étaient apparus, nécessitant une résolution immédiate - au risque de montrer
+que les mathématiques ne sont pas logiquement cohérentes !</p>
+<p>La solution à cette crise a été apportée par une <a class="reference external" href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_ensembles_de_Zermelo-Fraenkel">théorie formelle des
+ensembles</a>
+introduite par Zermelo et Fraenkel, qui a finalement réussi à formaliser la
+notion d’ensembles infinis, donnant ainsi aux
+mathématiques un fondement adéquat. Depuis lors, la théorie des
+ensembles a été un sujet actif de recherche pour les mathématiciens, les
+logiciens et les philosophes.</p>
+<p>Dans ce cours, nos investigations porteront principalement sur les ensembles
+finis. Par conséquent, une théorie naïve des ensembles (beaucoup plus simple
+que la théorie de Zermelo et Fraenkel mentionnée plus haut) suffira. Cela nous
+donne le privilège de travailler dans un langage informel (au lieu de la
+logique formelle) et de prendre pour acquis diverses notions de base.</p>
+<p>Cependant, nous devons toujours être conscients de la faiblesse suivante de
+notre approche informelle : nos résultats ne seront pas toujours directement
+transférables des ensembles finis aux ensembles infinis. L’infini est aussi
+merveilleux que peu intuitif !</p>
+</section>
+<section id="langage-mathematique">
+<h2>Langage mathématique<a class="headerlink" href="#langage-mathematique" title="Link to this heading">#</a></h2>
+<p>Avant de poursuivre notre étude des ensembles, fixons d’abord quelques notions
+de base du langage mathématique informel que nous développerons au cours de
+notre étude.</p>
+<p>Nous commençons par les notions de base de <em>constantes</em> et de <em>connecteurs</em>.</p>
+<p>Les constantes sont des symboles correspondant à des objets nommés dont nous
+supposons l’existence.
+Voici quelques exemples de constantes :</p>
+<ul class="simple">
+<li><p>Les symboles <span class="math notranslate nohighlight">\(\top\)</span> et <span class="math notranslate nohighlight">\(\bot\)</span> qui sont lus respectivement comme « vrai » et «
+faux »,</p></li>
+<li><p>tout autre symbole tel que <span class="math notranslate nohighlight">\(\bullet, \circ, \triangle\)</span>.</p></li>
+</ul>
+<p>Bien entendu, un langage qui ne peut se référer qu’à un seul objet à la fois
+n’est pas très intéressant. Les connecteurs servent à coller les formules pour
+en former de plus grandes. Dans le cas le plus simple, ils peuvent être soit
+<em>unaires</em>, auquel cas ils modifient une seule formule, soit <em>binaires</em>, auquel
+cas ils sont utilisés pour coller deux formules.
+Les connecteurs de base que nous utiliserons sont :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span> qui est un connecteur unaire lu comme « pas ».</p></li>
+<li><p><span class="math notranslate nohighlight">\(\land\)</span> qui est une conjonctive binaire lue comme « et ».</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lor\)</span>, qui est une conjonction binaire lue comme « ou ».</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> qui est une conjonction binaire lue comme « implique ».</p></li>
+</ul>
+<p>Voici quelques exemples d’utilisation de ces connecteurs : <span class="math notranslate nohighlight">\(\not \triangle\)</span>,
+<span class="math notranslate nohighlight">\(\top \land \bot\)</span>, <span class="math notranslate nohighlight">\(\bullet \implies \top\)</span>. Pour les formules plus
+compliquées, nous pouvons utiliser des parenthèses pour les rendre non ambiguës
+: <span class="math notranslate nohighlight">\((\not \top) \implies \bot\)</span>.</p>
+<p>Jusqu’à présent, nous n’avons fait que définir la <em>syntaxe</em> de notre langue :
+des symboles sans signification intrinsèque et des moyens de les combiner pour
+former des formules plus grandes.</p>
+<p>Leur attribuer une signification est le sujet de la <em>sémantique</em> que nous
+traiterons de manière très informelle :</p>
+<ul class="simple">
+<li><p>Aux symboles <span class="math notranslate nohighlight">\(\top\)</span> et <span class="math notranslate nohighlight">\(\bot\)</span>, nous attribuerons les deux valeurs booléennes
+classiques de <span class="math notranslate nohighlight">\(vrai\)</span> et <span class="math notranslate nohighlight">\(faux\)</span>.</p></li>
+<li><p>Aux symboles <span class="math notranslate nohighlight">\(\bullet, \circ, \triangle\)</span> nous pouvons assigner des « objets
+abstraits » dont nous supposons qu’ils existent déjà et dont la nature
+précise n’est pas pertinente.</p></li>
+</ul>
+<p>Nous attribuons des <em>fonctions booléennes</em> unaires ou binaires aux connecteurs :</p>
+<ul class="simple">
+<li><p>A <span class="math notranslate nohighlight">\(\lnot\)</span> nous assignerons la fonction qui associe <span class="math notranslate nohighlight">\(vrai\)</span> à <span class="math notranslate nohighlight">\(faux\)</span> et <span class="math notranslate nohighlight">\(faux\)</span> à <span class="math notranslate nohighlight">\(vrai\)</span>.</p></li>
+<li><p>A <span class="math notranslate nohighlight">\(\land\)</span> nous assignerons la fonction qui s’évalue à <span class="math notranslate nohighlight">\(vrai\)</span> si et seulement
+si ses deux arguments sont <span class="math notranslate nohighlight">\(vrai\)</span>. Autrement dit, à <span class="math notranslate nohighlight">\(P \land Q\)</span> nous
+assignons la valeur <span class="math notranslate nohighlight">\(vrai\)</span> si et seulement si <span class="math notranslate nohighlight">\(P\)</span> et <span class="math notranslate nohighlight">\(Q\)</span> ont tous les deux la
+valeur <span class="math notranslate nohighlight">\(vrai\)</span>.</p></li>
+<li><p>A <span class="math notranslate nohighlight">\(\lor\)</span> nous assignerons la fonction qui s’évalue à <span class="math notranslate nohighlight">\(vrai\)</span> si l’une ou
+l’autre de ses entrées est <span class="math notranslate nohighlight">\(vrai\)</span>. C’est-à-dire que <span class="math notranslate nohighlight">\(P \lor Q\)</span> est <span class="math notranslate nohighlight">\(vrai\)</span>
+si <span class="math notranslate nohighlight">\(P\)</span> ou <span class="math notranslate nohighlight">\(Q\)</span> le sont.</p></li>
+<li><p>A <span class="math notranslate nohighlight">\(\rightarrow\)</span> nous assignons la fonction qui évalue à <span class="math notranslate nohighlight">\(faux\)</span> si et
+seulement si son premier argument est <span class="math notranslate nohighlight">\(vrai\)</span> et le second <span class="math notranslate nohighlight">\(faux\)</span> sinon elle
+est évaluée à <span class="math notranslate nohighlight">\(vrai\)</span>. C’est-à-dire que <span class="math notranslate nohighlight">\(P \rightarrow Q\)</span> est toujours <span class="math notranslate nohighlight">\(vrai\)</span>
+sauf si <span class="math notranslate nohighlight">\(P\)</span> est <span class="math notranslate nohighlight">\(vrai\)</span> et <span class="math notranslate nohighlight">\(Q\)</span> est <span class="math notranslate nohighlight">\(faux\)</span>, auquel cas la formule entière a
+la valeur <span class="math notranslate nohighlight">\(faux\)</span>.</p></li>
+</ul>
+<p>Nous enrichirons ce langage de nouveaux concepts lorsque cela s’avérera utile.
+Nous passerons également librement de cette notation plus abstraite à son
+équivalent en langage naturel,  en utilisant celle qui nous permet d’énoncer le
+plus succinctement et le plus clairement les formules souhaitées.</p>
+</section>
+<section id="les-ensembles-et-leurs-elements">
+<h2>Les ensembles et leurs éléments<a class="headerlink" href="#les-ensembles-et-leurs-elements" title="Link to this heading">#</a></h2>
+<p>Nous sommes enfin prêts à présenter nos principaux objets d’étude.</p>
+<div class="admonition-definition-ensembles-et-elements admonition" id="def-set">
+<p class="admonition-title">Definition (Ensembles et éléments).</p>
+<p>Un ensemble est une collection non ordonnée d’objets, appelés <em>éléments</em> de l’ensemble.
+Ces éléments sont considérés comme étant tous distincts (aucune répétition n’est autorisée).</p>
+</div>
+<p>Bien que très informelle d’un point de vue mathématique moderne, cette «
+définition » est assez proche de celle que Cantor lui-même donne dans
+<span id="id1">[<a class="reference internal" href="sets.html#id9" title="Georg Cantor. Beiträge zur begründung der transfiniten mengenlehre. Mathematische Annalen, 46(4):481–512, 1895.">Can95</a>]</span> :</p>
+<blockquote class="epigraph">
+<div><p>Un ensemble est une réunion en une totalité d’objets définis et distincts de
+notre perception ou de notre pensée, que l’on appelle éléments de l’ensemble.</p>
+<p class="attribution">—Georg Cantor</p>
+</div></blockquote>
+<p>Ayant introduit un nouvel objet mathématique, enrichissons maintenant
+notre langage avec de nouvelles constantes appropriées pour parler d’ensembles.
+Tout d’abord, nous introduisons le symbole <span class="math notranslate nohighlight">\(\emptyset\)</span> qui représente
+l’ensemble vide : l’ensemble qui ne contient aucun élément, que nous supposons
+existe. Nous supposerons également l’existence de l’<em>ensemble des nombres
+naturels</em> pour lequel nous introduisons les constantes <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> pour
+l’ensemble lui-même et les chiffres indo-arabes habituels <span class="math notranslate nohighlight">\(0, 1, 2, 3, \dots\)</span>
+pour ses éléments. Nous pouvons également admettre quelques fonctions et
+relations de base et des relations sur les nombres naturels tels que <span class="math notranslate nohighlight">\(+, -, *,
+/, \geq, \leq\)</span>.</p>
+<p>Enfin, nous adoptons la <em>notation extensionnelle</em>, qui est une façon très
+répandue de représenter les ensembles en énumérant ses éléments séparés par des
+virgules et placés entre accolades <span class="math notranslate nohighlight">\(\{, \}\)</span>.Par exemple :</p>
+<ul class="simple">
+<li><p>Un ensemble contenant les 3 premiers nombres naturels non nuls peut être
+écrit comme suit : <span class="math notranslate nohighlight">\(\{1, 2, 3\}\)</span>.</p></li>
+<li><p>Un ensemble contenant deux éléments abstraits est <span class="math notranslate nohighlight">\(\{\bullet, \circ \}\)</span>.</p></li>
+<li><p>L’ensemble vide, qui ne contient rien, s’écrit <span class="math notranslate nohighlight">\(\{\}\)</span> ou en abrégé
+<span class="math notranslate nohighlight">\(\emptyset\)</span>.</p></li>
+</ul>
+<p>Un ensemble étant un objet en soi peut donc être un élément d’un autre ensemble
+: <span class="math notranslate nohighlight">\(\{1,2,\{1,5\}\}\)</span> est un ensemble parfaitement valide contenant les éléments
+<span class="math notranslate nohighlight">\(1, 2, \{1, 5\}\)</span><a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Deux ensembles seront considérés comme <em>les mêmes</em> ou <em>égaux</em> s’ils ont les
+mêmes éléments. Comme mentionné dans la <a class="reference internal" href="#def-set"><span class="std std-ref">définition ci-dessus</span></a> l’ordre
+des éléments dans la représentation extensionnelle d’un ensemble n’a pas
+d’importance : les ensembles <span class="math notranslate nohighlight">\(\{1,2,3\}, \{3,2,1\}, \{2,1,3\}\)</span> sont tous égaux.
+Pour cette relation, on introduit la connective <span class="math notranslate nohighlight">\(=\)</span> qui est une fonction de
+deux ensembles : <span class="math notranslate nohighlight">\(A = B\)</span> est <span class="math notranslate nohighlight">\(vrai\)</span> si <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont égaux.</p>
+<p>Une autre notion importante est celle d’appartenance entre un objet et un
+ensemble. On utilise la connective <span class="math notranslate nohighlight">\(\in\)</span> pour désigner cette relation. cette
+relation. Par exemple, <span class="math notranslate nohighlight">\(1 \in \{1, 2, 3\}\)</span> signifie que l’ensemble <span class="math notranslate nohighlight">\(\{1, 2,
+3\}\)</span> contient <span class="math notranslate nohighlight">\(1\)</span> (ce qui est vrai !), tandis que <span class="math notranslate nohighlight">\(4 \in \{1, 2, 3\}\)</span> est la
+proposition que le même ensemble contient <span class="math notranslate nohighlight">\(4\)</span> (ce qui est faux !). Enfin,
+<span class="math notranslate nohighlight">\(\not\in\)</span> représente la relation de <em>non-appartenance</em> : <span class="math notranslate nohighlight">\(4 \not\in
+\{1,2,3\}\)</span> est vrai.</p>
+</section>
+<section id="variables-et-quantificateurs">
+<h2>Variables et quantificateurs<a class="headerlink" href="#variables-et-quantificateurs" title="Link to this heading">#</a></h2>
+<p>Pour faciliter la manipulation des ensembles et de leurs objets, nous
+enrichissons notre langage en autorisant l’utilisation de <em>variables</em> :
+celles-ci serviront d’arguments aux</p>
+<p>aux fonctions ensemblistes. Nous désignerons les variables par des lettres
+latines minuscules <span class="math notranslate nohighlight">\(x, y, z, \dots\)</span> désignant des éléments et des lettres
+majuscules telles que <span class="math notranslate nohighlight">\(A, B, S, U \dots\)</span> désignant des ensembles.</p>
+<p>Les variables elles-mêmes n’ont pas beaucoup d’utilité à moins d’être combinées
+avec l’utilisation de <em>quantificateurs</em> : le quantificateur universel et le
+quantificateur existentiel <span class="math notranslate nohighlight">\(\exists\)</span> qui se lisent comme « pour tous » et « il
+existe ». et « il existe ». Les quantificateurs <em>lient</em> les variables dans une
+formule : <span class="math notranslate nohighlight">\(\forall\)</span> et <span class="math notranslate nohighlight">\(\exists\)</span> sont tous deux accompagnés accompagnés d’une
+variable et d’une formule. La syntaxe de base est celle de <span class="math notranslate nohighlight">\(\forall x P\)</span> et
+<span class="math notranslate nohighlight">\(\exists x P\)</span>, où <span class="math notranslate nohighlight">\(P\)</span> est une formule dans laquelle la variable variable <span class="math notranslate nohighlight">\(x\)</span>
+apparaît <em>libre</em>, c’est-à-dire qu’elle n’est liée à aucun quantificateur.</p>
+<p>En termes de sémantique, les variables reçoivent des valeurs d’un ensemble
+qui contient tous les objets qui nous intéressent. Cet ensemble universel est
+également appelé <em>domaine (ou univers) du discours</em>.</p>
+<p>La formule <span class="math notranslate nohighlight">\(\forall x~P\)</span> aura la valeur <span class="math notranslate nohighlight">\(vrai\)</span> si et seulement si la formule
+<span class="math notranslate nohighlight">\(P\)</span> est vraie pour toute affectation possible de <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>La formule <span class="math notranslate nohighlight">\(\exists x~P\)</span> prendra la valeur <span class="math notranslate nohighlight">\(vrai\)</span> si et seulement s’il existe
+au moins une affectation de <span class="math notranslate nohighlight">\(x\)</span> qui rend <span class="math notranslate nohighlight">\(P\)</span> vrai.</p>
+<p>Par exemple,</p>
+<ul class="simple">
+<li><p>La formule <span class="math notranslate nohighlight">\(\exists x~(x \in {1,2,3}) \land (x \in \{2,4,6\})\)</span> est vraie,</p></li>
+<li><p>tandis que <span class="math notranslate nohighlight">\(\forall x ~ (x \in \{1,2,3\}) \rightarrow (x \{2,4,6\})\)</span> est
+fausse.</p></li>
+</ul>
+<p>Nous utiliserons souvent l’abréviation <span class="math notranslate nohighlight">\(\exists x \in S~P\)</span> pour signifier
+<span class="math notranslate nohighlight">\(\exists x ~ (x \in S) \land P\)</span> et <span class="math notranslate nohighlight">\(\forall x \in S~P\)</span> to stand for <span class="math notranslate nohighlight">\(\forall x ~ (x \in S \rightarrow P)\)</span>.</p>
+<p>Prenons <span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span> et <span class="math notranslate nohighlight">\(B =\{2,5\}\)</span>, nous pouvons utiliser cette notation
+abrégée pour réécrire les deux exemples ci-dessus comme suit :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\exists x \in A ~ x \in B\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \in A ~ x \in B\)</span>.</p></li>
+</ul>
+</section>
+<section id="la-relation-de-sous-ensemble">
+<h2>La relation de sous-ensemble<a class="headerlink" href="#la-relation-de-sous-ensemble" title="Link to this heading">#</a></h2>
+<p>Compte tenu de ce qui précède, nous pouvons maintenant définir une relation entre les ensembles qui capture la notion d’un ensemble à l’intérieur d’un autre.</p>
+<div class="admonition-definition-sous-ensemble admonition" id="def-subset">
+<p class="admonition-title">Definition (Sous-ensemble).</p>
+<p>Nous disons qu’un ensemble <span class="math notranslate nohighlight">\(A\)</span> est un <em>sous-ensemble</em> d’un ensemble <span class="math notranslate nohighlight">\(B\)</span>, noté <span class="math notranslate nohighlight">\(A \subseteq B\)</span>,
+si tous les éléments de <span class="math notranslate nohighlight">\(A\)</span> appartiennent à <span class="math notranslate nohighlight">\(B\)</span>.
+Autrement dit, <span class="math notranslate nohighlight">\(A \subseteq B\)</span> si et seulement si <span class="math notranslate nohighlight">\(\forall x \in A ~ x \in B\)</span>.</p>
+</div>
+<p>Deux faits importants en découlent :</p>
+<ul class="simple">
+<li><p>Tout ensemble est un sous-ensemble de lui-même : <span class="math notranslate nohighlight">\(A \subseteq A\)</span> est vrai.</p></li>
+<li><p>L’ensemble vide est un sous-ensemble de tous les ensembles : <span class="math notranslate nohighlight">\(\forall S~\emptyset \subseteq S\)</span> est vrai.</p></li>
+</ul>
+<p>Par exemple, <span class="math notranslate nohighlight">\(\{2,4,6\} \subseteq \{1,2,3,4,5,6\}\)</span>, tandis que <span class="math notranslate nohighlight">\(\{1,2,3\}
+\not\subseteq \{1,2,\{3,4,5\}\}\)</span>, où <span class="math notranslate nohighlight">\(A \not\subseteq B\)</span> signifie <span class="math notranslate nohighlight">\(\lnot(A
+\subseteq B)\)</span>.</p>
+<p>Une façon pratique de décrire les sous-ensembles, qui complète la notation
+extensionnelle introduite ci-dessus, est la façon intensionnelle : nous
+spécifions qu’un ensemble <span class="math notranslate nohighlight">\(A\)</span> est un sous-ensemble d’un ensemble <span class="math notranslate nohighlight">\(B\)</span> dont les
+éléments satisfont une propriété supplémentaire. Par exemple,: <span class="math notranslate nohighlight">\(\{ x \in
+\{1,2,3\} \lvert x &gt;= 2\}\)</span> définit l’ensemble <span class="math notranslate nohighlight">\(\{2,3\}\)</span>.</p>
+</section>
+<section id="operations-sur-les-ensembles">
+<span id="section-operations"></span><h2>Opérations sur les ensembles<a class="headerlink" href="#operations-sur-les-ensembles" title="Link to this heading">#</a></h2>
+<p>Au-delà des constructions extensionnelles et intensionnelles d’ensembles, nous
+pouvons construire de nouveaux ensembles en combinant des ensembles existants,
+via des opérations :</p>
+<div class="admonition-definition-union admonition" id="def-union">
+<p class="admonition-title">Definition (Union).</p>
+<p>L’union de deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>, notée <span class="math notranslate nohighlight">\(A \cup B\)</span>, est l’ensemble constitué de tous les éléments de <span class="math notranslate nohighlight">\(A\)</span> et de tous ceux de <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="admonition-definition-intersection admonition" id="def-intersection">
+<p class="admonition-title">Definition (Intersection).</p>
+<p>L’intersection de deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>, notée <span class="math notranslate nohighlight">\(A \cap B\)</span>, est l’ensemble constitué de tous les éléments de <span class="math notranslate nohighlight">\(A\)</span> qui appartiennent aussi à <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="admonition-definition-difference admonition" id="def-difference">
+<p class="admonition-title">Definition (Différence).</p>
+<p>La différence de deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>, notée <span class="math notranslate nohighlight">\(A \setminus B\)</span>, est l’ensemble constitué de tous les éléments de <span class="math notranslate nohighlight">\(A\)</span> qui n’appartiennent pas à <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<p>(def-complement)</p>
+<div class="admonition-definition-complement admonition">
+<p class="admonition-title">Definition (Complément).</p>
+<p>Le complément d’un ensemble <span class="math notranslate nohighlight">\(A\)</span> par rapport au domaine de discours <span class="math notranslate nohighlight">\(U\)</span> est <span class="math notranslate nohighlight">\(U
+\setminus A\)</span>.</p>
+</div>
+<p id="def-props">Voici quelques identités importantes impliquant ces opérations :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A \cap B = B \cap A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cup B = B \cup A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cap (B \cap C) = (A \cap B) \cap C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cup (B \cup C) = (A \cup B) \cup C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (E \setminus A) = A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (A \cup B) = (E \setminus A) \cap (E \setminus B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (A \cap B) = (E \setminus A) \cup (E \setminus B)\)</span></p></li>
+</ul>
+<p>Une manière simple de se convaincre que ces propriétés sont valables est de
+dessiner des <em>diagrammes de Venn</em>, dans lesquels l’univers du discours est
+dessiné comme une boîte et ses sous-ensembles sont dessinés comme des formes «
+ovaloïdes », de sorte que les formes correspondant à deux ensembles <span class="math notranslate nohighlight">\(A,B\)</span> se
+chevauchent si <span class="math notranslate nohighlight">\(A \cap B \neq \emptyset\)</span> et ne se chevauchent pas dans le cas
+contraire.</p>
+<p>Par exemple, pour trois ensembles <span class="math notranslate nohighlight">\(A,B,C\)</span> avec <span class="math notranslate nohighlight">\(A \cap B \neq \emptyset, (A
+\cup B) \cap C \neq \emptyset\)</span> nous dessinons ce qui suit :</p>
+<p><img alt="Exemple de diagramme de Venn" src="../_images/venn.png" /></p>
+</section>
+<section id="cardinalite">
+<h2>Cardinalité<a class="headerlink" href="#cardinalite" title="Link to this heading">#</a></h2>
+<p>Une notion importante pour les ensembles est celle de <em>cardinalité</em> :</p>
+<div class="admonition-definition-cardinalite admonition" id="def-cardinalite">
+<p class="admonition-title">Définition (cardinalité)</p>
+<p>La cardinalité d’un ensemble fini est son nombre d’éléments.</p>
+</div>
+<p>On utilise souvent la notation <span class="math notranslate nohighlight">\(\lvert A \rvert\)</span> pour désigner la cardinalité
+d’un ensemble <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Par exemple, l’ensemble <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span> est de cardinalité <span class="math notranslate nohighlight">\(\lvert\{1,2,3\}\rvert =
+3\)</span> tandis que <span class="math notranslate nohighlight">\(\lvert\{1,2,\{1,5\},\emptyset,\{2,3,\{4\}\}\}\rvert = 5\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Un avertissement s’impose : la définition ci-dessus est très, très informelle
+et assez circulaire.
+La définition formelle de la cardinalité utilisée dans les mathématiques
+contemporaines est en fait fondée sur la notion de <em>bijections</em>, qui traite de
+manière uniforme le cas des ensembles finis et infinis.</p>
+</div>
+</section>
+<section id="tuples-et-produits-cartesiens">
+<h2>Tuples et produits cartésiens<a class="headerlink" href="#tuples-et-produits-cartesiens" title="Link to this heading">#</a></h2>
+<p>Introduisons maintenant une autre notion de collection d’éléments.</p>
+<div class="admonition-definition-n-tuple admonition" id="def-tuple">
+<p class="admonition-title">Définition (<span class="math notranslate nohighlight">\(n\)</span>-tuple)</p>
+<p>Étant donné un entier naturel <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, un <span class="math notranslate nohighlight">\(n\)</span>-tuple est une
+collection <em>ordonnée</em> de <span class="math notranslate nohighlight">\(n\)</span> éléments.</p>
+</div>
+<p>Contrairement aux ensembles, les <span class="math notranslate nohighlight">\(n\)</span>-tuples prennent en compte l’ordre dans
+lequel les éléments sont énuméréset permettent également les répétitions.</p>
+<p>Nous dénoterons les <span class="math notranslate nohighlight">\(n\)</span>-tuples en utilisant une syntaxe similaire à celle des ensembles, en remplaçant les accolades <span class="math notranslate nohighlight">\(\{,\}\)</span> par des parenthèses <span class="math notranslate nohighlight">\((,)\)</span>.
+Deux <span class="math notranslate nohighlight">\(n\)</span>-tuples seront considérés comme <em>égaux</em> s’ils contiennent les mêmes éléments dans le même ordre.
+Des exemples de <span class="math notranslate nohighlight">\(n\)</span>-tuples sont :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((1,2)\)</span>, un <span class="math notranslate nohighlight">\(2\)</span>-tuple également appelé une <em>paire</em>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((2,1)\)</span>, un autre <span class="math notranslate nohighlight">\(2\)</span>-tuple différent du précédent.</p></li>
+<li><p><span class="math notranslate nohighlight">\((1,2,3,4,5)\)</span>, <span class="math notranslate nohighlight">\((1,8,10,3,0)\)</span>, deux <span class="math notranslate nohighlight">\(5\)</span>-tuples.</p></li>
+</ul>
+<p>La construction suivante permet de construire <span class="math notranslate nohighlight">\(n\)</span>-tuples à partir d’ensembles.</p>
+<div class="admonition-definition-produit-cartesien admonition" id="def-cartesianprod">
+<p class="admonition-title">Definition (Produit cartésien)</p>
+<p>Etant donné un entier naturel <span class="math notranslate nohighlight">\(n dans \mathbb{N}\)</span> et <span class="math notranslate nohighlight">\(n\)</span> ensembles <span class="math notranslate nohighlight">\(S_1, S_2,
+\dots, S_n\)</span>, le <em>produit cartésien</em> de <span class="math notranslate nohighlight">\(n\)</span> ensembles <span class="math notranslate nohighlight">\(S_1 \times S_2 \times
+\dots \times S_n\)</span> est l’ensemble de tous les <span class="math notranslate nohighlight">\(n\)</span>-tuples possibles pour lesquels
+le premier élément est tiré de <span class="math notranslate nohighlight">\(S_1\)</span>, le second est tiré de <span class="math notranslate nohighlight">\(S_2\)</span>, et ainsi de
+suite :</p>
+<div class="math notranslate nohighlight">
+\[S_1 \times S_2 \times \dots \times S_n = \{(s_1, s_2, \dots, s_n)~\lvert~s_1 \in S_1, s_2 \in S_2, \dots, s_n \in S_n\}\]</div>
+</div>
+</section>
+<section id="ensemble-des-parties">
+<h2>Ensemble des parties<a class="headerlink" href="#ensemble-des-parties" title="Link to this heading">#</a></h2>
+<p>La construction suivante nous permet de rassembler
+tous les sous-groupes d’un ensemble donné <span class="math notranslate nohighlight">\(S\)</span> :</p>
+<div class="admonition-definition-ensemble-des-parties admonition" id="def-pset">
+<p class="admonition-title">Definition (Ensemble des parties)</p>
+<p>Étant donné un ensemble <span class="math notranslate nohighlight">\(S\)</span>, l’ensemble des parties <span class="math notranslate nohighlight">\(\mathcal{P}(S)\)</span> est
+l’ensemble constitué de tous les sous-ensembles de <span class="math notranslate nohighlight">\(S\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(S) = \{ A \lvert A \subseteq S \}\]</div>
+</div>
+<p>Par exemple <span class="math notranslate nohighlight">\(\mathcal{P}(\{1,2\}) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}\)</span>.
+Pour les ensembles <em>finis</em>, la cardinalité de leur ensemble des parties est donnée par le lemme suivant.</p>
+<div class="admonition-lemme-cardinalite-de-l-ensemble-des-parties admonition" id="thm-powercard">
+<p class="admonition-title">Lemme (Cardinalité de l’ensemble des parties)</p>
+<p>Étant donné un ensemble fini <span class="math notranslate nohighlight">\(S\)</span>, l’ensemble des parties
+<span class="math notranslate nohighlight">\(\mathcal{P}(S)\)</span> a pour cardinalité :</p>
+<div class="math notranslate nohighlight">
+\[\lvert \mathcal{P}(S) \rvert = 2^{\lvert S \rvert}\]</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>Évaluez les formules suivantes :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\emptyset \subseteq \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \subset \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \in \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall X~\emptyset \subseteq X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall X~\emptyset \in X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists X~\emptyset \in X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists X~\emptyset \notin X\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \in \mathcal{P}(S)\)</span> pour tout ensemble <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S \in \mathcal{P}(S)\)</span> pour tout ensemble <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+</section>
+<section id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Link to this heading">#</a></h3>
+<p>Décrire un moyen de passer de formules impliquant des occurrences du
+quantificateur <span class="math notranslate nohighlight">\(\forall\)</span> à des formules impliquant uniquement le quantificateur
+<span class="math notranslate nohighlight">\(\exists\)</span>, d’une manière qui préserve la valeur de vérité de ces formules.</p>
+</section>
+<section id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Link to this heading">#</a></h3>
+<p>Décrire un moyen de passer de formules impliquant des occurrences du
+quantificateur <span class="math notranslate nohighlight">\(\exists\)</span> à des formules impliquant uniquement le quantificateur
+<span class="math notranslate nohighlight">\(\forall\)</span>, d’une manière qui préserve la valeur de vérité de ces formules.</p>
+</section>
+<section id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Link to this heading">#</a></h3>
+<p>Donnez une définition équivalente de la <a class="reference internal" href="#def-subset"><span class="std std-ref">relation d’appartenance</span></a>
+utilisant le quantificateur <span class="math notranslate nohighlight">\(\exists\)</span>.</p>
+</section>
+<section id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Link to this heading">#</a></h3>
+<p>En supposant que le domaine du discours est un ensemble fini <span class="math notranslate nohighlight">\(U\)</span>, décrivez une
+façon de traduire les formules impliquant <span class="math notranslate nohighlight">\(\forall\)</span> et <span class="math notranslate nohighlight">\(\exists\)</span> en formules
+n’impliquant pas de quantificateurs, d’une manière qui préserve la valeur de
+vérité de ces formules.</p>
+</section>
+<section id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Link to this heading">#</a></h3>
+<p>Dessinez des diagrammes de Venn pour vous convaincre des
+<a class="reference internal" href="#def-props"><span class="std std-ref">propriétés</span></a> énumérées dans la section <a class="reference internal" href="#section-operations"><span class="std std-ref">Opérations sur les
+ensembles</span></a>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>En effet, en théorie formelle des ensembles, nous travaillons souvent au
+niveau d’abstraction où tous les objets sont soit l’ensemble vide, soit un
+ensemble d’ensembles. De manière surprenante, cela suffit pour décrire tous les
+objets mathématiques connus : nombres, fonctions, objets géométriques, etc.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mathematics for Computer Science 2024-2025</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langage-mathematique">Langage mathématique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-ensembles-et-leurs-elements">Les ensembles et leurs éléments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-et-quantificateurs">Variables et quantificateurs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-relation-de-sous-ensemble">La relation de sous-ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-sur-les-ensembles">Opérations sur les ensembles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinalite">Cardinalité</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-et-produits-cartesiens">Tuples et produits cartésiens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-des-parties">Ensemble des parties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alexandros Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

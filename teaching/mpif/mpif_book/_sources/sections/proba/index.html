@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Introduction to discrete probability theory - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#introduction-to-discrete-probability-theory">Introduction to discrete probability theory</a></li>
+        <li><a href="#a-frequentist-introduction-to-probability">A frequentist introduction to probability</a></li><li><a href="#probability-spaces">Probability spaces</a></li><li><a href="#examples-of-probability-spaces">Examples of probability spaces</a></li><li><a href="#conditional-probability">Conditional probability</a></li><li><a href="#exercises">Exercises</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="introduction-to-discrete-probability-theory">Introduction to discrete probability theory</h1>
+<p>It is often the case that in computer science we must deal with probabilities:</p>
+<ul>
+<li>When we want to model some random or unpredictable phenomenon (for 
+example the number of visitors to a website per hour).</li>
+<li>When we want to work with noisy data.</li>
+<li>For cryptography, randomness is essential.</li>
+<li>Randomized algorithms can offer simple and fast solutions to problems
+for which no good deterministic algorithm is known.</li>
+</ul>
+<h2 id="a-frequentist-introduction-to-probability">A frequentist introduction to probability</h2>
+<p>Our model for a random or unpredictable phenomenon will be that of a <em>random
+experiment</em>: this is some process which results in a random result, called an
+<em>outcome</em>, each time we repeat it.</p>
+<p>An archetypal example is of course rolling a dice: each time we roll it,
+we're presented with a new outcome. Suppose then that we roll the dice
+<span class="arithmatex">\(N\)</span> times and keep a tally <span class="arithmatex">\(m_i\)</span> of how many times we see each face <span class="arithmatex">\(i\)</span>,
+where <span class="arithmatex">\(i \in \{1,2,3,4,5,6\}\)</span>. Then the ratio <span class="arithmatex">\(m_i/N\)</span> is the
+<em>relative frequency</em> with which we observed each face <span class="arithmatex">\(i\)</span>. For a fair dice
+and a large number of trials <span class="arithmatex">\(N\)</span>, we should expect that <span class="arithmatex">\(m_i/N \sim 1/6\)</span>.</p>
+<div class="highlight"><pre><span></span><code>The above interpretation of probabilities as the limit of relative frequencies is
+called *frequentism*. This is not the only possible interpretation!
+Indeed another very popular one is *Bayesianism* which interprets probabilities
+as modeling knowledge or belief. 
+</code></pre></div>
+<h2 id="probability-spaces">Probability spaces</h2>
+<p>To model an experiment, we will consider the set <span class="arithmatex">\(\Omega\)</span> of all possible
+outcomes, called the <em>universe</em>. For example, rolling a dice once yields
+<span class="arithmatex">\(\Omega = \{1,2,3,4,5,6\}\)</span>. Throughout this chapter, we'll assume that the
+universe is a finite set and we note that many notions that we introduce here
+do not directly transfer to the infinite case.</p>
+<p>Subsets of <span class="arithmatex">\(\Omega\)</span> are called <em>events</em>. For every outcome <span class="arithmatex">\(\omega \in \Omega\)</span>
+the set <span class="arithmatex">\(\{\omega\}\)</span> is an event, called an <em>elementary</em> event. For example,
+in our dice experiment the elementary event <span class="arithmatex">\(\{5\}\)</span> corresponds to "rolling a 
+<span class="arithmatex">\(5\)</span>". A non-elementary event would be for example <span class="arithmatex">\(\{2,4,6\}\)</span> which corresponds
+to "rolling an even number", that is <em>either</em> <span class="arithmatex">\(2,4,\)</span> or <span class="arithmatex">\(6\)</span>. </p>
+<p>The following vocabulary is useful when discussing events:</p>
+<ul>
+<li>For two events <span class="arithmatex">\(A, B\)</span>, the event <span class="arithmatex">\(A \cup B\)</span> is read as <em><span class="arithmatex">\(A\)</span> or <span class="arithmatex">\(B\)</span></em>.</li>
+<li>For two events <span class="arithmatex">\(A, B\)</span>, the event <span class="arithmatex">\(A \cap B\)</span> is read as <em><span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span></em>.</li>
+<li>Two events <span class="arithmatex">\(A, B\)</span> are called <em>disjoint</em> if <span class="arithmatex">\(A \cap B = \emptyset\)</span>.</li>
+</ul>
+<p>Recall now that during our random experiment we not only collected all possible
+outcomes to form a universe <span class="arithmatex">\(\Omega\)</span> but we kept track of the relative frequencies too.
+Therefore the bare structure of a set on <span class="arithmatex">\(\Omega\)</span> is not sufficient for our purposes:
+we must enrich it with a <em>probability measure</em>.</p>
+<p>(def-proba)=
+```{admonition} Definition (Probability measure).
+A probability measure on a universe <span class="arithmatex">\(\Omega\)</span> is defined
+by associated to each event <span class="arithmatex">\(e \in \mathcal{P}\left( \Omega \right)\)</span>
+a real number <span class="arithmatex">\(P(e)\)</span> such that:</p>
+<ul>
+<li><span class="arithmatex">\(P\left( \Omega \right) = 1\)</span>,</li>
+<li>For all events <span class="arithmatex">\(e \in \mathcal{P}\left( \Omega \right), P(e) \geq 0\)</span>.</li>
+<li>For any two disjoint events <span class="arithmatex">\(A, B\)</span>, we have
+<span class="arithmatex">\(P(A \cup B) = P(A) + P(B)\)</span>.
+<div class="highlight"><pre><span></span><code>For finite sets, defining $P(\{\omega\})$ for all elementary events
+$\{\omega\}, \omega \in \Omega$ suffices to fully determine a probability measure
+(provided our choices lead to $P\left(\Omega\right) = 1$.
+
+The couple $(\Omega, P)$ consisting of a universe $\Omega$,
+and a probability measure $P$ on $\Omega$ is called a *probability space*
+(this is not exactly true, see the end of the chapter).
+
+For example, to mathematically model a single roll of a fair dice,
+our probability space is composed of:
+
+* $\Omega = \{1,2,3,4,5,6\}$,
+* For all $\omega \in \Omega$, $P(\{\omega\}) = 1/6$.
+
+An important notion for events is the following:
+
+(def-indep)=
+```{admonition} Definition (Independent events).
+Given a probability space $(\Omega, \mathcal{F})$,
+two events $A, B \subseteq \Omega$ are called *independent* if:
+
+$$P(A \cap B) = P(A) \cdot P(B).$$
+</code></pre></div>
+This is an abstract statement of the intuitive notion that
+two events should be called independent if occurences of one
+don't affect occurences of the other.</li>
+</ul>
+<p>The following properties are useful in calculating probabilities:</p>
+<ul>
+<li>For any event <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(P(\Omega \setminus A) = 1 - P(A)\)</span>.</li>
+<li><span class="arithmatex">\(P(\emptyset) = 0\)</span>.</li>
+<li>For two events <span class="arithmatex">\(A, B\)</span>, <span class="arithmatex">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span> - note that
+if <span class="arithmatex">\(A, B\)</span> are disjoint we recover <span class="arithmatex">\(P(A \cup B) = P(A) + P(B)\)</span>.</li>
+<li>For two events <span class="arithmatex">\(A, B\)</span> with <span class="arithmatex">\(A \subseteq B\)</span>, <span class="arithmatex">\(P(A) \leq P(B)\)</span>.</li>
+</ul>
+<h2 id="examples-of-probability-spaces">Examples of probability spaces</h2>
+<p>Let us once again consider the universe <span class="arithmatex">\(\Omega = \{1,2,3,4,5,6\}\)</span>.
+The first example of a probability measure we saw on <span class="arithmatex">\(\Omega\)</span> was used to model a single roll
+of a fair dice, by assigning to each of the 6 elementary events the probability <span class="arithmatex">\(1/6\)</span>. 
+A generalisation of this is the following.</p>
+<p>(def-uniform)=
+```{admonition} Definition (Uniform measure).
+Given a finite universe <span class="arithmatex">\(\Omega\)</span>, the uniform probability measure
+is the one that assigns <span class="arithmatex">\(P(\{\omega\}) = \frac{1}{\lvert \Omega \rvert}\)</span>
+to all <span class="arithmatex">\(\omega \in \Omega\)</span>.
+<div class="highlight"><pre><span></span><code>An important property about this measure is *equiprobability* which tells
+us that for every event $A \subseteq \Omega$:
+
+$$P(A) = \frac{\lvert A \rvert}{\lvert \Omega \rvert}$$
+
+Of course not all dice are fair. Another possible
+assignment of probabilities is, for example:
+
+```{list-table}
+:header-rows: 1
+
+* - $P({1})$ 
+  - $P({2})$
+  - $P({3})$
+  - $P({4})$
+  - $P({5})$
+  - $P({6})$
+* - $1/4$
+  - $1/8$
+  - $1/12$
+  - $1/8$
+  - $1/6$
+  - $2/6$
+</code></pre></div></p>
+<p>The probabilities we assign do not have to be rational numbers, 
+any non-negative real number will do. For example, we might have a biased coin
+we model with <span class="arithmatex">\(\Omega = \{0, 1\}\)</span> and <span class="arithmatex">\(P(\{0\}) = \pi, P(\{1\}) = 1 - \pi\)</span>.</p>
+<p>So far we have considered experiments consisting of single dice rolls and coin flips. 
+How about flipping a coin <span class="arithmatex">\(n\)</span> times? This is equivalent to 
+flipping <span class="arithmatex">\(n\)</span> coins once and so we can take universe <span class="arithmatex">\(\Omega\)</span>
+to consist of <a href="def-cartesianprod"><span class="arithmatex">\(n\)</span>-tuples</a> of single coin outcomes.</p>
+<p>(ex-twocoins)=
+For example, for an experiment consisting of rolling
+a fair coin twice (or two fair coins once) we have
+the following universe:</p>
+<div class="arithmatex">\[\Omega = \{(0,0), (0,1), (1,0), (1,1) \}.\]</div>
+<p>Since we assumed each coin flip to be fair, together
+they should generate the uniform distribution over all four possible outcomes:</p>
+<div class="arithmatex">\[P(\{(0,0)\}) = P(\{(0,1)\}) = P(\{(1,0)\}) = P(\{(1,1)\}) = 1/4.\]</div>
+<h2 id="conditional-probability">Conditional probability</h2>
+<p>Suppose that our experiment once again consists of a single roll of a fair dice,
+but this time we are also given the <em>additional information</em> that we rolled an
+odd number. Clearly the uniform measure <span class="arithmatex">\(P\)</span> on <span class="arithmatex">\(\Omega\)</span> is no longer appropriate
+for modeling this situation: for example we know that we can't have rolled
+<span class="arithmatex">\(2\)</span> since it isn't an odd number, yet <span class="arithmatex">\(P(\{2\}) = 1/6\)</span>.
+How should we update the uniform measure <span class="arithmatex">\(P\)</span> on <span class="arithmatex">\(\Omega = \{1,2,3,4,5,6\}\)</span>
+to reflect this additional information? </p>
+<p>We now know that under this new measure, let's call it <span class="arithmatex">\(P'\)</span>,
+the probability of <span class="arithmatex">\(\{1,3,5\}\)</span> must be 1 since we know we've rolled an odd number. 
+In mathematical terms, <span class="arithmatex">\(P'(\{1,3,5\}) = 1\)</span>. 
+Similarly any even outcomes are not possible anymore, so <span class="arithmatex">\(P'(\{2\}) = P'(\{4\}) =
+P'(\{6\}) = 0\)</span>. But what about <span class="arithmatex">\(P'(\{1\})\)</span>, <span class="arithmatex">\(P'(\{3\})\)</span>, <span class="arithmatex">\(P'(\{5\})\)</span>? The
+knowledge that the number we rolled is odd does not allow us to distinguish
+between these three possibilities. Therefore we should assume that their
+relative magnitudes remain the same as they were in <span class="arithmatex">\(P\)</span>,
+so that the new probabilities are <span class="arithmatex">\(P'(\{1\}) = P'(\{3\}) = P'(\{5\}) = 1/3\)</span>. 
+Notice how the probability of each outcome <span class="arithmatex">\(\omega \in E = \{1,3,5\}\)</span> 
+is its original probability (<span class="arithmatex">\(P(\{\omega\}) = 1/6\)</span>) times the original probability 
+of the event itself <span class="arithmatex">\(P(E) = 1/2\)</span>. </p>
+<p>We have therefore constructed a new measure <span class="arithmatex">\(P'\)</span> on <span class="arithmatex">\(\Omega\)</span>
+which allows us to study a single dice role in which we know that the result is
+an odd number.</p>
+<p>More generally, given a universe <span class="arithmatex">\(\Omega\)</span> and a measure <span class="arithmatex">\(P\)</span>, to model a random
+experiment where we know in addition that an event <span class="arithmatex">\(E \subseteq \Omega\)</span> has
+happened, we construct a new probability measure <span class="arithmatex">\(P'( \cdot \lvert E)\)</span> such
+that: 
+1) Under the new measure, <span class="arithmatex">\(P(E \lvert E) = 1\)</span> since we know that <span class="arithmatex">\(E\)</span> has
+surely happened. 
+2) <span class="arithmatex">\(P'\)</span> assigns probability zero to outcomes not in <span class="arithmatex">\(E\)</span>:
+<span class="arithmatex">\(\forall \omega \in \Omega \setminus E, P(\omega \lvert E) = 0\)</span>.
+3) <span class="arithmatex">\(P'\)</span> preserves the <em>relative magnitudes</em> (with respect to the original measure <span class="arithmatex">\(P\)</span>) of outcomes in <span class="arithmatex">\(E\)</span>.</p>
+<p>Under these assumptions every event can be assigned a new probability which is defined by:</p>
+<p>(def-condprob)=
+```{admonition} Definition (Conditional probability).
+Let <span class="arithmatex">\(P\)</span> be a probability measure on some universe <span class="arithmatex">\(\Omega\)</span>
+and <span class="arithmatex">\(A, E \subseteq \Omega\)</span> be two events with <span class="arithmatex">\(P(E) \neq 0\)</span>.
+Then, the <em>probability of <span class="arithmatex">\(A\)</span> given <span class="arithmatex">\(B\)</span></em> is
+defined as</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(P(A \lvert E) = \frac{P(A \cap E)}{P(E)}.\)</span>\)</span>
+<div class="highlight"><pre><span></span><code>What happens if we supposed that $A, E$ are [independent](def-indep)?
+Intuitively, we should expect that since an occurence of one does not
+affect the other, the probability that $A$ occurs should remain the same
+regardless of whether we know if $E$ also occured. Indeed, this is true:
+
+(thm-indepcond)=
+```{admonition} Lemma (Conditional probability of independent events).
+Let $(\Omega, P)$ be a probability space and
+$A, E \subseteq \Omega$ be two independent events.
+Then,
+
+$$P(A \lvert E) = P(A).$$
+</code></pre></div>
+The proof follows directly from the definitions of <a href="def-condprob">conditional probability</a>
+and <a href="def-indep">independent event</a>:</p>
+<div class="arithmatex">\[P(A \lvert E) = \frac{P(A \cap E)}{P(E)} = \frac{P(A) \cdot P(E)}{P(E)} = P(E)\]</div>
+<p>Another important theorem about conditional probabilities is the following:</p>
+<p>(thm-bayes)=
+```{admonition} Theorem (Bayes).
+Let <span class="arithmatex">\(P\)</span> be a probability measure on some universe <span class="arithmatex">\(\Omega\)</span>
+and <span class="arithmatex">\(A, B \subseteq \Omega\)</span> be two events with <span class="arithmatex">\(P(E) \neq 0\)</span>.
+Then, </p>
+<div class="arithmatex">\[P(A \lvert E) = \frac{P(E \lvert A)P(A)}{P(E)}.\]</div>
+<div class="highlight"><pre><span></span><code>The proof of the theorem follows from the [definition](def-condprob) of conditional probability. 
+Indeed, we have:
+
+(eq-bayes1)=
+$$ P(A \lvert B) = \frac{P(A \cap B)}{P(B)} $$
+
+and if $P(A) = 0$, the theorem holds trivially.
+Therefore let us assume that $P(A) \neq 0$, in which case we can consider the
+conditional probability: 
+
+(eq-bayes2)=
+$$ P(B \lvert A) = \frac{P(B \cap A)}{P(A)} $$
+
+From the [second equation](eq-bayes2) it follows that:
+
+(eq-bayes3)=
+$$ P(B \cap A) = \frac{P(B \lvert A)}{P(A)} $$
+
+But since $B \cap A = A \cap B$ we can substitute [this result](eq-bayes3)
+into the [first equation](eq-bayes1), yielding the desired result.
+
+## Discrete random variables, their distributions, and their expectation values
+
+During a random experiment we are often interested not just on the outcomes
+but various observables or statistics derived from them. This is captured by the
+notion of a random variable, which is a value that depends on the results of a
+random experiment. 
+
+To make this more concrete, consider a (not very competent) nutritionist
+that has come up with a diet regimen in which every meal consists
+of french fries but there&#39;s a catch: the number of fries we eat
+is decided by rolling a fair dice! For example it could be:
+
+(def-varexamples1)=
+* We eat as many fries as the value we rolled.
+* We eat 100 fries if the value we&#39;ve rolled is even and 0 if its odd.
+
+To model such values that depend on the results of a random experiment,
+we define a *discrete random variable* as a *function* $X: \Omega \rightarrow
+S$ where $S$ is a finite or countable set. In our case, will assume $S
+\subseteq \mathbb{N}$.
+
+Then the [examples above](def-varexamples1) yield the following variables:
+(def-varexamples2)=
+* A random variable $X: \Omega \rightarrow \{1,2,3,4,5,6\}$ which maps each outcome to its
+numerical value: $X(1) = 1, X(2) = 2$, etc.
+* A random variable $Y: \Omega \rightarrow \{0,100\}$ which maps
+even outcomes to 0 and odd outcomes to 100: $Y(1) = Y(3) = Y(5) = 0,
+Y(2) = Y(4) = Y(6) = 100$.
+
+```{admonition} Disambiguation.
+In the first example, be careful to distinguish between the elements
+of $\Omega$ and those of $S = \mathbb{N}$. Indeed, we could have
+equivalently defined $\Omega = \{{\Large ⚀,⚁,⚂,⚃,⚄,⚅}\}$ in which case
+$X({\Large ⚀}) = 1, X({\Large ⚁}) = 2,$ etc.
+</code></pre></div>
+<p>Returning to our diet example, two questions come naturally:</p>
+<p>1) What is the probability that we eat <span class="arithmatex">\(n\)</span> fries for a meal?
+2) How many fries should we expect to eat per meal?</p>
+<p>The answer of course depends on which random variable we consider.</p>
+<p>To formalise such notions of "probability that a random variable
+takes some value" and "average of a random variable" we introduce
+now two important definitions.</p>
+<p>(def-distr)=
+```{admonition} Definition (Distribution of a random variable).
+The distribution of a random variable <span class="arithmatex">\(X\)</span> is a probability
+measure on <span class="arithmatex">\(S\)</span> denoted by <span class="arithmatex">\(P(X = \cdot)\)</span> and defined via:</p>
+<div class="arithmatex">\[P(X = s) = P(X^{-1}(s))\]</div>
+<p>for all <span class="arithmatex">\(s \in S\)</span>.
+<div class="highlight"><pre><span></span><code>In words: the probability $P(X = s)$ of the random variable $X$ 
+being equal to $s$ is defined to be the probability $P(X^{-1}(s))$ 
+that the event $X^{-1}(s) \subseteq \Omega$ occurs in our experiment.
+
+For example, for the diet corresponding to $X$, where
+the number of fries is given by the value we rolled, the preimages of
+each integer $i \in \{1,2,3,4,5,6\}$ are $X^{-1}(1) = \{1\}, X^{-1}(2)
+= \{2\}$, etc. Then the probability $P(X = 1)$ that we eat $1$ fry is the
+probability $P(\{1\})=1/6$ that we roll $1$ on the dice and so on for
+all other $i$.
+
+For the diet corresponding to $Y$, where the number of fries corresponds
+to the events of an even or odd roll, we have $Y^{-1}(0) = \{1,3,5\}$
+and $Y^{-1}(100) = \{2,4,6\}$. Therefore the probability $P(Y = 0)$
+that we eat $0$ fries is $P(\{1,3,5\}) = 1/2$ and 
+the probability $P(Y = 100)$ of eating $100$ fries is $P(\{2,4,6\}) = 1/2$.
+
+To formalise our second question, we defin the following number
+associated to a random value:
+
+(def-mean)=
+```{admonition} Definition (Expected value).
+Let $X: \Omega \rightarrow S$ be a discrete random value.
+Then its expected value, denoted $E[X]$ is defined to be:
+
+$$E[X] = \sum\limits_{s \in S} s P(X = s).$$
+</code></pre></div></p>
+<p>For the two examples given <a href="def-varexamples2">above</a>:</p>
+<ul>
+<li>We should expect to eat <span class="arithmatex">\(E[X] = \frac{1+2+3+4+5+6}{6} = 3.5\)</span> fries per meal.</li>
+<li>We should expect to eat <span class="arithmatex">\(E[Y] = \frac{0+100}{2} = 50\)</span> fries per meal.</li>
+</ul>
+<p>Notice how both expected values are rational even though at any meal
+we only ever eat an integer number of fries!</p>
+<p>Finally, let us note that can also compute <em>conditional expected values</em>
+given some event <span class="arithmatex">\(E\)</span>:</p>
+<p>(def-condmean)=
+```{admonition} Definition (Conditional expected value).
+Let <span class="arithmatex">\(X: \Omega \rightarrow S\)</span> be a discrete random value
+and let <span class="arithmatex">\(A \subseteq \Omega\)</span> be an event with non-zero probability.
+The the  expected value of <span class="arithmatex">\(X\)</span> given <span class="arithmatex">\(A\)</span>, written <span class="arithmatex">\(E[X \lvert A]\)</span> is defined to be:</p>
+<div class="arithmatex">\[E[X | A] = \sum\limits_{s \in S} s \frac{P(X^{-1}(s) \cap A)}{P(A)}.\]</div>
+<div class="highlight"><pre><span></span><code>For example, if we follow the diet corresponding to $X$ defined
+[above](def-varexamples1) and we also know that we have rolled an even number,
+the expected number of fries we&#39;ll eat for that meal 
+is $E[X \lvert \{2,4,6\}] =4$ (compare this with $E[X] = 3.5$).
+
+## A technicality
+
+```{warning} Note.
+The contents of this section aren&#39;t important for you to memorise,
+or even fully understand.
+The discussion below concerns some technical aspects 
+that eventually become important for the development of probability theory
+on more general probability spaces.
+</code></pre></div>
+<p>Throughout this chapter we have avoided discussing a crucial
+fact: the collection of events we consider
+must be closed under complement and countable unions and intersections.
+Such a structure is called a <a href="https://en.wikipedia.org/wiki/%CE%A3-algebra"><span class="arithmatex">\(\sigma\)</span>-algebra</a>.</p>
+<p>As a consequence, the definition we gave of a probability space 
+as a couple <span class="arithmatex">\((\Omega, P)\)</span> isn't complete.
+Instead, the proper definition includes a third ingredient: a collection
+<span class="arithmatex">\(\mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span> of events on <span class="arithmatex">\(\Omega\)</span> such that
+<span class="arithmatex">\(\mathcal{F}\)</span> is a <span class="arithmatex">\(\sigma\)</span>-algebra. Intuitively, we want our collection of 
+events to be:</p>
+<ul>
+<li>Closed under complements, so that for any event <span class="arithmatex">\(A\)</span> we can
+also talk about the event "not <span class="arithmatex">\(A\)</span>".</li>
+<li>Closed under <em>countable</em> unions and intersections so that
+if we're given a countable collection <span class="arithmatex">\(A_i\)</span> of events, we can talk
+about the event of "any of the <span class="arithmatex">\(A_i\)</span>" or "all of the <span class="arithmatex">\(A_i\)</span>".</li>
+</ul>
+<p>In this chapter we have considered only finite universes <span class="arithmatex">\(\Omega\)</span>
+and we have tacitly taken <span class="arithmatex">\(\mathcal{F} = \mathcal{P}(\Omega)\)</span>.
+This amounts to considering <em>all possible events</em> on
+the universe <span class="arithmatex">\(\Omega\)</span>. This is the maximal <span class="arithmatex">\(\sigma\)</span>-algebra
+on <span class="arithmatex">\(\Omega\)</span>. There are of course others, each of which can be
+used to model situations where only some kinds of events interest us.</p>
+<p>For our purposes, taking <span class="arithmatex">\(\mathcal{F} = \mathcal{P}(\Omega)\)</span> was
+sufficient and allowed us to simplify the discussion quite a bit.
+However once again the situation changes enor</p>
+<p>Finally, a random variable isn't just a function <span class="arithmatex">\(X: \Omega \rightarrow S\)</span>!
+Indeed, we must assume that <span class="arithmatex">\(S\)</span> is also equipped with some <span class="arithmatex">\(\sigma\)</span>-algebra
+<span class="arithmatex">\(\mathcal{G}\)</span>.
+Then a random variable is a function that preserves the structure of 
+the couples <span class="arithmatex">\((\Omega, \mathcal{F})\)</span> and <span class="arithmatex">\((S, \mathcal{G})\)</span>, 
+meaning that it obeys <span class="arithmatex">\(X^{-1}(E) \in \mathcal{F}\)</span> for
+any <span class="arithmatex">\(E \in \mathcal{G}\)</span>.
+This complete definition allows us to generalise the discussion
+of random variables and distributions to much more general probabily spaces.</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Consider a random experiment consisting of flipping a single fair coin.
+Describe the corresponding probability space <span class="arithmatex">\((\Omega, P)\)</span> and compute
+the probabilities of all events in <span class="arithmatex">\(\mathcal{P}(\Omega)\)</span>.</p>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Consider the random experiment consisting of a single roll of a fair dice.</p>
+<p>1) Define the event <span class="arithmatex">\(A\)</span> which corresponds to "the value of the rolled dice 
+is at least 3". 
+2) Recall the definition of the random variable <span class="arithmatex">\(X\)</span> given 
+<a href="def-varexamples2">above</a>, which maps a dice roll to its value in <span class="arithmatex">\(\{1,2,3,4,5,6\}\)</span>.
+Compute <span class="arithmatex">\(E[X | A]\)</span>, the expected value of <span class="arithmatex">\(X\)</span> given the event <span class="arithmatex">\(A\)</span>.</p>
+<p>(exo-ex3)=</p>
+<h3 id="exercise-3">Exercise 3</h3>
+<p>Consider a random experiment consisting of flipping two single fair coins.</p>
+<p>1) Using the corresponding probability space we introduced <a href="ex-twocoins">above</a>,
+define the following events:</p>
+<pre><code>* Event $H_0$: the first coin lands on heads.
+* Event $T_0$: the first coin lands on tails.
+* Event $H_1$: the second coin lands on heads.
+* Event $T_1$: the second coin lands on tails.
+</code></pre>
+<p>2) Compute the corresponding probabilities <span class="arithmatex">\(P(H_0), P(H_1), P(T_0), P(T_1)\)</span>.</p>
+<p>(exo-ex4)=</p>
+<h3 id="exercise-4">Exercise 4</h3>
+<p>Given the probability space <span class="arithmatex">\(\{\Omega, P\}\)</span> and the events
+<span class="arithmatex">\(H_0, T_0, H_1, T_1 \subseteq \Omega\)</span> you defined in <a href="exo-ex3">exercise 3</a>,
+compute the following conditional probabilities:</p>
+<ul>
+<li><span class="arithmatex">\(P(H_1 | H_0)\)</span>: the probability that the second coin 
+lands on heads given that the first one landed on heads.</li>
+<li><span class="arithmatex">\(P(T_1 | H_0)\)</span>: the probability that the second
+coin lands on tails given that the first one landed on heads.</li>
+</ul>
+<p>Compare the above with the probabilities <span class="arithmatex">\(P(H_1)\)</span> and <span class="arithmatex">\(P(T_1)\)</span> you've
+computed previously. What can you deduce from this comparison?</p>
+<h3 id="exercise-5">Exercise 5</h3>
+<p>Consider once again the random experiment treated in exercises
+<a href="exo-ex3">3</a> and <a href="exo-ex4">4</a>. Let us define a random
+variable <span class="arithmatex">\(X: \Omega \rightarrow \{0,1,2\}\)</span> given by the sum of
+the values of the two flips:
+* <span class="arithmatex">\(X(\{0,0\}) = 0\)</span>,
+* <span class="arithmatex">\(X(\{0,1\}) = 1\)</span>,
+* <span class="arithmatex">\(X(\{1,0\}) = 1\)</span>,
+* <span class="arithmatex">\(X(\{1,1\}) = 2\)</span>.</p>
+<p>Compute:</p>
+<p>1) The distribution of <span class="arithmatex">\(X\)</span>.
+2) The expected value <span class="arithmatex">\(E[X]\)</span>.
+3) The conditional expected value <span class="arithmatex">\(E[X | H_1]\)</span>, where 
+<span class="arithmatex">\(H_1\)</span> is the event of the second coin landing heads up, 
+as defined in <a href="exo-ex3">exercise 3</a>.</p>
+<h3 id="todo-exercise-on-bayes-rule">TODO: Exercise on Bayes' rule</h3>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

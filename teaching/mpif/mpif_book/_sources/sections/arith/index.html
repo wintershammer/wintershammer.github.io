@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Arithmetic and applications - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#arithmetic-and-applications">Arithmetic and applications</a></li>
+        <li><a href="#numerical-systems">Numerical systems</a></li><li><a href="#elements-of-the-multiplicative-structure-of-mathbbn">Elements of the multiplicative structure of \(\mathbb{N}\)</a></li><li><a href="#modular-arithmetic">Modular arithmetic</a></li><li><a href="#kid-rsa">Kid-RSA</a></li><li><a href="#bonus-if-we-have-time-eulers-phi-and-inverses">Bonus if we have time: Euler's phi and inverses?</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#exercise">Exercise</a></li><li><a href="#exercise_1">Exercise</a></li><li><a href="#exercise_2">Exercise</a></li><li><a href="#exercise_3">Exercise</a></li><li><a href="#exercise_4">Exercise</a></li><li><a href="#exercise_5">Exercise</a></li><li><a href="#exercise_6">Exercise</a></li><li><a href="#exercise_7">Exercise</a></li><li><a href="#exercise_8">Exercise</a></li><li><a href="#exercise_9">Exercise</a></li><li><a href="#exercise_10">Exercise</a></li><li><a href="#exercise_11">Exercise</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="arithmetic-and-applications">Arithmetic and applications</h1>
+<h2 id="numerical-systems">Numerical systems</h2>
+<h3 id="numerals-and-positional-notation">Numerals and positional notation</h3>
+<p>Numbers are one of the most basic mathematical objects, one with which we
+interact daily: we use them to count, order, label, encode.</p>
+<p>Throughout history, numbers have been represented in a variety of ways, for example:</p>
+<p><div class="highlight"><pre><span></span><code>:header-rows: 0
+
+* - $0$ 
+  - $1$
+  - $2$
+  - $3$
+  - $4$
+  - $5$
+  - $6$
+  - $7$
+  - $8$
+  - $9$
+  - $10$
+* - 
+  - **I**
+  - **II**
+  - **III**
+  - **IV**
+  - **V**
+  - **VI**
+  - **VII**
+  - **VIII**
+  - **IX**
+  - **X**
+* - ੦ 
+  - ੧
+  - ੨
+  - ੩
+  - ੪
+  - ੫
+  - ੬
+  - ੭
+  - ੮
+  - ੯
+  - ੧੦
+* - 
+  - Α
+  - Β
+  - Γ
+  - Δ
+  - Ε
+  - Ϝ 
+  - Ζ
+  - Η
+  - Θ
+  - Ι 
+</code></pre></div>
+Out of those, the widely used is, of course, the Indo-Arabic numeral system, invented 
+between the 1st and 4th centuries by Indian mathematicians and later adopted by
+Arab and Persian mathematicians during the 9th century. The system later spread
+to Europe during the 13th century where it was not widely adopted before the 15th century.</p>
+<p>The Indo-Arabic numeral system works as follows:</p>
+<ul>
+<li>A natural number is written as a sequence of symbols taken from the alphabet
+  <span class="arithmatex">\(0,1,2,3,4,5,6,7,8,9\)</span>, which correspond to the first 10 natural numbers. </li>
+<li>The value represented by such a sequence is the <em>sum</em> of the value of each digit
+  multiplied by some power of <span class="arithmatex">\(10\)</span>: reading a numeral from right to left, the <span class="arithmatex">\(n\)</span>-th digit is multiplied by <span class="arithmatex">\(10^{n-1}\)</span>.</li>
+</ul>
+<p>For example, the numeral <span class="arithmatex">\(123\)</span> represents the number <span class="arithmatex">\(1 \cdot 10^2 + 2 \cdot 10^1 + 3 \cdot 10^1 = 100 + 20 + 3\)</span>.</p>
+<p>We may generalise the Indo-Arabic numeral system to obtain systems which use <em>positional notation</em>:</p>
+<ul>
+<li>Numbers are represented by <em>sequences</em> of symbols, called <em>digits</em>, drawn from some finite alphabet.</li>
+<li>The value represented by a <em>numeral</em> (a sequence of symbols) is the value represented by the symbol
+times some factor determined by the <em>position</em> of the symbol in the sequence.</li>
+</ul>
+<p>The factor is usually the power of some fixed number <span class="arithmatex">\(b\)</span>, called the <em>base</em> of the system.</p>
+<p>For example the Indo-Arabic numeral system is a base-10 positional notation system using
+the usual digits <span class="arithmatex">\(0\)</span> through <span class="arithmatex">\(9\)</span>. 
+Other historically significant bases are 8, 12, 20, 60 which where widely used by various
+cultures ranging from the Babylonians to Mayans. </p>
+<p>For a number to have a unique representation in such as system, we require that the number
+of digits is <span class="arithmatex">\(b-1\)</span>. For bases <span class="arithmatex">\(b \leq 10\)</span>, the digits are drawn using the same symbols <span class="arithmatex">\(0, 1, \dots 9\)</span> 
+that we use for base-10.
+For bases <span class="arithmatex">\(b \geq 10\)</span> we of course need to invent new symbols to represent values greater than 9. 
+For example, in a base-16 system we augment the alphabet of digits with
+the letters <span class="arithmatex">\(A, B, C, D, E, F\)</span> which correspond to <span class="arithmatex">\(10, 11, 12, 13, 14, 15\)</span>
+in base-10.</p>
+<p>In computer science we often use the <em>binary</em> (base-2) and <em>hexadecimal</em> (base-16) systems.
+For example, the number twenty has the following representations in bases 2, 10, 16:</p>
+<ul>
+<li>In base-2: <span class="arithmatex">\((10100)_2 = 1 \cdot 2^4 + 0 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 0 \cdot 2^0\)</span>,</li>
+<li>In base-10: <span class="arithmatex">\((20)_{10} = 2 \cdot 10^1 + 0 \cdot 10^0\)</span>,</li>
+<li>In base-16: <span class="arithmatex">\((14)_{16} = 1 \cdot 16^1 + 4 \cdot 16^0\)</span>,</li>
+</ul>
+<p>where the <span class="arithmatex">\((\cdot)_{b}\)</span> notation means that the numeral in the parenthesis is to be interpreted
+in base <span class="arithmatex">\(b\)</span>.
+Similarly, the number 29 is written as <span class="arithmatex">\((11101)_2, (1D)_{16}\)</span> in binary and hexadecimal.</p>
+<p>More generally, we can decompose a number <span class="arithmatex">\(N\)</span> in any base <span class="arithmatex">\(b\)</span> as follows:</p>
+<div class="arithmatex">\[ N = \sum\limits_{i=0}^n N_i b^i \]</div>
+<p>where <span class="arithmatex">\(n \in \mathbb{N}\)</span>, <span class="arithmatex">\(N_i\)</span> are coefficients in <span class="arithmatex">\([0,b-1]\)</span> and <span class="arithmatex">\(N_n\)</span> is non-zero.
+These coefficients <span class="arithmatex">\(N_i\)</span> are called "bits" in the binary (base-2) case. The numbers
+<span class="arithmatex">\(n, b, N\)</span> are linked by the following formula:</p>
+<div class="arithmatex">\[ n = \left\lfloor \frac{log(N)}{log(b)} \right\rfloor = \left\lfloor \log_b(N) \right\rfloor.\]</div>
+<p>where <span class="arithmatex">\(\lfloor \cdot \rfloor\)</span> is the integer part function, <span class="arithmatex">\(\log\)</span> is the logarithm in base 10, 
+and <span class="arithmatex">\(\log_b\)</span> is the logarithm in base <span class="arithmatex">\(b\)</span>.</p>
+<h3 id="base-conversion">Base conversion</h3>
+<p>As we've seen, any number can be represented in various bases. How do we
+go about converting between these different representations? The answer
+is given by repeated Euclidean division but there's a catch: which 
+base should we use to perform our calculations? </p>
+<p>Suppose that we met a member of an alien civilisation who only knows how to
+perform base-4 arithmetic, notably how to do Euclidean division, 
+and who wants to convert <span class="arithmatex">\((32)_4\)</span> to its equivalent base-8 numeral.</p>
+<p><strong>Actually do I even need this:</strong>
+<div class="highlight"><pre><span></span><code>:label: alien-remark
+
+Note that we keep expressing everything 
+in base-10, representing the numbers &quot;four&quot; and &quot;eight&quot;
+in base-10 as $(4)_{10}$ and $(8)_{10}$, without being explicit
+about our choice of base.
+
+However, for our alien friend $(4)_{10} = (10)_4$ and $(8)_{10} = (20)_4$,
+so they would probably express their desire as wanting to convert
+$(32)_10$ to $(32)_20$! 
+
+Of course our friend would most probably not even be using Indo-Arabic digits $0, \dots, 9$,
+but let&#39;s assume we&#39;ve already translated their symbols!
+</code></pre></div></p>
+<p>To help our alien friend, we must first construct a basic lookup table <span class="arithmatex">\(T\)</span> which contains the first
+eight numerals written in both bases:</p>
+<p><div class="highlight"><pre><span></span><code>:header-rows: 0
+
+* - 1 
+  - 2
+  - 3
+  - 10
+  - 11
+  - 12
+  - 13
+  - 20 
+* - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7 
+  - 10 
+</code></pre></div>
+We could then proceed as follows:</p>
+<ol>
+<li>Calculate the quotient <span class="arithmatex">\(q\)</span> and remainder <span class="arithmatex">\(r\)</span> of the Euclidean division of <span class="arithmatex">\((32)_4\)</span> by <span class="arithmatex">\((20)_4\)</span> (remember we are working in base-4) : <span class="arithmatex">\(q = (1)_4, r = (12)_4\)</span>.</li>
+<li>Convert <span class="arithmatex">\((12)_4\)</span> to <span class="arithmatex">\((6)_8\)</span> using our lookup table.  </li>
+<li>Repeat this procedure by dividing <span class="arithmatex">\((1)_4\)</span> by <span class="arithmatex">\((20)_4\)</span> yields <span class="arithmatex">\(q = 0, r = 1\)</span>.</li>
+<li>Convert <span class="arithmatex">\((1)_4\)</span> to <span class="arithmatex">\((1)_8\)</span> using our lookup table.</li>
+<li>Concatenate the two numbers (right to left) to obtain the desired result <span class="arithmatex">\((16)_8\)</span>. </li>
+</ol>
+<p>Therefore we have calculated that <span class="arithmatex">\((32)_4\)</span> is <span class="arithmatex">\((16)_8\)</span>. </p>
+<p>Such a procedure can be quite cumbersome since:</p>
+<ol>
+<li>It requires us to create a lookup symbol to convert between the digits of the two bases.</li>
+<li>It requires us to perform arithmetic in bases other than 10, which isn't always intuitive!</li>
+</ol>
+<p>In practice we therefore usually convert between two bases <span class="arithmatex">\(b\)</span> and <span class="arithmatex">\(b'\)</span> by converting <em>first to
+base <span class="arithmatex">\(10\)</span></em> and then from there to <span class="arithmatex">\(b'\)</span>, taking advantage of our familiarity with division in
+base-10.</p>
+<p>Finally, there's various tricks for passing quickly between specific bases. For computer scientists,
+a particularly useful one is the following trick for converting from binary to hexadecimal and
+vice versa:</p>
+<ol>
+<li>Let <span class="arithmatex">\(N\)</span> be a number written in base-2.</li>
+<li>Split <span class="arithmatex">\(N\)</span> in groups of <span class="arithmatex">\(4\)</span>, padding with 0 in the beginning if required.</li>
+<li>Convert the groups of <span class="arithmatex">\(4\)</span> bits to their equivalent value in hexadecimal (using a lookup table for
+example).</li>
+<li>Concatenate the results of the conversion to obtain the equivalent hexadecimal numeral.</li>
+</ol>
+<p>Conversely:</p>
+<ol>
+<li>Let <span class="arithmatex">\(N\)</span> be a number written in base-16.</li>
+<li>Convert every digit of <span class="arithmatex">\(N\)</span> to its equivalent 4-bit binary number (padded as necessary).</li>
+<li>Concatenate the results (right to left) to obtain the equivalent binary numeral.</li>
+</ol>
+<p>The mathematical justification for the above follows from the fact that <span class="arithmatex">\(16 = 2^4\)</span> (similar tricks
+hold for converting between a base <span class="arithmatex">\(b\)</span> and a base <span class="arithmatex">\(b' = b^k\)</span> for some <span class="arithmatex">\(k \geq 2\)</span>).</p>
+<p>For example, for <span class="arithmatex">\(N = (1010110101010110011110111)_2\)</span> we first notice that it
+has 25 digits, so we prepend three zeros to obtain an equivalent numeral <span class="arithmatex">\(N =
+(0001010110101010110011110111)_2\)</span> with <span class="arithmatex">\(28\)</span> digits which is divisible by <span class="arithmatex">\(4\)</span>.
+We then have the following 7 packets and their corresponding hexadecimals (from
+right to left):</p>
+<ol>
+<li><span class="arithmatex">\((0111)_2 = (7)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((1111)_2 = (F)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((1100)_2 = (C)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((1010)_2 = (A)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((1010)_2 = (A)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((0101)_2 = (5)_{16}\)</span>,</li>
+<li><span class="arithmatex">\((0001)_2 = (1)_{16}\)</span>.</li>
+</ol>
+<p>Therefore we have <span class="arithmatex">\((1010110101010110011110111)_2 = (15AACF7)_{16}\)</span>. </p>
+<p>For an example of the converse operation, suppose we are given <span class="arithmatex">\((4D2)_{16}\)</span> and 
+we want to convert to binary:</p>
+<ol>
+<li><span class="arithmatex">\((2)_{16} = (0010)_2\)</span>.</li>
+<li><span class="arithmatex">\((D)_{16} = (1101)_2\)</span>.</li>
+<li><span class="arithmatex">\((D)_{16} = (0100)_2\)</span>.</li>
+</ol>
+<p>Therefore we have <span class="arithmatex">\((4D2)_{16} = (010011010010)_2 = (10011010010)_2\)</span>,
+where in the last equality we simply removed the initial zero.</p>
+<h2 id="elements-of-the-multiplicative-structure-of-mathbbn">Elements of the multiplicative structure of <span class="arithmatex">\(\mathbb{N}\)</span></h2>
+<h3 id="divisibility-primes-prime-decomposition">Divisibility, primes, prime decomposition</h3>
+<p>The multiplicative structure of natural numbers <span class="arithmatex">\(\mathbb{N}\)</span> and the integers <span class="arithmatex">\(\mathbb{Z}\)</span>,
+that is to say the way that numbers are related to each other by the operations of multiplication
+and division, is of particular importance.</p>
+<p>Let us define one of the most basic notions, that of <em>divisibility</em>.
+<div class="highlight"><pre><span></span><code>:label: def-div 
+
+Let $a, b \in \mathbb{N}$. We say that $a$ *divides* $b$ and write $a \mid b$ if 
+there exists an integer $k$ such that $b = ka$.
+</code></pre></div></p>
+<p>If <span class="arithmatex">\(a \mid b\)</span> we also say that <span class="arithmatex">\(a\)</span> is a <em>multiple</em> of <span class="arithmatex">\(b\)</span>. If <span class="arithmatex">\(a\)</span> does not divide <span class="arithmatex">\(b\)</span>,
+then we write <span class="arithmatex">\(a \not\mid b\)</span>. The above definition has other equivalent statements:</p>
+<ul>
+<li><span class="arithmatex">\(a \mid b\)</span> if the result of <span class="arithmatex">\(a / b\)</span> is an integer,</li>
+<li><span class="arithmatex">\(a \mid b\)</span> if the remainder of the Euclidean division of <span class="arithmatex">\(b\)</span> by <span class="arithmatex">\(a\)</span> is zero.</li>
+</ul>
+<p>Clearly we always have <span class="arithmatex">\(1 \mid n\)</span> and <span class="arithmatex">\(n \mid n\)</span> for any <span class="arithmatex">\(n \in \mathbb{N}\)</span>.
+A particularly important class of numbers is those for which the above two division relations
+are the only possible ones:</p>
+<p><div class="highlight"><pre><span></span><code>:label: def-prime
+
+A number $n \in \mathbb{N} \setminus \{1\}$ is *prime* if it is only divisibly by 1 and itself.
+</code></pre></div>
+To determine whether a number <span class="arithmatex">\(n\)</span> is prime, we can of course try to divide it by
+all numbers in <span class="arithmatex">\([2, n-1]\)</span>: if no divisor is found, <span class="arithmatex">\(n\)</span> is prime. </p>
+<p>A simple optimisation of this follows from two simple facts:</p>
+<p>1) Multiplication is commutative: if <span class="arithmatex">\(m \mid n\)</span> we <span class="arithmatex">\(n = km = mk\)</span>.
+2) If <span class="arithmatex">\(n = km\)</span> with <span class="arithmatex">\(m &gt; \sqrt{n}\)</span> then <span class="arithmatex">\(k &lt; \sqrt{n}\)</span> and vice-versa.</p>
+<p>Therefore it suffices to test the divisibility of <span class="arithmatex">\(n\)</span> by any number in the interval <span class="arithmatex">\([2, \left\lfloor \sqrt{n} \right\rfloor]\)</span>.</p>
+<p>A particularly important result is the following:</p>
+<p>````{prf:theorem} Fundamental theorem of arithmetic
+:label: thm-fundarith</p>
+<p>Any number <span class="arithmatex">\(n \in \mathbb{N}\)</span> greater than <span class="arithmatex">\(1\)</span> can be written in a unique way as a product of primes,
+up to permutation of the factors:</p>
+<div class="arithmatex">\[n = \prod_{i=1}^{k} p^{n_i}_i,\]</div>
+<p>where the <span class="arithmatex">\(p_i\)</span> are prime numbers and <span class="arithmatex">\(n_i \in \mathbb{N} \setminus \{0\}\)</span>.
+<div class="highlight"><pre><span></span><code>For example:
+
+* $99 = 3^3 \times 37$,
+* $1000 = 2^3 \times 5^3$.
+
+### Greatest common divisor and Euclid&#39;s algorithm
+
+For two natural numbers $n,m \in \mathbb{N}$ their largest number $k$ such that $k \mid n$ 
+and $k \mid m$ is called their *greatest common divisor* (GCD) and we write $n \wedge m = d$ [^1].
+Clearly this operation is commutative, so that $n \wedge m = m \wedge n$. We also have that
+$0 \wedge n = n = n \wedge 0$ for any $n \in \mathbb{N}$. If $n \wedge m = 1$, we say that
+$n$ and $m$ are *relatively prime*.
+
+[^1]: Not to be confused with the &quot;logical and&quot; operator which shares the same symbol $\land$.
+
+
+In case $m$ divides $n$, we have:
+
+````{prf:lemma}
+:label: lemma-gcd1
+
+Let $n, m \in \mathbb{N}$. If $m \mid n$, then all divisors of $m$ are also divisors of $n$ and:
+
+$$ n \wedge m = m.$$
+</code></pre></div>
+Another useful lemma is:</p>
+<div class="highlight"><pre><span></span><code>:label: lemma-gcd2
+Let $n, m \in \mathbb{N} \setminus \{0\}$. If $d = n \wedge m$, then there exist $a, b \in \mathbb{N}$
+which are relatively prime ($a \wedge b = 1$) such that
+
+$$ n = a \times d, m = b \times d.$$
+</code></pre></div>
+<p>We now turn our attention to the problem of computing the GCD of two given numbers <span class="arithmatex">\(n, m \in \mathbb{N}\)</span>.
+Here's one way to calculate do it using : </p>
+<p>1) Calculate the prime factorisations (which necessarily exist due to the {prf:ref}<code>thm-fundarith</code>):
+    * <span class="arithmatex">\(n = \prod\limits_{i=1}^{k} p^{a_i}_i\)</span>,
+    * <span class="arithmatex">\(m = \prod\limits_{i=1}^{k'} q^{b_i}_i\)</span>.
+2) Take the product of factors that appear in both factorisations and raise them to the smallest
+power in which they appear in either factorisation.</p>
+<p>For example, to calculate the GCD of <span class="arithmatex">\(48\)</span> and <span class="arithmatex">\(180\)</span>:</p>
+<ul>
+<li><span class="arithmatex">\(48 = 2^4 \times 3\)</span> and <span class="arithmatex">\(180 = 2^2 \times 3^2 \times 5^1\)</span>.</li>
+<li>The common prime factors are <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(3\)</span>, which appear with powers <span class="arithmatex">\(4,2\)</span> and <span class="arithmatex">\(1,2\)</span> respectively. </li>
+<li>Therefore the GCD of <span class="arithmatex">\(48\)</span> and <span class="arithmatex">\(180\)</span> is: <span class="arithmatex">\(2^{\min(4,2)} \times 3^{\min(1,2)} = 12\)</span>.</li>
+</ul>
+<p>Unfortunately, while effective, this approach is not very efficient: we don't know any
+polynomial-time algorithms for decomposing positive integers into primes!</p>
+<p>A more efficient algorithm for computing the GCD <span class="arithmatex">\(n \wedge m\)</span> was known to
+ancient mathematicians! Indeed it is one of the oldest known algorithms still
+in common use and was described by Greek mathematician Euclid in his treatise
+Στοιχεῖα (Elements) around 300 BC. It was probably known to people even earlier
+and was independently rediscovered by Indian and Chinese mathematicians later on.</p>
+<p>The basic idea behind Euclid's algorithm is the following:</p>
+<div class="highlight"><pre><span></span><code>:label: lemma-gcdrem
+
+Let $n, m \in \mathbb{N}$ and let $n = qm + r$ be the result 
+of Euclidean division of $n$ by $m$, where $0 \leq r &lt; b$. 
+Then:
+
+$$ n \wedge m = m \wedge r $$.
+</code></pre></div>
+<p>The trick is then to apply the lemma above iteratively:</p>
+<p>```{prf:algorithm} Euclid 
+:label: alg-euclid</p>
+<p><strong>Inputs:</strong> Two numbers <span class="arithmatex">\(n, m \in \mathbb{N}\)</span> and we suppose, without loss of generality, that <span class="arithmatex">\(n \geq m\)</span> (otherwise we can swap them).</p>
+<p><strong>Output:</strong> The GCD <span class="arithmatex">\(n \wedge m\)</span>.</p>
+<p><strong>Algorithm</strong>:
+1. If <span class="arithmatex">\(m = 0\)</span>, return <span class="arithmatex">\(n\)</span> (since <span class="arithmatex">\(n \wedge 0 = n\)</span>).
+2. If not, perform Euclidean division: <span class="arithmatex">\(n = qm + r\)</span>.
+3. Set <span class="arithmatex">\(n \leftarrow  m, m \leftarrow r\)</span>.
+4. Repeat the above steps.
+<div class="highlight"><pre><span></span><code>To justify the validity of the algorithm notice that:
+
+* $r &lt; m$ in each iteration (by definition of
+the remainder) and therefore since $m \in \mathbb{N}$ the algorithm is sure to
+reach $m = 0$ and terminate after finitely many steps. 
+* {prf:ref}`lemma-gcdrem`
+guarantees a chain of equalities $n \wedge m = m \wedge r$ for each iteration.
+
+As an example, let us compute $21 \wedge 15$ using {prf:ref}`alg-euclid`:
+(exmp-euclid)=
+1. $n = 21, m = 15$. Performing the Euclidean division of $21$ by $15$ we have 
+$21 = 1 \times 15 + 6$. Therefore, we update: $n \leftarrow 15, m \leftarrow 6$.
+2. $n = 15, m = 6$. Performing the Euclidean division of $15$ by $6$ we have
+$15 = 2 \times 6 + 3$. Therefore we update: $n \leftarrow 6, m \leftarrow 3$.
+3. $n = 6, m = 3$. Performing the Euclidean division of $15$ by $6$ we have
+$6 = 2 \times 3 + 0$. Therefore, we update $n \leftarrow 3, m \leftarrow 0$.
+4. Since $m=0$, we output $n = 3$.
+
+As such, we have calculated $21 \wedge 15 = 3$.
+
+Finally, we mention in passing that the *least common multiple* (LCM)
+of $n, m \in \mathbb{Z}$, written as $n \vee m$ [^2], is the smallest integer $d \in \mathbb{N}$ such that 
+divides both $n, m$: $d \mid n$ and $d \mid m$.
+
+The LCM can be computed using:
+
+$$ n \vee m = \frac{n \cdot m}{n \wedge m}.$$
+
+[^2]: Not to be confused with the &quot;logical or&quot; operation $\lor$.
+
+## Bézout&#39;s theorem and resolving Diophantine equations
+
+A fundamental identity in arithmetic is:
+
+````{prf:theorem} Bézout
+:label: thm-bezout
+
+Let $n, m \in \mathbb{N}$ with $n \wedge m = d$. There
+exist two *integers* $a,b \in \mathbb{Z}$ such that:
+
+$$an + bm = d.$$
+````
+
+Its importance lies in its many applications: it can be used
+to prove many other important theorems of arithmetic including Euclid&#39;s lemma 
+and the Chinese remainder theorem. It is also, as we&#39;ll see later on,
+very useful in solving linear equations over the natural numbers $\mathbb{N}$.
+
+Before we move on to applications, let us first consider how compute these
+two integers $a, b$ (called *Bézout coefficients*). The trick lies in
+Euclid&#39;s algorithm: it provides a sequence of equations (corresponding to
+the successive Euclidean divisions we perform) which link
+the numbers $n, m, d$.
+
+Before we state the algorithm itself, let us first go through
+an example. Recalling our [previous example](exmp-euclid) 
+of using Euclid&#39;s algorithm to compute $25 \wedge 15$ we have
+the following equations:
+
+1. At the first step, we had the Euclidean division of $n = 21$ by $m = 15$: 
+```{math}
+:label: exmp-eq1
+21 = 1 \times 15 + 6.
+</code></pre></div>
+2. At the second step, we had the Euclidean division of <span class="arithmatex">\(15\)</span> by the remainder <span class="arithmatex">\(6\)</span>:
+<div class="highlight"><pre><span></span><code>:label: exmp-eq2
+15 = 2 \times 6 + 3.
+</code></pre></div>
+3. Finally, we had that:
+<div class="highlight"><pre><span></span><code>:label: exmp-eq3
+6 = 2 \times 3 + 0.
+</code></pre></div></p>
+<p>From the above, we deduced that <span class="arithmatex">\(d = 21 \wedge 15 = 3\)</span>. Notice how the penultimate equation {eq}<code>exmp-eq2</code> 
+can easily be rewritten as an equation for <span class="arithmatex">\(d = 3\)</span>:</p>
+<div class="highlight"><pre><span></span><code>:label: exmp-eqa
+3 = 15 - 2 \times 6.
+</code></pre></div>
+<p>We've already obtained an equation involving <span class="arithmatex">\(d=3\)</span> and <span class="arithmatex">\(m=15\)</span>! Furthermore, equation {eq}<code>exmp-eq1</code>
+in the above sequence links <span class="arithmatex">\(6\)</span> with <span class="arithmatex">\(n=21\)</span>:</p>
+<div class="highlight"><pre><span></span><code>:label: exmp-eqb
+6 = 21 - 1 \times 15.
+</code></pre></div>
+<p>Combining the equations {eq}<code>exmp-eqa</code> and {eq}<code>exmp-eqb</code> above, we have:</p>
+<div class="arithmatex">\[\begin{align*}
+3 &amp;= 15 - 2 \times 6 \\
+  &amp;= 15 - 2 \times (21 - 1 \times 15) \\
+  &amp;= -2 \times 21 + 3 \times 15,
+\end{align*}\]</div>
+<p>from which it follows that the coefficients we seek are <span class="arithmatex">\(a = -2, b = 3\)</span>.</p>
+<p>This is the essense of the <em>extended Euclid's algorithm</em>: run back up the sequence of 
+equations produced during the succesive divisions of an execution of Euclid's algorithm. </p>
+<p>More formally, the algorithm we described is equivalently written as:</p>
+<p>```{prf:algorithm} Extended Euclid's
+:label: alg-exteuclid</p>
+<p><strong>Inputs:</strong> Two numbers <span class="arithmatex">\(n, m \in \mathbb{N}\)</span> and we suppose, without loss of generality, that <span class="arithmatex">\(n \geq m\)</span> (otherwise we can swap them).</p>
+<p><strong>Output:</strong> The GCD <span class="arithmatex">\(d = n \wedge m\)</span> and the Bézout coefficients <span class="arithmatex">\(a, b \in \mathbb{Z}\)</span>,
+so that <span class="arithmatex">\(d = an + bm\)</span>.</p>
+<p><strong>Algorithm</strong>:
+1. Set: 
+\begin{align<em>}
+a_0 &amp;\leftarrow 1 \
+b_0 &amp;\leftarrow 0 \
+r_0 &amp;\leftarrow n \
+a_1 &amp;\leftarrow 1 \
+b_1 &amp;\leftarrow 1 \
+r_1 &amp;\leftarrow m \
+i &amp;\leftarrow 1.
+\end{align</em>}
+2. While <span class="arithmatex">\(r_i \neq 0\)</span> do:
+    1. Perform the Euclidean division of <span class="arithmatex">\(r_{i-1}\)</span> by <span class="arithmatex">\(r_i\)</span> to obtain a quotient <span class="arithmatex">\(q\)</span> and a rest <span class="arithmatex">\(r_{i+1}\)</span>.
+    2. <span class="arithmatex">\(a_{i+1} \leftarrow a_{i-1} - q \times a_{i}\)</span>.
+    3. <span class="arithmatex">\(b_{i+1} \leftarrow b_{i-1} - q \times b_{i}\)</span>.
+    4. <span class="arithmatex">\(i \leftarrow i + 1\)</span>.
+3. Return the GCD <span class="arithmatex">\(d = r_i\)</span> as well as the corresponding coefficients <span class="arithmatex">\(a = a_i, b = b_i\)</span>.
+<div class="highlight"><pre><span></span><code>Finally, the following theorem is an important application of Bézout&#39;s identity to
+equations over $\mathbb{Z}$ (called *Diophantine equations* after the Greek mathematician
+Diophantus).
+
+````{prf:theorem} Solution of linear Diophantine equations 
+:label: thm-lindio
+
+A linear Diophantine equation with coefficients $a, b, c \in \mathbb{Z}$ and
+two unknowns $x,y$:
+
+$$ ax + by = c $$
+
+has integer solutions if and only if $c$ is a multiple of $a \wedge b$.
+Furthermore, if $(x_0, y_0)$ is a particular solution, then all other
+solutions to this equation have the form:
+
+$$(x+kv, y-ku),$$
+
+where $k \in \mathbb{Z}$ is an arbitrary integer and:
+
+* $u$ is the quotient of the Euclidean division of $a$ by $a \wedge b$, 
+* $v$ is the quotient of the Euclidean division of $b$ by $a \wedge b$.
+````
+As an example, let us consider $a = 98, b = 35, c = 14$:
+
+```{math}
+:label: exmp-dioph
+98x + 35y = 14.
+</code></pre></div></p>
+<p>Since <span class="arithmatex">\(d = 98 \wedge 35 = 7\)</span> divides <span class="arithmatex">\(c=4\)</span> we are sure that the equation
+can be solved. Dividing both sides of {eq}<code>exmp-dioph</code> by <span class="arithmatex">\(d=7\)</span> we have:</p>
+<p><div class="highlight"><pre><span></span><code>:label: exmp-dioph2
+14x + 5y = 2.
+</code></pre></div>
+We can divide once more by <span class="arithmatex">\(2\)</span> to obtain an equivalent equation:</p>
+<div class="highlight"><pre><span></span><code>:label: exmp-dioph3
+\frac{14x}{2} + \frac{5y}{2} = 1.
+</code></pre></div>
+<p>Defining <span class="arithmatex">\(x' = x/2\)</span> and <span class="arithmatex">\(y' = y/2\)</span> we finally obtain:
+<div class="highlight"><pre><span></span><code>:label: exmp-dioph4
+14x&#39; + 5y&#39; = 1.
+</code></pre></div></p>
+<p>Now, we note that <span class="arithmatex">\(14\)</span> and <span class="arithmatex">\(5\)</span> are relatively prime as 
+they came from dividing <span class="arithmatex">\(a = 98, b = 35\)</span> by their GCD <span class="arithmatex">\(d = 7\)</span>.
+Therefore the coefficients <span class="arithmatex">\(x', y'\)</span> in {eq}<code>exmp-dioph4</code> 
+are Bézout's coefficients and we can calculate them using {prf:ref}<code>alg-exteuclid</code>: </p>
+<div class="arithmatex">\[\begin{align*}
+x' &amp;= -1 \\
+y' &amp;= 3.
+\end{align*}\]</div>
+<p>Finally, using <span class="arithmatex">\(x = 2 \times x', y' = 2 \times y'\)</span> we recover a
+particular solution to {eq}<code>exmp-dioph2</code>: <span class="arithmatex">\(x_0 = -2, y_0 = 6\)</span>.
+Therefore, using {prf:ref}<code>thm-lindio</code> we have that a general solution is:</p>
+<div class="arithmatex">\[\begin{align*}
+x &amp;= -2 + 5k \\
+y &amp;= 6 - 14k.
+\end{align*}\]</div>
+<h2 id="modular-arithmetic">Modular arithmetic</h2>
+<p>When talking about time, in the usual 24-hour format, we find that 
+arithmetic works in a different way than in <span class="arithmatex">\(\mathbb{N}\)</span>:</p>
+<ul>
+<li>Three hours after midnight is <span class="arithmatex">\(3h\)</span>, i.e. <span class="arithmatex">\(24h + 3 = 3\)</span> (or, alternatively, <span class="arithmatex">\(0h + 3h = 3h\)</span>). </li>
+<li>Twelve hours after <span class="arithmatex">\(13h\)</span> is <span class="arithmatex">\(1h\)</span>, i.e. <span class="arithmatex">\(13h + 12h = 1h\)</span>. </li>
+<li>Fourty-eight hours after <span class="arithmatex">\(17h\)</span> is <span class="arithmatex">\(17h\)</span>, i.e. <span class="arithmatex">\(17h + 2 \times 24h = 17h\)</span>.</li>
+</ul>
+<p>which is unlike the usual results in <span class="arithmatex">\(\mathbb{N}\)</span>:</p>
+<ul>
+<li><span class="arithmatex">\(24 + 3 = 27\)</span>,</li>
+<li><span class="arithmatex">\(13 + 12 = 25\)</span>.</li>
+</ul>
+<p>Indeed, it seems that 24-hour clock arithmetic is as if we took the infinite number line of <span class="arithmatex">\(\mathbb{N}\)</span>
+and wrapped it around itself, so that:</p>
+<ul>
+<li>Multiples of <span class="arithmatex">\(24\)</span> behave as <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(2 \times 24h \cong 0\)</span>.</li>
+<li>Numbers that differ by a multiple of <span class="arithmatex">\(24\)</span> behave the same: <span class="arithmatex">\(x + k \times 24h \cong x\)</span>.</li>
+</ul>
+<p>With this in mind, let us define the notion of <em>congruence modulo <span class="arithmatex">\(n\)</span></em>:</p>
+<p>````{prf:definition} Congruence modulo <span class="arithmatex">\(n\)</span>
+:label: def-cong </p>
+<p>We say that two numbers <span class="arithmatex">\(a, b \in \mathbb{N}\)</span> are <em>congruent (or equal)
+modulo <span class="arithmatex">\(n\)</span></em> if their difference is a multiple of <span class="arithmatex">\(n\)</span>: <span class="arithmatex">\(n \mid (a-b)\)</span>.
+In this case, we note <span class="arithmatex">\(a \equiv b [n]\)</span> and note that it is an
+<em>equivalence relation</em>:</p>
+<ul>
+<li>Reflexivity: for all <span class="arithmatex">\(a \in \mathbb{N}\)</span>, <span class="arithmatex">\(a \equiv a[n]\)</span>.</li>
+<li>Symmetry: for all <span class="arithmatex">\(a,b \in \mathbb{N}\)</span>, if <span class="arithmatex">\(a \equiv b[n]\)</span> then <span class="arithmatex">\(b \equiv a[n]\)</span>. </li>
+<li>Transitivity: for all <span class="arithmatex">\(a,b,c \in \mathbb{N}\)</span>, if <span class="arithmatex">\(a \equiv b[n]\)</span> and <span class="arithmatex">\(b \equiv c[n]\)</span> then <span class="arithmatex">\(a \equiv c[n]\)</span>.
+<div class="highlight"><pre><span></span><code>Such equivalence relations *partition* the set $\mathbb{N}$ into *equivalence classes*, infinite sets
+of numbers that are equal modulo $n$. For example, for $n=2$ we have two such classes:
+
+* $0 \equiv 2 \equiv 4 \equiv 6 \equiv 8 \equiv \dots [n]$,
+* $1 \equiv 3 \equiv 5 \equiv 7 \equiv 9 \equiv \dots [n]$.
+
+We can therefore define the equivalence class of some number $k \in \mathbb{N}$, denoted as $\overline{k}$, as:
+
+$$ \overline{k} = \{ p \lvert p \in \mathbb{N} \land p \equiv k[n]\}.$$
+
+More generally, there&#39;s always *exactly $n$* equivalence classes of $\mathbb{N}$ modulo $n$.
+The elements of the set $\overline{k}$ are called *representatives* of the class.
+
+A natural question is then: how do the familiar operations of arithmetic on $\mathbb{N}$ behave
+modulo $n$? A particular important pair of properties is:
+
+(def-propscong)=
+* $\overline{a} + \overline{b} = \overline{a+b}$,
+* $\overline{a} \times \overline{b} = \overline{a \times b}$.
+
+Using these properties we can make sense of our 24h-clock manipulations as
+a case of arithmetic modulo $24$:
+
+* Three hours after midnight is $3h$: $24 + 3 = 27 \equiv 3[24]$. 
+* Twelve hours after $13h$ is $1h$: $13 + 12 = 25 \equiv 1[24]$. 
+* Fourty-eight hours after $17h$ is $17h$: $17+48=65 \equiv 17[24]$.
+
+The [two properties](def-propscong) we&#39;ve listed above lead us to expect that
+arithmetic using equivalence classes modulo $n$ migh be
+analogous to that in $\mathbb{N}$. With this in mind,
+let us define the following set grouping all equivalence classes
+modulo $n$, which we label by their smallest representative:
+
+$\mathbb{Z} / n \mathbb{Z} = \{\overline{0}, \overline{1}, \dots, \overline{n-1}\}$
+
+We can then consider the [above two lines](def-propscong)
+as *defining* the operations $+, \times$ in $\mathbb{Z}/n\mathbb{Z}$.
+The set $\mathbb{Z}/n\mathbb{Z}$
+equipped with these two operations behaves similary to $\mathbb{Z}$ equipped with the usual $+,\times$ operations 
+(more abstractly, mathematicians say that both are instances of a general algebraic structure called a [ring](https://fr.wikipedia.org/wiki/Anneau_(math%C3%A9matiques))).
+
+As a first application, we have the following lemma relating solutions of Diophantine equations
+to solutions of the equation modulo $n$:
+
+````{prf:lemma}
+:label: lemma-solsmod
+
+Consider a Diophantine equation of the form:
+
+$$P(x,y,\dots) = c,$$
+
+where $P$ is some polynomial with integer coefficients and $c \in \mathbb{Z}$.
+If $x = x_0, y = y_0, \dots$ is a solution over $\mathbb{Z}$ then 
+we have that:
+
+$$F(\overline{x_0}, \overline{y_0}, \dots) = \overline{c},$$
+
+holds in $\mathbb{Z}/n\mathbb{Z}$ for all $n \in \mathbb{N}$.
+</code></pre></div></li>
+</ul>
+<p>The converse of this lemma is that if there exists some <span class="arithmatex">\(n \in \mathbb{N}\)</span> such that
+the equation has no solution in <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span>, then it has no solution in
+<span class="arithmatex">\(\mathb{Z}\)</span> either. This can be used to disprove the existence of solutions to Diophantine
+equations by wisely choosing <span class="arithmatex">\(n\)</span>: since <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span> is a finite set we
+can just try out all possibilities to see if there's any solution.</p>
+<p>For example, let us consider the equation <span class="arithmatex">\(x^2 + y^2 = 35\)</span>. Since it
+is non-linear, we cannot use the criterion of {prf:ref}<code>thm-lindio</code>. 
+However, reducing it modulo <span class="arithmatex">\(3\)</span> we get:</p>
+<div class="arithmatex">\[\begin{align*}
+\overline{x^2+y^2} &amp;= \overline{35} \\
+\overline{x}^2 + \overline{y}^2 &amp;= \overline{3}
+\end{align*}\]</div>
+<p>Looking at the squares in <span class="arithmatex">\(\mathbb{Z}/4\mathbb{Z}\)</span> we see that:</p>
+<ul>
+<li><span class="arithmatex">\(\overline{0}^2 = 0\)</span>,</li>
+<li><span class="arithmatex">\(\overline{1}^2 = 1\)</span>,</li>
+<li><span class="arithmatex">\(\overline{2}^2 = 0\)</span>,</li>
+<li><span class="arithmatex">\(\overline{3}^2 = 1\)</span>,</li>
+</ul>
+<p>from which we conclude that no solution exists to the equation modulo <span class="arithmatex">\(4\)</span>:
+there's no way to add any two of the above values so as to get 3! 
+Therefore {prf:ref}<code>lemma-solsmod</code> implies that there's no integer solutions to
+the equation <span class="arithmatex">\(x^2 + y^2 = 35\)</span>!</p>
+<p>Let us now explore another algebraic property of <span class="arithmatex">\(\mathbb{Z}\)</span> and its analogue in <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span>.
+In <span class="arithmatex">\(\mathbb{Z}\)</span> all elements except for <span class="arithmatex">\(0\)</span> are <em>invertible</em>: for each <span class="arithmatex">\(i \in \mathbb{Z} \setminus \{0\}\)</span>
+there exists a <em>unique</em> number <span class="arithmatex">\(j \in \mathbb{Z}\)</span> such that <span class="arithmatex">\(i \times j = 1\)</span>. We usually denote <span class="arithmatex">\(j\)</span> by <span class="arithmatex">\(i^{-1]\)</span> and
+call it the <em>inverse</em> of <span class="arithmatex">\(i\)</span>.</p>
+<p>What about <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span>? Does it have any invertibe elements? We can try to work out some example
+for small values of <span class="arithmatex">\(n\)</span>:</p>
+<ul>
+<li>In <span class="arithmatex">\(\mathbb{Z}/2\mathbb{Z}\)</span> we have $\overline{1} \times \overline{1} = \overline{1}, so <span class="arithmatex">\(1\)</span> is its own inverse.</li>
+<li>In <span class="arithmatex">\(\mathbb{Z}/7\mathbb{Z}\)</span> we have <span class="arithmatex">\(\overline{3} \times \overline{5} = \overline{1}\)</span>, so <span class="arithmatex">\(\overline{3}^{-1} = \overline{5}\)</span>.</li>
+</ul>
+<p>If we keep working out such examples by hand, we quickly arrive at the following important result:</p>
+<div class="highlight"><pre><span></span><code>:label: lemma-invergcd
+
+Let $n \in \mathbb{N}$, $x \in \mathbb{Z}$. Then $\overline{x}$ is
+invertible in $\mathbb{Z}/n\mathbb{Z}$ if and only if $x \wedge n = 1$. 
+</code></pre></div>
+<p>The proof is quite straightforward:</p>
+<div class="arithmatex">\[\begin{align*}
+\overline{x} \text{ invertible } &amp;\Leftrightarrow \exists y \in \mathbb{Z}, \overline{xy} = \overline{1} \\
+&amp;\Leftrightarrow xy \equiv 1 [n] \\
+&amp;\Leftrightarrow \exists k \in \mathbb{Z}, xy = 1 + nk\\
+&amp;\Leftrightarrow xy-nk=1 \\
+&amp;\overset{Bézout}{\Leftrightarrow} x \wedge n = 1.
+\end{align*}\]</div>
+<p>The proof above also gives us a way to calculate inverses.
+Recall from above that <span class="arithmatex">\(x\)</span> being invertible implies there exist <span class="arithmatex">\(y, k \in\mathbb{Z}\)</span> such that:</p>
+<div class="arithmatex">\[xy - nk = 1.\]</div>
+<p>Therefore, modulo <span class="arithmatex">\(n\)</span>, we have <span class="arithmatex">\(\overline{xy} = \overline{1} \Rightarrow \overline{x}\overline{y}=\overline{1}\)</span>.
+That is to say, the inverse <span class="arithmatex">\(\overline{y} = \overline{x}^{-1}\)</span> is exactly the first Bézout coefficient of the 
+above equation. Therefore we can find <span class="arithmatex">\(\overline{y}\)</span> using the extended Euclidean algorithm!</p>
+<p>For example, suppose we search for the inverse of <span class="arithmatex">\(\overline{x}=\overline{5}\)</span> in <span class="arithmatex">\(\mathbb{Z}/17\mathbb{Z}\)</span>.
+Applying the Euclidean algorithm, we have:</p>
+<div class="arithmatex">\[\begin{align*}
+17 &amp;= 3 \times 5 + 2 \\
+5 &amp;= 2 \times 2 + 1 \\
+2 &amp;= 2 \times 1 + 0.
+\end{align*}\]</div>
+<p>Reasoning backwards (starting from the penultimate equation), we obtain:</p>
+<div class="arithmatex">\[\begin{align*}
+1 &amp;= 5 - 2 \times 2 \\
+  &amp;= 5 - 2 \times (17 - 3 \times 5)
+  &amp;= 7 \times 5 - 2 \times 17.
+\end{align*}\]</div>
+<p>Therefore, <span class="arithmatex">\(\overline{y} = \overline{7}\)</span> and so <span class="arithmatex">\(\overline{5}^{-1} = \overline{7}\)</span>.
+Indeed, <span class="arithmatex">\(5 \times 7 = 35 \equiv 1[17]\)</span>.</p>
+<h2 id="kid-rsa">Kid-RSA</h2>
+<p>In this section we'll apply our knowledge of numeral bases and arithmetic modulo <span class="arithmatex">\(n\)</span>
+to study a simple cryptosystem called KidRSA.</p>
+<p>Kid-RSA is a simple example of <em>public-key cryptography</em> which operates on the
+basis of two keys:</p>
+<ul>
+<li>A <em>public key</em>: everyone who has access to this can <em>encrypt</em> messages.</li>
+<li>A <em>private key</em>: only those who have access to this can <em>decrypt</em> messages.</li>
+</ul>
+<p>Suppose for simplicity that a message is a plaintext written using the 26 letters of
+the latin alphabet (no spaces allowed!)[^3].</p>
+<p>[^3]: Since <span class="arithmatex">\((A)_{26} = (0)_{10}\)</span>, in order to avoid ambiguities we must always
+include any initial <span class="arithmatex">\(0\)</span>s in our cyphertexts (which we would usually remove in the
+decimal system). For example: <span class="arithmatex">\((ABCD)_{26} = (0731)_{10}\)</span>, while if we remove the initial
+<span class="arithmatex">\(0\)</span>, we obtain only <span class="arithmatex">\((731)_{10} = {BCD}_{26}\)</span>.</p>
+<p>Using the correspondence <span class="arithmatex">\(A \leftrightarrow 0, B \leftrightarrow 1, \dots, Z \leftrightarrow 25\)</span>,
+we can translate any message into a number in base 26. Finally, using a base conversion algorithm
+we can rewrite the message in base-10 to facilitate calculations.</p>
+<p>Our public and private keys will be a pair of integers <span class="arithmatex">\((e,d)\)</span>. Encryption and decryption will be 
+carried out by multiplying by <span class="arithmatex">\(e\)</span> and <span class="arithmatex">\(d\)</span> respectively, modulo some number <span class="arithmatex">\(n\)</span> to be defined below.</p>
+<p>To set up the system someone, let's call them Alice, must choose any two integers <span class="arithmatex">\(a,b \in \mathbb{Z}\)</span>
+and calculate <span class="arithmatex">\(M = ab - 1\)</span>. Alice then must choose two more integers <span class="arithmatex">\(a', b' \in \mathbb{Z}\)</span> and use
+them to calculate the three desired values <span class="arithmatex">\((e,d)\)</span> and <span class="arithmatex">\(n\)</span>:</p>
+<div class="arithmatex">\[\begin{align*}
+e &amp;= a'M + a, \\
+d &amp;= b'M + b, \\
+n &amp;= \frac{ed-1}{M} = a'b'M + ab' + a'b + 1.
+\end{align*}\]</div>
+<p>Finally, Alice can publicly announce the key <span class="arithmatex">\(e\)</span>. </p>
+<p>If someone, say Bob, wants to send Alice an encrypted message they do as follows:
+* Convert their message to an integer in base-25 and apply a base conversion algorithm to rewrite it in base-10.
+That is to say, we assume that the message is some integer <span class="arithmatex">\(m \in \mathbb{Z}\)</span> (written in base-10).
+* Calculate the cyphertext <span class="arithmatex">\(c\)</span> as <span class="arithmatex">\(c \equiv em[n]\)</span>.
+* Communicate <span class="arithmatex">\(c\)</span> to Alice.</p>
+<p>Once Alice receives the cyphertext <span class="arithmatex">\(c\)</span> from Bob, 
+all they have to do to decrypt is multiply by <span class="arithmatex">\(d\)</span> modulo <span class="arithmatex">\(n\)</span>: <span class="arithmatex">\(m \equiv dc[n] \equiv dem[n]\)</span>.</p>
+<p>For this to work we must have <span class="arithmatex">\(dc \equiv dem \equiv 1 \times m \equiv m[n]\)</span> which means that
+<span class="arithmatex">\(e\)</span> and <span class="arithmatex">\(d\)</span> are inverses of eachother in <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span>. To prove this, we calculate:</p>
+<div class="arithmatex">\[\begin{align*}
+ed - 1 &amp;= (a'M + a)(b'M + b) - 1 \\
+&amp;= a'b'M^2 + a'Mb + ab'M + ab - 1 \\
+&amp;= (a'b'M + a'b + a'b)M + M \\
+&amp;= (a'b'M + a'b + a'b + 1)M \\
+&amp;= nM,
+\end{align*}\]</div>
+<p>where we used the definitions of <span class="arithmatex">\(M = ab-1\)</span> and <span class="arithmatex">\(n = a'b'M + ab' + a'b + 1\)</span>.
+From this we have that <span class="arithmatex">\((ed - 1)\)</span> is divisible by both <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(M\)</span> and therefore
+<span class="arithmatex">\((ed - 1) \equiv 0[n] \Rightarrow ed \equiv 1[n]\)</span>, as desired.</p>
+<p>(exmp-kidrsa)=
+Let us now work through an example:</p>
+<p>1) To begin with, we choose <span class="arithmatex">\(a = 120, b = 39\)</span>, <span class="arithmatex">\(a' = 5, b' = 215\)</span>.
+This gives us: 
+\begin{align<em>}
+M &amp;= 4679, \
+n &amp;= 5055921, \
+e &amp;= 23515, \
+d &amp;= 1006024.
+\end{align</em>}
+2) For our message, let us choose "HELLO". Rewritting this in base-10 we have <span class="arithmatex">\((HELLO)_{26} = (3276872)_{10}\)</span>.
+3) We compute the cyphertext using the public key <span class="arithmatex">\(e\)</span>: 
+\begin{align<em>}
+c &amp;\equiv em[n] \
+  &amp;\equiv 3409040 [n].
+\end{align</em>}
+4) We decrypt using the private key <span class="arithmatex">\(d\)</span>:
+\begin{align<em>}
+m &amp;\equiv dc[n] \
+  &amp;\equiv 1006024 \times 3276872 [n] \
+  &amp;\equiv 3276872[n].
+\end{align</em>}
+5) We rewritte this in base-26: <span class="arithmatex">\((3276872)_{10} = (HELLO)_{26}\)</span>.</p>
+<p>This cryptosystem is not particularly safe: can you think of any
+potential vulnerabilities? If you have read and understood everything presented 
+in the previous sections, then you have the tools to break this simple system!
+See also the relevant exercise below. </p>
+<h2 id="bonus-if-we-have-time-eulers-phi-and-inverses">Bonus if we have time: Euler's phi and inverses?</h2>
+<h2 id="exercises">Exercises</h2>
+<p>Note: the programming exercises can be carried out in any programming language of your choice.</p>
+<h2 id="exercise">Exercise</h2>
+<p>Implement a base conversion algorithm.</p>
+<h2 id="exercise_1">Exercise</h2>
+<p>For the lovers of music theory, consider a piece consisting of two voices each
+playing a single measure in polymetre. That is to say,</p>
+<ul>
+<li>Each voice follows its own metre (for example one in <span class="arithmatex">\(3/4\)</span> and one in <span class="arithmatex">\(4/4\)</span>).</li>
+<li>Each voice plays a single measure.</li>
+<li>The tactus (pulse) is fixed and common for both voices.  </li>
+</ul>
+<p>Even though the two voices start at the same time they quickly become
+desynchronised: each starts and ends its measure at different beats. Eventually
+however, after <span class="arithmatex">\(t\)</span> beats, the two voices will start their measures again at the
+same time. </p>
+<p>Given the meters of the two voices, calculate the number of beats
+<span class="arithmatex">\(t\)</span>. How many measures will each of the voices have performed before they start again at
+the same beat?</p>
+<h2 id="exercise_2">Exercise</h2>
+<p>Implement a prime factorisation algorithm (the naive one, for example).</p>
+<h2 id="exercise_3">Exercise</h2>
+<p>Implement Euclid's algorithm.
+Consider various approaches: a recursive one and an iterative one for example.</p>
+<h2 id="exercise_4">Exercise</h2>
+<p>Implement the extended Euclid's algorithm.</p>
+<h2 id="exercise_5">Exercise</h2>
+<p>Determine if the following Diophantine equations have solutions and if so, compute them:</p>
+<ul>
+<li><span class="arithmatex">\(5x + 10y = 10\)</span>,</li>
+<li><span class="arithmatex">\(5x + 10y = 11\)</span>,</li>
+<li><span class="arithmatex">\(12x + 4y = 30\)</span>,</li>
+<li><span class="arithmatex">\(12x + 4y = 32\)</span>.</li>
+</ul>
+<h2 id="exercise_6">Exercise</h2>
+<p>Prove <a href="def-propscong">properties</a> of <span class="arithmatex">\(+, \times\)</span> modulo <span class="arithmatex">\(n\)</span>.</p>
+<h2 id="exercise_7">Exercise</h2>
+<p>Show that the equations <span class="arithmatex">\(x^2+y^2 = 2024\)</span> and <span class="arithmatex">\(x^2+y^2+z^2=87\)</span> do not admit integer solutions.</p>
+<h2 id="exercise_8">Exercise</h2>
+<p>List all invertible elements in <span class="arithmatex">\(\mathbb{Z}/2\mathbb{Z}, \mathbb{Z}/5\mathbb{Z}, \mathbb{Z}/7\mathbb{Z},
+\mathbb{Z}/24\mathbb{Z}\)</span>.</p>
+<h2 id="exercise_9">Exercise</h2>
+<p>Recall the <a href="exmp-kidrsa">example</a> execution of the KidRSA algorithm we carried out above,
+with parameters: <span class="arithmatex">\(a = 120, b = 39\)</span>, <span class="arithmatex">\(a' = 5, b' = 215\)</span>. Using these:</p>
+<p>1) Calculate the cyphertexts corresponding to: "HEY", "MSG", "CODE".
+2) Decrypt the following cyphertext: 4319056.</p>
+<h2 id="exercise_10">Exercise</h2>
+<p>Implement the KidRSA cryptosystem.</p>
+<h2 id="exercise_11">Exercise</h2>
+<p>Can you think of a way to break the KidRSA cryptosystem?
+Given knowledge only of <span class="arithmatex">\(e,n\)</span>, come up with a way to compute <span class="arithmatex">\(d\)</span>.</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

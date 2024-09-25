@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.0, mkdocs-terminal-4.4.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Naive theory of sets - Alexandros Singh's Academic Homepage</title>
+
+
+<link href="../../../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Alexandros Singh's Academic Homepage</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../.." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../pubs/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Papers</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../talks/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Talks</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../software/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Software</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../gallery/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Gallery</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../../../../../../comte/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Project CoMTE</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../pubs/">Papers</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+            
+                
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+            
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Teaching</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../teaching/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../mpif/">Mathématiques pour l’informatique et les jeux vidéo</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../funProg/funProg/">Programmation fonctionnelle</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../advFunProg/advFunProg/">Programmation fonctionnelle avancée</a>
+        
+    
+    </li>
+            
+        
+            
+            
+                
+                
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../../old/pastYears/">Past years</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#naive-theory-of-sets">Naive theory of sets</a></li>
+        <li><a href="#introduction">Introduction</a></li><li><a href="#mathematical-language">Mathematical language</a></li><li><a href="#sets-and-their-elements">Sets and their elements</a></li><li><a href="#variables-and-quantifiers">Variables and quantifiers</a></li><li><a href="#the-subset-relation">The subset relation</a></li><li><a href="#tuples-and-cartesian-products">Tuples and Cartesian products</a></li><li><a href="#powerset">Powerset</a></li><li><a href="#exercises">Exercises</a></li><li><a href="#bibliography">Bibliography</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="naive-theory-of-sets">Naive theory of sets</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Set theory is the mathematical study of collections of objects.
+A relatively new branch of mathematics, it was born in late 1873 
+in the work of <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a> 
+who was investigating the properties of the real numbers.</p>
+<p>Despite the apparent simplicity of the basic objects it treats, sets and their 
+elements, set theory is a rich and fundamental branch of modern mathematics.
+Its birth was a watershed moment, playing a central role in the quest for a 
+formal foundation of mathematics that took place late in the 19th century and early
+20th centuries.
+During this time, it became apparent that concepts such as infinite sets
+were not properly handled by mathematicians: 
+famous <a href="https://fr.wikipedia.org/wiki/Paradoxe_de_Russell">paradoxes</a> had arisen that required immediate
+resolution - lest mathematics is shown to be inconsistent! </p>
+<p>The solution to this crisis was given by a <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_ensembles_de_Zermelo-Fraenkel">formal theory of sets</a> introduced by Zermelo and Fraenkel, which finally
+succeeded in formalising the notion of sets, thus giving mathematics a 
+proper foundation. Since then, set theory has been an active subject of 
+research for mathematicians, logicians, and philosophers.</p>
+<p>In this course, our investigations will mostly concern finite sets. Therefore a
+naive theory of sets (much simpler than the aforementioned theory of Zermelo
+and Fraenkel) will suffice. This affords us the privilege of working in informal
+language (instead of formal logic) and taking for granted various basic
+notions. However we should always be aware of the following drawback of our
+informal approach: our results will not always directly transfer from finite to
+infinite sets. Infinity is as wonderful as it is unintuitive!</p>
+<h2 id="mathematical-language">Mathematical language</h2>
+<p>Before we proceed with our study of sets, let us first
+fix some basic notions of the informal mathematical language we will develop during our study. </p>
+<p>We start with the basic notions of <em>constants</em> and <em>connectives</em>.</p>
+<p>Constants are symbols corresponding to named objects whose existence we assume to be given. 
+Examples of such constants are:
+* The <span class="arithmatex">\(\top\)</span> and <span class="arithmatex">\(\bot\)</span> symbols which are read as "true" and "false" respectively,
+* any other symbols such as <span class="arithmatex">\(\bullet, \circ, \triangle\)</span>.</p>
+<p>Of course a language that can only refer to one individual object at a time
+isn't very interesting. Connectives serve to glue together formulas to form
+bigger ones. In the simplest case they can be either <em>unary</em> in which case they
+modify a single formula or <em>binary</em> in which case they are used to glue
+together two formulas. The basic ones we'll use are:
+* <span class="arithmatex">\(\lnot\)</span> which is a unary connective read as "not". 
+* <span class="arithmatex">\(\land\)</span> which is a binary connective read as "and".
+* <span class="arithmatex">\(\lor\)</span>, which is a binary connective read as  "or".
+* <span class="arithmatex">\(\rightarrow\)</span> which is a binary connective read as "implies".
+Examples of use of such connectives are <span class="arithmatex">\(\not \triangle\)</span>, <span class="arithmatex">\(true \land false\)</span>, <span class="arithmatex">\(\bullet \implies true\)</span>.
+For more complicated formulas, we may use parenthesis for disambiguating: <span class="arithmatex">\((\not true) \implies true\)</span>.</p>
+<p>So far all we have done is define the <em>syntax</em> of our language: symbols with no intrinsic meaning and ways to combine
+them to form bigger formulas. Assigning a meaning to them is the subject of <em>semantics</em> which we will treat in a very
+informal manner: 
+* To the symbols <span class="arithmatex">\(\top\)</span> and <span class="arithmatex">\(\bot\)</span> we will assign the two classical <em>boolean</em> values of <span class="arithmatex">\(true\)</span> and <span class="arithmatex">\(false\)</span>.
+* To the symbols <span class="arithmatex">\(\bullet, \circ, \triangle\)</span> we can assign "abstract objects" which we assume already exist and whose
+precise nature isn't relevant.</p>
+<p>To the connectives we assign unary or binary <em>boolean functions</em>:
+* To <span class="arithmatex">\(\lnot\)</span> we will assign the function which maps <span class="arithmatex">\(true\)</span> to <span class="arithmatex">\(false\)</span> and <span class="arithmatex">\(false\)</span> to <span class="arithmatex">\(true\)</span>.
+* To <span class="arithmatex">\(\land\)</span> we will assign the function which evaluates to <span class="arithmatex">\(true\)</span> if and only if both its
+inputs are <span class="arithmatex">\(true\)</span>. That is, to <span class="arithmatex">\(P \land Q\)</span> we assign the value <span class="arithmatex">\(true\)</span> if and only if both <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(Q\)</span> both have the value <span class="arithmatex">\(true\)</span>.
+* To <span class="arithmatex">\(\lor\)</span> we will assign the function which evaluates to <span class="arithmatex">\(true\)</span> if either of its inputs is <span class="arithmatex">\(true\)</span>. That is <span class="arithmatex">\(P \lor Q\)</span> is <span class="arithmatex">\(true\)</span>
+if either <span class="arithmatex">\(P\)</span> or <span class="arithmatex">\(Q\)</span> are.
+* To <span class="arithmatex">\(\rightarrow\)</span> we assign the function that evaluates to <span class="arithmatex">\(false\)</span> if and only if its first argument is <span class="arithmatex">\(true\)</span> and the second one is
+<span class="arithmatex">\(false\)</span>, otherwise it evaluates to <span class="arithmatex">\(true\)</span>. That is <span class="arithmatex">\(P \rightarrow Q\)</span> is always <span class="arithmatex">\(true\)</span> except if <span class="arithmatex">\(P\)</span> is <span class="arithmatex">\(true\)</span> and <span class="arithmatex">\(Q\)</span> is <span class="arithmatex">\(false\)</span>, 
+in which case the whole formula is <span class="arithmatex">\(false\)</span>.</p>
+<p>We will further enrich this language with new concepts where this is useful. We will also
+freely switch between this more abstract notation and its natural language equivalent, 
+employing whichever allows us to most succintly and clearly state our desired formulas.</p>
+<h2 id="sets-and-their-elements">Sets and their elements</h2>
+<p>Finally we are ready to introduce our central objects of study.</p>
+<p>(def-set)=
+```{admonition} Definition (Set).
+A set is an unordered collection of objects, called elements of the set.
+These elements are understood to be all distinct (no repetitions allowed). 
+<div class="highlight"><pre><span></span><code>While very informal from a modern mathematical perspective, this &quot;definition&quot; is quite close to the one Cantor himself gives in {cite:p}`cantor1895beitrage`:
+
+```{epigraph}
+A set is a gathering together into a whole of definite, distinct objects of our perception or of our thought—which are called elements of the set.
+
+-- Georg Cantor
+</code></pre></div></p>
+<p>Having introduced a new mathematical object, let us now enrich our language
+with new constants appropriate for talking about sets. First of all we
+introduce the symbol <span class="arithmatex">\(\emptyset\)</span> which stands for the empty set: the set that
+contains no element, which we assume to exist. 
+We will also assume the existence of the <em>set of natural numbers</em> for which we introduce the
+constants <span class="arithmatex">\(\mathbb{N}\)</span> for the set itself and the usual indo-arabic
+numerals <span class="arithmatex">\(0, 1, 2, 3, \dots\)</span> for its elements. We may also admit some basic functions 
+and relations on natural numbers such as <span class="arithmatex">\(+, -, *, /, \geq, \leq\)</span>.</p>
+<p>Finally, we admit <em>extensional notation</em> which is a very common way to represent sets 
+by listing its elements seperated by commas and put between braces <span class="arithmatex">\(\{, \}\)</span>. For example:</p>
+<ul>
+<li>A set containing the first 3 non-zero natural numbers may be written as: <span class="arithmatex">\(\{1, 2, 3\}\)</span>.</li>
+<li>A set containing two abstract elements is <span class="arithmatex">\(\{\bullet, \circ \}\)</span>.</li>
+<li>The empty set, which contains nothing, is written as <span class="arithmatex">\(\{\}\)</span> or <span class="arithmatex">\(\emptyset\)</span> for short.</li>
+</ul>
+<p>A set being an object in itself can therefore be an element of another set: <span class="arithmatex">\(\{1,2,\{1,5\}\}\)</span> is a perfectly valid set 
+containing the elements <span class="arithmatex">\(1, 2, \{1, 5\}\)</span> [^1].</p>
+<p>[^1]: Indeed, in formal set theory we often work at the level of abstraction where
+all objects are either the empty set or a set of sets. Surprisingly, this suffices
+to describe all known mathematical objets: numbers, functions, geometric objects, etc.</p>
+<p>Two sets will be considered <em>the same</em> or <em>equal</em> if they have the same elements. As mentioned in the <a href="def-set">above definition</a>
+the order the elements in the extensional representation of a set doesn't matter: the sets <span class="arithmatex">\(\{1,2,3\}, \{3,2,1\}, \{2,1,3\}\)</span> are
+all equal. For this relation, we introduce the connective <span class="arithmatex">\(=\)</span> which is a function of two sets: <span class="arithmatex">\(A = B\)</span> is <span class="arithmatex">\(true\)</span> if <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>
+are equal. </p>
+<p>Another important notion is that of <em>membership</em> between an object and a set. We use the connective <span class="arithmatex">\(\in\)</span> to denote
+this relation. For example, <span class="arithmatex">\(1 \in \{1, 2, 3\}\)</span> stands for the statement that the set <span class="arithmatex">\(\{1, 2, 3\}\)</span> contaons <span class="arithmatex">\(1\)</span> (which is true!), 
+while <span class="arithmatex">\(4 \in \{1, 2, 3\}\)</span> is the statement that the same set contains <span class="arithmatex">\(4\)</span> (which is false!). 
+Finally, <span class="arithmatex">\(\not\in\)</span> stands for the relation of <em>non-membership</em>: <span class="arithmatex">\(4 \not\in \{1,2,3\}\)</span> is true.</p>
+<h2 id="variables-and-quantifiers">Variables and quantifiers</h2>
+<p>To facilitate the manipulation of sets and their objects, we enrich our
+language by allowing the use of <em>variables</em>: these will be used as arguments to
+set-theoretic functions. We will denote variables by lowercase latin letters
+<span class="arithmatex">\(x, y, z, \dots\)</span> intented to stand for elements and uppercase ones such as <span class="arithmatex">\(A,
+B, S, U \dots\)</span> intented to stand for sets. Variables themselves don't have much
+use unless coupled with the use of <em>quantifiers</em>: the universal quantifier
+<span class="arithmatex">\(\forall\)</span> and the existential quantifier <span class="arithmatex">\(\exists\)</span> which are read as "for all"
+and "there exists". Quantifiers <em>bind</em> variables in a formula: both <span class="arithmatex">\(\forall\)</span>
+and <span class="arithmatex">\(\exists\)</span> are accompanied by a variable and a formula. The basic syntax is
+that of <span class="arithmatex">\(\forall x P\)</span> and <span class="arithmatex">\(\exists x P\)</span>, where <span class="arithmatex">\(P\)</span> is a formula in which the
+variable <span class="arithmatex">\(x\)</span> appears <em>free</em>, that is not bound by any quantifier.</p>
+<p>In terms of semantics, variables will be given values in a set which contains all objects we're interested in.
+This universal set is also called the <em>domain of discourse</em>. </p>
+<p>The formula <span class="arithmatex">\(\forall x~P\)</span> will be given the value <span class="arithmatex">\(true\)</span> if and only if the formula <span class="arithmatex">\(P\)</span> is true for
+any possible assignment of <span class="arithmatex">\(x\)</span>. 
+The formula <span class="arithmatex">\(\exists x~P\)</span> will be given the value <span class="arithmatex">\(true\)</span> if and only if there exists at least one assignment of <span class="arithmatex">\(x\)</span> that makes
+<span class="arithmatex">\(P\)</span> true.</p>
+<p>For example,</p>
+<ul>
+<li>The formula <span class="arithmatex">\(\exists x~(x \in {1,2,3}) \land (x \in \{2,4,6\})\)</span> is true,</li>
+<li>while <span class="arithmatex">\(\forall x ~ (x \in \{1,2,3\}) \rightarrow (x \in \{2,4,6\})\)</span> is false.</li>
+</ul>
+<p>We'll often use the shorthand <span class="arithmatex">\(\exists x \in S~P\)</span> to stand for <span class="arithmatex">\(\exists x ~ (x \in S) \land P\)</span> 
+and <span class="arithmatex">\(\forall x \in S~P\)</span> to stand for <span class="arithmatex">\(\forall x . (x \in S \rightarrow P)\)</span>. Letting <span class="arithmatex">\(A = \{1,2,3\}\)</span>
+and <span class="arithmatex">\(B = \{2,4,6\}\)</span> we can use this shorthand notation to rewrite the above two examples as:
+* <span class="arithmatex">\(\exists x \in A ~ x \in B\)</span> and
+* <span class="arithmatex">\(\forall x \in A ~ x \in B\)</span>.</p>
+<h2 id="the-subset-relation">The subset relation</h2>
+<p>Given the above, we may now define a relation between sets which captures the notion of a set being inside another.</p>
+<p>(def-subset)=
+```{admonition} Definition (Subset).
+We say that a set <span class="arithmatex">\(A\)</span> is a subset of a set <span class="arithmatex">\(B\)</span>, denoted by <span class="arithmatex">\(A \subseteq B\)</span>,
+if all elements of <span class="arithmatex">\(A\)</span> belong to <span class="arithmatex">\(B\)</span>. That is, <span class="arithmatex">\(A \subseteq B\)</span> if and only if <span class="arithmatex">\(\forall x \in A ~ x \in B\)</span>.
+<div class="highlight"><pre><span></span><code>From this, two important facts follow:
+* Any set is a subset of itself: $A \subseteq A$ is true.
+* The empty set is a subset of any set: $\forall S~\emptyset \subseteq S$ is true.
+
+As an example, $\{2,4,6\} \subseteq \{1,2,3,4,5,6\}$, while $\{1,2,3\} \not\subseteq \{1,2,\{3,4,5\}\}$, where
+$A \not\subseteq B$ stands for $\lnot(A \subseteq B)$.
+
+A convenient way for describing subsets which complements the extensional notation introduced above is the intensional
+way: we specify a set $A$ as a subset of some set $B$ whose elements satisfy an additional property. For example:
+$\{ x \in \{1,2,3\} \lvert x &gt;= 2\}$ defines the set $\{2,3\}$.
+
+(section-operations)=
+## Operations on sets
+
+Apart from the extensional and intensional ways of constructing sets, we may construct new sets by combining old ones
+via a number of operations:
+
+(def-union)=
+```{admonition} Definition (Union).
+The union of two sets $A$ and $B$, denoted by $A \cup B$, is the set consisting of all
+elements of $A$ and all those of $B$.
+</code></pre></div></p>
+<p>(def-intersection)=
+```{admonition} Definition (Intersection).
+The intersection of two sets <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, denoted by <span class="arithmatex">\(A \cap B\)</span>, is the set consisting of all
+elements of <span class="arithmatex">\(A\)</span> that also belong to <span class="arithmatex">\(B\)</span>.
+<div class="highlight"><pre><span></span><code>(def-difference)=
+```{admonition} Definition (Difference).
+The difference of two sets $A$ and $B$, denoted by $A \setminus B$, is the set consisting of all
+elements of $A$ that do not belong to $B$.
+</code></pre></div></p>
+<p>(def-complement)
+```{admonition} Definition (Complement).
+The complement of a set <span class="arithmatex">\(A\)</span> with respect to the domain of
+discourse <span class="arithmatex">\(U\)</span> is <span class="arithmatex">\(U \setminus A\)</span>.
+<div class="highlight"><pre><span></span><code>(def-props)=
+Some important identities involving these operations are:
+
+* $A \cap B = B \cap A$
+* $A \cup B = B \cup A$
+* $A \cap (B \cap C) = (A \cap B) \cap C$
+* $A \cup (B \cup C) = (A \cup B) \cup C$
+* $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+* $E \setminus (E \setminus A) = A$
+* $E \setminus (A \cup B) = (E \setminus A) \cap (E \setminus B)$
+* $E \setminus (A \cap B) = (E \setminus A) \cup (E \setminus B)$
+
+An easy way to convince ourselves that these properties hold is to
+draw *Venn diagrams*, in which the universe of discourse is drawn
+as a box and its subsets are drawn as &quot;ovaloid&quot; shapes such that the shapes corresponding to two sets $A,B$ are overlapping if $A \cap B \neq \emptyset$ and non-overlapping otherwise.
+
+For example, for three sets $A,B,C$ with $A \cap B \neq \emptyset, (A \cup B) \cap C \neq \emptyset$ we draw the following:
+
+![Venn diagram example](../images/venn.png)
+
+## Cardinality
+
+An important notion for sets is that of *cardinality*: 
+(def-cardinality)=
+```{admonition} Definition (Cardinality)
+The cardinality of a finite set is its number of elements.
+</code></pre></div></p>
+<p>We often use the notation <span class="arithmatex">\(\lvert A \rvert\)</span> to denote the cardinality of a set <span class="arithmatex">\(A\)</span>.
+For example the set <span class="arithmatex">\(\{1,2,3\}\)</span> is of cardinality <span class="arithmatex">\(\lvert\{1,2,3\}\rvert = 3\)</span> while
+<span class="arithmatex">\(\lvert\{1,2,\{1,5\},\emptyset,\{2,3,\{4\}\}\}\rvert = 5\)</span>.</p>
+<div class="highlight"><pre><span></span><code>A word of caution is in order: the above definition is very, very informal and quite circular.
+The formal definition of cardinality used in contemporary mathematics 
+is actually founded on the notion of *bijections*, which handles in a uniform manner the
+case of finite and infinite sets.
+</code></pre></div>
+<h2 id="tuples-and-cartesian-products">Tuples and Cartesian products</h2>
+<p>Let us now introduce yet another notion of a collection of elements.</p>
+<p>(def-tuple)=
+```{admonition} Definition (<span class="arithmatex">\(n\)</span>-tuple)
+Given a natural number <span class="arithmatex">\(n \in \mathbb{N}\)</span>, an <span class="arithmatex">\(n\)</span>-tuple is an ordered 
+collection of <span class="arithmatex">\(n\)</span> elements.
+<div class="highlight"><pre><span></span><code>Unlike sets, $n$-tuples therefore care about the order elements are listed in 
+and allow repetitions as well.
+
+We will denote $n$-tuples using a syntax similar to that of sets, replacing the braces $\{,\}$ by
+parenthesis $\(,\)$. To $n$-tuples will be considered *equal* if they contain the same elements in the same order.
+Examples of some $n$-tuples are:
+* $(1,2)$, a $2$-tuple also called a *pair*.
+* $(2,1)$, another $2$-tuple different from the above.
+* $(1,2,3,4,5)$, $(1,8,10,3,0)$, two $5$-tuples.
+
+The following construction allows us to construct $n$-tuples from sets.
+
+(def-cartesianprod)=
+```{admonition} Definition ($n$-fold Cartesian product)
+Given a natural number $n \in \mathbb{N}$ and $n$ sets $S_1, S_2, \dots, S_n$,
+the $n$-fold Cartesian product $S_1 \times S_2 \times \dots \times S_n$ is the set
+of all possible $n$-tuples for which the first element is drawn from $S_1$, the second
+is drawn from $S_2$, and so on:
+
+$S_1 \times S_2 \times \dots \times S_n = \{(s_1, s_2, \dots, s_n)~\lvert~s_1 \in S_1, s_2 \in S_2, \dots, s_n \in S_n\}$
+</code></pre></div></p>
+<p>When <span class="arithmatex">\(n=2\)</span>, we simply speak of the <em>Cartesian product of two sets</em>.</p>
+<h2 id="powerset">Powerset</h2>
+<p>The powerset construction allows us to collect
+all subgroups of a given set <span class="arithmatex">\(S\)</span>:</p>
+<p>(def-pset)=
+```{admonition} Definition (Powerset)
+Given a set <span class="arithmatex">\(S\)</span>, the powerset <span class="arithmatex">\(\mathcal{P}(S)\)</span> is
+the set consisting of all subsets of <span class="arithmatex">\(S\)</span>:</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(\mathcal{P}(S) = \{ A \lvert A \subseteq S \}\)</span>\)</span>
+<div class="highlight"><pre><span></span><code>For example $\mathcal{P}(\{1,2\}) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}$.
+
+For *finite* sets, the cardinality of their powerset is given by the following lemma.
+
+(thm-powercard)=
+```{admonition} Lemma (Cardinality of Powerset)
+Given a finite set $S$, the
+powerset $\mathcal{P}(S)$ has cardinality:
+
+$$\lvert \mathcal{P}(S) \rvert = 2^{\lvert S \rvert}$$
+</code></pre></div></p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Evaluate the following formulas: 
+* <span class="arithmatex">\(\emptyset \subseteq \emptyset\)</span>,
+* <span class="arithmatex">\(\emptyset \subset \emptyset\)</span>,
+* <span class="arithmatex">\(\emptyset \in \emptyset\)</span>,
+* <span class="arithmatex">\(\forall X~\emptyset \subseteq X\)</span>,
+* <span class="arithmatex">\(\forall X~\emptyset \in X\)</span>,
+* <span class="arithmatex">\(\exists X~\emptyset \in X\)</span>,
+* <span class="arithmatex">\(\exists X~\emptyset \notin X\)</span>.
+* <span class="arithmatex">\(\emptyset \in \mathcal{P}(S)\)</span> for any set <span class="arithmatex">\(S\)</span>.
+* <span class="arithmatex">\(S \in \mathcal{P}(S)\)</span> for any set <span class="arithmatex">\(S\)</span>.</p>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Describe a way to translate between formulas involving occurences of the <span class="arithmatex">\(\forall\)</span> quantifier to formulas
+involving only the <span class="arithmatex">\(\exists\)</span> quantifier, in a way which preserves the truth value of said formulas. </p>
+<h3 id="exercise-3">Exercise 3</h3>
+<p>Describe a way to translate between formulas involving occurences of the <span class="arithmatex">\(\exists\)</span> quantifier to formulas
+involving only the <span class="arithmatex">\(\forall\)</span> quantifier, in a way which preserves the truth value of said formulas.</p>
+<h3 id="exercise-4">Exercise 4</h3>
+<p>Given an equivalent definition of the <a href="def-subset">membership relation</a> using the <span class="arithmatex">\(\exists\)</span> equantifier.</p>
+<h3 id="exercise-5">Exercise 5</h3>
+<p>Assuming the domain of discourse is some finite set <span class="arithmatex">\(U\)</span>, describe a way to translate formulas
+involving <span class="arithmatex">\(\forall\)</span> and <span class="arithmatex">\(\exists\)</span> to formulas involving no quantifiers, in a way which preserves the
+truth value of said formulas.</p>
+<h3 id="exercise-6">Exercise 6</h3>
+<p>Draw Venn diagrams to convince yourselves of the <a href="def-props">properties</a> listed in the <a href="section-operations">Operations on sets</a> section.</p>
+<h2 id="bibliography">Bibliography</h2>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Site built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: September 2023 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Naive theory of sets &#8212; Maths for computer science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/sets';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Théorie naïve des ensembles" href="sets_fr.html" />
+    <link rel="prev" title="Mathematics for Computer Science 2024-2025" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Maths for computer science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mathematics for Computer Science 2024-2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Naive theory of sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sets_fr.html">Théorie naïve des ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proba.html">Introduction to discrete probability theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arith.html">Arithmetic and applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Analytic geometry and linear algebra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sections/sets.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Naive theory of sets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-language">Mathematical language</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-and-their-elements">Sets and their elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-quantifiers">Variables and quantifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-subset-relation">The subset relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-on-sets">Operations on sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality">Cardinality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-and-cartesian-products">Tuples and Cartesian products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#powerset">Powerset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="naive-theory-of-sets">
+<h1>Naive theory of sets<a class="headerlink" href="#naive-theory-of-sets" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Set theory is the mathematical study of collections of objects.
+A relatively new branch of mathematics, it was born in late 1873
+in the work of <a class="reference external" href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a>
+who was investigating the properties of the real numbers.</p>
+<p>Despite the apparent simplicity of the basic objects it treats, sets and their
+elements, set theory is a rich and fundamental branch of modern mathematics.
+Its birth was a watershed moment, playing a central role in the quest for a
+formal foundation of mathematics that took place late in the 19th century and early
+20th centuries.
+During this time, it became apparent that concepts such as infinite sets
+were not properly handled by mathematicians:
+famous <a class="reference external" href="https://fr.wikipedia.org/wiki/Paradoxe_de_Russell">paradoxes</a> had arisen that required immediate
+resolution - lest mathematics is shown to be inconsistent!</p>
+<p>The solution to this crisis was given by a <a class="reference external" href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_ensembles_de_Zermelo-Fraenkel">formal theory of sets</a> introduced by Zermelo and Fraenkel, which finally
+succeeded in formalising the notion of sets, thus giving mathematics a
+proper foundation. Since then, set theory has been an active subject of
+research for mathematicians, logicians, and philosophers.</p>
+<p>In this course, our investigations will mostly concern finite sets. Therefore a
+naive theory of sets (much simpler than the aforementioned theory of Zermelo
+and Fraenkel) will suffice. This affords us the privilege of working in informal
+language (instead of formal logic) and taking for granted various basic
+notions. However we should always be aware of the following drawback of our
+informal approach: our results will not always directly transfer from finite to
+infinite sets. Infinity is as wonderful as it is unintuitive!</p>
+</section>
+<section id="mathematical-language">
+<h2>Mathematical language<a class="headerlink" href="#mathematical-language" title="Link to this heading">#</a></h2>
+<p>Before we proceed with our study of sets, let us first
+fix some basic notions of the informal mathematical language we will develop during our study.</p>
+<p>We start with the basic notions of <em>constants</em> and <em>connectives</em>.</p>
+<p>Constants are symbols corresponding to named objects whose existence we assume to be given.
+Examples of such constants are:</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\(\top\)</span> and <span class="math notranslate nohighlight">\(\bot\)</span> symbols which are read as “true” and “false” respectively,</p></li>
+<li><p>any other symbols such as <span class="math notranslate nohighlight">\(\bullet, \circ, \triangle\)</span>.</p></li>
+</ul>
+<p>Of course a language that can only refer to one individual object at a time
+isn’t very interesting. Connectives serve to glue together formulas to form
+bigger ones. In the simplest case they can be either <em>unary</em> in which case they
+modify a single formula or <em>binary</em> in which case they are used to glue
+together two formulas. The basic ones we’ll use are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span> which is a unary connective read as “not”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\land\)</span> which is a binary connective read as “and”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lor\)</span>, which is a binary connective read as  “or”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> which is a binary connective read as “implies”.
+Examples of use of such connectives are <span class="math notranslate nohighlight">\(\not \triangle\)</span>, <span class="math notranslate nohighlight">\(true \land false\)</span>, <span class="math notranslate nohighlight">\(\bullet \implies true\)</span>.
+For more complicated formulas, we may use parenthesis for disambiguating: <span class="math notranslate nohighlight">\((\not true) \implies true\)</span>.</p></li>
+</ul>
+<p>So far all we have done is define the <em>syntax</em> of our language: symbols with no intrinsic meaning and ways to combine
+them to form bigger formulas. Assigning a meaning to them is the subject of <em>semantics</em> which we will treat in a very
+informal manner:</p>
+<ul class="simple">
+<li><p>To the symbols <span class="math notranslate nohighlight">\(\top\)</span> and <span class="math notranslate nohighlight">\(\bot\)</span> we will assign the two classical <em>boolean</em> values of <span class="math notranslate nohighlight">\(true\)</span> and <span class="math notranslate nohighlight">\(false\)</span>.</p></li>
+<li><p>To the symbols <span class="math notranslate nohighlight">\(\bullet, \circ, \triangle\)</span> we can assign “abstract objects” which we assume already exist and whose
+precise nature isn’t relevant.</p></li>
+</ul>
+<p>To the connectives we assign unary or binary <em>boolean functions</em>:</p>
+<ul class="simple">
+<li><p>To <span class="math notranslate nohighlight">\(\lnot\)</span> we will assign the function which maps <span class="math notranslate nohighlight">\(true\)</span> to <span class="math notranslate nohighlight">\(false\)</span> and <span class="math notranslate nohighlight">\(false\)</span> to <span class="math notranslate nohighlight">\(true\)</span>.</p></li>
+<li><p>To <span class="math notranslate nohighlight">\(\land\)</span> we will assign the function which evaluates to <span class="math notranslate nohighlight">\(true\)</span> if and only if both its
+inputs are <span class="math notranslate nohighlight">\(true\)</span>. That is, to <span class="math notranslate nohighlight">\(P \land Q\)</span> we assign the value <span class="math notranslate nohighlight">\(true\)</span> if and only if both <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> both have the value <span class="math notranslate nohighlight">\(true\)</span>.</p></li>
+<li><p>To <span class="math notranslate nohighlight">\(\lor\)</span> we will assign the function which evaluates to <span class="math notranslate nohighlight">\(true\)</span> if either of its inputs is <span class="math notranslate nohighlight">\(true\)</span>. That is <span class="math notranslate nohighlight">\(P \lor Q\)</span> is <span class="math notranslate nohighlight">\(true\)</span>
+if either <span class="math notranslate nohighlight">\(P\)</span> or <span class="math notranslate nohighlight">\(Q\)</span> are.</p></li>
+<li><p>To <span class="math notranslate nohighlight">\(\rightarrow\)</span> we assign the function that evaluates to <span class="math notranslate nohighlight">\(false\)</span> if and only if its first argument is <span class="math notranslate nohighlight">\(true\)</span> and the second one is
+<span class="math notranslate nohighlight">\(false\)</span>, otherwise it evaluates to <span class="math notranslate nohighlight">\(true\)</span>. That is <span class="math notranslate nohighlight">\(P \rightarrow Q\)</span> is always <span class="math notranslate nohighlight">\(true\)</span> except if <span class="math notranslate nohighlight">\(P\)</span> is <span class="math notranslate nohighlight">\(true\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> is <span class="math notranslate nohighlight">\(false\)</span>,
+in which case the whole formula is <span class="math notranslate nohighlight">\(false\)</span>.</p></li>
+</ul>
+<p>We will further enrich this language with new concepts where this is useful. We will also
+freely switch between this more abstract notation and its natural language equivalent,
+employing whichever allows us to most succintly and clearly state our desired formulas.</p>
+</section>
+<section id="sets-and-their-elements">
+<h2>Sets and their elements<a class="headerlink" href="#sets-and-their-elements" title="Link to this heading">#</a></h2>
+<p>Finally we are ready to introduce our central objects of study.</p>
+<div class="admonition-definition-set admonition" id="def-set">
+<p class="admonition-title">Definition (Set).</p>
+<p>A set is an unordered collection of objects, called elements of the set.
+These elements are understood to be all distinct (no repetitions allowed).</p>
+</div>
+<p>While very informal from a modern mathematical perspective, this “definition” is quite close to the one Cantor himself gives in <span id="id1">[<a class="reference internal" href="#id9" title="Georg Cantor. Beiträge zur begründung der transfiniten mengenlehre. Mathematische Annalen, 46(4):481–512, 1895.">Can95</a>]</span>:</p>
+<blockquote class="epigraph">
+<div><p>A set is a gathering together into a whole of definite, distinct objects of our perception or of our thought—which are called elements of the set.</p>
+<p class="attribution">—Georg Cantor</p>
+</div></blockquote>
+<p>Having introduced a new mathematical object, let us now enrich our language
+with new constants appropriate for talking about sets. First of all we
+introduce the symbol <span class="math notranslate nohighlight">\(\emptyset\)</span> which stands for the empty set: the set that
+contains no element, which we assume to exist.
+We will also assume the existence of the <em>set of natural numbers</em> for which we introduce the
+constants <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> for the set itself and the usual indo-arabic
+numerals <span class="math notranslate nohighlight">\(0, 1, 2, 3, \dots\)</span> for its elements. We may also admit some basic functions
+and relations on natural numbers such as <span class="math notranslate nohighlight">\(+, -, *, /, \geq, \leq\)</span>.</p>
+<p>Finally, we admit <em>extensional notation</em> which is a very common way to represent sets
+by listing its elements seperated by commas and put between braces <span class="math notranslate nohighlight">\(\{, \}\)</span>. For example:</p>
+<ul class="simple">
+<li><p>A set containing the first 3 non-zero natural numbers may be written as: <span class="math notranslate nohighlight">\(\{1, 2, 3\}\)</span>.</p></li>
+<li><p>A set containing two abstract elements is <span class="math notranslate nohighlight">\(\{\bullet, \circ \}\)</span>.</p></li>
+<li><p>The empty set, which contains nothing, is written as <span class="math notranslate nohighlight">\(\{\}\)</span> or <span class="math notranslate nohighlight">\(\emptyset\)</span> for short.</p></li>
+</ul>
+<p>A set being an object in itself can therefore be an element of another set: <span class="math notranslate nohighlight">\(\{1,2,\{1,5\}\}\)</span> is a perfectly valid set
+containing the elements <span class="math notranslate nohighlight">\(1, 2, \{1, 5\}\)</span> <a class="footnote-reference brackets" href="#id10" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Two sets will be considered <em>the same</em> or <em>equal</em> if they have the same elements. As mentioned in the <a class="reference internal" href="sets_fr.html#def-set"><span class="std std-ref">above definition</span></a>
+the order the elements in the extensional representation of a set doesn’t matter: the sets <span class="math notranslate nohighlight">\(\{1,2,3\}, \{3,2,1\}, \{2,1,3\}\)</span> are
+all equal. For this relation, we introduce the connective <span class="math notranslate nohighlight">\(=\)</span> which is a function of two sets: <span class="math notranslate nohighlight">\(A = B\)</span> is <span class="math notranslate nohighlight">\(true\)</span> if <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>
+are equal.</p>
+<p>Another important notion is that of <em>membership</em> between an object and a set. We use the connective <span class="math notranslate nohighlight">\(\in\)</span> to denote
+this relation. For example, <span class="math notranslate nohighlight">\(1 \in \{1, 2, 3\}\)</span> stands for the statement that the set <span class="math notranslate nohighlight">\(\{1, 2, 3\}\)</span> contaons <span class="math notranslate nohighlight">\(1\)</span> (which is true!),
+while <span class="math notranslate nohighlight">\(4 \in \{1, 2, 3\}\)</span> is the statement that the same set contains <span class="math notranslate nohighlight">\(4\)</span> (which is false!).
+Finally, <span class="math notranslate nohighlight">\(\not\in\)</span> stands for the relation of <em>non-membership</em>: <span class="math notranslate nohighlight">\(4 \not\in \{1,2,3\}\)</span> is true.</p>
+</section>
+<section id="variables-and-quantifiers">
+<h2>Variables and quantifiers<a class="headerlink" href="#variables-and-quantifiers" title="Link to this heading">#</a></h2>
+<p>To facilitate the manipulation of sets and their objects, we enrich our
+language by allowing the use of <em>variables</em>: these will be used as arguments to
+set-theoretic functions. We will denote variables by lowercase latin letters
+<span class="math notranslate nohighlight">\(x, y, z, \dots\)</span> intented to stand for elements and uppercase ones such as <span class="math notranslate nohighlight">\(A,
+B, S, U \dots\)</span> intented to stand for sets. Variables themselves don’t have much
+use unless coupled with the use of <em>quantifiers</em>: the universal quantifier
+<span class="math notranslate nohighlight">\(\forall\)</span> and the existential quantifier <span class="math notranslate nohighlight">\(\exists\)</span> which are read as “for all”
+and “there exists”. Quantifiers <em>bind</em> variables in a formula: both <span class="math notranslate nohighlight">\(\forall\)</span>
+and <span class="math notranslate nohighlight">\(\exists\)</span> are accompanied by a variable and a formula. The basic syntax is
+that of <span class="math notranslate nohighlight">\(\forall x P\)</span> and <span class="math notranslate nohighlight">\(\exists x P\)</span>, where <span class="math notranslate nohighlight">\(P\)</span> is a formula in which the
+variable <span class="math notranslate nohighlight">\(x\)</span> appears <em>free</em>, that is not bound by any quantifier.</p>
+<p>In terms of semantics, variables will be given values in a set which contains all objects we’re interested in.
+This universal set is also called the <em>domain of discourse</em>.</p>
+<p>The formula <span class="math notranslate nohighlight">\(\forall x~P\)</span> will be given the value <span class="math notranslate nohighlight">\(true\)</span> if and only if the formula <span class="math notranslate nohighlight">\(P\)</span> is true for
+any possible assignment of <span class="math notranslate nohighlight">\(x\)</span>.
+The formula <span class="math notranslate nohighlight">\(\exists x~P\)</span> will be given the value <span class="math notranslate nohighlight">\(true\)</span> if and only if there exists at least one assignment of <span class="math notranslate nohighlight">\(x\)</span> that makes
+<span class="math notranslate nohighlight">\(P\)</span> true.</p>
+<p>For example,</p>
+<ul class="simple">
+<li><p>The formula <span class="math notranslate nohighlight">\(\exists x~(x \in {1,2,3}) \land (x \in \{2,4,6\})\)</span> is true,</p></li>
+<li><p>while <span class="math notranslate nohighlight">\(\forall x ~ (x \in \{1,2,3\}) \rightarrow (x \in \{2,4,6\})\)</span> is false.</p></li>
+</ul>
+<p>We’ll often use the shorthand <span class="math notranslate nohighlight">\(\exists x \in S~P\)</span> to stand for <span class="math notranslate nohighlight">\(\exists x ~ (x \in S) \land P\)</span>
+and <span class="math notranslate nohighlight">\(\forall x \in S~P\)</span> to stand for <span class="math notranslate nohighlight">\(\forall x . (x \in S \rightarrow P)\)</span>. Letting <span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span>
+and <span class="math notranslate nohighlight">\(B = \{2,4,6\}\)</span> we can use this shorthand notation to rewrite the above two examples as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\exists x \in A ~ x \in B\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \in A ~ x \in B\)</span>.</p></li>
+</ul>
+</section>
+<section id="the-subset-relation">
+<h2>The subset relation<a class="headerlink" href="#the-subset-relation" title="Link to this heading">#</a></h2>
+<p>Given the above, we may now define a relation between sets which captures the notion of a set being inside another.</p>
+<div class="admonition-definition-subset admonition" id="def-subset">
+<p class="admonition-title">Definition (Subset).</p>
+<p>We say that a set <span class="math notranslate nohighlight">\(A\)</span> is a subset of a set <span class="math notranslate nohighlight">\(B\)</span>, denoted by <span class="math notranslate nohighlight">\(A \subseteq B\)</span>,
+if all elements of <span class="math notranslate nohighlight">\(A\)</span> belong to <span class="math notranslate nohighlight">\(B\)</span>. That is, <span class="math notranslate nohighlight">\(A \subseteq B\)</span> if and only if <span class="math notranslate nohighlight">\(\forall x \in A ~ x \in B\)</span>.</p>
+</div>
+<p>From this, two important facts follow:</p>
+<ul class="simple">
+<li><p>Any set is a subset of itself: <span class="math notranslate nohighlight">\(A \subseteq A\)</span> is true.</p></li>
+<li><p>The empty set is a subset of any set: <span class="math notranslate nohighlight">\(\forall S~\emptyset \subseteq S\)</span> is true.</p></li>
+</ul>
+<p>As an example, <span class="math notranslate nohighlight">\(\{2,4,6\} \subseteq \{1,2,3,4,5,6\}\)</span>, while <span class="math notranslate nohighlight">\(\{1,2,3\} \not\subseteq \{1,2,\{3,4,5\}\}\)</span>, where
+<span class="math notranslate nohighlight">\(A \not\subseteq B\)</span> stands for <span class="math notranslate nohighlight">\(\lnot(A \subseteq B)\)</span>.</p>
+<p>A convenient way for describing subsets which complements the extensional notation introduced above is the intensional
+way: we specify a set <span class="math notranslate nohighlight">\(A\)</span> as a subset of some set <span class="math notranslate nohighlight">\(B\)</span> whose elements satisfy an additional property. For example:
+<span class="math notranslate nohighlight">\(\{ x \in \{1,2,3\} \lvert x &gt;= 2\}\)</span> defines the set <span class="math notranslate nohighlight">\(\{2,3\}\)</span>.</p>
+</section>
+<section id="operations-on-sets">
+<span id="section-operations"></span><h2>Operations on sets<a class="headerlink" href="#operations-on-sets" title="Link to this heading">#</a></h2>
+<p>Apart from the extensional and intensional ways of constructing sets, we may construct new sets by combining old ones
+via a number of operations:</p>
+<div class="admonition-definition-union admonition" id="def-union">
+<p class="admonition-title">Definition (Union).</p>
+<p>The union of two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, denoted by <span class="math notranslate nohighlight">\(A \cup B\)</span>, is the set consisting of all
+elements of <span class="math notranslate nohighlight">\(A\)</span> and all those of <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="admonition-definition-intersection admonition" id="def-intersection">
+<p class="admonition-title">Definition (Intersection).</p>
+<p>The intersection of two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, denoted by <span class="math notranslate nohighlight">\(A \cap B\)</span>, is the set consisting of all
+elements of <span class="math notranslate nohighlight">\(A\)</span> that also belong to <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="admonition-definition-difference admonition" id="def-difference">
+<p class="admonition-title">Definition (Difference).</p>
+<p>The difference of two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, denoted by <span class="math notranslate nohighlight">\(A \setminus B\)</span>, is the set consisting of all
+elements of <span class="math notranslate nohighlight">\(A\)</span> that do not belong to <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<p>(def-complement)</p>
+<div class="admonition-definition-complement admonition">
+<p class="admonition-title">Definition (Complement).</p>
+<p>The complement of a set <span class="math notranslate nohighlight">\(A\)</span> with respect to the domain of
+discourse <span class="math notranslate nohighlight">\(U\)</span> is <span class="math notranslate nohighlight">\(U \setminus A\)</span>.</p>
+</div>
+<p id="def-props">Some important identities involving these operations are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A \cap B = B \cap A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cup B = B \cup A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cap (B \cap C) = (A \cap B) \cap C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cup (B \cup C) = (A \cup B) \cup C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (E \setminus A) = A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (A \cup B) = (E \setminus A) \cap (E \setminus B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \setminus (A \cap B) = (E \setminus A) \cup (E \setminus B)\)</span></p></li>
+</ul>
+<p>An easy way to convince ourselves that these properties hold is to
+draw <em>Venn diagrams</em>, in which the universe of discourse is drawn
+as a box and its subsets are drawn as “ovaloid” shapes such that the shapes corresponding to two sets <span class="math notranslate nohighlight">\(A,B\)</span> are overlapping if <span class="math notranslate nohighlight">\(A \cap B \neq \emptyset\)</span> and non-overlapping otherwise.</p>
+<p>For example, for three sets <span class="math notranslate nohighlight">\(A,B,C\)</span> with <span class="math notranslate nohighlight">\(A \cap B \neq \emptyset, (A \cup B) \cap C \neq \emptyset\)</span> we draw the following:</p>
+<p><img alt="Venn diagram example" src="../_images/venn.png" /></p>
+</section>
+<section id="cardinality">
+<h2>Cardinality<a class="headerlink" href="#cardinality" title="Link to this heading">#</a></h2>
+<p>An important notion for sets is that of <em>cardinality</em>:</p>
+<div class="admonition-definition-cardinality admonition" id="def-cardinality">
+<p class="admonition-title">Definition (Cardinality)</p>
+<p>The cardinality of a finite set is its number of elements.</p>
+</div>
+<p>We often use the notation <span class="math notranslate nohighlight">\(\lvert A \rvert\)</span> to denote the cardinality of a set <span class="math notranslate nohighlight">\(A\)</span>.
+For example the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span> is of cardinality <span class="math notranslate nohighlight">\(\lvert\{1,2,3\}\rvert = 3\)</span> while
+<span class="math notranslate nohighlight">\(\lvert\{1,2,\{1,5\},\emptyset,\{2,3,\{4\}\}\}\rvert = 5\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A word of caution is in order: the above definition is very, very informal and quite circular.
+The formal definition of cardinality used in contemporary mathematics
+is actually founded on the notion of <em>bijections</em>, which handles in a uniform manner the
+case of finite and infinite sets.</p>
+</div>
+</section>
+<section id="tuples-and-cartesian-products">
+<h2>Tuples and Cartesian products<a class="headerlink" href="#tuples-and-cartesian-products" title="Link to this heading">#</a></h2>
+<p>Let us now introduce yet another notion of a collection of elements.</p>
+<div class="admonition-definition-n-tuple admonition" id="def-tuple">
+<p class="admonition-title">Definition (<span class="math notranslate nohighlight">\(n\)</span>-tuple)</p>
+<p>Given a natural number <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, an <span class="math notranslate nohighlight">\(n\)</span>-tuple is an ordered
+collection of <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
+</div>
+<p>Unlike sets, <span class="math notranslate nohighlight">\(n\)</span>-tuples therefore care about the order elements are listed in
+and allow repetitions as well.</p>
+<p>We will denote <span class="math notranslate nohighlight">\(n\)</span>-tuples using a syntax similar to that of sets, replacing the braces <span class="math notranslate nohighlight">\(\{,\}\)</span> by
+parenthesis <span class="math notranslate nohighlight">\(\(,\)\)</span>. To <span class="math notranslate nohighlight">\(n\)</span>-tuples will be considered <em>equal</em> if they contain the same elements in the same order.
+Examples of some <span class="math notranslate nohighlight">\(n\)</span>-tuples are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((1,2)\)</span>, a <span class="math notranslate nohighlight">\(2\)</span>-tuple also called a <em>pair</em>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((2,1)\)</span>, another <span class="math notranslate nohighlight">\(2\)</span>-tuple different from the above.</p></li>
+<li><p><span class="math notranslate nohighlight">\((1,2,3,4,5)\)</span>, <span class="math notranslate nohighlight">\((1,8,10,3,0)\)</span>, two <span class="math notranslate nohighlight">\(5\)</span>-tuples.</p></li>
+</ul>
+<p>The following construction allows us to construct <span class="math notranslate nohighlight">\(n\)</span>-tuples from sets.</p>
+<div class="admonition-definition-n-fold-cartesian-product admonition" id="def-cartesianprod">
+<p class="admonition-title">Definition (<span class="math notranslate nohighlight">\(n\)</span>-fold Cartesian product)</p>
+<p>Given a natural number <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span> and <span class="math notranslate nohighlight">\(n\)</span> sets <span class="math notranslate nohighlight">\(S_1, S_2, \dots, S_n\)</span>,
+the <span class="math notranslate nohighlight">\(n\)</span>-fold Cartesian product <span class="math notranslate nohighlight">\(S_1 \times S_2 \times \dots \times S_n\)</span> is the set
+of all possible <span class="math notranslate nohighlight">\(n\)</span>-tuples for which the first element is drawn from <span class="math notranslate nohighlight">\(S_1\)</span>, the second
+is drawn from <span class="math notranslate nohighlight">\(S_2\)</span>, and so on:</p>
+<p><span class="math notranslate nohighlight">\(S_1 \times S_2 \times \dots \times S_n = \{(s_1, s_2, \dots, s_n)~\lvert~s_1 \in S_1, s_2 \in S_2, \dots, s_n \in S_n\}\)</span></p>
+</div>
+<p>When <span class="math notranslate nohighlight">\(n=2\)</span>, we simply speak of the <em>Cartesian product of two sets</em>.</p>
+</section>
+<section id="powerset">
+<h2>Powerset<a class="headerlink" href="#powerset" title="Link to this heading">#</a></h2>
+<p>The powerset construction allows us to collect
+all subgroups of a given set <span class="math notranslate nohighlight">\(S\)</span>:</p>
+<div class="admonition-definition-powerset admonition" id="def-pset">
+<p class="admonition-title">Definition (Powerset)</p>
+<p>Given a set <span class="math notranslate nohighlight">\(S\)</span>, the powerset <span class="math notranslate nohighlight">\(\mathcal{P}(S)\)</span> is
+the set consisting of all subsets of <span class="math notranslate nohighlight">\(S\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(S) = \{ A \lvert A \subseteq S \}\]</div>
+</div>
+<p>For example <span class="math notranslate nohighlight">\(\mathcal{P}(\{1,2\}) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}\)</span>.</p>
+<p>For <em>finite</em> sets, the cardinality of their powerset is given by the following lemma.</p>
+<div class="admonition-lemma-cardinality-of-powerset admonition" id="thm-powercard">
+<p class="admonition-title">Lemma (Cardinality of Powerset)</p>
+<p>Given a finite set <span class="math notranslate nohighlight">\(S\)</span>, the
+powerset <span class="math notranslate nohighlight">\(\mathcal{P}(S)\)</span> has cardinality:</p>
+<div class="math notranslate nohighlight">
+\[\lvert \mathcal{P}(S) \rvert = 2^{\lvert S \rvert}\]</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>Evaluate the following formulas:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\emptyset \subseteq \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \subset \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \in \emptyset\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall X~\emptyset \subseteq X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall X~\emptyset \in X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists X~\emptyset \in X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists X~\emptyset \notin X\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\emptyset \in \mathcal{P}(S)\)</span> for any set <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S \in \mathcal{P}(S)\)</span> for any set <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+</section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Describe a way to translate between formulas involving occurences of the <span class="math notranslate nohighlight">\(\forall\)</span> quantifier to formulas
+involving only the <span class="math notranslate nohighlight">\(\exists\)</span> quantifier, in a way which preserves the truth value of said formulas.</p>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
+<p>Describe a way to translate between formulas involving occurences of the <span class="math notranslate nohighlight">\(\exists\)</span> quantifier to formulas
+involving only the <span class="math notranslate nohighlight">\(\forall\)</span> quantifier, in a way which preserves the truth value of said formulas.</p>
+</section>
+<section id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
+<p>Given an equivalent definition of the <a class="reference internal" href="sets_fr.html#def-subset"><span class="std std-ref">membership relation</span></a> using the <span class="math notranslate nohighlight">\(\exists\)</span> equantifier.</p>
+</section>
+<section id="exercise-5">
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
+<p>Assuming the domain of discourse is some finite set <span class="math notranslate nohighlight">\(U\)</span>, describe a way to translate formulas
+involving <span class="math notranslate nohighlight">\(\forall\)</span> and <span class="math notranslate nohighlight">\(\exists\)</span> to formulas involving no quantifiers, in a way which preserves the
+truth value of said formulas.</p>
+</section>
+<section id="exercise-6">
+<h3>Exercise 6<a class="headerlink" href="#exercise-6" title="Link to this heading">#</a></h3>
+<p>Draw Venn diagrams to convince yourselves of the <a class="reference internal" href="sets_fr.html#def-props"><span class="std std-ref">properties</span></a> listed in the <a class="reference internal" href="#section-operations"><span class="std std-ref">Operations on sets</span></a> section.</p>
+</section>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Can95</a><span class="fn-bracket">]</span></span>
+<p>Georg Cantor. Beiträge zur begründung der transfiniten mengenlehre. <em>Mathematische Annalen</em>, 46(4):481–512, 1895.</p>
+</div>
+</div>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Indeed, in formal set theory we often work at the level of abstraction where
+all objects are either the empty set or a set of sets. Surprisingly, this suffices
+to describe all known mathematical objets: numbers, functions, geometric objects, etc.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mathematics for Computer Science 2024-2025</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sets_fr.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Théorie naïve des ensembles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-language">Mathematical language</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-and-their-elements">Sets and their elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-quantifiers">Variables and quantifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-subset-relation">The subset relation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-on-sets">Operations on sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality">Cardinality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-and-cartesian-products">Tuples and Cartesian products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#powerset">Powerset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5">Exercise 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6">Exercise 6</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliography">Bibliography</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alexandros Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

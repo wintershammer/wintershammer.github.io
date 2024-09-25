@@ -1,0 +1,1379 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Arithmetic and applications &#8212; Maths for computer science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sections/arith';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analytic geometry and linear algebra" href="linalg.html" />
+    <link rel="prev" title="Introduction to discrete probability theory" href="proba.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Maths for computer science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mathematics for Computer Science 2024-2025
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sets.html">Naive theory of sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sets_fr.html">Théorie naïve des ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proba.html">Introduction to discrete probability theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Arithmetic and applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linalg.html">Analytic geometry and linear algebra</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sections/arith.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Arithmetic and applications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-systems">Numerical systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerals-and-positional-notation">Numerals and positional notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversion">Base conversion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-the-multiplicative-structure-of-mathbb-n">Elements of the multiplicative structure of <span class="math notranslate nohighlight">\(\mathbb{N}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divisibility-primes-prime-decomposition">Divisibility, primes, prime decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-divisor-and-euclid-s-algorithm">Greatest common divisor and Euclid’s algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bezout-s-theorem-and-resolving-diophantine-equations">Bézout’s theorem and resolving Diophantine equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-arithmetic">Modular arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kid-rsa">Kid-RSA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-if-we-have-time-euler-s-phi-and-inverses">Bonus if we have time: Euler’s phi and inverses?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="arithmetic-and-applications">
+<h1>Arithmetic and applications<a class="headerlink" href="#arithmetic-and-applications" title="Link to this heading">#</a></h1>
+<section id="numerical-systems">
+<h2>Numerical systems<a class="headerlink" href="#numerical-systems" title="Link to this heading">#</a></h2>
+<section id="numerals-and-positional-notation">
+<h3>Numerals and positional notation<a class="headerlink" href="#numerals-and-positional-notation" title="Link to this heading">#</a></h3>
+<p>Numbers are one of the most basic mathematical objects, one with which we
+interact daily: we use them to count, order, label, encode.</p>
+<p>Throughout history, numbers have been represented in a variety of ways, for example:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><strong>I</strong></p></td>
+<td><p><strong>II</strong></p></td>
+<td><p><strong>III</strong></p></td>
+<td><p><strong>IV</strong></p></td>
+<td><p><strong>V</strong></p></td>
+<td><p><strong>VI</strong></p></td>
+<td><p><strong>VII</strong></p></td>
+<td><p><strong>VIII</strong></p></td>
+<td><p><strong>IX</strong></p></td>
+<td><p><strong>X</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>੦</p></td>
+<td><p>੧</p></td>
+<td><p>੨</p></td>
+<td><p>੩</p></td>
+<td><p>੪</p></td>
+<td><p>੫</p></td>
+<td><p>੬</p></td>
+<td><p>੭</p></td>
+<td><p>੮</p></td>
+<td><p>੯</p></td>
+<td><p>੧੦</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Α</p></td>
+<td><p>Β</p></td>
+<td><p>Γ</p></td>
+<td><p>Δ</p></td>
+<td><p>Ε</p></td>
+<td><p>Ϝ</p></td>
+<td><p>Ζ</p></td>
+<td><p>Η</p></td>
+<td><p>Θ</p></td>
+<td><p>Ι</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Out of those, the widely used is, of course, the Indo-Arabic numeral system, invented
+between the 1st and 4th centuries by Indian mathematicians and later adopted by
+Arab and Persian mathematicians during the 9th century. The system later spread
+to Europe during the 13th century where it was not widely adopted before the 15th century.</p>
+<p>The Indo-Arabic numeral system works as follows:</p>
+<ul class="simple">
+<li><p>A natural number is written as a sequence of symbols taken from the alphabet
+<span class="math notranslate nohighlight">\(0,1,2,3,4,5,6,7,8,9\)</span>, which correspond to the first 10 natural numbers.</p></li>
+<li><p>The value represented by such a sequence is the <em>sum</em> of the value of each digit
+multiplied by some power of <span class="math notranslate nohighlight">\(10\)</span>: reading a numeral from right to left, the <span class="math notranslate nohighlight">\(n\)</span>-th digit is multiplied by <span class="math notranslate nohighlight">\(10^{n-1}\)</span>.</p></li>
+</ul>
+<p>For example, the numeral <span class="math notranslate nohighlight">\(123\)</span> represents the number <span class="math notranslate nohighlight">\(1 \cdot 10^2 + 2 \cdot 10^1 + 3 \cdot 10^1 = 100 + 20 + 3\)</span>.</p>
+<p>We may generalise the Indo-Arabic numeral system to obtain systems which use <em>positional notation</em>:</p>
+<ul class="simple">
+<li><p>Numbers are represented by <em>sequences</em> of symbols, called <em>digits</em>, drawn from some finite alphabet.</p></li>
+<li><p>The value represented by a <em>numeral</em> (a sequence of symbols) is the value represented by the symbol
+times some factor determined by the <em>position</em> of the symbol in the sequence.</p></li>
+</ul>
+<p>The factor is usually the power of some fixed number <span class="math notranslate nohighlight">\(b\)</span>, called the <em>base</em> of the system.</p>
+<p>For example the Indo-Arabic numeral system is a base-10 positional notation system using
+the usual digits <span class="math notranslate nohighlight">\(0\)</span> through <span class="math notranslate nohighlight">\(9\)</span>.
+Other historically significant bases are 8, 12, 20, 60 which where widely used by various
+cultures ranging from the Babylonians to Mayans.</p>
+<p>For a number to have a unique representation in such as system, we require that the number
+of digits is <span class="math notranslate nohighlight">\(b-1\)</span>. For bases <span class="math notranslate nohighlight">\(b \leq 10\)</span>, the digits are drawn using the same symbols <span class="math notranslate nohighlight">\(0, 1, \dots 9\)</span>
+that we use for base-10.
+For bases <span class="math notranslate nohighlight">\(b \geq 10\)</span> we of course need to invent new symbols to represent values greater than 9.
+For example, in a base-16 system we augment the alphabet of digits with
+the letters <span class="math notranslate nohighlight">\(A, B, C, D, E, F\)</span> which correspond to <span class="math notranslate nohighlight">\(10, 11, 12, 13, 14, 15\)</span>
+in base-10.</p>
+<p>In computer science we often use the <em>binary</em> (base-2) and <em>hexadecimal</em> (base-16) systems.
+For example, the number twenty has the following representations in bases 2, 10, 16:</p>
+<ul class="simple">
+<li><p>In base-2: <span class="math notranslate nohighlight">\((10100)_2 = 1 \cdot 2^4 + 0 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 0 \cdot 2^0\)</span>,</p></li>
+<li><p>In base-10: <span class="math notranslate nohighlight">\((20)_{10} = 2 \cdot 10^1 + 0 \cdot 10^0\)</span>,</p></li>
+<li><p>In base-16: <span class="math notranslate nohighlight">\((14)_{16} = 1 \cdot 16^1 + 4 \cdot 16^0\)</span>,</p></li>
+</ul>
+<p>where the <span class="math notranslate nohighlight">\((\cdot)_{b}\)</span> notation means that the numeral in the parenthesis is to be interpreted
+in base <span class="math notranslate nohighlight">\(b\)</span>.
+Similarly, the number 29 is written as <span class="math notranslate nohighlight">\((11101)_2, (1D)_{16}\)</span> in binary and hexadecimal.</p>
+<p>More generally, we can decompose a number <span class="math notranslate nohighlight">\(N\)</span> in any base <span class="math notranslate nohighlight">\(b\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[ N = \sum\limits_{i=0}^n N_i b^i \]</div>
+<p>where <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(N_i\)</span> are coefficients in <span class="math notranslate nohighlight">\([0,b-1]\)</span> and <span class="math notranslate nohighlight">\(N_n\)</span> is non-zero.
+These coefficients <span class="math notranslate nohighlight">\(N_i\)</span> are called “bits” in the binary (base-2) case. The numbers
+<span class="math notranslate nohighlight">\(n, b, N\)</span> are linked by the following formula:</p>
+<div class="math notranslate nohighlight">
+\[ n = \left\lfloor \frac{log(N)}{log(b)} \right\rfloor = \left\lfloor \log_b(N) \right\rfloor.\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lfloor \cdot \rfloor\)</span> is the integer part function, <span class="math notranslate nohighlight">\(\log\)</span> is the logarithm in base 10,
+and <span class="math notranslate nohighlight">\(\log_b\)</span> is the logarithm in base <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</section>
+<section id="base-conversion">
+<h3>Base conversion<a class="headerlink" href="#base-conversion" title="Link to this heading">#</a></h3>
+<p>As we’ve seen, any number can be represented in various bases. How do we
+go about converting between these different representations? The answer
+is given by repeated Euclidean division but there’s a catch: which
+base should we use to perform our calculations?</p>
+<p>Suppose that we met a member of an alien civilisation who only knows how to
+perform base-4 arithmetic, notably how to do Euclidean division,
+and who wants to convert <span class="math notranslate nohighlight">\((32)_4\)</span> to its equivalent base-8 numeral.</p>
+<p><strong>Actually do I even need this:</strong></p>
+<div class="proof remark admonition" id="alien-remark">
+<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Note that we keep expressing everything
+in base-10, representing the numbers “four” and “eight”
+in base-10 as <span class="math notranslate nohighlight">\((4)_{10}\)</span> and <span class="math notranslate nohighlight">\((8)_{10}\)</span>, without being explicit
+about our choice of base.</p>
+<p>However, for our alien friend <span class="math notranslate nohighlight">\((4)_{10} = (10)_4\)</span> and <span class="math notranslate nohighlight">\((8)_{10} = (20)_4\)</span>,
+so they would probably express their desire as wanting to convert
+<span class="math notranslate nohighlight">\((32)_10\)</span> to <span class="math notranslate nohighlight">\((32)_20\)</span>!</p>
+<p>Of course our friend would most probably not even be using Indo-Arabic digits <span class="math notranslate nohighlight">\(0, \dots, 9\)</span>,
+but let’s assume we’ve already translated their symbols!</p>
+</section>
+</div><p>To help our alien friend, we must first construct a basic lookup table <span class="math notranslate nohighlight">\(T\)</span> which contains the first
+eight numerals written in both bases:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>10</p></td>
+<td><p>11</p></td>
+<td><p>12</p></td>
+<td><p>13</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>6</p></td>
+<td><p>7</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We could then proceed as follows:</p>
+<ol class="arabic simple">
+<li><p>Calculate the quotient <span class="math notranslate nohighlight">\(q\)</span> and remainder <span class="math notranslate nohighlight">\(r\)</span> of the Euclidean division of <span class="math notranslate nohighlight">\((32)_4\)</span> by <span class="math notranslate nohighlight">\((20)_4\)</span> (remember we are working in base-4) : <span class="math notranslate nohighlight">\(q = (1)_4, r = (12)_4\)</span>.</p></li>
+<li><p>Convert <span class="math notranslate nohighlight">\((12)_4\)</span> to <span class="math notranslate nohighlight">\((6)_8\)</span> using our lookup table.</p></li>
+<li><p>Repeat this procedure by dividing <span class="math notranslate nohighlight">\((1)_4\)</span> by <span class="math notranslate nohighlight">\((20)_4\)</span> yields <span class="math notranslate nohighlight">\(q = 0, r = 1\)</span>.</p></li>
+<li><p>Convert <span class="math notranslate nohighlight">\((1)_4\)</span> to <span class="math notranslate nohighlight">\((1)_8\)</span> using our lookup table.</p></li>
+<li><p>Concatenate the two numbers (right to left) to obtain the desired result <span class="math notranslate nohighlight">\((16)_8\)</span>.</p></li>
+</ol>
+<p>Therefore we have calculated that <span class="math notranslate nohighlight">\((32)_4\)</span> is <span class="math notranslate nohighlight">\((16)_8\)</span>.</p>
+<p>Such a procedure can be quite cumbersome since:</p>
+<ol class="arabic simple">
+<li><p>It requires us to create a lookup symbol to convert between the digits of the two bases.</p></li>
+<li><p>It requires us to perform arithmetic in bases other than 10, which isn’t always intuitive!</p></li>
+</ol>
+<p>In practice we therefore usually convert between two bases <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(b'\)</span> by converting <em>first to
+base <span class="math notranslate nohighlight">\(10\)</span></em> and then from there to <span class="math notranslate nohighlight">\(b'\)</span>, taking advantage of our familiarity with division in
+base-10.</p>
+<p>Finally, there’s various tricks for passing quickly between specific bases. For computer scientists,
+a particularly useful one is the following trick for converting from binary to hexadecimal and
+vice versa:</p>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> be a number written in base-2.</p></li>
+<li><p>Split <span class="math notranslate nohighlight">\(N\)</span> in groups of <span class="math notranslate nohighlight">\(4\)</span>, padding with 0 in the beginning if required.</p></li>
+<li><p>Convert the groups of <span class="math notranslate nohighlight">\(4\)</span> bits to their equivalent value in hexadecimal (using a lookup table for
+example).</p></li>
+<li><p>Concatenate the results of the conversion to obtain the equivalent hexadecimal numeral.</p></li>
+</ol>
+<p>Conversely:</p>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> be a number written in base-16.</p></li>
+<li><p>Convert every digit of <span class="math notranslate nohighlight">\(N\)</span> to its equivalent 4-bit binary number (padded as necessary).</p></li>
+<li><p>Concatenate the results (right to left) to obtain the equivalent binary numeral.</p></li>
+</ol>
+<p>The mathematical justification for the above follows from the fact that <span class="math notranslate nohighlight">\(16 = 2^4\)</span> (similar tricks
+hold for converting between a base <span class="math notranslate nohighlight">\(b\)</span> and a base <span class="math notranslate nohighlight">\(b' = b^k\)</span> for some <span class="math notranslate nohighlight">\(k \geq 2\)</span>).</p>
+<p>For example, for <span class="math notranslate nohighlight">\(N = (1010110101010110011110111)_2\)</span> we first notice that it
+has 25 digits, so we prepend three zeros to obtain an equivalent numeral <span class="math notranslate nohighlight">\(N =
+(0001010110101010110011110111)_2\)</span> with <span class="math notranslate nohighlight">\(28\)</span> digits which is divisible by <span class="math notranslate nohighlight">\(4\)</span>.
+We then have the following 7 packets and their corresponding hexadecimals (from
+right to left):</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((0111)_2 = (7)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((1111)_2 = (F)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((1100)_2 = (C)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((1010)_2 = (A)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((1010)_2 = (A)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((0101)_2 = (5)_{16}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((0001)_2 = (1)_{16}\)</span>.</p></li>
+</ol>
+<p>Therefore we have <span class="math notranslate nohighlight">\((1010110101010110011110111)_2 = (15AACF7)_{16}\)</span>.</p>
+<p>For an example of the converse operation, suppose we are given <span class="math notranslate nohighlight">\((4D2)_{16}\)</span> and
+we want to convert to binary:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((2)_{16} = (0010)_2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((D)_{16} = (1101)_2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((D)_{16} = (0100)_2\)</span>.</p></li>
+</ol>
+<p>Therefore we have <span class="math notranslate nohighlight">\((4D2)_{16} = (010011010010)_2 = (10011010010)_2\)</span>,
+where in the last equality we simply removed the initial zero.</p>
+</section>
+</section>
+<section id="elements-of-the-multiplicative-structure-of-mathbb-n">
+<h2>Elements of the multiplicative structure of <span class="math notranslate nohighlight">\(\mathbb{N}\)</span><a class="headerlink" href="#elements-of-the-multiplicative-structure-of-mathbb-n" title="Link to this heading">#</a></h2>
+<section id="divisibility-primes-prime-decomposition">
+<h3>Divisibility, primes, prime decomposition<a class="headerlink" href="#divisibility-primes-prime-decomposition" title="Link to this heading">#</a></h3>
+<p>The multiplicative structure of natural numbers <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> and the integers <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>,
+that is to say the way that numbers are related to each other by the operations of multiplication
+and division, is of particular importance.</p>
+<p>Let us define one of the most basic notions, that of <em>divisibility</em>.</p>
+<div class="proof definition admonition" id="def-div">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(a, b \in \mathbb{N}\)</span>. We say that <span class="math notranslate nohighlight">\(a\)</span> <em>divides</em> <span class="math notranslate nohighlight">\(b\)</span> and write <span class="math notranslate nohighlight">\(a \mid b\)</span> if
+there exists an integer <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(b = ka\)</span>.</p>
+</section>
+</div><p>If <span class="math notranslate nohighlight">\(a \mid b\)</span> we also say that <span class="math notranslate nohighlight">\(a\)</span> is a <em>multiple</em> of <span class="math notranslate nohighlight">\(b\)</span>. If <span class="math notranslate nohighlight">\(a\)</span> does not divide <span class="math notranslate nohighlight">\(b\)</span>,
+then we write <span class="math notranslate nohighlight">\(a \not\mid b\)</span>. The above definition has other equivalent statements:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a \mid b\)</span> if the result of <span class="math notranslate nohighlight">\(a / b\)</span> is an integer,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a \mid b\)</span> if the remainder of the Euclidean division of <span class="math notranslate nohighlight">\(b\)</span> by <span class="math notranslate nohighlight">\(a\)</span> is zero.</p></li>
+</ul>
+<p>Clearly we always have <span class="math notranslate nohighlight">\(1 \mid n\)</span> and <span class="math notranslate nohighlight">\(n \mid n\)</span> for any <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>.
+A particularly important class of numbers is those for which the above two division relations
+are the only possible ones:</p>
+<div class="proof definition admonition" id="def-prime">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A number <span class="math notranslate nohighlight">\(n \in \mathbb{N} \setminus \{1\}\)</span> is <em>prime</em> if it is only divisibly by 1 and itself.</p>
+</section>
+</div><p>To determine whether a number <span class="math notranslate nohighlight">\(n\)</span> is prime, we can of course try to divide it by
+all numbers in <span class="math notranslate nohighlight">\([2, n-1]\)</span>: if no divisor is found, <span class="math notranslate nohighlight">\(n\)</span> is prime.</p>
+<p>A simple optimisation of this follows from two simple facts:</p>
+<ol class="arabic simple">
+<li><p>Multiplication is commutative: if <span class="math notranslate nohighlight">\(m \mid n\)</span> we <span class="math notranslate nohighlight">\(n = km = mk\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(n = km\)</span> with <span class="math notranslate nohighlight">\(m &gt; \sqrt{n}\)</span> then <span class="math notranslate nohighlight">\(k &lt; \sqrt{n}\)</span> and vice-versa.</p></li>
+</ol>
+<p>Therefore it suffices to test the divisibility of <span class="math notranslate nohighlight">\(n\)</span> by any number in the interval <span class="math notranslate nohighlight">\([2, \left\lfloor \sqrt{n} \right\rfloor]\)</span>.</p>
+<p>A particularly important result is the following:</p>
+<div class="proof theorem admonition" id="thm-fundarith">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Fundamental theorem of arithmetic)</p>
+<section class="theorem-content" id="proof-content">
+<p>Any number <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span> greater than <span class="math notranslate nohighlight">\(1\)</span> can be written in a unique way as a product of primes,
+up to permutation of the factors:</p>
+<div class="math notranslate nohighlight">
+\[n = \prod_{i=1}^{k} p^{n_i}_i,\]</div>
+<p>where the <span class="math notranslate nohighlight">\(p_i\)</span> are prime numbers and <span class="math notranslate nohighlight">\(n_i \in \mathbb{N} \setminus \{0\}\)</span>.</p>
+</section>
+</div><p>For example:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(99 = 3^3 \times 37\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(1000 = 2^3 \times 5^3\)</span>.</p></li>
+</ul>
+</section>
+<section id="greatest-common-divisor-and-euclid-s-algorithm">
+<h3>Greatest common divisor and Euclid’s algorithm<a class="headerlink" href="#greatest-common-divisor-and-euclid-s-algorithm" title="Link to this heading">#</a></h3>
+<p>For two natural numbers <span class="math notranslate nohighlight">\(n,m \in \mathbb{N}\)</span> their largest number <span class="math notranslate nohighlight">\(k\)</span> such that <span class="math notranslate nohighlight">\(k \mid n\)</span>
+and <span class="math notranslate nohighlight">\(k \mid m\)</span> is called their <em>greatest common divisor</em> (GCD) and we write <span class="math notranslate nohighlight">\(n \wedge m = d\)</span> <a class="footnote-reference brackets" href="#id15" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+Clearly this operation is commutative, so that <span class="math notranslate nohighlight">\(n \wedge m = m \wedge n\)</span>. We also have that
+<span class="math notranslate nohighlight">\(0 \wedge n = n = n \wedge 0\)</span> for any <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>. If <span class="math notranslate nohighlight">\(n \wedge m = 1\)</span>, we say that
+<span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are <em>relatively prime</em>.</p>
+<p>In case <span class="math notranslate nohighlight">\(m\)</span> divides <span class="math notranslate nohighlight">\(n\)</span>, we have:</p>
+<div class="proof lemma admonition" id="lemma-gcd1">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span>. If <span class="math notranslate nohighlight">\(m \mid n\)</span>, then all divisors of <span class="math notranslate nohighlight">\(m\)</span> are also divisors of <span class="math notranslate nohighlight">\(n\)</span> and:</p>
+<div class="math notranslate nohighlight">
+\[ n \wedge m = m.\]</div>
+</section>
+</div><p>Another useful lemma is:</p>
+<div class="proof lemma admonition" id="lemma-gcd2">
+<p class="admonition-title"><span class="caption-number">Lemma 2 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(n, m \in \mathbb{N} \setminus \{0\}\)</span>. If <span class="math notranslate nohighlight">\(d = n \wedge m\)</span>, then there exist <span class="math notranslate nohighlight">\(a, b \in \mathbb{N}\)</span>
+which are relatively prime (<span class="math notranslate nohighlight">\(a \wedge b = 1\)</span>) such that</p>
+<div class="math notranslate nohighlight">
+\[ n = a \times d, m = b \times d.\]</div>
+</section>
+</div><p>We now turn our attention to the problem of computing the GCD of two given numbers <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span>.
+Here’s one way to calculate do it using :</p>
+<ol class="arabic simple">
+<li><p>Calculate the prime factorisations (which necessarily exist due to the <a class="reference internal" href="#thm-fundarith">Theorem 1</a>):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n = \prod\limits_{i=1}^{k} p^{a_i}_i\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(m = \prod\limits_{i=1}^{k'} q^{b_i}_i\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Take the product of factors that appear in both factorisations and raise them to the smallest
+power in which they appear in either factorisation.</p></li>
+</ol>
+<p>For example, to calculate the GCD of <span class="math notranslate nohighlight">\(48\)</span> and <span class="math notranslate nohighlight">\(180\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(48 = 2^4 \times 3\)</span> and <span class="math notranslate nohighlight">\(180 = 2^2 \times 3^2 \times 5^1\)</span>.</p></li>
+<li><p>The common prime factors are <span class="math notranslate nohighlight">\(2\)</span> and <span class="math notranslate nohighlight">\(3\)</span>, which appear with powers <span class="math notranslate nohighlight">\(4,2\)</span> and <span class="math notranslate nohighlight">\(1,2\)</span> respectively.</p></li>
+<li><p>Therefore the GCD of <span class="math notranslate nohighlight">\(48\)</span> and <span class="math notranslate nohighlight">\(180\)</span> is: <span class="math notranslate nohighlight">\(2^{\min(4,2)} \times 3^{\min(1,2)} = 12\)</span>.</p></li>
+</ul>
+<p>Unfortunately, while effective, this approach is not very efficient: we don’t know any
+polynomial-time algorithms for decomposing positive integers into primes!</p>
+<p>A more efficient algorithm for computing the GCD <span class="math notranslate nohighlight">\(n \wedge m\)</span> was known to
+ancient mathematicians! Indeed it is one of the oldest known algorithms still
+in common use and was described by Greek mathematician Euclid in his treatise
+Στοιχεῖα (Elements) around 300 BC. It was probably known to people even earlier
+and was independently rediscovered by Indian and Chinese mathematicians later on.</p>
+<p>The basic idea behind Euclid’s algorithm is the following:</p>
+<div class="proof lemma admonition" id="lemma-gcdrem">
+<p class="admonition-title"><span class="caption-number">Lemma 3 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span> and let <span class="math notranslate nohighlight">\(n = qm + r\)</span> be the result
+of Euclidean division of <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(m\)</span>, where <span class="math notranslate nohighlight">\(0 \leq r &lt; b\)</span>.
+Then:</p>
+<p>$<span class="math notranslate nohighlight">\( n \wedge m = m \wedge r \)</span>$.</p>
+</section>
+</div><p>The trick is then to apply the lemma above iteratively:</p>
+<div class="proof algorithm admonition" id="alg-euclid">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Euclid)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs:</strong> Two numbers <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span> and we suppose, without loss of generality, that <span class="math notranslate nohighlight">\(n \geq m\)</span> (otherwise we can swap them).</p>
+<p><strong>Output:</strong> The GCD <span class="math notranslate nohighlight">\(n \wedge m\)</span>.</p>
+<p><strong>Algorithm</strong>:</p>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(m = 0\)</span>, return <span class="math notranslate nohighlight">\(n\)</span> (since <span class="math notranslate nohighlight">\(n \wedge 0 = n\)</span>).</p></li>
+<li><p>If not, perform Euclidean division: <span class="math notranslate nohighlight">\(n = qm + r\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(n \leftarrow  m, m \leftarrow r\)</span>.</p></li>
+<li><p>Repeat the above steps.</p></li>
+</ol>
+</section>
+</div><p>To justify the validity of the algorithm notice that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r &lt; m\)</span> in each iteration (by definition of
+the remainder) and therefore since <span class="math notranslate nohighlight">\(m \in \mathbb{N}\)</span> the algorithm is sure to
+reach <span class="math notranslate nohighlight">\(m = 0\)</span> and terminate after finitely many steps.</p></li>
+<li><p><a class="reference internal" href="#lemma-gcdrem">Lemma 3</a>
+guarantees a chain of equalities <span class="math notranslate nohighlight">\(n \wedge m = m \wedge r\)</span> for each iteration.</p></li>
+</ul>
+<p>As an example, let us compute <span class="math notranslate nohighlight">\(21 \wedge 15\)</span> using <a class="reference internal" href="#alg-euclid">Algorithm 1</a>:</p>
+<ol class="arabic simple" id="exmp-euclid">
+<li><p><span class="math notranslate nohighlight">\(n = 21, m = 15\)</span>. Performing the Euclidean division of <span class="math notranslate nohighlight">\(21\)</span> by <span class="math notranslate nohighlight">\(15\)</span> we have
+<span class="math notranslate nohighlight">\(21 = 1 \times 15 + 6\)</span>. Therefore, we update: <span class="math notranslate nohighlight">\(n \leftarrow 15, m \leftarrow 6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 15, m = 6\)</span>. Performing the Euclidean division of <span class="math notranslate nohighlight">\(15\)</span> by <span class="math notranslate nohighlight">\(6\)</span> we have
+<span class="math notranslate nohighlight">\(15 = 2 \times 6 + 3\)</span>. Therefore we update: <span class="math notranslate nohighlight">\(n \leftarrow 6, m \leftarrow 3\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 6, m = 3\)</span>. Performing the Euclidean division of <span class="math notranslate nohighlight">\(15\)</span> by <span class="math notranslate nohighlight">\(6\)</span> we have
+<span class="math notranslate nohighlight">\(6 = 2 \times 3 + 0\)</span>. Therefore, we update <span class="math notranslate nohighlight">\(n \leftarrow 3, m \leftarrow 0\)</span>.</p></li>
+<li><p>Since <span class="math notranslate nohighlight">\(m=0\)</span>, we output <span class="math notranslate nohighlight">\(n = 3\)</span>.</p></li>
+</ol>
+<p>As such, we have calculated <span class="math notranslate nohighlight">\(21 \wedge 15 = 3\)</span>.</p>
+<p>Finally, we mention in passing that the <em>least common multiple</em> (LCM)
+of <span class="math notranslate nohighlight">\(n, m \in \mathbb{Z}\)</span>, written as <span class="math notranslate nohighlight">\(n \vee m\)</span> <a class="footnote-reference brackets" href="#id16" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, is the smallest integer <span class="math notranslate nohighlight">\(d \in \mathbb{N}\)</span> such that
+divides both <span class="math notranslate nohighlight">\(n, m\)</span>: <span class="math notranslate nohighlight">\(d \mid n\)</span> and <span class="math notranslate nohighlight">\(d \mid m\)</span>.</p>
+<p>The LCM can be computed using:</p>
+<div class="math notranslate nohighlight">
+\[ n \vee m = \frac{n \cdot m}{n \wedge m}.\]</div>
+</section>
+</section>
+<section id="bezout-s-theorem-and-resolving-diophantine-equations">
+<h2>Bézout’s theorem and resolving Diophantine equations<a class="headerlink" href="#bezout-s-theorem-and-resolving-diophantine-equations" title="Link to this heading">#</a></h2>
+<p>A fundamental identity in arithmetic is:</p>
+<div class="proof theorem admonition" id="thm-bezout">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Bézout)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span> with <span class="math notranslate nohighlight">\(n \wedge m = d\)</span>. There
+exist two <em>integers</em> <span class="math notranslate nohighlight">\(a,b \in \mathbb{Z}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[an + bm = d.\]</div>
+</section>
+</div><p>Its importance lies in its many applications: it can be used
+to prove many other important theorems of arithmetic including Euclid’s lemma
+and the Chinese remainder theorem. It is also, as we’ll see later on,
+very useful in solving linear equations over the natural numbers <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>.</p>
+<p>Before we move on to applications, let us first consider how compute these
+two integers <span class="math notranslate nohighlight">\(a, b\)</span> (called <em>Bézout coefficients</em>). The trick lies in
+Euclid’s algorithm: it provides a sequence of equations (corresponding to
+the successive Euclidean divisions we perform) which link
+the numbers <span class="math notranslate nohighlight">\(n, m, d\)</span>.</p>
+<p>Before we state the algorithm itself, let us first go through
+an example. Recalling our <a class="reference internal" href="#exmp-euclid"><span class="std std-ref">previous example</span></a>
+of using Euclid’s algorithm to compute <span class="math notranslate nohighlight">\(25 \wedge 15\)</span> we have
+the following equations:</p>
+<ol class="arabic simple">
+<li><p>At the first step, we had the Euclidean division of <span class="math notranslate nohighlight">\(n = 21\)</span> by <span class="math notranslate nohighlight">\(m = 15\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-exmp-eq1">
+<span class="eqno">(4)<a class="headerlink" href="#equation-exmp-eq1" title="Link to this equation">#</a></span>\[21 = 1 \times 15 + 6.\]</div>
+<ol class="arabic simple" start="2">
+<li><p>At the second step, we had the Euclidean division of <span class="math notranslate nohighlight">\(15\)</span> by the remainder <span class="math notranslate nohighlight">\(6\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-exmp-eq2">
+<span class="eqno">(5)<a class="headerlink" href="#equation-exmp-eq2" title="Link to this equation">#</a></span>\[15 = 2 \times 6 + 3.\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Finally, we had that:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-exmp-eq3">
+<span class="eqno">(6)<a class="headerlink" href="#equation-exmp-eq3" title="Link to this equation">#</a></span>\[6 = 2 \times 3 + 0.\]</div>
+<p>From the above, we deduced that <span class="math notranslate nohighlight">\(d = 21 \wedge 15 = 3\)</span>. Notice how the penultimate equation <a class="reference internal" href="#equation-exmp-eq2">(5)</a>
+can easily be rewritten as an equation for <span class="math notranslate nohighlight">\(d = 3\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-eqa">
+<span class="eqno">(7)<a class="headerlink" href="#equation-exmp-eqa" title="Link to this equation">#</a></span>\[3 = 15 - 2 \times 6.\]</div>
+<p>We’ve already obtained an equation involving <span class="math notranslate nohighlight">\(d=3\)</span> and <span class="math notranslate nohighlight">\(m=15\)</span>! Furthermore, equation <a class="reference internal" href="#equation-exmp-eq1">(4)</a>
+in the above sequence links <span class="math notranslate nohighlight">\(6\)</span> with <span class="math notranslate nohighlight">\(n=21\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-eqb">
+<span class="eqno">(8)<a class="headerlink" href="#equation-exmp-eqb" title="Link to this equation">#</a></span>\[6 = 21 - 1 \times 15.\]</div>
+<p>Combining the equations <a class="reference internal" href="#equation-exmp-eqa">(7)</a> and <a class="reference internal" href="#equation-exmp-eqb">(8)</a> above, we have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+3 &amp;= 15 - 2 \times 6 \\
+  &amp;= 15 - 2 \times (21 - 1 \times 15) \\
+  &amp;= -2 \times 21 + 3 \times 15,
+\end{align*}\]</div>
+<p>from which it follows that the coefficients we seek are <span class="math notranslate nohighlight">\(a = -2, b = 3\)</span>.</p>
+<p>This is the essense of the <em>extended Euclid’s algorithm</em>: run back up the sequence of
+equations produced during the succesive divisions of an execution of Euclid’s algorithm.</p>
+<p>More formally, the algorithm we described is equivalently written as:</p>
+<div class="proof algorithm admonition" id="alg-exteuclid">
+<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Extended Euclid’s)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs:</strong> Two numbers <span class="math notranslate nohighlight">\(n, m \in \mathbb{N}\)</span> and we suppose, without loss of generality, that <span class="math notranslate nohighlight">\(n \geq m\)</span> (otherwise we can swap them).</p>
+<p><strong>Output:</strong> The GCD <span class="math notranslate nohighlight">\(d = n \wedge m\)</span> and the Bézout coefficients <span class="math notranslate nohighlight">\(a, b \in \mathbb{Z}\)</span>,
+so that <span class="math notranslate nohighlight">\(d = an + bm\)</span>.</p>
+<p><strong>Algorithm</strong>:</p>
+<ol class="arabic simple">
+<li><p>Set:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a_0 &amp;\leftarrow 1 \\
+b_0 &amp;\leftarrow 0 \\
+r_0 &amp;\leftarrow n \\
+a_1 &amp;\leftarrow 1 \\
+b_1 &amp;\leftarrow 1 \\
+r_1 &amp;\leftarrow m \\
+i &amp;\leftarrow 1.
+\end{align*}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>While <span class="math notranslate nohighlight">\(r_i \neq 0\)</span> do:</p>
+<ol class="arabic simple">
+<li><p>Perform the Euclidean division of <span class="math notranslate nohighlight">\(r_{i-1}\)</span> by <span class="math notranslate nohighlight">\(r_i\)</span> to obtain a quotient <span class="math notranslate nohighlight">\(q\)</span> and a rest <span class="math notranslate nohighlight">\(r_{i+1}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{i+1} \leftarrow a_{i-1} - q \times a_{i}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_{i+1} \leftarrow b_{i-1} - q \times b_{i}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(i \leftarrow i + 1\)</span>.</p></li>
+</ol>
+</li>
+<li><p>Return the GCD <span class="math notranslate nohighlight">\(d = r_i\)</span> as well as the corresponding coefficients <span class="math notranslate nohighlight">\(a = a_i, b = b_i\)</span>.</p></li>
+</ol>
+</section>
+</div><p>Finally, the following theorem is an important application of Bézout’s identity to
+equations over <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> (called <em>Diophantine equations</em> after the Greek mathematician
+Diophantus).</p>
+<div class="proof theorem admonition" id="thm-lindio">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Solution of linear Diophantine equations)</p>
+<section class="theorem-content" id="proof-content">
+<p>A linear Diophantine equation with coefficients <span class="math notranslate nohighlight">\(a, b, c \in \mathbb{Z}\)</span> and
+two unknowns <span class="math notranslate nohighlight">\(x,y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ ax + by = c \]</div>
+<p>has integer solutions if and only if <span class="math notranslate nohighlight">\(c\)</span> is a multiple of <span class="math notranslate nohighlight">\(a \wedge b\)</span>.
+Furthermore, if <span class="math notranslate nohighlight">\((x_0, y_0)\)</span> is a particular solution, then all other
+solutions to this equation have the form:</p>
+<div class="math notranslate nohighlight">
+\[(x+kv, y-ku),\]</div>
+<p>where <span class="math notranslate nohighlight">\(k \in \mathbb{Z}\)</span> is an arbitrary integer and:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u\)</span> is the quotient of the Euclidean division of <span class="math notranslate nohighlight">\(a\)</span> by <span class="math notranslate nohighlight">\(a \wedge b\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(v\)</span> is the quotient of the Euclidean division of <span class="math notranslate nohighlight">\(b\)</span> by <span class="math notranslate nohighlight">\(a \wedge b\)</span>.</p></li>
+</ul>
+</section>
+</div><p>As an example, let us consider <span class="math notranslate nohighlight">\(a = 98, b = 35, c = 14\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-dioph">
+<span class="eqno">(9)<a class="headerlink" href="#equation-exmp-dioph" title="Link to this equation">#</a></span>\[98x + 35y = 14.\]</div>
+<p>Since <span class="math notranslate nohighlight">\(d = 98 \wedge 35 = 7\)</span> divides <span class="math notranslate nohighlight">\(c=4\)</span> we are sure that the equation
+can be solved. Dividing both sides of <a class="reference internal" href="#equation-exmp-dioph">(9)</a> by <span class="math notranslate nohighlight">\(d=7\)</span> we have:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-dioph2">
+<span class="eqno">(10)<a class="headerlink" href="#equation-exmp-dioph2" title="Link to this equation">#</a></span>\[14x + 5y = 2.\]</div>
+<p>We can divide once more by <span class="math notranslate nohighlight">\(2\)</span> to obtain an equivalent equation:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-dioph3">
+<span class="eqno">(11)<a class="headerlink" href="#equation-exmp-dioph3" title="Link to this equation">#</a></span>\[\frac{14x}{2} + \frac{5y}{2} = 1.\]</div>
+<p>Defining <span class="math notranslate nohighlight">\(x' = x/2\)</span> and <span class="math notranslate nohighlight">\(y' = y/2\)</span> we finally obtain:</p>
+<div class="math notranslate nohighlight" id="equation-exmp-dioph4">
+<span class="eqno">(12)<a class="headerlink" href="#equation-exmp-dioph4" title="Link to this equation">#</a></span>\[14x' + 5y' = 1.\]</div>
+<p>Now, we note that <span class="math notranslate nohighlight">\(14\)</span> and <span class="math notranslate nohighlight">\(5\)</span> are relatively prime as
+they came from dividing <span class="math notranslate nohighlight">\(a = 98, b = 35\)</span> by their GCD <span class="math notranslate nohighlight">\(d = 7\)</span>.
+Therefore the coefficients <span class="math notranslate nohighlight">\(x', y'\)</span> in <a class="reference internal" href="#equation-exmp-dioph4">(12)</a>
+are Bézout’s coefficients and we can calculate them using <a class="reference internal" href="#alg-exteuclid">Algorithm 2</a>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+x' &amp;= -1 \\
+y' &amp;= 3.
+\end{align*}\]</div>
+<p>Finally, using <span class="math notranslate nohighlight">\(x = 2 \times x', y' = 2 \times y'\)</span> we recover a
+particular solution to <a class="reference internal" href="#equation-exmp-dioph2">(10)</a>: <span class="math notranslate nohighlight">\(x_0 = -2, y_0 = 6\)</span>.
+Therefore, using <a class="reference internal" href="#thm-lindio">Theorem 3</a> we have that a general solution is:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+x &amp;= -2 + 5k \\
+y &amp;= 6 - 14k.
+\end{align*}\]</div>
+</section>
+<section id="modular-arithmetic">
+<h2>Modular arithmetic<a class="headerlink" href="#modular-arithmetic" title="Link to this heading">#</a></h2>
+<p>When talking about time, in the usual 24-hour format, we find that
+arithmetic works in a different way than in <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>:</p>
+<ul class="simple">
+<li><p>Three hours after midnight is <span class="math notranslate nohighlight">\(3h\)</span>, i.e. <span class="math notranslate nohighlight">\(24h + 3 = 3\)</span> (or, alternatively, <span class="math notranslate nohighlight">\(0h + 3h = 3h\)</span>).</p></li>
+<li><p>Twelve hours after <span class="math notranslate nohighlight">\(13h\)</span> is <span class="math notranslate nohighlight">\(1h\)</span>, i.e. <span class="math notranslate nohighlight">\(13h + 12h = 1h\)</span>.</p></li>
+<li><p>Fourty-eight hours after <span class="math notranslate nohighlight">\(17h\)</span> is <span class="math notranslate nohighlight">\(17h\)</span>, i.e. <span class="math notranslate nohighlight">\(17h + 2 \times 24h = 17h\)</span>.</p></li>
+</ul>
+<p>which is unlike the usual results in <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(24 + 3 = 27\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(13 + 12 = 25\)</span>.</p></li>
+</ul>
+<p>Indeed, it seems that 24-hour clock arithmetic is as if we took the infinite number line of <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>
+and wrapped it around itself, so that:</p>
+<ul class="simple">
+<li><p>Multiples of <span class="math notranslate nohighlight">\(24\)</span> behave as <span class="math notranslate nohighlight">\(0\)</span>: <span class="math notranslate nohighlight">\(2 \times 24h \cong 0\)</span>.</p></li>
+<li><p>Numbers that differ by a multiple of <span class="math notranslate nohighlight">\(24\)</span> behave the same: <span class="math notranslate nohighlight">\(x + k \times 24h \cong x\)</span>.</p></li>
+</ul>
+<p>With this in mind, let us define the notion of <em>congruence modulo <span class="math notranslate nohighlight">\(n\)</span></em>:</p>
+<div class="proof definition admonition" id="def-cong">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Congruence modulo <span class="math notranslate nohighlight">\(n\)</span>)</p>
+<section class="definition-content" id="proof-content">
+<p>We say that two numbers <span class="math notranslate nohighlight">\(a, b \in \mathbb{N}\)</span> are <em>congruent (or equal)
+modulo <span class="math notranslate nohighlight">\(n\)</span></em> if their difference is a multiple of <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\(n \mid (a-b)\)</span>.
+In this case, we note <span class="math notranslate nohighlight">\(a \equiv b [n]\)</span> and note that it is an
+<em>equivalence relation</em>:</p>
+<ul class="simple">
+<li><p>Reflexivity: for all <span class="math notranslate nohighlight">\(a \in \mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(a \equiv a[n]\)</span>.</p></li>
+<li><p>Symmetry: for all <span class="math notranslate nohighlight">\(a,b \in \mathbb{N}\)</span>, if <span class="math notranslate nohighlight">\(a \equiv b[n]\)</span> then <span class="math notranslate nohighlight">\(b \equiv a[n]\)</span>.</p></li>
+<li><p>Transitivity: for all <span class="math notranslate nohighlight">\(a,b,c \in \mathbb{N}\)</span>, if <span class="math notranslate nohighlight">\(a \equiv b[n]\)</span> and <span class="math notranslate nohighlight">\(b \equiv c[n]\)</span> then <span class="math notranslate nohighlight">\(a \equiv c[n]\)</span>.</p></li>
+</ul>
+</section>
+</div><p>Such equivalence relations <em>partition</em> the set <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> into <em>equivalence classes</em>, infinite sets
+of numbers that are equal modulo <span class="math notranslate nohighlight">\(n\)</span>. For example, for <span class="math notranslate nohighlight">\(n=2\)</span> we have two such classes:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0 \equiv 2 \equiv 4 \equiv 6 \equiv 8 \equiv \dots [n]\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(1 \equiv 3 \equiv 5 \equiv 7 \equiv 9 \equiv \dots [n]\)</span>.</p></li>
+</ul>
+<p>We can therefore define the equivalence class of some number <span class="math notranslate nohighlight">\(k \in \mathbb{N}\)</span>, denoted as <span class="math notranslate nohighlight">\(\overline{k}\)</span>, as:</p>
+<div class="math notranslate nohighlight">
+\[ \overline{k} = \{ p \lvert p \in \mathbb{N} \land p \equiv k[n]\}.\]</div>
+<p>More generally, there’s always <em>exactly <span class="math notranslate nohighlight">\(n\)</span></em> equivalence classes of <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> modulo <span class="math notranslate nohighlight">\(n\)</span>.
+The elements of the set <span class="math notranslate nohighlight">\(\overline{k}\)</span> are called <em>representatives</em> of the class.</p>
+<p>A natural question is then: how do the familiar operations of arithmetic on <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> behave
+modulo <span class="math notranslate nohighlight">\(n\)</span>? A particular important pair of properties is:</p>
+<ul class="simple" id="def-propscong">
+<li><p><span class="math notranslate nohighlight">\(\overline{a} + \overline{b} = \overline{a+b}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{a} \times \overline{b} = \overline{a \times b}\)</span>.</p></li>
+</ul>
+<p>Using these properties we can make sense of our 24h-clock manipulations as
+a case of arithmetic modulo <span class="math notranslate nohighlight">\(24\)</span>:</p>
+<ul class="simple">
+<li><p>Three hours after midnight is <span class="math notranslate nohighlight">\(3h\)</span>: <span class="math notranslate nohighlight">\(24 + 3 = 27 \equiv 3[24]\)</span>.</p></li>
+<li><p>Twelve hours after <span class="math notranslate nohighlight">\(13h\)</span> is <span class="math notranslate nohighlight">\(1h\)</span>: <span class="math notranslate nohighlight">\(13 + 12 = 25 \equiv 1[24]\)</span>.</p></li>
+<li><p>Fourty-eight hours after <span class="math notranslate nohighlight">\(17h\)</span> is <span class="math notranslate nohighlight">\(17h\)</span>: <span class="math notranslate nohighlight">\(17+48=65 \equiv 17[24]\)</span>.</p></li>
+</ul>
+<p>The <a class="reference internal" href="#def-propscong"><span class="std std-ref">two properties</span></a> we’ve listed above lead us to expect that
+arithmetic using equivalence classes modulo <span class="math notranslate nohighlight">\(n\)</span> migh be
+analogous to that in <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>. With this in mind,
+let us define the following set grouping all equivalence classes
+modulo <span class="math notranslate nohighlight">\(n\)</span>, which we label by their smallest representative:</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{Z} / n \mathbb{Z} = \{\overline{0}, \overline{1}, \dots, \overline{n-1}\}\)</span></p>
+<p>We can then consider the <a class="reference internal" href="#def-propscong"><span class="std std-ref">above two lines</span></a>
+as <em>defining</em> the operations <span class="math notranslate nohighlight">\(+, \times\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>.
+The set <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>
+equipped with these two operations behaves similary to <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> equipped with the usual <span class="math notranslate nohighlight">\(+,\times\)</span> operations
+(more abstractly, mathematicians say that both are instances of a general algebraic structure called a <a class="reference external" href="https://fr.wikipedia.org/wiki/Anneau_(math%C3%A9matiques)">ring</a>).</p>
+<p>As a first application, we have the following lemma relating solutions of Diophantine equations
+to solutions of the equation modulo <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="proof lemma admonition" id="lemma-solsmod">
+<p class="admonition-title"><span class="caption-number">Lemma 4 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Consider a Diophantine equation of the form:</p>
+<div class="math notranslate nohighlight">
+\[P(x,y,\dots) = c,\]</div>
+<p>where <span class="math notranslate nohighlight">\(P\)</span> is some polynomial with integer coefficients and <span class="math notranslate nohighlight">\(c \in \mathbb{Z}\)</span>.
+If <span class="math notranslate nohighlight">\(x = x_0, y = y_0, \dots\)</span> is a solution over <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> then
+we have that:</p>
+<div class="math notranslate nohighlight">
+\[F(\overline{x_0}, \overline{y_0}, \dots) = \overline{c},\]</div>
+<p>holds in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span> for all <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>.</p>
+</section>
+</div><p>The converse of this lemma is that if there exists some <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span> such that
+the equation has no solution in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>, then it has no solution in
+<span class="math notranslate nohighlight">\(\mathb{Z}\)</span> either. This can be used to disprove the existence of solutions to Diophantine
+equations by wisely choosing <span class="math notranslate nohighlight">\(n\)</span>: since <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span> is a finite set we
+can just try out all possibilities to see if there’s any solution.</p>
+<p>For example, let us consider the equation <span class="math notranslate nohighlight">\(x^2 + y^2 = 35\)</span>. Since it
+is non-linear, we cannot use the criterion of <a class="reference internal" href="#thm-lindio">Theorem 3</a>.
+However, reducing it modulo <span class="math notranslate nohighlight">\(3\)</span> we get:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\overline{x^2+y^2} &amp;= \overline{35} \\
+\overline{x}^2 + \overline{y}^2 &amp;= \overline{3}
+\end{align*}\]</div>
+<p>Looking at the squares in <span class="math notranslate nohighlight">\(\mathbb{Z}/4\mathbb{Z}\)</span> we see that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overline{0}^2 = 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{1}^2 = 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{2}^2 = 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overline{3}^2 = 1\)</span>,</p></li>
+</ul>
+<p>from which we conclude that no solution exists to the equation modulo <span class="math notranslate nohighlight">\(4\)</span>:
+there’s no way to add any two of the above values so as to get 3!
+Therefore <a class="reference internal" href="#lemma-solsmod">Lemma 4</a> implies that there’s no integer solutions to
+the equation <span class="math notranslate nohighlight">\(x^2 + y^2 = 35\)</span>!</p>
+<p>Let us now explore another algebraic property of <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> and its analogue in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>.
+In <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> all elements except for <span class="math notranslate nohighlight">\(0\)</span> are <em>invertible</em>: for each <span class="math notranslate nohighlight">\(i \in \mathbb{Z} \setminus \{0\}\)</span>
+there exists a <em>unique</em> number <span class="math notranslate nohighlight">\(j \in \mathbb{Z}\)</span> such that <span class="math notranslate nohighlight">\(i \times j = 1\)</span>. We usually denote <span class="math notranslate nohighlight">\(j\)</span> by <span class="math notranslate nohighlight">\(i^{-1]\)</span> and
+call it the <em>inverse</em> of <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>What about <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>? Does it have any invertibe elements? We can try to work out some example
+for small values of <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<ul class="simple">
+<li><p>In <span class="math notranslate nohighlight">\(\mathbb{Z}/2\mathbb{Z}\)</span> we have <span class="math notranslate nohighlight">\(\overline{1} \times \overline{1} = \overline{1}, so \)</span>1$ is its own inverse.</p></li>
+<li><p>In <span class="math notranslate nohighlight">\(\mathbb{Z}/7\mathbb{Z}\)</span> we have <span class="math notranslate nohighlight">\(\overline{3} \times \overline{5} = \overline{1}\)</span>, so <span class="math notranslate nohighlight">\(\overline{3}^{-1} = \overline{5}\)</span>.</p></li>
+</ul>
+<p>If we keep working out such examples by hand, we quickly arrive at the following important result:</p>
+<div class="proof lemma admonition" id="lemma-invergcd">
+<p class="admonition-title"><span class="caption-number">Lemma 5 </span></p>
+<section class="lemma-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(x \in \mathbb{Z}\)</span>. Then <span class="math notranslate nohighlight">\(\overline{x}\)</span> is
+invertible in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span> if and only if <span class="math notranslate nohighlight">\(x \wedge n = 1\)</span>.</p>
+</section>
+</div><p>The proof is quite straightforward:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\overline{x} \text{ invertible } &amp;\Leftrightarrow \exists y \in \mathbb{Z}, \overline{xy} = \overline{1} \\
+&amp;\Leftrightarrow xy \equiv 1 [n] \\
+&amp;\Leftrightarrow \exists k \in \mathbb{Z}, xy = 1 + nk\\
+&amp;\Leftrightarrow xy-nk=1 \\
+&amp;\overset{Bézout}{\Leftrightarrow} x \wedge n = 1.
+\end{align*}\]</div>
+<p>The proof above also gives us a way to calculate inverses.
+Recall from above that <span class="math notranslate nohighlight">\(x\)</span> being invertible implies there exist <span class="math notranslate nohighlight">\(y, k \in\mathbb{Z}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[xy - nk = 1.\]</div>
+<p>Therefore, modulo <span class="math notranslate nohighlight">\(n\)</span>, we have <span class="math notranslate nohighlight">\(\overline{xy} = \overline{1} \Rightarrow \overline{x}\overline{y}=\overline{1}\)</span>.
+That is to say, the inverse <span class="math notranslate nohighlight">\(\overline{y} = \overline{x}^{-1}\)</span> is exactly the first Bézout coefficient of the
+above equation. Therefore we can find <span class="math notranslate nohighlight">\(\overline{y}\)</span> using the extended Euclidean algorithm!</p>
+<p>For example, suppose we search for the inverse of <span class="math notranslate nohighlight">\(\overline{x}=\overline{5}\)</span> in <span class="math notranslate nohighlight">\(\mathbb{Z}/17\mathbb{Z}\)</span>.
+Applying the Euclidean algorithm, we have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+17 &amp;= 3 \times 5 + 2 \\
+5 &amp;= 2 \times 2 + 1 \\
+2 &amp;= 2 \times 1 + 0.
+\end{align*}\]</div>
+<p>Reasoning backwards (starting from the penultimate equation), we obtain:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+1 &amp;= 5 - 2 \times 2 \\
+  &amp;= 5 - 2 \times (17 - 3 \times 5)
+  &amp;= 7 \times 5 - 2 \times 17.
+\end{align*}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(\overline{y} = \overline{7}\)</span> and so <span class="math notranslate nohighlight">\(\overline{5}^{-1} = \overline{7}\)</span>.
+Indeed, <span class="math notranslate nohighlight">\(5 \times 7 = 35 \equiv 1[17]\)</span>.</p>
+</section>
+<section id="kid-rsa">
+<h2>Kid-RSA<a class="headerlink" href="#kid-rsa" title="Link to this heading">#</a></h2>
+<p>In this section we’ll apply our knowledge of numeral bases and arithmetic modulo <span class="math notranslate nohighlight">\(n\)</span>
+to study a simple cryptosystem called KidRSA.</p>
+<p>Kid-RSA is a simple example of <em>public-key cryptography</em> which operates on the
+basis of two keys:</p>
+<ul class="simple">
+<li><p>A <em>public key</em>: everyone who has access to this can <em>encrypt</em> messages.</p></li>
+<li><p>A <em>private key</em>: only those who have access to this can <em>decrypt</em> messages.</p></li>
+</ul>
+<p>Suppose for simplicity that a message is a plaintext written using the 26 letters of
+the latin alphabet (no spaces allowed!)<a class="footnote-reference brackets" href="#id17" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<p>Using the correspondence <span class="math notranslate nohighlight">\(A \leftrightarrow 0, B \leftrightarrow 1, \dots, Z \leftrightarrow 25\)</span>,
+we can translate any message into a number in base 26. Finally, using a base conversion algorithm
+we can rewrite the message in base-10 to facilitate calculations.</p>
+<p>Our public and private keys will be a pair of integers <span class="math notranslate nohighlight">\((e,d)\)</span>. Encryption and decryption will be
+carried out by multiplying by <span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(d\)</span> respectively, modulo some number <span class="math notranslate nohighlight">\(n\)</span> to be defined below.</p>
+<p>To set up the system someone, let’s call them Alice, must choose any two integers <span class="math notranslate nohighlight">\(a,b \in \mathbb{Z}\)</span>
+and calculate <span class="math notranslate nohighlight">\(M = ab - 1\)</span>. Alice then must choose two more integers <span class="math notranslate nohighlight">\(a', b' \in \mathbb{Z}\)</span> and use
+them to calculate the three desired values <span class="math notranslate nohighlight">\((e,d)\)</span> and <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+e &amp;= a'M + a, \\
+d &amp;= b'M + b, \\
+n &amp;= \frac{ed-1}{M} = a'b'M + ab' + a'b + 1.
+\end{align*}\]</div>
+<p>Finally, Alice can publicly announce the key <span class="math notranslate nohighlight">\(e\)</span>.</p>
+<p>If someone, say Bob, wants to send Alice an encrypted message they do as follows:</p>
+<ul class="simple">
+<li><p>Convert their message to an integer in base-25 and apply a base conversion algorithm to rewrite it in base-10.
+That is to say, we assume that the message is some integer <span class="math notranslate nohighlight">\(m \in \mathbb{Z}\)</span> (written in base-10).</p></li>
+<li><p>Calculate the cyphertext <span class="math notranslate nohighlight">\(c\)</span> as <span class="math notranslate nohighlight">\(c \equiv em[n]\)</span>.</p></li>
+<li><p>Communicate <span class="math notranslate nohighlight">\(c\)</span> to Alice.</p></li>
+</ul>
+<p>Once Alice receives the cyphertext <span class="math notranslate nohighlight">\(c\)</span> from Bob,
+all they have to do to decrypt is multiply by <span class="math notranslate nohighlight">\(d\)</span> modulo <span class="math notranslate nohighlight">\(n\)</span>: <span class="math notranslate nohighlight">\(m \equiv dc[n] \equiv dem[n]\)</span>.</p>
+<p>For this to work we must have <span class="math notranslate nohighlight">\(dc \equiv dem \equiv 1 \times m \equiv m[n]\)</span> which means that
+<span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are inverses of eachother in <span class="math notranslate nohighlight">\(\mathbb{Z}/n\mathbb{Z}\)</span>. To prove this, we calculate:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ed - 1 &amp;= (a'M + a)(b'M + b) - 1 \\
+&amp;= a'b'M^2 + a'Mb + ab'M + ab - 1 \\
+&amp;= (a'b'M + a'b + a'b)M + M \\
+&amp;= (a'b'M + a'b + a'b + 1)M \\
+&amp;= nM,
+\end{align*}\]</div>
+<p>where we used the definitions of <span class="math notranslate nohighlight">\(M = ab-1\)</span> and <span class="math notranslate nohighlight">\(n = a'b'M + ab' + a'b + 1\)</span>.
+From this we have that <span class="math notranslate nohighlight">\((ed - 1)\)</span> is divisible by both <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(M\)</span> and therefore
+<span class="math notranslate nohighlight">\((ed - 1) \equiv 0[n] \Rightarrow ed \equiv 1[n]\)</span>, as desired.</p>
+<p id="exmp-kidrsa">Let us now work through an example:</p>
+<ol class="arabic simple">
+<li><p>To begin with, we choose <span class="math notranslate nohighlight">\(a = 120, b = 39\)</span>, <span class="math notranslate nohighlight">\(a' = 5, b' = 215\)</span>.
+This gives us:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+M &amp;= 4679, \\
+n &amp;= 5055921, \\
+e &amp;= 23515, \\
+d &amp;= 1006024.
+\end{align*}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>For our message, let us choose “HELLO”. Rewritting this in base-10 we have <span class="math notranslate nohighlight">\((HELLO)_{26} = (3276872)_{10}\)</span>.</p></li>
+<li><p>We compute the cyphertext using the public key <span class="math notranslate nohighlight">\(e\)</span>:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+c &amp;\equiv em[n] \\
+  &amp;\equiv 3409040 [n].
+\end{align*}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>We decrypt using the private key <span class="math notranslate nohighlight">\(d\)</span>:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+m &amp;\equiv dc[n] \\
+  &amp;\equiv 1006024 \times 3276872 [n] \\
+  &amp;\equiv 3276872[n].
+\end{align*}\]</div>
+<ol class="arabic simple" start="5">
+<li><p>We rewritte this in base-26: <span class="math notranslate nohighlight">\((3276872)_{10} = (HELLO)_{26}\)</span>.</p></li>
+</ol>
+<p>This cryptosystem is not particularly safe: can you think of any
+potential vulnerabilities? If you have read and understood everything presented
+in the previous sections, then you have the tools to break this simple system!
+See also the relevant exercise below.</p>
+</section>
+<section id="bonus-if-we-have-time-euler-s-phi-and-inverses">
+<h2>Bonus if we have time: Euler’s phi and inverses?<a class="headerlink" href="#bonus-if-we-have-time-euler-s-phi-and-inverses" title="Link to this heading">#</a></h2>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p>Note: the programming exercises can be carried out in any programming language of your choice.</p>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<p>Implement a base conversion algorithm.</p>
+</section>
+<section id="id4">
+<h2>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>For the lovers of music theory, consider a piece consisting of two voices each
+playing a single measure in polymetre. That is to say,</p>
+<ul class="simple">
+<li><p>Each voice follows its own metre (for example one in <span class="math notranslate nohighlight">\(3/4\)</span> and one in <span class="math notranslate nohighlight">\(4/4\)</span>).</p></li>
+<li><p>Each voice plays a single measure.</p></li>
+<li><p>The tactus (pulse) is fixed and common for both voices.</p></li>
+</ul>
+<p>Even though the two voices start at the same time they quickly become
+desynchronised: each starts and ends its measure at different beats. Eventually
+however, after <span class="math notranslate nohighlight">\(t\)</span> beats, the two voices will start their measures again at the
+same time.</p>
+<p>Given the meters of the two voices, calculate the number of beats
+<span class="math notranslate nohighlight">\(t\)</span>. How many measures will each of the voices have performed before they start again at
+the same beat?</p>
+</section>
+<section id="id5">
+<h2>Exercise<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Implement a prime factorisation algorithm (the naive one, for example).</p>
+</section>
+<section id="id6">
+<h2>Exercise<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Implement Euclid’s algorithm.
+Consider various approaches: a recursive one and an iterative one for example.</p>
+</section>
+<section id="id7">
+<h2>Exercise<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Implement the extended Euclid’s algorithm.</p>
+</section>
+<section id="id8">
+<h2>Exercise<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Determine if the following Diophantine equations have solutions and if so, compute them:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(5x + 10y = 10\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(5x + 10y = 11\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(12x + 4y = 30\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(12x + 4y = 32\)</span>.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>Exercise<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>Prove <a class="reference internal" href="#def-propscong"><span class="std std-ref">properties</span></a> of <span class="math notranslate nohighlight">\(+, \times\)</span> modulo <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</section>
+<section id="id10">
+<h2>Exercise<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>Show that the equations <span class="math notranslate nohighlight">\(x^2+y^2 = 2024\)</span> and <span class="math notranslate nohighlight">\(x^2+y^2+z^2=87\)</span> do not admit integer solutions.</p>
+</section>
+<section id="id11">
+<h2>Exercise<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>List all invertible elements in <span class="math notranslate nohighlight">\(\mathbb{Z}/2\mathbb{Z}, \mathbb{Z}/5\mathbb{Z}, \mathbb{Z}/7\mathbb{Z},
+\mathbb{Z}/24\mathbb{Z}\)</span>.</p>
+</section>
+<section id="id12">
+<h2>Exercise<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>Recall the <a class="reference internal" href="#exmp-kidrsa"><span class="std std-ref">example</span></a> execution of the KidRSA algorithm we carried out above,
+with parameters: <span class="math notranslate nohighlight">\(a = 120, b = 39\)</span>, <span class="math notranslate nohighlight">\(a' = 5, b' = 215\)</span>. Using these:</p>
+<ol class="arabic simple">
+<li><p>Calculate the cyphertexts corresponding to: “HEY”, “MSG”, “CODE”.</p></li>
+<li><p>Decrypt the following cyphertext: 4319056.</p></li>
+</ol>
+</section>
+<section id="id13">
+<h2>Exercise<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Implement the KidRSA cryptosystem.</p>
+</section>
+<section id="id14">
+<h2>Exercise<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>Can you think of a way to break the KidRSA cryptosystem?
+Given knowledge only of <span class="math notranslate nohighlight">\(e,n\)</span>, come up with a way to compute <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Not to be confused with the “logical and” operator which shares the same symbol <span class="math notranslate nohighlight">\(\land\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Not to be confused with the “logical or” operation <span class="math notranslate nohighlight">\(\lor\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="id17" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Since <span class="math notranslate nohighlight">\((A)_{26} = (0)_{10}\)</span>, in order to avoid ambiguities we must always
+include any initial <span class="math notranslate nohighlight">\(0\)</span>s in our cyphertexts (which we would usually remove in the
+decimal system). For example: <span class="math notranslate nohighlight">\((ABCD)_{26} = (0731)_{10}\)</span>, while if we remove the initial
+<span class="math notranslate nohighlight">\(0\)</span>, we obtain only <span class="math notranslate nohighlight">\((731)_{10} = {BCD}_{26}\)</span>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sections"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="proba.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to discrete probability theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="linalg.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analytic geometry and linear algebra</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-systems">Numerical systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerals-and-positional-notation">Numerals and positional notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-conversion">Base conversion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-the-multiplicative-structure-of-mathbb-n">Elements of the multiplicative structure of <span class="math notranslate nohighlight">\(\mathbb{N}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divisibility-primes-prime-decomposition">Divisibility, primes, prime decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-divisor-and-euclid-s-algorithm">Greatest common divisor and Euclid’s algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bezout-s-theorem-and-resolving-diophantine-equations">Bézout’s theorem and resolving Diophantine equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-arithmetic">Modular arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kid-rsa">Kid-RSA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-if-we-have-time-euler-s-phi-and-inverses">Bonus if we have time: Euler’s phi and inverses?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alexandros Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
