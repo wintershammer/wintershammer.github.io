@@ -430,51 +430,51 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#seance-notee-22042024">Séance notée - 22/04/2024</a></li>
+        <li><a href="#seance-notee-02052025">Séance notée - 02/05/2025</a></li>
         <li><a href="#exercice-0-manipulation-de-fichiers-a-laide-dappels-systeme">Exercice 0 : Manipulation de fichiers à l'aide d'appels système</a></li><li><a href="#exercice-1-fork-et-thread">Exercice 1 : Fork et thread</a></li><li><a href="#exercice-2-application-client-serveur">Exercice 2 : application client-serveur</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h2 id="seance-notee-22042024">Séance notée - 22/04/2024</h2>
+    <h2 id="seance-notee-02052025">Séance notée - 02/05/2025</h2>
 <h3 id="exercice-0-manipulation-de-fichiers-a-laide-dappels-systeme">Exercice 0 : Manipulation de fichiers à l'aide d'appels système</h3>
 <p>Pour les besoins de cet exercice, limitez-vous à l'utilisation des appels
-système E/S comme <code>open(), close(), creat(), read(), write(), lseek()</code>.
+système I/O comme <code>open(), close(), creat(), read(), write(), lseek()</code>.
 L'utilisation de la bibliothèque <code>stdio</code> sera pénalisée.</p>
 <ul>
 <li>
 <p>Problème 0 : Ecrivez un programme C qui prend en argument un nom de fichier
-<code>f</code> (correspondant à un fichier supposé exister dans le répertoire de travail
-courant) et crée un nouveau fichier, dont le nom est <code>f</code> préfixé par
-<code>copy_of_</code>. Le nouveau fichier doit contenir l'intégralité du contenu de
-<code>f</code>.</p>
+  <code>f</code> (correspondant à un fichier supposé exister dans le répertoire de
+  travail courant) et crée un nouveau fichier, dont le nom est <code>f</code> préfixé
+  par <code>copy_of_</code>. Le nouveau fichier doit contenir l'intégralité du contenu
+  de <code>f</code>.</p>
 </li>
 <li>
 <p>Problème 1 : Modifiez le programme ci-dessus pour que le contenu du nouveau
-fichier préfixé par <code>copy_of_</code> soit celui de <code>f</code> mais dans l'ordre inverse
-de leur ordre d'origine.</p>
+  fichier préfixé par <code>copy_of_</code> soit celui de <code>f</code> mais dans l'ordre
+  inverse (octet par octet).</p>
 </li>
 </ul>
 <h3 id="exercice-1-fork-et-thread">Exercice 1 : Fork et thread</h3>
 <ul>
 <li>
-<p>Problème 0 : Ecrivez un programme C qui crée deux processus enfants tels que :</p>
+<p>Problème 0 : Ecrivez un programme C qui crée deux processus enfants tels que
+  :</p>
 <ol>
 <li>Le premier processus enfant lance <code>cat</code> sur un fichier de votre choix.</li>
 <li>Le second récupère les résultats (via un pipe, par exemple) du premier
-   et exécute <code>wc -l</code> sur eux, les résultats étant imprimés dans la
-   sortie standard.</li>
+et exécute <code>wc -l</code> sur eux, les résultats étant imprimés dans la sortie
+standard.</li>
 <li>Le parent imprime finalement les identifiants des processus des deux
-   enfants et quitte.</li>
+enfants et quitte.</li>
 </ol>
 </li>
 <li>
 <p>Problème 1 : Ecrivez un programme C qui crée un tableau d'entiers de taille
-<code>ARRAY_SIZE</code> (une constante que vous devez définir). Il lance ensuite deux
-threads qui calculent chacun la somme pour la première et la seconde moitié du
-tableau, respectivement. Le programme imprime ensuite la somme totale et
-quitte.</p>
+  <code>ARRAY_SIZE</code> (une constante que vous devez définir). Il lance ensuite deux
+  threads qui calculent chacun la somme pour la première et la seconde moitié
+  du tableau, respectivement. Le programme imprime ensuite la somme totale.</p>
 </li>
 </ul>
 <h3 id="exercice-2-application-client-serveur">Exercice 2 : application client-serveur</h3>
@@ -486,7 +486,7 @@ quitte.</p>
 <li>Les clients communiquent un nom de fichier au serveur.</li>
 <li>Le serveur vérifie si un fichier portant le nom de fichier donné existe
 dans le répertoire de travail actuel et répond au client 
-avec l'intégralité du contenu du fichier, soit avec un message d'erreur
+avec l'intégralité du contenu du fichier, ou avec un message d'erreur
 approprié.</li>
 </ol>
 </li>
