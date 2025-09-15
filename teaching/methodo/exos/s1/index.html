@@ -18,7 +18,7 @@
 
     
  
-<title>Exos7 - Alexandros Singh</title>
+<title>Méthodologie de la programmation, TP 1. - Alexandros Singh</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -228,41 +228,51 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercices-de-revision">Exercices de révision</a></li>
-        
+        <li><a href="#methodologie-de-la-programmation-tp-1">Méthodologie de la programmation, TP 1.</a></li>
+        <li><a href="#exercice-1">Exercice 1.</a></li><li><a href="#exercice-2">Exercice 2.</a></li><li><a href="#exercice-3">Exercice 3.</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h2 id="exercices-de-revision">Exercices de révision</h2>
-<ul>
-<li>
-<p>Problème 0 : Supposons qu'un fichier <code>test.txt</code> soit donné, qui contient
-  des caractères ASCII alphabétiques. Définissez un programme qui, en utilisant
-  <code>fork()</code>, lance un processus enfant qui lit le contenu de <code>test.txt</code> à
-  l'exécutable. Le processus parent récupère ensuite le contenu du fichier, le
-  convertit en majuscules, et l'imprime dans un nouveau fichier, nommé
-  <code>test_2.txt</code>.</p>
-</li>
-<li>
-<p>Problème 1 : Créez 3 fichiers nommés <code>f0.txt, f1.txt, f2.txt1</code> et
-  remplissez-les avec le contenu de votre choix. Créez un programme
-  client-serveur, utilisant TCP/IP, qui permet à un client de demander le
-  contenu de n'importe lequel des trois fichiers au serveur (qui, nous le
-  supposons, a accès à ces trois fichiers). </p>
-</li>
-<li>
-<p>Problème 2 : Développez le programme ci-dessus de manière à ce qu'il puisse
-  gérer plusieurs clients en même temps.</p>
-</li>
-<li>
-<p>Problème 3 : Développez encore plus le programme afin qu'il permette à
-  n'importe quel client de demander une modification de l'un des trois
-  fichiers. Soyez prudents avec les ressources partagées, afin que les demandes
-  simultanées des clients soient traitées de manière atomique.</p>
-</li>
-</ul>
+    <h1 id="methodologie-de-la-programmation-tp-1">Méthodologie de la programmation, TP 1.</h1>
+<p>Un <em>shell</em> est un logiciel qui nous permet d'interagir avec un système
+d'exploitation. Un shell fournit une interface qui lit et évalue des
+expressions et affiche les résultats, généralement dans un <em>émulateur de
+terminal</em>.</p>
+<p>Dans ce cours, nous supposons que vous utilisez le shell <code>bash</code>. Vous pouvez
+utiliser la commande <code>man</code> pour obtenir des détails sur le fonctionnement de
+toutes les commandes que nous verrons dans cette session d'exercices.</p>
+<h2 id="exercice-1">Exercice 1.</h2>
+<ol>
+<li>Ouvrez une instance de votre émulateur de terminal préféré et utilisez la
+   commande <code>pwd</code> pour afficher votre répertoire de travail actuel. Remarquez
+   comment les fichiers et les répertoires sont organisés dans une hiérarchie
+   avec <code>/</code> comme <em>racine</em>.</li>
+<li>Utilisez <code>ls</code> pour afficher le contenu du répertoire actuel.</li>
+<li>Utilisez la commande <code>cd</code> pour accéder à votre répertoire personnel :
+   <code>/home/username</code> ou simplement <code>~</code>.</li>
+<li>Utilisez <code>mkdir</code> pour créer un répertoire.  </li>
+<li>Utilisez <code>rm</code> pour le supprimer. Attention, la suppression est irréversible. </li>
+</ol>
+<h2 id="exercice-2">Exercice 2.</h2>
+<ol>
+<li>À l'aide des commandes que vous avez apprises ci-dessus, placez-vous dans un
+   sous-répertoire approprié de votre répertoire personnel, par exemple
+   <code>~/Documents</code>.</li>
+<li>Lancez l'éditeur de texte de votre choix et créez un document appelé
+   <code>test.txt</code>. Remplissez-le avec le contenu de votre choix. </li>
+<li>Utilisez <code>cat</code> pour afficher le contenu de <code>test.txt</code>. </li>
+</ol>
+<h2 id="exercice-3">Exercice 3.</h2>
+<ol>
+<li>Consultez l'introduction informelle à Python (disponible, en septembre 2025,
+   à l'adresse suivante :
+   https://docs.python.org/fr/3.13/tutorial/introduction.html).</li>
+<li>Utilisez la commande <code>python3</code> pour lancer l'interpréteur Python en mode
+   interactif (un REPL). </li>
+<li>Essayez quelques commandes de base dans le REPL.</li>
+</ol>
 </section>
 
             </main>

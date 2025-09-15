@@ -18,7 +18,7 @@
 
     
  
-<title>Exos7 - Alexandros Singh</title>
+<title>Méthodologie de la programmation, TP 2. - Alexandros Singh</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -228,41 +228,87 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercices-de-revision">Exercices de révision</a></li>
-        
+        <li><a href="#methodologie-de-la-programmation-tp-2">Méthodologie de la programmation, TP 2.</a></li>
+        <li><a href="#exercice-0">Exercice 0.</a></li><li><a href="#exercice-1">Exercice 1.</a></li><li><a href="#exercice-2">Exercice 2.</a></li><li><a href="#exercice-3">Exercice 3.</a></li><li><a href="#exercice-4">Exercice 4.</a></li><li><a href="#exercice-5">Exercice 5.</a></li><li><a href="#exercice-6">Exercice 6.</a></li><li><a href="#exercice-7">Exercice 7.</a></li>
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h2 id="exercices-de-revision">Exercices de révision</h2>
-<ul>
+    <h1 id="methodologie-de-la-programmation-tp-2">Méthodologie de la programmation, TP 2.</h1>
+<p>Conseil général : consultez régulièrement la <a href="https://docs.python.org/3/">documentation
+Python</a>. </p>
+<p>Je suppose que vous avez mis en place un environnement approprié pour organiser
+votre travail (dossier dédié, éditeur de texte bien configuré).</p>
+<h2 id="exercice-0">Exercice 0.</h2>
+<ol>
+<li>Créez un fichier <code>.py</code> et tapez-y <code>python print("Hello world!")</code>.</li>
+<li>Utilisez le programme <code>python3</code> pour interpréter le code source.</li>
+</ol>
+<h2 id="exercice-1">Exercice 1.</h2>
+<ol>
+<li>Écrivez un programme qui affiche tous les nombres entiers de 0 à 20.</li>
+<li>Modifiez le programme ci-dessus afin que, pour chaque nombre entier <span class="arithmatex">\(i,\)</span> 
+   il affiche <code>Fizz</code> si <span class="arithmatex">\(i\)</span> est divisible par 3, <code>Buzz</code> s'il est divisible
+   par 5.</li>
+</ol>
+<h2 id="exercice-2">Exercice 2.</h2>
+<ol>
+<li>Écrivez une fonction <code>isEven(i)</code> qui, étant donné un entier <code>i</code>, renvoie
+   <code>python True</code> si <code>i</code> est pair et <code>python False</code> sinon.</li>
+<li>Écrivez un programme qui affiche tous les nombres pairs entre 0 et 100.</li>
+<li>Écrivez un programme qui affiche la somme et le produit de tous les nombres
+   pairs entre 0 et 100.</li>
+<li>Effectuez une modification minimale à votre programme afin qu'il
+   effectue les tâches ci-dessus pour les nombres impairs.</li>
+</ol>
+<h2 id="exercice-3">Exercice 3.</h2>
+<ol>
+<li>Écrivez une fonction <code>area(i)</code> qui prend en paramètre un nombre flottant <code>r</code>
+   (rayon) et qui renvoie l'aire d'un disk de rayon <code>r</code>. </li>
+<li>Modifiez la fonction afin qu'elle prenne deux arguments : <code>r,h</code>, <code>h</code> étant
+   par défaut égal à zéro. Si <code>h</code> est égal à zéro, la fonction doit renvoyer
+   l'aire du disque comme auparavant. Si <code>h</code> est un nombre flottant positif,
+   elle doit renvoyer le volume d'un cylindre de rayon <span class="arithmatex">\(r\)</span> et de hauteur <code>h</code>.</li>
+</ol>
+<h2 id="exercice-4">Exercice 4.</h2>
+<ol>
+<li>Écrivez une fonction qui prend trois entiers et renvoie leur moyenne
+   arithmetique. </li>
+<li>Modifiez la fonction afin qu'elle prenne un argument <code>type</code> (par défaut
+   <code>arithmétique</code>) : pour la valeur par défaut, la fonction renvoie comme
+   ci-dessus la moyenne arithmétique. Si, au contraire, le type est <code>géométrique</code>, elle doit renvoyer la moyenne géométrique. Enfin, si la valeur
+   est toute autre, elle doit afficher un message d'erreur et renvoyer <code>None</code>.</li>
+</ol>
+<h2 id="exercice-5">Exercice 5.</h2>
+<ol>
+<li>Quelqu'un a déposé 100 euros sur son Livret A le 01/01/2025. Écrivez une
+   fonction <code>gains(n)</code> qui prend en entrée un entier non négatif <code>n</code> et calcule
+   le montant des intérêts accumulés sur n années.  Pour ce faire, supposez que
+   le taux d'intérêt annuel est fixé au taux actuel de 1,7 % et n'évolue pas.</li>
+<li>Supposons que le taux d'intérêt annuel lui-même évolue à un taux de 10 %.
+   Modifiez votre fonction afin qu'elle effectue le calcul sur la base de cette
+   nouvelle hypothèse.</li>
+</ol>
+<h2 id="exercice-6">Exercice 6.</h2>
+<ol>
+<li>Un nombre <span class="arithmatex">\(n\)</span> est carré s'il est égal à <span class="arithmatex">\(k^2\)</span> pour un entier <span class="arithmatex">\(k\)</span>.
+   Écrivez une fonction <code>isSquare(n)</code> qui prend en entrée un entier <code>n</code> et vérifie si il est
+   carré, en renvoyant une valeur booléenne appropriée.</li>
+<li>Essayez de rendre votre programme efficace.</li>
+</ol>
+<h2 id="exercice-7">Exercice 7.</h2>
+<ol>
 <li>
-<p>Problème 0 : Supposons qu'un fichier <code>test.txt</code> soit donné, qui contient
-  des caractères ASCII alphabétiques. Définissez un programme qui, en utilisant
-  <code>fork()</code>, lance un processus enfant qui lit le contenu de <code>test.txt</code> à
-  l'exécutable. Le processus parent récupère ensuite le contenu du fichier, le
-  convertit en majuscules, et l'imprime dans un nouveau fichier, nommé
-  <code>test_2.txt</code>.</p>
+<p>Écrivez une fonction <code>truthTable(f)</code> qui prend en entrée une <em>fonction
+   booléenne unaire</em> et affiche sa table de vérité : la valeur de <code>f</code> pour
+   chaque entrée possible.</p>
 </li>
 <li>
-<p>Problème 1 : Créez 3 fichiers nommés <code>f0.txt, f1.txt, f2.txt1</code> et
-  remplissez-les avec le contenu de votre choix. Créez un programme
-  client-serveur, utilisant TCP/IP, qui permet à un client de demander le
-  contenu de n'importe lequel des trois fichiers au serveur (qui, nous le
-  supposons, a accès à ces trois fichiers). </p>
+<p>Modifiez votre fonction afin qu'elle prenne en entrée une <em>fonction
+   booléenne binaire</em> à la place. </p>
 </li>
-<li>
-<p>Problème 2 : Développez le programme ci-dessus de manière à ce qu'il puisse
-  gérer plusieurs clients en même temps.</p>
-</li>
-<li>
-<p>Problème 3 : Développez encore plus le programme afin qu'il permette à
-  n'importe quel client de demander une modification de l'un des trois
-  fichiers. Soyez prudents avec les ressources partagées, afin que les demandes
-  simultanées des clients soient traitées de manière atomique.</p>
-</li>
-</ul>
+</ol>
 </section>
 
             </main>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Méthodologie de la programmation, TP 3. - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#methodologie-de-la-programmation-tp-3">Méthodologie de la programmation, TP 3.</a></li>
+        <li><a href="#exercice-1">Exercice 1.</a></li><li><a href="#exercice-2">Exercice 2.</a></li><li><a href="#exercice-3">Exercice 3.</a></li><li><a href="#exercice-4">Exercice 4.</a></li><li><a href="#exercice-5">Exercice 5.</a></li><li><a href="#exercice-6">Exercice 6.</a></li><li><a href="#exercice-7">Exercice 7.</a></li><li><a href="#exercice-8">Exercice 8.</a></li><li><a href="#exercice-9">Exercice 9.</a></li><li><a href="#exercice-10">Exercice 10.</a></li><li><a href="#exercice-11">Exercice 11.</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="methodologie-de-la-programmation-tp-3">Méthodologie de la programmation, TP 3.</h1>
+<h2 id="exercice-1">Exercice 1.</h2>
+<ol>
+<li>Écrivez une fonction <code>sumUp(l)</code> qui prend une liste d'entiers en entrée et
+   renvoie la somme des éléments de la liste.</li>
+<li>Écrivez une fonction <code>alternatingSum(l)</code> qui prend une liste d'entiers en
+   entrée et renvoie la somme alternée des éléments de la liste, c'est-à-dire
+   la somme dans laquelle le <span class="arithmatex">\(i\)</span>-ième élément contribue avec un signe de
+   <span class="arithmatex">\((-1)^i\)</span>. </li>
+</ol>
+<h2 id="exercice-2">Exercice 2.</h2>
+<ol>
+<li>Écrivez une fonction <code>pairSum(l,k)</code> qui prend en entrée une liste de valeurs
+   entières <code>l</code>, un entier <code>k</code>, et vérifie si une paire de ses éléments donne
+   une somme égale à <code>k</code>, en supposant qu'aucun élément n'apparaît deux fois
+   dans une paire.</li>
+<li>Une variante (beaucoup!) plus difficile : Écrivez une fonction
+   <code>subsetSum(l,k)</code> qui prend en entrée une liste de valeurs entières <code>l</code>, un
+   entier <code>k</code>, et vérifie si une combinaison quelconque de ses éléments donne
+   une somme égale à <code>k</code>. </li>
+</ol>
+<h2 id="exercice-3">Exercice 3.</h2>
+<ol>
+<li>Écrivez une fonction <code>residue(l,k)</code> qui prend en entrée une liste et
+   renvoie une <em>nouvelle</em> liste dont le <code>i</code>-ième élément est le résidu de
+   <code>l[i]</code> modulo <code>k</code>.  </li>
+<li>Écrivez une autre fonction <code>residueInPlace(l,k)</code> qui renvoie None mais
+   <em>modifie</em> la liste <code>l</code> de sorte que le nouvel élément <code>l[i]</code> soit le résidu
+   modulo <code>k</code> de l'ancien.  </li>
+</ol>
+<h2 id="exercice-4">Exercice 4.</h2>
+<ol>
+<li>Écrivez une fonction <code>isEven(l)</code> qui prend en entrée une liste <code>l</code> d'entiers
+   et qui renvoie <code>True</code> si tous les éléments de la liste sont des nombres
+   pairs, sinon elle renvoie <code>False</code>. </li>
+<li>Écrivez une fonction <code>isMostlyEven(l,k)</code> qui prend en entrée une liste <code>l</code>
+   d'entiers et un entier non négatif <code>k</code>, et renvoie <code>True</code> si tous les
+   éléments de la liste <code>l</code> sauf <code>k</code> sont des nombres pairs, sinon elle renvoie
+   <code>False</code>. </li>
+</ol>
+<h2 id="exercice-5">Exercice 5.</h2>
+<p>Écrivez une fonction qui implémente le crible d'Ératosthène. Utilisez une liste
+pour garder une trace des nombres que vous avez déjà éliminés comme n'étant pas
+premiers.</p>
+<h2 id="exercice-6">Exercice 6.</h2>
+<ol>
+<li>Écrivez une fonction <code>commonElements(a,b)</code> qui prend en entrée deux listes
+   et renvoie une liste contenant les éléments qui apparaissent à la fois dans
+   <code>a</code> et dans <code>b</code>. </li>
+<li>Écrivez une fonction <code>difference(l,k)</code> qui prend comme entrées deux listes
+   <code>l</code> et <code>k</code> et renvoie une nouvelle liste contenant tous les éléments qui
+   apparaissent dans <code>l</code> mais pas dans <code>k</code>. </li>
+<li>Écrivez une fonction <code>merge(a,b)</code> qui prend en entrée deux listes <code>a</code> et <code>b</code>
+   et les fusionne en ne conservant qu'une seule copie des éléments qui
+   apparaissent à la fois dans <code>a</code> et dans <code>b</code>. Les éléments des deux listes
+   peuvent apparaître dans n'importe quel ordre dans la liste fusionnée finale.</li>
+</ol>
+<h2 id="exercice-7">Exercice 7.</h2>
+<p>Écrivez une fonction <code>unpack(l)</code> qui prend une liste <code>l</code> dont les éléments sont
+eux-mêmes des listes et renvoie une nouvelle liste obtenue en concaténant tous
+les éléments de <code>l</code>. </p>
+<h2 id="exercice-8">Exercice 8.</h2>
+<p>Écrivez une fonction <code>reverse(l)</code> qui prend en entrée une liste <code>l</code> et la
+modifie de manière à ce que ses éléments apparaissent dans l'ordre inverse.</p>
+<h2 id="exercice-9">Exercice 9.</h2>
+<p>Écrivez une fonction <code>count(l,e)</code> qui prend comme entrée une liste <code>l</code> et
+renvoie le nombre d'occurrences de <code>e</code> dans <code>l</code>. </p>
+<h2 id="exercice-10">Exercice 10.</h2>
+<p>Écrivez une fonction <code>split(l,k)</code> qui prend en entrée une liste <code>l</code> et un
+entier non négatif <code>k</code> et renvoie une liste <code>p</code> de listes obtenues comme suit: </p>
+<ul>
+<li>La première liste <code>p[0]</code> contient les <code>k</code> premiers éléments.</li>
+<li>La deuxième liste <code>p[1]</code> contient les <code>k</code> éléments suivants. </li>
+</ul>
+<p>Et ainsi de suite, la dernière liste <code>p[-1]</code> contenant le reste. </p>
+<h2 id="exercice-11">Exercice 11.</h2>
+<p>Écrivez une fonction <code>map(l,f)</code> qui prend en entrée: </p>
+<ul>
+<li>une fonction <code>f</code> qui, supposons-le, transforme des entiers en entiers,</li>
+<li>une liste <code>l</code> qui, supposons-le, est une liste homogène d'entiers,</li>
+</ul>
+<p>et renvoie la liste obtenue en appliquant <code>f</code> à chaque élément de <code>l</code>.</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
