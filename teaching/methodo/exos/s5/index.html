@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Méthodologie de la programmation, TP 5. - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#methodologie-de-la-programmation-tp-5">Méthodologie de la programmation, TP 5.</a></li>
+        <li><a href="#exercice-1">Exercice 1.</a></li><li><a href="#exercice-2">Exercice 2.</a></li><li><a href="#exercice-3-a-deposer-sur-moodle">Exercice 3 (à déposer sur Moodle).</a></li><li><a href="#exercice-4-a-deposer-sur-moodle">Exercice 4 (à déposer sur Moodle).</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="methodologie-de-la-programmation-tp-5">Méthodologie de la programmation, TP 5.</h1>
+<h2 id="exercice-1">Exercice 1.</h2>
+<p>Développez des solutions itératives et récursives (sous forme de fonctions
+Python) pour les problèmes suivants :<br />
+- Calculer la somme d'une liste donnée <code>l</code>.<br />
+- Calculer le produit d'une liste donnée <code>l</code>.  </p>
+<h2 id="exercice-2">Exercice 2.</h2>
+<p>Développez des solutions itératives et récursives (sous forme de fonctions
+Python) pour les problèmes suivants :</p>
+<ul>
+<li>Calculer la somme de tous les nombres naturels compris entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(n\)</span>, pour
+  <span class="arithmatex">\(n \in \mathbb{N}\)</span>: <span class="arithmatex">\(0 + 1 + 2 + \dots + n\)</span>. </li>
+<li>Calculer le produit de tous les nombres naturels compris entre <span class="arithmatex">\(1\)</span> et <span class="arithmatex">\(n\)</span>,
+  pour <span class="arithmatex">\(n \in \mathbb{N}, n \geq 1\)</span>: <span class="arithmatex">\(1 \times 2 \times \dots \times n\)</span>.</li>
+</ul>
+<h2 id="exercice-3-a-deposer-sur-moodle">Exercice 3 (à déposer sur Moodle).</h2>
+<p>Développez des solutions itératives et récursives (sous forme de fonctions
+Python) pour les problèmes suivants :</p>
+<ul>
+<li>Calculer le maximum d'une liste donnée <code>l</code>.  </li>
+<li>Calculer le minimum d'une liste donnée <code>l</code>.</li>
+</ul>
+<h2 id="exercice-4-a-deposer-sur-moodle">Exercice 4 (à déposer sur Moodle).</h2>
+<p>Écrivez deux paires de fonctions Python, une de manière itérative et l'autre
+de manière récursive, pour résoudre les problèmes suivants :</p>
+<ul>
+<li>Inverser une liste <code>l</code>, c'est-à-dire construire une nouvelle liste dont les
+  éléments sont ceux de <code>l</code> mais dans l'ordre inverse.</li>
+<li>Rechercher un élément <code>e</code> dans une liste <code>l</code>, c'est-à-dire, étant donné
+  une valeur <code>e</code>, répondre avec <code>True</code> si <code>e</code> existe dans la liste, sinon 
+  répondre avec <code>False</code>.</li>
+</ul>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
