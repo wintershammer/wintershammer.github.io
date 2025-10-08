@@ -243,7 +243,9 @@ suivante :
 <div class="highlight"><pre><span></span><code>module type Tictactoe = 
     sig
         type move = Empty | X | O
-        type board
+        type board = {aa : move; ab : move; ac : move; 
+              ba : move; bb : move; bc : move;
+              ca : move; cb : move; cc : move;}
 
         val empty_board : board
         val possible_moves : board -&gt; move 
@@ -304,6 +306,12 @@ tableau qui en résulte.</li>
 <p>Pour cet exercice, nous utiliserons le type suivant pour représenter notre
 arbre de jeu, que nous utiliserons pour analyser les mouvements possibles et
 leurs gains.</p>
+<div class="highlight"><pre><span></span><code>type game_tree =
+
+    | Tie of board * move * string
+    | Winning of board * move * string 
+    | Ongoing of board * move * string * game_tree list
+</code></pre></div>
 <ul>
 <li>
 <p>Problème 0 : Implémentez une fonction <code>make_tree : board -&gt; move -&gt; string</code>
