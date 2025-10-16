@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices de révision - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-de-revision">Exercices de révision</a></li>
+        <li><a href="#exercice-0">Exercice 0.</a></li><li><a href="#exercice-1">Exercice 1.</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-de-revision">Exercices de révision</h1>
+<h2 id="exercice-0">Exercice 0.</h2>
+<ul>
+<li>
+<p>Problème 0 : Définissez une fonction Python <code>print_even</code> telle que, pour tout
+  entier non négatif <code>n</code>, <code>print_even(n)</code> affiche tous les nombres pairs
+  compris entre <code>0</code> et <code>n</code>.</p>
+</li>
+<li>
+<p>Problème 1 : Écrivez deux fonctions, <code>sum_rec</code> et <code>sum_iter</code>, telles que,
+  étant donné une liste <code>l</code> d'entiers, <code>sum_rec(l)</code> et <code>sum_iter(l)</code> calculent
+  la somme de tous les éléments de <code>l</code>. </p>
+</li>
+<li>
+<p>Problème 2 : Écrivez une fonction <code>search</code> telle que, étant donné une liste
+  <code>l</code> et une valeur <code>e</code>, <code>search(l,e)</code> renvoie True si <code>e</code> apparaît comme
+  élément de <code>l</code> et False dans le cas contraire. </p>
+</li>
+<li>
+<p>Problème 3 : Écrivez une fonction, <code>occ</code>, telle que, étant donné une liste
+  <code>l</code> et une valeur <code>e</code>, <code>occ(l,e)</code> renvoie le nombre d'occurrences de <code>e</code> dans
+  la liste <code>l</code>. </p>
+</li>
+<li>
+<p>Problème 4 : Écrivez une fonction « pairs » telle que, étant donné une liste
+  « l », « pairs(l) » renvoie une liste de tous les tuples possibles « (a,b) »
+  avec « a » et « b » dans « l ».  </p>
+</li>
+<li>
+<p>Problème 5 : Écrivez une fonction <code>count</code> telle que, étant donné une liste
+  <code>l</code>, <code>count(l)</code> liste toutes les paires <code>(v,n)</code> où <code>v</code> est une valeur de <code>l</code>
+  et <code>n</code> est son nombre d'occurrences dans <code>l</code>. Par exemple,
+  <code>count([1,1,2,1,2,3])</code> donne <code>[(1,3),(2,2),(3,1)]</code>. </p>
+</li>
+</ul>
+<h2 id="exercice-1">Exercice 1.</h2>
+<p>Le jeu de vie de Conway se déroule sur une grille, pour simplifier nous utiliserons
+une grille de 100 x 100, où chaque cellule est soit vivante, soit morte. À
+chaque étape, toutes les cellules sont mises à jour selon les règles suivantes:</p>
+<ol>
+<li>Une cellule morte possédant exactement trois cellules voisines vivantes devient vivante.</li>
+<li>
+<p>Une cellule vivante ne possédant pas exactement deux ou trois cellules voisines vivantes meurt.</p>
+</li>
+<li>
+<p>Problème 0 : Déterminez comment modéliser les configurations <code>c</code> du jeu à l'aide des
+  primitives Python que nous avons vues jusqu'à présent.</p>
+</li>
+<li>
+<p>Problème 1 : Définissez une fonction <code>update(c)</code> qui prend en entrée une
+  configuration <code>c</code> et applique les règles ci-dessus à chaque cellule.</p>
+</li>
+<li>
+<p>Problème 3 : Définissez une fonction d'impression <code>prettyprint(c)</code> qui
+  imprime une configuration <code>c</code> sur la sortie standard. </p>
+</li>
+</ol>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
