@@ -230,7 +230,7 @@
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
     <p>Vous êtes étudiant à l'université de Zeitre, située dans la région
-administrative spéciale du même nom. Vous espérez un jour intégrer le Brigade
+administrative spéciale du même nom. Vous espérez un jour intégrer la Brigade
 Informatchique de la région, une équipe d'élite composée de programmeurs
 chargés d'enquêter et de résoudre les problèmes liés à l'informatique.</p>
 <p>Heureusement pour vous, le groupe de travail accepte des stagiaires ce
@@ -241,18 +241,18 @@ le Directeur Icon, qui vous a donné les détails de votre première mission.</p
 <p>« La ligne de métro automatisée de la région ne fonctionne plus ! Vous devez
 vous rendre immédiatement à la station centrale, où vous trouverez l'ordinateur
 central du métro. Je suis sûr que, grâce à vos compétences en OCaml et à votre
-fidèle « Manuel du groupe de travail », vous rétablirez la circulation du métro
+fidèle manuel, vous rétablirez la circulation du métro
 en un rien de temps ! » </p>
-<p>Après avoir localisé l'ordinateur central, vous êtes accueilli par le texte
-suivant qui clignote sur son écran :</p>
+<p>Vous venez d'arriver à la station de métro et après avoir localisé l'ordinateur
+central, vous êtes accueilli par le texte suivant qui clignote sur son écran :</p>
 <p>"YWFKKNHENSYJWWTRUZEFEWFNXTSEIEZSEGFLFLJETZGQNJECE,JZNQQJBEWJIJRFWWJWEXAXYJRD"</p>
 <p>Quel désastre ! En recherchant le modèle du serveur central dans votre manuel,
 vous découvrez que le tampon de sortie responsable de l'impression des chaînes
 de caractères est susceptible de subir des décalages aléatoires. Autre détail
-important : l' impression de la machine est un texte français encodé dans un
-sous-ensemble de l'ASCII : il ne comprend que des lettres majuscules, les
+important : la sortie de la machine est du texte français encodé dans un
+sous-ensemble de l'ASCII. L'alphabet ne comprend que des lettres majuscules, les
 caractères espace, nouvelle ligne, virgule et point:
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ,._".</p>
+<code>"ABCDEFGHIJKLMNOPQRSTUVWXYZ,._"</code>.</p>
 <ul>
 <li>Exercice 1 : Écrivez une fonction qui prend en entrée une chaîne de
   caractères et génère tous les décalages possibles, caractère par caractère,
@@ -274,10 +274,12 @@ mainframe est de 3, Heureusement, le manuel indique que la taille du tampon
 d'impression du mainframe est de 3, donc les seuls décalages à prendre en
 compte sont les suivants : </p>
 <p>1) Chaque caractère est décalé d'un nombre fixe de places « i ». Compte tenu de
-ce qui précède, vous savez déjà que ce n'est pas le cas ! 2) Les caractères
-avec un indice pair sont décalés de « i » et ceux avec un indice impair sont
-décalés de « j » places. 3) Les caractères avec un indice <span class="arithmatex">\(0 (mod 3), 1 (mod
-3)\)</span> et <span class="arithmatex">\(2 (mod 3)\)</span> sont décalés respectivement de <span class="arithmatex">\(i,j,k\)</span>.</p>
+ce qui précède, vous savez déjà que ce n'est pas le cas ! </p>
+<p>2) Les caractères
+avec un indice pair sont décalés de <code>i</code> et ceux avec un indice impair sont
+décalés de <code>j</code> places. </p>
+<p>3) Les caractères avec un indice <span class="arithmatex">\(0 \mod 3, 1 \mod
+3\)</span> et <span class="arithmatex">\(2 \mod 3\)</span> sont décalés respectivement de <span class="arithmatex">\(i,j,k\)</span>.</p>
 <ul>
 <li>Exercice 2 : Écrivez des fonctions qui prennent en entrée une chaîne de
   caractères et génèrent tous les décalages possibles décrits aux points 2) et
