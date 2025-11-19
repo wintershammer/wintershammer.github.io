@@ -258,8 +258,8 @@ caractères espace, nouvelle ligne, virgule et point:
   caractères et génère tous les décalages possibles, caractère par caractère,
   d'un nombre fixe dans l'alphabet. Par exemple, le décalage de « ABC » de
   1 donne « BCD », tandis que le décalage de 2 donne « CDE ». Utilisez cette
-  fonction pour déchiffrer le texte ci-dessus. Les modules standard <code>List,
-      Char, String, Buffer</code> peuvent être utiles à cet effet.</li>
+  fonction pour déchiffrer le texte ci-dessus. Les modules standard <code>List, 
+  Char, String, Buffer</code> peuvent être utiles à cet effet.</li>
 </ul>
 <p>Après avoir déchiffré avec succès le texte ci-dessus, vous lancez l'impression
 du diagnostic, pour être accueilli par le message suivant :</p>
@@ -270,16 +270,15 @@ QZDQKJBXVFVNQSBFBQCEUYCYKTPEEFVMGITFNEUFKSVEUNPJFD"</p>
 fonctionner ! Vous consultez à nouveau le manuel et vous vous rendez compte que
 les décalages peuvent varier d'un caractère à l'autre !</p>
 <p>Heureusement, le manuel indique que la taille du tampon d'impression du
-mainframe est de 3, Heureusement, le manuel indique que la taille du tampon
-d'impression du mainframe est de 3, donc les seuls décalages à prendre en
+mainframe est de 3, donc les seuls décalages à prendre en
 compte sont les suivants : </p>
-<p>1) Chaque caractère est décalé d'un nombre fixe de places « i ». Compte tenu de
+<p>1) Chaque caractère est décalé d'un nombre fixe de places <code>i</code>. Compte tenu de
 ce qui précède, vous savez déjà que ce n'est pas le cas ! </p>
 <p>2) Les caractères
 avec un indice pair sont décalés de <code>i</code> et ceux avec un indice impair sont
 décalés de <code>j</code> places. </p>
 <p>3) Les caractères avec un indice <span class="arithmatex">\(0 \mod 3, 1 \mod
-3\)</span> et <span class="arithmatex">\(2 \mod 3\)</span> sont décalés respectivement de <span class="arithmatex">\(i,j,k\)</span>.</p>
+3\)</span> et <span class="arithmatex">\(2 \mod 3\)</span> sont décalés respectivement de <code>i,j,k</code>.</p>
 <ul>
 <li>Exercice 2 : Écrivez des fonctions qui prennent en entrée une chaîne de
   caractères et génèrent tous les décalages possibles décrits aux points 2) et
