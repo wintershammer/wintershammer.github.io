@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices, séance 8 - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-seance-8">Exercices, séance 8</a></li>
+        <li><a href="#exercice-0">Exercice 0</a></li><li><a href="#exercice-1">Exercice 1</a></li><li><a href="#exercice-2">Exercice 2</a></li><li><a href="#exercice-3">Exercice 3</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-seance-8">Exercices, séance 8</h1>
+<p>Dans cet exercice, vous allez créer deux modules :</p>
+<ul>
+<li>
+<p><code>life_sim</code> qui contient les classes <code>Cell</code>, <code>Grid</code>, ainsi que la fonction
+   <code>update_all</code> décrite ci-dessous. </p>
+</li>
+<li>
+<p><code>life_display</code> qui contient la fonction <code>render</code> décrite ci-dessous.</p>
+</li>
+</ul>
+<h2 id="exercice-0">Exercice 0</h2>
+<p>Implémentez une classe <code>Cell</code>, dont les objets représentent les cellules
+individuelles d'une grille. La classe a la spécification suivante:</p>
+<p>1) La méthode <code>__init__</code> prend un seul argument, une chaîne de characteres,
+avec trois valeurs possibles : <code>"alive", "dead"</code>, ou <code>"border"</code>. Elle initialise
+l'état de la cellule à la valeur correspondante.</p>
+<p>2) La méthode <code>is_alive</code> ne prend aucun argument et renvoie l'état de la
+cellule. </p>
+<p>3) La méthode <code>update</code> prend un seul argument, un entier non négatif,
+représentant le nombre de voisins vivants. Elle met à jour l'état de la cellule
+en utilisant les règles du jeu de la vie : </p>
+<ul>
+<li>
+<p>Une cellule vivante avec 2 ou 3 voisins vivants reste en vie, sinon elle
+  meurt. </p>
+</li>
+<li>
+<p>Une cellule morte avec exactement trois voisins devient vivante.</p>
+</li>
+</ul>
+<p>Les cellules frontalières (dont l'état est <code>"border"</code>) sont toujours mortes.</p>
+<h2 id="exercice-1">Exercice 1</h2>
+<p>Implémentez une classe <code>Grid</code> dont la spécification est la suivante :</p>
+<p>1) La méthode <code>__init__</code> prend comme arguments des entiers non négatifs <code>m,
+n</code> et crée une liste de listes qui représente une grille de dimensions
+<code>m*n</code>, où chaque élément est initialisé à une cellule morte.</p>
+<p>2) La méthode <code>set_alive</code> prend deux entiers non négatifs <code>x, y</code>
+correspondant aux coordonnées dans la grille et transforme la cellule aux
+coordonnées <code>(x, y)</code> en cellule "vivante".</p>
+<p>3) La méthode <code>get</code> prend deux entiers non négatifs correspondant <code>x,y</code> aux
+coordonnées dans la grille et renvoie l'objet de la cellule correspondante.
+Veillez à renvoyer les valeurs appropriées pour les cellules de bordure.</p>
+<h2 id="exercice-2">Exercice 2</h2>
+<p>Implémentez une fonction <code>update_all</code> qui parcourt chaque cellule de la
+grille et met à jour son état en calculant le nombre de voisins et en le
+transmettant à la méthode <code>update</code> de l'objet.</p>
+<h2 id="exercice-3">Exercice 3</h2>
+<p>Créez une fonction <code>render</code> qui prend en entrée un objet de la classe <code>Grid</code> et
+l'affiche (dans le terminal par exemple, mais vous pouvez utiliser tout autre
+moyen d'affichage de votre choix, par exemple <code>pyplot</code> ou <code>pygame</code>).</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
