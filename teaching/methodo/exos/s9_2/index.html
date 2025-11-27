@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>TP noté 2 - Modélisation SIR - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#tp-note-2-modelisation-sir">TP noté 2 - Modélisation SIR</a></li>
+        <li><a href="#rappel-modele-sir">Rappel : modèle SIR</a></li><li><a href="#exercice-0-classe-population">Exercice 0 — Classe Population</a></li><li><a href="#exercice-1-modele-epidemique">Exercice 1 — Modèle épidémique</a></li><li><a href="#exercice-2-simulation">Exercice 2 — Simulation</a></li><li><a href="#exercice-3-experiences-numeriques">Exercice 3 — Expériences numériques</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="tp-note-2-modelisation-sir">TP noté 2 - Modélisation SIR</h1>
+<p>Dans cet exercice, vous allez créer un petit simulateur de propagation
+d’épidémie basé sur le modèle <em>SIR</em>.</p>
+<p>Nous utiliserons une version <em>discrète en temps</em> et <em>non spatiale</em> (modèle
+de population globale).</p>
+<p>Le projet est organisé en plusieurs modules simples :</p>
+<ul>
+<li><code>population.py</code> : contient la classe <code>Population</code></li>
+<li><code>model.py</code> : contient la classe <code>SIRModel</code></li>
+<li><code>simulation.py</code> : contient la classe <code>Simulation</code></li>
+<li><code>display.py</code> : contient les fonctions d’affichage</li>
+</ul>
+<hr />
+<h2 id="rappel-modele-sir">Rappel : modèle SIR</h2>
+<p>Une population est divisée en trois catégories :</p>
+<ul>
+<li><strong>S</strong> : susceptibles  </li>
+<li><strong>I</strong> : infectés  </li>
+<li><strong>R</strong> : retirés (guéris ou immunisés)</li>
+</ul>
+<p>À chaque étape :
+- des individus passent de <strong>S → I</strong> avec un certain taux d’infection
+- des individus passent de <strong>I → R</strong> avec un certain taux de guérison</p>
+<hr />
+<h2 id="exercice-0-classe-population">Exercice 0 — Classe <code>Population</code></h2>
+<p>Implémentez dans un fichier <code>population.py</code> une classe <code>Population</code> qui représente
+l’état global de la population.</p>
+<h3 id="specifications">Spécifications :</h3>
+<ol>
+<li>
+<p>Le constructeur <code>__init__</code> prend trois entiers <code>S</code>, <code>I</code>, <code>R</code>.</p>
+</li>
+<li>
+<p>La classe possède les attributs :</p>
+</li>
+<li><code>S</code> : nombre de susceptibles</li>
+<li><code>I</code> : nombre d’infectés</li>
+<li><code>R</code> : nombre de retirés</li>
+<li>
+<p><code>N</code> : population totale (fixe)</p>
+</li>
+<li>
+<p>Implémentez une méthode <code>step(dI, dR)</code> qui :</p>
+</li>
+<li>enlève <code>dI</code> individus de <code>S</code></li>
+<li>ajoute <code>dI</code> puis enlève <code>dR</code> individus à <code>I</code></li>
+<li>
+<p>ajoute <code>dR</code> individus à <code>R</code></p>
+</li>
+<li>
+<p>Implémentez une méthode <code>fractions()</code> qui retourne les proportions :
+   <code>(S/N, I/N, R/N)</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="exercice-1-modele-epidemique">Exercice 1 — Modèle épidémique</h2>
+<p>Dans un fichier <code>model.py</code>, implémentez une classe <code>SIRModel</code>.</p>
+<p>Cette classe représente la <em>dynamique</em> de l’épidémie.</p>
+<h3 id="specifications_1">Spécifications :</h3>
+<ol>
+<li>
+<p>Le constructeur prend deux paramètres :</p>
+<ol>
+<li><code>beta</code> (taux d’infection)</li>
+<li><code>gamma</code> (taux de guérison)</li>
+</ol>
+</li>
+<li>
+<p>Il y a deux méthodes :</p>
+<ol>
+<li><code>new_infections(pop)</code> : retourne un entier correspondant au nombre
+ de nouvelles infections dans la population <code>pop</code>.</li>
+<li><code>new_recoveries(pop)</code> : retourne un entier correspondant au nombre
+ de nouvelles guérisons.</li>
+</ol>
+</li>
+</ol>
+<p>On utilisera :</p>
+<ul>
+<li>une loi binomiale avec paramètre <code>pop.S</code> et probabilité<br />
+<code>beta * pop.I / pop.N</code> pour les infections,</li>
+<li>une loi binomiale avec paramètre <code>pop.I</code> et probabilité <code>gamma</code> pour les guérisons,</li>
+</ul>
+<p>et le morceau de code suivant pour simuler la distribution binomiale avec le paramètre <code>p</code>: </p>
+<div class="highlight"><pre><span></span><code>import random
+
+def binomial(n, p):
+    &quot;&quot;&quot;
+    Sample from Binomial(n, p).
+    &quot;&quot;&quot;
+    count = 0
+    for _ in range(n):
+        if random.random() &lt; p:
+            count += 1
+    return count
+</code></pre></div>
+<hr />
+<h2 id="exercice-2-simulation">Exercice 2 — Simulation</h2>
+<p>Dans le fichier <code>simulation.py</code>, implémentez une classe <code>Simulation</code>.</p>
+<p>Cette classe gère l’évolution du modèle dans le temps.</p>
+<h3 id="specifications_2">Spécifications :</h3>
+<ol>
+<li>
+<p>Le constructeur prend :</p>
+<ol>
+<li>un objet <code>Population</code></li>
+<li>un objet <code>SIRModel</code></li>
+</ol>
+</li>
+<li>
+<p>La classe contient :</p>
+<ol>
+<li>un attribut <code>t</code> pour le temps courant</li>
+<li>un attribut (un dictionnaire, par exemple) <code>history</code> qui stocke l'évolution de <code>S</code>, <code>I</code>, <code>R</code>.</li>
+</ol>
+</li>
+<li>
+<p>Il y a deux methodes :</p>
+<ol>
+<li>une méthode <code>step()</code> qui effectue une itération :<ol>
+<li>calcule les nouvelles infections</li>
+<li>calcule les nouvelles guérisons</li>
+<li>met à jour la population</li>
+<li>stocke les données dans <code>history</code></li>
+</ol>
+</li>
+<li>une méthode <code>run(T)</code> qui lance <code>T</code> itérations.</li>
+</ol>
+</li>
+</ol>
+<hr />
+<h2 id="exercice-3-experiences-numeriques">Exercice 3 — Expériences numériques</h2>
+<ol>
+<li>Fixez <code>N = 1000</code>, <code>I0 = 10</code>, <code>S0 = 990</code>, <code>R0 = 0</code>.</li>
+<li>Testez différentes valeurs de <code>beta</code> et <code>gamma</code>.</li>
+<li>Que remarquez-vous sur :</li>
+<li>la hauteur du pic d’infectés ?</li>
+<li>la durée de l’épidémie ?</li>
+<li>la proportion finale d’individus infectés ?</li>
+</ol>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
