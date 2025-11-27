@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices – Automates cellulaires en dimensions 1+1. - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-automates-cellulaires-en-dimensions-11">Exercices – Automates cellulaires en dimensions 1+1.</a></li>
+        <li><a href="#objectif">Objectif</a></li><li><a href="#exemple-de-voisinages">Exemple de voisinages</a></li><li><a href="#exercice-0-classe-cell">Exercice 0 — Classe Cell</a></li><li><a href="#exercice-1-classe-line">Exercice 1 — Classe Line</a></li><li><a href="#exercice-2-voisinages-et-regles">Exercice 2 — Voisinages et règles</a></li><li><a href="#exercice-3-affichage">Exercice 3 — Affichage</a></li><li><a href="#exercice-4-simulation">Exercice 4 — Simulation</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-automates-cellulaires-en-dimensions-11">Exercices – Automates cellulaires en dimensions 1+1.</h1>
+<p>Dans cet exercice, vous allez implémenter un automate cellulaire <em>unidimensionnel</em> en Python.</p>
+<p>Nous allons travailler avec deux modules :</p>
+<ul>
+<li><code>automaton_sim</code> : logique de simulation (cellules, ligne, mise à jour)</li>
+<li><code>automaton_display</code> : affichage texte dans le terminal</li>
+</ul>
+<h2 id="objectif">Objectif</h2>
+<p>On considère une ligne de cellules, chacune pouvant être :</p>
+<ul>
+<li>vivante</li>
+<li>morte</li>
+<li>une cellule spéciale de bordure</li>
+</ul>
+<p>L’état d’une cellule à l’instant suivant dépend :</p>
+<ul>
+<li>de l’ensemble des cellules voisines définies par une <em>liste <code>offset</code> d’offsets</em>,</li>
+<li>d’une règle : si le nombre de voisins vivants appartient à un ensemble donné, la cellule devient vivante.</li>
+</ul>
+<h2 id="exemple-de-voisinages">Exemple de voisinages</h2>
+<p>Quelques exemples de voisinages possibles :</p>
+<ul>
+<li>Voisinage classique gauche/droite : <code>offset = [-1,1]</code>.</li>
+<li>Voisinage qui contient la cellule elle-même : <code>offset = [-1,0,1]</code>.</li>
+<li>Voisinage étendu : <code>offset = [-2,-1,0,1,2]</code>.</li>
+</ul>
+<h2 id="exercice-0-classe-cell">Exercice 0 — Classe <code>Cell</code></h2>
+<p>Implémentez une classe <code>Cell</code>.</p>
+<h3 id="specification">Spécification</h3>
+<ol>
+<li>
+<p>Le constructeur <code>__init__(state)</code> prend une chaîne parmi :
+<code>"alive"</code>, <code>"dead"</code>, <code>"border"</code>.</p>
+</li>
+<li>
+<p>La méthode <code>is_alive()</code> renvoie <code>True</code> si la cellule est vivante, <code>False</code> sinon.</p>
+</li>
+<li>
+<p>La méthode <code>set_state(state)</code> permet de modifier l’état de la cellule.</p>
+</li>
+</ol>
+<p>Les cellules de bordure sont toujours considérées comme mortes.</p>
+<hr />
+<h2 id="exercice-1-classe-line">Exercice 1 — Classe <code>Line</code></h2>
+<p>Implémentez une classe <code>Line</code> qui représente une ligne de cellules.</p>
+<h3 id="specification_1">Spécification</h3>
+<ol>
+<li>
+<p><code>__init__(self, n)</code> crée une ligne de longueur <code>n</code> avec uniquement des cellules mortes.</p>
+</li>
+<li>
+<p><code>set_alive(self, i)</code> rend vivante la cellule d’indice <code>i</code> si elle existe.</p>
+</li>
+<li>
+<p><code>get(self, i)</code> renvoie :</p>
+<ol>
+<li>la cellule d’indice <code>i</code> si <code>i</code> est valide,</li>
+<li>une cellule <code>"border"</code> sinon.</li>
+</ol>
+</li>
+<li>
+<p><code>copy(self)</code> renvoie une copie de la ligne.</p>
+</li>
+</ol>
+<hr />
+<h2 id="exercice-2-voisinages-et-regles">Exercice 2 — Voisinages et règles</h2>
+<p>Nous voulons simuler une ligne de cellules selon une règle basée sur un voisinage choisi.</p>
+<p>Implémentez la fonction suivante :</p>
+<div class="highlight"><pre><span></span><code>def update_all(line, offsets, alive_counts):
+  &quot;&quot;&quot;
+  line : objet Line
+  offsets : liste d&#39;entiers (ex: [-1, 1])
+  alive_counts : ensemble d&#39;entiers (ex: {1, 2})
+
+  Si le nombre de voisins vivants est dans alive_counts,
+  la cellule devient vivante, sinon elle est morte.
+  &quot;&quot;&quot;
+</code></pre></div>
+<h2 id="exercice-3-affichage">Exercice 3 — Affichage</h2>
+<p>Dans un second module automaton_display.py, écrivez une fonction :
+<code>render(line)</code> qui affiche une ligne <code>line</code> de cellules en utilisant :</p>
+<ul>
+<li><code>█</code> (ou un autre symbole) pour une cellule vivante,</li>
+<li>espace (ou un autre symbole) pour une cellule morte.</li>
+</ul>
+<h2 id="exercice-4-simulation">Exercice 4 — Simulation</h2>
+<p>Écrire un programme principal main.py qui :</p>
+<ul>
+<li>
+<p>Crée une ligne de taille <code>N=100</code>.</p>
+</li>
+<li>
+<p>Active uniquement la cellule centrale.</p>
+</li>
+<li>
+<p>Affiche 40 générations.</p>
+</li>
+</ul>
+<p>Utilisez un voisinage et une règle de votre choix.</p>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
