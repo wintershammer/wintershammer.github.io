@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../../../../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../../../../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../../../../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../../../../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Exercices de révision - Alexandros Singh</title>
+
+
+<link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../../../../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../../../../css/normalize.css" rel="stylesheet">
+<link href="../../../../css/terminal.css" rel="stylesheet">
+<link href="../../../../css/theme.css" rel="stylesheet">
+<link href="../../../../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../../../../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../../../../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+<!-- cursor_animation override -->
+<style>
+  #mkdocs-terminal-site-name.terminal-prompt::after {
+      display: none;
+  }
+</style>
+
+    
+    <link href="../../../../style.css" rel="stylesheet">  
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="../../../../javascripts/mathjax.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="../../../../javascripts/calc_parse_to_adt.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate.js"></script>
+    
+    <script src="../../../../javascripts/calc_evaluate_2.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal">
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../..">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../pubs/">Publications</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../talks/">Talks</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../software/">Software</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../gallery/">Gallery</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../../comte/">Project CoMTE</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../../../teaching/">Teaching</a>
+        
+    
+    
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#exercices-de-revision">Exercices de révision</a></li>
+        <li><a href="#exercice-0-recursion-listes">Exercice 0 : Récursion, listes</a></li><li><a href="#exercice-1-arbres">Exercice 1 : Arbres</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="exercices-de-revision">Exercices de révision</h1>
+<h2 id="exercice-0-recursion-listes">Exercice 0 : Récursion, listes</h2>
+<p>Pour les exercices suivants, essayez de proposer au moins deux variantes
+de votre réponse en utilisant : récursion naïve, récursion terminale,
+plis (left/right), map.</p>
+<ul>
+<li>
+<p>Problème 0 : Écrivez une fonction <code>sum n</code> qui calcule la somme
+    de tous les entiers de <code>0</code> à <code>n</code>.</p>
+</li>
+<li>
+<p>Problème 1 : Écrivez une fonction <code>sum l</code> qui calcule la somme des
+    éléments d'une liste (supposés être des entiers).</p>
+</li>
+<li>
+<p>Problème 2 : Écrivez une fonction <code>climb n</code> qui compte le nombre de
+    façons de monter un escalier de <code>n</code> marches, où les déplacements
+    permis sont : monter d'une marche ou monter de deux marches à la
+    fois.</p>
+</li>
+<li>
+<p>Problème 3 : Écrivez une fonction <code>paths n</code> qui compte le nombre de
+    chemins allant de l'origine <code>(0,0)</code> au coin supérieur droit <code>(n,n)</code>
+    du quadrant positif de la grille carrée (i.e. formée de points à
+    coordonnées entières).
+    Les pas autorisés sont soit vers la droite, soit vers le haut.</p>
+</li>
+<li>
+<p>Problème 4 : Écrivez une fonction <code>chaines n</code> qui renvoie la liste
+    de toutes les chaînes binaires de longueur <code>n</code>.</p>
+</li>
+<li>
+<p>Problème 5 : Écrivez une fonction <code>sort l</code> qui trie une liste
+    d'entiers par ordre croissant. Utilisez l'algorithme de votre choix.</p>
+</li>
+<li>
+<p>Problème 6 : Écrivez une fonction <code>zip l k</code> qui prend deux listes
+    <code>l</code> et <code>k</code> et renvoie une liste de taille le minimum de
+    <code>length l, length k</code> et dont le <code>i</code>-ème élément est <code>(a,b)</code>, un
+    couple formé des <code>i</code>-èmes éléments de <code>l</code> et <code>k</code> respectivement.</p>
+</li>
+<li>
+<p>Problème 6 : Écrivez une fonction <code>cartesian l k</code> qui prend deux
+    listes et génère la liste de tous les couples <code>(a,b)</code> où <code>a</code> est un
+    élément de <code>l</code> et <code>b</code> est un élément de <code>k</code>.</p>
+</li>
+</ul>
+<h2 id="exercice-1-arbres">Exercice 1 : Arbres</h2>
+<ul>
+<li>
+<p>Problème 0 : Définissez un type algébrique représentant des arbres
+    binaires, dont les sommets (internes ou feuilles) portent des
+    étiquettes de type <code>'a</code>.</p>
+</li>
+<li>
+<p>Problème 1 : Écrivez une fonction <code>average_path_length t</code> qui prend
+    en entrée <code>t</code> et calcule la longueur moyenne d'un chemin allant de
+    la racine de l'arbre à l'une de ses feuilles.</p>
+</li>
+<li>
+<p>Problème 2 : Un arbre binaire de recherche est un arbre binaire
+    étiqueté par des entiers, tel que tous ses sous-arbres vérifient la
+    propriété suivante : l'étiquette de la racine est supérieure ou
+    égale à toutes celles du sous-arbre gauche et strictement inférieure
+    à toutes celles du sous-arbre droit. Écrivez les fonctions suivantes
+    :</p>
+<ol>
+<li><code>search t e</code> : cherche un élément <code>e</code> dans l'arbre <code>t</code>.</li>
+<li><code>insert t e</code> : insère un élément <code>e</code> dans l'arbre <code>t</code>,
+    produisant un nouvel arbre binaire de recherche.</li>
+<li><code>merge t1 t2</code> : fusionne deux arbres binaires de recherche pour
+    en produire un nouveau.</li>
+<li><code>delete t e</code> : supprime un élément <code>e</code> d'un arbre binaire de
+    recherche <code>t</code> ; l'arbre résultant doit encore être un arbre
+    binaire de recherche.</li>
+</ol>
+</li>
+<li>
+<p>Problème 3 : Définissez un type algébrique représentant des arbres
+    généraux dont chaque sommet possède un nombre arbitraire d'enfants,
+    avec des étiquettes de type <code>'a</code> sur toutes les bornes (internes ou
+    feuilles).</p>
+</li>
+<li>
+<p>Problème 4 : Définissez une fonction <code>max t</code> qui calcule le maximum
+    des étiquettes d'un arbre général <code>t</code> étiqueté par des entiers.</p>
+</li>
+<li>
+<p>Problème 5 : Définissez une fonction <code>depth t</code> qui calcule la
+    profondeur d'un arbre général <code>t</code>.</p>
+</li>
+<li>
+<p>Problème 6 : Soit <code>step</code> le type suivant :</p>
+<pre><code>type step =
+  | Left of int 
+  | Right of int
+  | Stay
+</code></pre>
+<p>Définissez une fonction <code>path t p</code> qui prend un chemin
+<code>p : step list</code> et le suit dans l'arbre, en renvoyant la valeur du
+sommet sur lequel il aboutit (le cas échéant).
+Vous devez utiliser un mécanisme adéquat de gestion d'erreurs :
+lever des exceptions ou utiliser le module <code>Option</code>.</p>
+</li>
+</ul>
+</section>
+
+            </main>
+        </div>
+        <hr>
+Built with
+<a href="https://www.mkdocs.org/">MkDocs</a>
+and a slightly-modified version of
+<a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+
+</br>
+Last update: around September 2025 
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
