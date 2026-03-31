@@ -18,7 +18,7 @@
 
     
  
-<title>Exos7 - Alexandros Singh</title>
+<title>Character device driver - Alexandros Singh</title>
 
 
 <link href="../../../../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
@@ -184,14 +184,65 @@
 </nav><hr>
 <nav>
     <ul>
-        <li><a href="#exercices-de-revision">Exercices de révision</a></li>
+        <li><a href="#character-device-driver">Character device driver</a></li>
+        <li><a href="#exercice-1">Exercice 1</a></li><li><a href="#exercice-2">Exercice 2</a></li><li><a href="#exercices-de-revision">Exercices de révision</a></li>
         
     </ul>
 </nav>
 </aside>
             <main id="terminal-mkdocs-main-content">
 <section id="mkdocs-terminal-content">
-    <h2 id="exercices-de-revision">Exercices de révision</h2>
+    <h1 id="character-device-driver">Character device driver</h1>
+<p>Ressources utiles :
+0. <a href="https://www.kernel.org/">The Linux Kernel Archives</a>
+1. <a href="https://docs.kernel.org/">The Linux Kernel documentation</a>
+2. <a href="https://sysprog21.github.io/lkmpg">The Linux Kernel Module Programming Guide</a>
+3. <a href="https://linux-kernel-labs.github.io">Linux Kernel Labs</a></p>
+<p>Sous UNIX, l'accès aux périphériques matériels s'effectue via
+de fichiers situés dans le répertoire <code>/dev</code>. </p>
+<p>Les appels système effectués sur ces fichiers (<code>open</code>, <code>read</code>, <code>write</code>, <code>close</code>, etc.)
+sont redirigés par le système d'exploitation vers le driver (pilote) 
+associé au périphérique - un module du noyau.</p>
+<p>Il existe deux catégories de device files (fichiers de périphériques) : 
+character device et block device. Les fichiers du type character device correspondent
+à des périphériques généralement « lents », qui traitent de petites quantités
+de données et auxquels on n'accède pas souvent. Les opérations sur ces
+périphériques s'effectuent généralement de manière séquentielle, octet par
+octet. Ces cas concernent des périphériques tels que les claviers et les souris.</p>
+<p>L'objectif de cet exercice sera d'écrire un pilote pour un tel périphérique fictif de
+type character device, qui stocke stocke simplement tout ce qui lui est
+écrit. </p>
+<p>Les opérations mises en œuvre par un driver sont décrites par la structure
+<code>struct file_operations</code> (dans <code>include/linux/fs.h</code>). Parmi celles-ci,
+certaines contiennent des pointeurs vers la mémoire de l'<strong>espace utilisateur</strong> (user space)
+qui ne doivent en aucun cas être déréférencés. Il faut plutôt utiliser des
+fonctions comme
+- <code>simple_read_from_buffer</code> et <code>simple_write_to_buffer</code>
+- <code>copy_from_user</code> et <code>copy_to_user</code>. </p>
+<p>Consultez le code du noyau (dans <code>include/linux/uaccess.h</code>) et la documentation
+ci-dessus pour comprendre le fonctionnement de ces fonctions.</p>
+<h3 id="exercice-1">Exercice 1</h3>
+<p>À l'aide de <code>simple_read_from_buffer</code>, <code>simple_write_to_buffer</code>, complétez
+l'ébauche de code dans le dépôt Git afin d'obtenir un pilote qui :</p>
+<ul>
+<li>Lors d'un <code>write</code>, prend les données fournies par l'utilisateur et les
+  place dans un buffer du noyau.</li>
+<li>Lors d'un <code>read</code>, renvoie le contenu du buffer.</li>
+</ul>
+<p>Une fois la compilation terminée (utilisez le fichier Makefile fourni), vous
+pouvez intégrer votre module au noyau à l'aide des commandes suivantes :</p>
+<div class="highlight"><pre><span></span><code>insmod echo.ko
+mknod /dev/echo c &lt;MAJOR&gt; 0
+chmod 666 /dev/mychardev
+</code></pre></div>
+<p>où <code>&lt;MAJOR&gt;</code> correspond au numéro majeur que vous pouvez obtenir via la commande
+<code>dmesg</code>. Pour désinstaller votre module, utilisez la commande <code>rmmod</code> et
+supprimez le fichier de périphérique correspondant.</p>
+<h3 id="exercice-2">Exercice 2</h3>
+<p>Répétez l'exercice ci-dessus en utilisant <code>copy_from_user</code> et <code>copy_to_user</code>.
+Veillez à bien gérer les offsets, tant pour les lectures que pour les
+écritures !</p>
+<h1 id="exercices-de-revision">Exercices de révision</h1>
 <ul>
 <li>
 <p>Problème 0 : Supposons qu'un fichier <code>test.txt</code> soit donné, qui contient
