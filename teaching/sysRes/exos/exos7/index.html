@@ -197,7 +197,8 @@
 0. <a href="https://www.kernel.org/">The Linux Kernel Archives</a>
 1. <a href="https://docs.kernel.org/">The Linux Kernel documentation</a>
 2. <a href="https://sysprog21.github.io/lkmpg">The Linux Kernel Module Programming Guide</a>
-3. <a href="https://linux-kernel-labs.github.io">Linux Kernel Labs</a></p>
+3. <a href="https://linux-kernel-labs.github.io">Linux Kernel Labs</a>
+4. <a href="https://docs.kernel.org/kernel-hacking/index.html">Kernel Hacking Guides</a></p>
 <p>Sous UNIX, l'accès aux périphériques matériels s'effectue via
 de fichiers situés dans le répertoire <code>/dev</code>. </p>
 <p>Les appels système effectués sur ces fichiers (<code>open</code>, <code>read</code>, <code>write</code>, <code>close</code>, etc.)
@@ -216,10 +217,12 @@ type character device, qui stocke stocke simplement tout ce qui lui est
 <code>struct file_operations</code> (dans <code>include/linux/fs.h</code>). Parmi celles-ci,
 certaines contiennent des pointeurs vers la mémoire de l'<strong>espace utilisateur</strong> (user space)
 qui ne doivent en aucun cas être déréférencés. Il faut plutôt utiliser des
-fonctions comme
-- <code>simple_read_from_buffer</code> et <code>simple_write_to_buffer</code>
-- <code>copy_from_user</code> et <code>copy_to_user</code>. </p>
-<p>Consultez le code du noyau (dans <code>include/linux/uaccess.h</code>) et la documentation
+fonctions comme: </p>
+<ul>
+<li><code>simple_read_from_buffer</code> et <code>simple_write_to_buffer</code> (<code>include/linux/uaccess.h</code> et <code>fs/libfs.c</code>),</li>
+<li><code>copy_from_user</code> et <code>copy_to_user</code> (<code>include/linux/uaccess.h</code>). </li>
+</ul>
+<p>Consultez le code du noyau et la documentation
 ci-dessus pour comprendre le fonctionnement de ces fonctions.</p>
 <h3 id="exercice-1">Exercice 1</h3>
 <p>À l'aide de <code>simple_read_from_buffer</code>, <code>simple_write_to_buffer</code>, complétez
